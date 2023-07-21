@@ -1,0 +1,22 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.container {
+  @include container(100%, 400px, $background-color);
+
+  .content {
+    width: 1160px;
+  }
+
+  h1 {
+    @include header(235px);
+  }
+
+  h5 {
+    margin-top: 30px;
+  }
+
+  .icon {
+    font-size: 76px;
+  }
+}

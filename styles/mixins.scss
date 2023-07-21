@@ -1,0 +1,18 @@
+@mixin container($width, $height, $color, $radius: 0) {
+  width: $width;
+  height: $height;
+
+  margin-top: 100px;
+
+  background-color: $color;
+  border-radius: $radius;
+}
+
+@mixin header($paddingLeft) {
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  padding-top: 45px;
+  padding-left: $paddingLeft;
+}
