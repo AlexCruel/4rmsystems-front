@@ -1,0 +1,14 @@
+@import "styles/colors";
+@import "styles/sizes";
+
+.header {
+  height: 70px;
+
+  border-bottom: 1px solid black;
+
+  .header_container {
+    width: $width;
+    height: 100%;
+  }
+}
+
