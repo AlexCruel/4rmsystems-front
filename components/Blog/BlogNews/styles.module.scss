@@ -1,0 +1,28 @@
+.container {
+  width: 81%;
+  margin: auto;
+  padding-top: 100px;
+
+  img {
+    width: 198px;
+    height: 190px;
+    background-color: darkseagreen;
+    border-radius: 20px;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: column;
+
+    h5 {
+      margin: 0;
+      padding-top: 14px;
+    }
+  }
+
+  .x {
+    font-size: 30px;
+    background: none;
+    padding-bottom: 50px;
+  }
+}

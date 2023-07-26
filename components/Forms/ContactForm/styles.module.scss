@@ -1,0 +1,67 @@
+@import "styles/main";
+
+.container {
+  @include container(1160px, 580px, $background-color, 40px);
+
+  h5 {
+    font-weight: bold;
+  }
+
+  .info {
+    width: 420px;
+    height: 550px;
+
+    margin-top: 15px;
+    margin-left: 22px;
+
+    border-radius: 40px;
+
+    background-color: #FFE3E3;
+
+    h1 {
+      @include header(32px);
+    }
+
+    h5, p {
+      width: 360px;
+      padding-left: 32px;
+      text-align: justify;
+    }
+  }
+
+  .form {
+    width: 375px;
+    height: 550px;
+
+    margin-top: 20px;
+    margin-right: 150px;
+    margin-left: 100px;
+
+    align-items: center;
+
+    .form_group {
+      margin-top: 20px;
+    }
+
+    .input {
+      width: 370px;
+      height: 50px;
+
+      border-radius: 20px;
+
+      margin-top: 50px;
+    }
+
+    .input_area {
+      width: 370px;
+
+      border-radius: 20px;
+
+      margin-top: 50px;
+    }
+
+    button {
+      margin-top: 35px;
+    }
+  }
+}

@@ -1,16 +1,21 @@
 import Header from "@/components/Header";
-import Slider from "@/components/Slider";
+import Banner from "components/Banner";
 import About from "@/components/About";
 import Information from "@/components/Information";
+import ContactForm from "@/components/Forms/ContactForm";
+import Footer from "@/components/Footer";
+import BlogNews from "@/components/Blog/BlogNews";
 
 const Home = () => {
   return (
       <>
         <Header />
-        <Slider />
+        <Banner />
         <About />
+        <BlogNews />
         <Information />
-          <About />
+        <ContactForm />
+        <Footer />
       </>
   );
 }

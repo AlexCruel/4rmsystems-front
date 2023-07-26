@@ -2,7 +2,7 @@ import cn from "./styles.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
-import {faThumbsUp, faParachuteBox, faIndustry, faEarthEurope, faUserGear} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsUp, faParachuteBox, faIndustry, faUserGear} from "@fortawesome/free-solid-svg-icons";
 
 const Information = () => {
     return (

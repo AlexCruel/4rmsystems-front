@@ -1,5 +1,4 @@
-@import "styles/colors";
-@import "styles/mixins";
+@import "styles/main";
 
 .container {
   @include container(1160px, 400px, $background-color, 40px);
