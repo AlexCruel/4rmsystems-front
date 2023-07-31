@@ -1,9 +1,12 @@
 @import "styles/main";
 
 .container {
-  @include container(1160px, 400px, $background-color, 40px);
+  margin: auto;
+
+  @include container(1160px, 400px, rgba(255, 255, 255, 1), 40px);
+  border: 1px solid $main-color;
 
   h1 {
-    @include header(100px);
+    @include header(100px, $main-color);
   }
 }

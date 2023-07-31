@@ -26,5 +26,9 @@ body {
   textarea {
     resize: none;
   }
+
+  hr {
+    border: 1px solid $default-color;
+  }
 }
 

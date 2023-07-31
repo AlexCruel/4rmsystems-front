@@ -9,7 +9,7 @@ import banner_1 from "../../public/img/banner_1.png";
 
 const Banner = () => {
     return (
-        <div className={cn.container}>
+        <div className={cn.banner_container}>
             <Splide options={{
                 type: 'slide',
                 perPage: 1,
@@ -18,34 +18,24 @@ const Banner = () => {
                 interval: 3000,
                 rewind: true,
                 classes: {
-                    prev  : `splide__arrow--prev + ' ' + ${ cn.x}`,
-                    next  : `splide__arrow--next + ' ' + ${ cn.x}`
+                    prev: `splide__arrow--prev + ' ' + ${cn.arrow}`,
+                    next: `splide__arrow--next + ' ' + ${cn.arrow}`
                 }
             }} aria-label="My Favorite Images">
                 <SplideSlide>
-                    <div>
-                        <Image src={banner_1} alt="Image 1"/>
-                    </div>
+                    <Image src={banner_1} alt="Image 1"/>
                 </SplideSlide>
                 <SplideSlide>
-                    <div>
-                        <Image src={img_2} alt="Image 2"/>
-                    </div>
+                    <Image src={img_2} alt="Image 2"/>
                 </SplideSlide>
                 <SplideSlide>
-                    <div>
-                        <Image src={img_3} alt="Image 3"/>
-                    </div>
+                    <Image src={img_3} alt="Image 3"/>
                 </SplideSlide>
                 <SplideSlide>
-                    <div>
-                        <Image src={img_1} alt="Image 4"/>
-                    </div>
+                    <Image src={img_1} alt="Image 4"/>
                 </SplideSlide>
                 <SplideSlide>
-                    <div>
-                        <Image src={img_2} alt="Image 5"/>
-                    </div>
+                    <Image src={img_2} alt="Image 5"/>
                 </SplideSlide>
             </Splide>
         </div>

@@ -8,11 +8,20 @@
   border-radius: $radius;
 }
 
-@mixin header($paddingLeft) {
+@mixin header($paddingLeft, $color) {
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
+  color: $color;
 
   padding-top: 45px;
   padding-left: $paddingLeft;
+}
+
+@mixin button($backgroundColor, $color) {
+  background: $backgroundColor;
+  color: $color;
+
+  text-align: center;
+  line-height: 30px;
 }

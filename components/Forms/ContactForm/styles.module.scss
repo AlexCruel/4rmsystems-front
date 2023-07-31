@@ -19,7 +19,7 @@
     background-color: #FFE3E3;
 
     h1 {
-      @include header(32px);
+      @include header(32px, $main-color);
     }
 
     h5, p {

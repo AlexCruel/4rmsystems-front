@@ -1,6 +1,6 @@
 import cn from "./styles.module.scss";
 import Image from "next/image";
-import logo from "../../public/img/4rm_logo.svg";
+import logo from "../../public/img/logo.svg";
 import phone from "../../public/icons/phone.svg";
 import search from "../../public/icons/search.svg";
 import mail from "../../public/icons/mail.svg";

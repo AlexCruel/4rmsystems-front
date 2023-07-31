@@ -4,11 +4,9 @@ import {Row} from "react-bootstrap";
 
 const About = () => {
     return (
-        <>
-            <Container className={cn.container}>
-                <h1>О компании</h1>
-            </Container>
-        </>
+        <div className={cn.container}>
+            <h1>О компании</h1>
+        </div>
     );
 }
 
