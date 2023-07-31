@@ -4,20 +4,55 @@ import HeaderButtons from "@/components/Header/HeaderButtons";
 import cn from "./styles.module.scss";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from "next/image";
+import logo from "../../public/img/4rm_logo.svg";
+import phone from "../../public/icons/phone.svg";
+import search from "../../public/icons/search.svg";
+import mail from "../../public/icons/mail.svg";
+import globe from "../../public/icons/globe.svg";
 
 const Header = () => {
     return (
-        <Navbar expand="lg" className={"bg-body-tertiary fixed-top" + " " + cn.header}>
-            <Container className={cn.header_container}>
-                <Navbar.Brand href="#home">Логотип</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <HeaderCallCenter />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <HeaderMenu />
-                    <HeaderButtons />
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <nav>
+            <div className={cn.container}>
+                <div className={cn.logo_container}>
+                    <div><Image src={logo} width="125px" height="35px" alt='4RM SYSTEMS' /></div>
+                    <div className={cn.logo_container_text}>For Retail Modern Systems</div>
+                </div>
+                <div>
+                    <ul className={cn.contacts_wrapper}>
+                        <li>
+                            <div className={cn.contacts_container}>
+                                <Image src={phone} alt="Phone" />
+                                <a href="#">+375 44 504-14-01</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div className={cn.contacts_container}>
+                                <Image src={phone} alt="Phone" />
+                                <a href="#">+375 21 265-05-12</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div className={cn.menu}>
+                    <ul>
+                        <li><a href="#">Каталог</a></li>
+                        <li><a href="#">Проекты</a></li>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div className={cn.call}>
+                    ЗАКАЗАТЬ ЗВОНОК
+                </div>
+                <div className={cn.icons}>
+                    <Image src={search} alt="Search" />
+                    <Image src={mail} alt="Mail" />
+                    <Image src={globe} alt="Globe" />
+                </div>
+            </div>
+        </nav>
     );
 }
 

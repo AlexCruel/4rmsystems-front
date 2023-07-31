@@ -4,6 +4,7 @@ import {Splide, SplideSlide} from "@splidejs/react-splide";
 import img_1 from "../../public/img/slide_img_1.png";
 import img_2 from "../../public/img/slide_img_2.png";
 import img_3 from "../../public/img/slide_img_3.png";
+import banner_1 from "../../public/img/banner_1.png";
 
 
 const Banner = () => {
@@ -23,7 +24,7 @@ const Banner = () => {
             }} aria-label="My Favorite Images">
                 <SplideSlide>
                     <div>
-                        <Image src={img_1} alt="Image 1"/>
+                        <Image src={banner_1} alt="Image 1"/>
                     </div>
                 </SplideSlide>
                 <SplideSlide>

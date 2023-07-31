@@ -7,7 +7,7 @@ const BlogNews = () => {
         <div className={cn.container}>
             <Splide options={{
                 type: 'loop',
-                perPage: 3,
+                perPage: 4,
                 perMove: 1,
                 pagination: false,
                 autoplay: true,
