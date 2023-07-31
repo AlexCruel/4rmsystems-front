@@ -1,9 +1,4 @@
-import HeaderCallCenter from "@/components/Header/HeaderCallCenter";
-import HeaderMenu from "@/components/Header/HeaderMenu";
-import HeaderButtons from "@/components/Header/HeaderButtons";
 import cn from "./styles.module.scss";
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import Image from "next/image";
 import logo from "../../public/img/4rm_logo.svg";
 import phone from "../../public/icons/phone.svg";
@@ -13,12 +8,12 @@ import globe from "../../public/icons/globe.svg";
 
 const Header = () => {
     return (
-        <nav>
+        <nav className={cn.nav}>
+            <div className={cn.logo_container}>
+                <div className={cn.logo_container_img}><Image src={logo} width="125px" height="35px" alt='4RM SYSTEMS' /></div>
+                <div className={cn.logo_container_text}>For Retail Modern Systems</div>
+            </div>
             <div className={cn.container}>
-                <div className={cn.logo_container}>
-                    <div><Image src={logo} width="125px" height="35px" alt='4RM SYSTEMS' /></div>
-                    <div className={cn.logo_container_text}>For Retail Modern Systems</div>
-                </div>
                 <div>
                     <ul className={cn.contacts_wrapper}>
                         <li>
