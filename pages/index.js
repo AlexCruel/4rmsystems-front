@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import BlogNews from "@/components/Blog/BlogNews";
 import Partner from "@/components/Partner";
 import Projects from "@/components/Projects";
+import Map from "@/components/Map";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <Information />
         <Partner />
         <Projects />
+        <Map />
         <ContactForm />
         <Footer />
       </>

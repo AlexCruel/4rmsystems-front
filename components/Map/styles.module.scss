@@ -1,0 +1,17 @@
+@import "styles/main";
+
+.container {
+  width: 1000px;
+  margin: auto;
+
+  .map {
+    width: 1000px;
+    height: 500px;
+
+    border: 0;
+  }
+
+  h1 {
+    @include header(0, $main-color);
+  }
+}
