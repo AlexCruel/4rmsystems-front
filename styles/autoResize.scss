@@ -1,0 +1,41 @@
+@use "sass:math";
+
+@function autoResize(
+  $minSize,
+  $maxSize: $minSize,
+  $minWidthPx: 320px,
+  $maxWidthPx: 1920px,
+  $pixelsPerRem: 16px
+) {
+  $minSize: strip-unit($minSize);
+  $maxSize: strip-unit($maxSize);
+  $minWidthPx: strip-unit($minWidthPx);
+  $maxWidthPx: strip-unit($maxWidthPx);
+  $pixelsPerRem: strip-unit($pixelsPerRem);
+
+  $minWidth: math.div($minWidthPx, $pixelsPerRem);
+  $maxWidth: math.div($maxWidthPx, $pixelsPerRem);
+
+  $rMinSize: math.div($minSize, $pixelsPerRem);
+  $rMaxSize: math.div($maxSize, $pixelsPerRem);
+
+  $slope: math.div(($rMaxSize - $rMinSize), ($maxWidth - $minWidth));
+  $yAxisIntersection: -$minWidth * $slope + $rMinSize;
+
+  $remMinSize: $rMinSize + rem;
+  $remMaxSize: $rMaxSize + rem;
+  $vwSlope: ($slope * 100) + vw;
+  $remyAxisIntersection: $yAxisIntersection + rem;
+  $calc: calc(#{$remyAxisIntersection} + #{$vwSlope});
+  @return clamp(#{$remMinSize}, #{$calc}, #{$remMaxSize});
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+// EXAMPLE!!!!
+//  padding-left: autoResize(28px, 42px, $landscape320, $landscape384);

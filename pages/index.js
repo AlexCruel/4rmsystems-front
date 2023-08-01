@@ -5,6 +5,7 @@ import Information from "@/components/Information";
 import ContactForm from "@/components/Forms/ContactForm";
 import Footer from "@/components/Footer";
 import BlogNews from "@/components/Blog/BlogNews";
+import Partner from "@/components/Partner";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <About />
         <BlogNews />
         <Information />
+        <Partner />
         <ContactForm />
         <Footer />
       </>

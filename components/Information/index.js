@@ -8,7 +8,7 @@ import Image from "next/image";
 const Information = () => {
     return (
         <div className={cn.info_container}>
-            <h1>Информация</h1>
+            <h1>Преимущества 4RM Systems</h1>
             <div className={cn.info_content}>
                 <div>
                     <Image src={info_1} alt="Info 1" />

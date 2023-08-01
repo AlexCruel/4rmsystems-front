@@ -5,6 +5,13 @@ import '@splidejs/react-splide/css';
 const BlogNews = () => {
     return (
         <div className={cn.container}>
+            <div className={cn.header}>
+                <div className={cn.header_menu}>
+                    <h1>Новости</h1>
+                    <h2>Блог</h2>
+                </div>
+                <button>Все новости</button>
+            </div>
             <Splide options={{
                 type: 'loop',
                 perPage: 4,
@@ -21,7 +28,7 @@ const BlogNews = () => {
                     <div className={cn.test}>
                         <img src="" alt="."/>
                         <h5>Заголовок 1</h5>
-                        Lorem ipsum
+                        <div>Lorem ipsum</div>
                     </div>
                 </SplideSlide>
                 <SplideSlide style={{display: "flex", justifyContent: "center"}}>

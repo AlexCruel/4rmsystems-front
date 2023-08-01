@@ -1,67 +1,57 @@
 @import "styles/main";
 
 .container {
-  @include container(1160px, 580px, $background-color, 40px);
+  margin: auto;
 
-  h5 {
-    font-weight: bold;
+  @include container(1000px, 580px, $main-color);
+
+  .contact_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 150px;
   }
 
-  .info {
+  .contact_info {
     width: 420px;
     height: 550px;
 
     margin-top: 15px;
-    margin-left: 22px;
+    margin-left: 20px;
 
-    border-radius: 40px;
-
-    background-color: #FFE3E3;
+    background-color: $default-color;
+    border-radius: 5px;
 
     h1 {
-      @include header(32px, $main-color);
+      padding-left: 30px;
     }
 
     h5, p {
       width: 360px;
-      padding-left: 32px;
-      text-align: justify;
+      padding-left: 30px;
     }
   }
 
   .form {
-    width: 375px;
-    height: 550px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 400px;
 
-    margin-top: 20px;
-    margin-right: 150px;
-    margin-left: 100px;
-
-    align-items: center;
-
-    .form_group {
-      margin-top: 20px;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .input {
-      width: 370px;
+    input, textarea {
+      width: 330px;
       height: 50px;
 
-      border-radius: 20px;
-
-      margin-top: 50px;
+      border-radius: 5px;
     }
 
-    .input_area {
-      width: 370px;
-
-      border-radius: 20px;
-
-      margin-top: 50px;
-    }
-
-    button {
-      margin-top: 35px;
+    textarea {
+      height: 100px;
     }
   }
 }

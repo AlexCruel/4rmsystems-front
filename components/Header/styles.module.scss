@@ -8,6 +8,10 @@
   grid-template-columns: 1fr 10fr;
   grid-template-rows: 1fr;
 
+  position: fixed;
+  background: white;
+  z-index: 2;
+
   border-bottom: 3px solid $main-color;
 
   .logo_container {

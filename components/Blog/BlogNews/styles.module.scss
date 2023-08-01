@@ -3,6 +3,37 @@
   margin: auto;
   padding-top: 100px;
 
+  .header {
+    width: 92%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header_menu {
+      display: flex;
+      align-items: baseline;
+      gap: 50px;
+    }
+
+    button {
+      width: 170px;
+      height: 30px;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 36px;
+      opacity: 50%;
+      text-transform: uppercase;
+    }
+  }
+
   img {
     width: 198px;
     height: 190px;
