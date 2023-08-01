@@ -3,7 +3,7 @@
 .container {
   margin: auto;
 
-  @include container(1000px, 580px, $main-color);
+  @include container(1000px, 580px, 100px, $main-color);
 
   .contact_container {
     display: grid;

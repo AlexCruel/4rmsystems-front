@@ -9,7 +9,7 @@
   grid-template-rows: 1fr;
 
   position: fixed;
-  background: white;
+  background: $default-color;
   z-index: 2;
 
   border-bottom: 3px solid $main-color;

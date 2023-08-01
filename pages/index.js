@@ -6,6 +6,7 @@ import ContactForm from "@/components/Forms/ContactForm";
 import Footer from "@/components/Footer";
 import BlogNews from "@/components/Blog/BlogNews";
 import Partner from "@/components/Partner";
+import Projects from "@/components/Projects";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <BlogNews />
         <Information />
         <Partner />
+        <Projects />
         <ContactForm />
         <Footer />
       </>

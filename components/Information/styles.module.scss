@@ -1,7 +1,7 @@
 @import "styles/main";
 
 .info_container {
-  @include container(100%, 450px, $main-color);
+  @include container(100%, 450px, 100px, $main-color);
 
   .info_content {
     width: 1160px;

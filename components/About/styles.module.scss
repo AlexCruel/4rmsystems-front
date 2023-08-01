@@ -3,7 +3,7 @@
 .container {
   margin: auto;
 
-  @include container(1160px, 400px, rgba(255, 255, 255, 1), 40px);
+  @include container(1160px, 400px, 200px, rgba(255, 255, 255, 1), 40px);
   border: 1px solid $main-color;
 
   h1 {

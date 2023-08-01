@@ -1,8 +1,8 @@
-@mixin container($width, $height, $color, $radius: 0) {
+@mixin container($width, $height, $margin: 100px, $color, $radius: 0) {
   width: $width;
   height: $height;
 
-  margin-top: 200px;
+  margin-top: $margin;
 
   background-color: $color;
   border-radius: $radius;
