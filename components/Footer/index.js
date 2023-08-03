@@ -52,39 +52,39 @@ const Footer = () => {
                         @1ak-group.com
                     </div>
                     <div className={cn.social}>
-                        <Image src={facebook} alt="Facebook" />
-                        <Image src={instagram} alt="Instagram" />
-                        <Image src={linkedin} alt="LinkedIn" />
-                        <Image src={vk} alt="VK" />
-                        <Image src={youtube} alt="YouTube" />
+                        <a><Image src={facebook} alt="Facebook" /></a>
+                        <a><Image src={instagram} alt="Instagram" /></a>
+                        <a><Image src={linkedin} alt="LinkedIn" /></a>
+                        <a><Image src={vk} alt="VK" /></a>
+                        <a><Image src={youtube} alt="YouTube" /></a>
                     </div>
                 </div>
                 <div className={cn.category}>
                     <h5>Каталог</h5>
                     <ul>
-                        <li>Кассовые зоны</li>
-                        <li>Почтоматы</li>
-                        <li>Торговые стеллажи</li>
-                        <li>Складские системы</li>
-                        <li>Холодильные витрины</li>
-                        <li>Брендированное оборужование</li>
+                        <li><a>Кассовые зоны</a></li>
+                        <li><a>Почтоматы</a></li>
+                        <li><a>Торговые стеллажи</a></li>
+                        <li><a>Складские системы</a></li>
+                        <li><a>Холодильные витрины</a></li>
+                        <li><a>Брендированное оборужование</a></li>
                     </ul>
                 </div>
                 <div className={cn.category}>
                     <h5>О нас</h5>
                     <ul>
-                        <li>Контакты</li>
-                        <li>О компании</li>
-                        <li>Новости</li>
+                        <li><a>Контакты</a></li>
+                        <li><a>О компании</a></li>
+                        <li><a>Новости</a></li>
                     </ul>
                 </div>
                 <div className={cn.category}>
                     <h5>Клиентам</h5>
                     <ul>
-                        <li>Политика конфидениальности</li>
-                        <li>Блог</li>
-                        <li>FAQ</li>
-                        <li>Проекты</li>
+                        <li><a>Политика конфидениальности</a></li>
+                        <li><a>Блог</a></li>
+                        <li><a>FAQ</a></li>
+                        <li><a>Проекты</a></li>
                     </ul>
                 </div>
             </div>

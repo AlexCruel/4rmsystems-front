@@ -18,10 +18,10 @@
   padding-left: $paddingLeft;
 }
 
-@mixin button($backgroundColor, $color) {
+@mixin button($backgroundColor, $color, $borderRadius) {
   background: $backgroundColor;
   color: $color;
+  border-radius: $borderRadius;
 
   text-align: center;
-  line-height: 30px;
 }

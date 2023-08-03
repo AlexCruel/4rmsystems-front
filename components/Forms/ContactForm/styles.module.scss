@@ -3,7 +3,7 @@
 .container {
   margin: auto;
 
-  @include container(1000px, 580px, 100px, $main-color);
+  @include container(1000px, 580px, 100px, rgba(35, 115, 137, 0.75));
 
   .contact_container {
     display: grid;
@@ -32,26 +32,61 @@
     }
   }
 
-  .form {
+  .form_container {
     display: flex;
     flex-direction: column;
-    margin-right: 400px;
+    align-items: center;
 
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    form {
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+      }
+
+      input, textarea {
+        width: 330px;
+        height: 50px;
+
+        border-radius: 5px;
+      }
+
+      textarea {
+        height: 100px;
+      }
     }
 
-    input, textarea {
-      width: 330px;
-      height: 50px;
+    .policy {
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 8px;
+        font-weight: normal;
+        color: $default-color;
+
+        padding-left: 10px;
+      }
+
+      input {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    button {
+      width: 220px;
+      height: 30px;
+
+      font-weight: bold;
+      color: $default-color;
+
+      background: $main-color;
 
       border-radius: 5px;
-    }
+      border: none;
 
-    textarea {
-      height: 100px;
+      margin-top: 20px;
     }
   }
 }

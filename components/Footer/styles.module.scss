@@ -38,13 +38,6 @@
     .info {
       display: flex;
       flex-direction: column;
-
-      .work_time {
-        width: 180px;
-        height: 80px;
-
-        border: 1px solid #FF0000;
-      }
     }
 
     .category {
@@ -66,14 +59,11 @@
       gap: 30px;
     }
 
-    .contacts, .company, .rights {
+    .contacts, .company, .rights, .work_time {
       font-size: 15px;
       padding-bottom: 20px;
 
       a {
-        font-weight: normal;
-        color: $default-color;
-
         padding-left: 5px;
       }
     }
@@ -95,6 +85,15 @@
       li {
         font-size: 15px;
         padding-bottom: 3px;
+      }
+    }
+
+    a {
+      font-weight: normal;
+      color: $default-color;
+
+      &:hover {
+        color: $main-color;
       }
     }
   }

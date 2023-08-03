@@ -10,7 +10,8 @@ const Header = () => {
     return (
         <nav className={cn.nav}>
             <div className={cn.logo_container}>
-                <div className={cn.logo_container_img}><Image src={logo} width="125px" height="35px" alt='4RM SYSTEMS' /></div>
+                <Image src={logo} alt='4RM SYSTEMS' />
+                <hr/>
                 <div className={cn.logo_container_text}>For Retail Modern Systems</div>
             </div>
             <div className={cn.container}>
@@ -42,9 +43,9 @@ const Header = () => {
                     ЗАКАЗАТЬ ЗВОНОК
                 </div>
                 <div className={cn.icons}>
-                    <Image src={search} alt="Search" />
-                    <Image src={mail} alt="Mail" />
-                    <Image src={globe} alt="Globe" />
+                    <a><Image src={search} alt="Search" /></a>
+                    <a><Image src={mail} alt="Mail" /></a>
+                    <a><Image src={globe} alt="Globe" /></a>
                 </div>
             </div>
         </nav>

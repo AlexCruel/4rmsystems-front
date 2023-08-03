@@ -7,25 +7,31 @@ const ContactForm = () => {
         <div className={cn.container}>
             <div className={cn.contact_container}>
                 <div className={cn.contact_info}>
-                    <h1>LOREM IPSUM</h1>
-                    <h5>LOREM IPSUM</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
-                    <h5>+375 (44) 504-14-01</h5>
-                    <h5>info@4rm.com</h5>
+                    <p>Нужна консультация?</p>
+                    <p>Заполните форму, и мы свяжемся с вами.</p>
+                    <p>
+                        4RM Systems предлагаем сегодня то,
+                        что понадобится ритейлу завтра.
+                    </p>
+                    <p>
+                        Команда поддержки на связи!
+                    </p>
+                    <p>+375 (44) 504-14-01</p>
+                    <p>info@4rm.com</p>
                 </div>
-                <div className={cn.form}>
+                <div className={cn.form_container}>
                     <form>
-                        <h5>LOREM IPSUM</h5>
+                        <h5>Менеджер поддержки 4RM</h5>
                         <div>
-                            <label>ФИО</label>
+                            <label>ФИО*</label>
                             <input type="text"/>
                         </div>
                         <div>
-                            <label>Телефон</label>
+                            <label>Телефон*</label>
                             <input type="phone" />
                         </div>
                         <div>
-                            <label>Email</label>
+                            <label>Email*</label>
                             <input type="email" />
                         </div>
                         <div>
@@ -33,6 +39,11 @@ const ContactForm = () => {
                             <textarea />
                         </div>
                     </form>
+                    <div className={cn.policy}>
+                        <input type="checkbox" />
+                        <label>*Отправляя форму, вы соглашаетесь с условиями обработки данных.</label>
+                    </div>
+                    <button>Отправить</button>
                 </div>
             </div>
         </div>
