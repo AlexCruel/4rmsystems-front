@@ -18,6 +18,7 @@
 
   h1 {
     @include header(235px, $default-color);
+    padding-top: 40px;
   }
 
   h2 {

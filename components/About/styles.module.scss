@@ -1,12 +1,30 @@
 @import "styles/main";
 
 .container {
-  margin: auto;
+  margin-top: 200px;
 
-  @include container(1160px, 400px, 200px, rgba(255, 255, 255, 1), 40px);
-  border: 1px solid $main-color;
+  .content {
+    margin: auto;
 
-  h1 {
-    @include header(100px, $main-color);
+    width: 1160px;
+    height: 400px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+
+    h1 {
+      margin: 0;
+      @include header(0, $footer-color);
+    }
+
+    p {
+      font-family: $button-font;
+    }
+
+    ul {
+      list-style: inside;
+    }
   }
+
 }

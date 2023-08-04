@@ -2,7 +2,7 @@
 
 .partner_container {
   width: 1000px;
-  margin: auto;
+  margin: 100px auto;
 
   h1 {
     @include header(0, $main-color);
