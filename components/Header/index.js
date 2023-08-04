@@ -40,7 +40,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className={cn.call}>
-                    ЗАКАЗАТЬ ЗВОНОК
+                    <button>ЗАКАЗАТЬ ЗВОНОК</button>
                 </div>
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>

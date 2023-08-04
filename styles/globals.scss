@@ -1,5 +1,6 @@
 // @import '~bootstrap/scss/bootstrap';
 @import "vars";
+@import "mixins";
 
 body {
   margin: 0;
@@ -30,6 +31,24 @@ body {
 
   hr {
     border: 1px solid $default-color;
+  }
+
+  button {
+    @include button($main-color, $default-color, 2px);
+
+    font-family: $button-font;
+
+    border: none;
+
+    &:hover {
+    cursor: pointer;
+    }
+  }
+
+  input, textarea {
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
   }
 }
 

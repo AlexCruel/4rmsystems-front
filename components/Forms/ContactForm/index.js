@@ -7,21 +7,25 @@ const ContactForm = () => {
         <div className={cn.container}>
             <div className={cn.contact_container}>
                 <div className={cn.contact_info}>
-                    <p>Нужна консультация?</p>
-                    <p>Заполните форму, и мы свяжемся с вами.</p>
-                    <p>
-                        4RM Systems предлагаем сегодня то,
-                        что понадобится ритейлу завтра.
-                    </p>
-                    <p>
-                        Команда поддержки на связи!
-                    </p>
-                    <p>+375 (44) 504-14-01</p>
-                    <p>info@4rm.com</p>
+                    <div>
+                        <p className={cn.contact_info_question}>Нужна консультация?</p>
+                        <p className={cn.contact_info_action}>Заполните форму, и мы свяжемся с вами.</p>
+                        <p>
+                            4RM Systems предлагаем сегодня то,
+                            что понадобится ритейлу завтра.
+                        </p>
+                        <p>
+                            Команда поддержки на связи!
+                        </p>
+                    </div>
+                    <div>
+                        <p><a>+375 (44) 504-14-01</a></p>
+                        <p><a>info@4rm.com</a></p>
+                    </div>
                 </div>
                 <div className={cn.form_container}>
                     <form>
-                        <h5>Менеджер поддержки 4RM</h5>
+                        <p>Менеджер поддержки 4RM</p>
                         <div>
                             <label>ФИО*</label>
                             <input type="text"/>
