@@ -1,7 +1,6 @@
 @import "styles/main";
 
 .container {
-  margin-top: 200px;
 
   .content {
     margin: auto;
@@ -18,7 +17,7 @@
       @include header(0, $footer-color);
     }
 
-    p {
+    p, ul {
       font-family: $button-font;
     }
 

@@ -50,5 +50,9 @@ body {
     border: none;
     border-radius: 5px;
   }
+
+  ::selection {
+    color: $main-color;
+  }
 }
 

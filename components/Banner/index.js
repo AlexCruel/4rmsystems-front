@@ -5,7 +5,7 @@ import img_1 from "../../public/img/slide_img_1.png";
 import img_2 from "../../public/img/slide_img_2.png";
 import img_3 from "../../public/img/slide_img_3.png";
 import banner_1 from "../../public/img/banner_1.png";
-
+import arrow from "../../public/icons/arrow.svg";
 
 const Banner = () => {
     return (
@@ -18,8 +18,11 @@ const Banner = () => {
                 interval: 3000,
                 rewind: true,
                 classes: {
-                    prev: `splide__arrow--prev + ' ' + ${cn.arrow}`,
-                    next: `splide__arrow--next + ' ' + ${cn.arrow}`
+                    arrows: `splide__arrows your-class-arrows ${cn.arrows}`,
+                    arrow: `splide__arrow your-class-arrow ${cn.arrow}`,
+                    prev: `splide__arrow--prev ${cn.prev}`,
+                    next: `splide__arrow--next ${cn.prev}`,
+                    page: `splide__pagination__page ${cn.page}`
                 }
             }} aria-label="My Favorite Images">
                 <SplideSlide>

@@ -1,0 +1,66 @@
+@import "styles/main";
+
+.container {
+  width: 81%;
+  margin: 100px auto;
+
+  .header {
+    width: 92%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header_menu {
+      display: flex;
+      align-items: baseline;
+      gap: 50px;
+    }
+
+    button {
+      width: 170px;
+      height: 30px;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 36px;
+      opacity: 50%;
+      text-transform: uppercase;
+    }
+  }
+
+  h5 {
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+
+    color: $main-color;
+  }
+
+  img {
+    width: 335px;
+    height: 267px;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: column;
+
+    h5 {
+      margin: 0;
+      padding-top: 14px;
+    }
+  }
+
+  .x {
+    background: none;
+    padding-bottom: 50px;
+  }
+}

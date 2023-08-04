@@ -1,10 +1,39 @@
+@import "styles/main";
+
 .banner_container {
   height: 400px;
   padding-top: 90px;
 
-  .arrow {
-    font-size: 30px;
-    color: white;
+  .prev {
+    font-size: 40px;
     background: none;
+    fill: #237389;
+  }
+
+  .arrows {
+    color: white;
+    background: white;
+    fill: #237389;
+  }
+
+  .arrow {
+    color: white;
+    fill: #237389;
+  }
+
+  .page {
+    width: 15px;
+    height: 15px;
+
+    background: $default-color;
+    opacity: 1;
+
+    border: 1px solid $main-color;
+    margin-right: 10px;
+  }
+
+  .page:before {
+    background: $main-color;
+    border: 1px solid $default-color;
   }
 }
