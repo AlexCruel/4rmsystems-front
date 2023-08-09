@@ -6,8 +6,8 @@ const About = () => {
     return (
         <div className={cn.container}>
             <div className={cn.content}>
-                <div><Image width="552" height="400" src={about_company} alt="Company" /></div>
-                <div>
+                <div className={cn.image}><Image width="552" height="400" src={about_company} alt="Company" /></div>
+                <div className={cn.text}>
                     <h1>О компании</h1>
                     <p>
                         4RM Systems предлагает передовые технологии и проверенное

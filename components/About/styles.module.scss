@@ -6,7 +6,7 @@
     margin: auto;
 
     width: 1160px;
-    height: 400px;
+    min-height: 400px;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -26,4 +26,34 @@
     }
   }
 
+}
+
+@media (max-width: 1200px) {
+  .image {
+    display: none;
+  }
+
+  .container {
+    .content {
+      width: auto;
+      padding: 0 20px;
+      display: flex;
+
+      background: $background-color;
+      border-top: 2px solid $main-color;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+
+    .content {
+
+      h1 {
+        font-size: 36px;
+        text-align: center;
+      }
+    }
+  }
 }
