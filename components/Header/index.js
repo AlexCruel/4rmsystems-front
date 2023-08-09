@@ -5,8 +5,13 @@ import phone from "../../public/icons/phone.svg";
 import search from "../../public/icons/search.svg";
 import mail from "../../public/icons/mail.svg";
 import globe from "../../public/icons/globe.svg";
+import menu from "../../public/icons/menu.svg";
+import close from "../../public/icons/close.svg";
+import {useState} from "react";
 
 const Header = () => {
+    const [nav, setNav] = useState(false);
+
     return (
         <nav className={cn.nav}>
             <div className={cn.logo_container}>
@@ -14,9 +19,9 @@ const Header = () => {
                 <hr/>
                 <div className={cn.logo_container_text}>For Retail Modern Systems</div>
             </div>
-            <div className={cn.container}>
-                <div>
-                    <ul className={cn.contacts_wrapper}>
+            <div className={nav ? [cn.container, cn.active_menu].join(' ') : [cn.container]}>
+                <div className={cn.contacts_wrapper}>
+                    <ul>
                         <li>
                             <div className={cn.contacts_container}>
                                 <Image src={phone} alt="Phone" />
@@ -33,7 +38,7 @@ const Header = () => {
                 </div>
                 <div className={cn.menu}>
                     <ul>
-                        <li><a href="#">Каталог</a></li>
+                        {/*<li><a href="#">Каталог</a></li>*/}
                         <li><a href="#">Проекты</a></li>
                         <li><a href="#">О компании</a></li>
                         <li><a href="#">Контакты</a></li>
@@ -48,6 +53,15 @@ const Header = () => {
                     <a><Image src={globe} alt="Globe" /></a>
                 </div>
             </div>
+
+                {/*<div onClick={() => setNav(!nav)} className={cn.mobile_menu}>*/}
+                {/*    <Image src={phone} alt="Close" />*/}
+                {/*</div>*/}
+                <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
+                    {nav ? <Image src={close} alt="Close" /> : <Image src={menu} alt="Menu" />}
+                </div>
+
+
         </nav>
     );
 }
