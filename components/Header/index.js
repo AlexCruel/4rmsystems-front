@@ -1,7 +1,8 @@
 import cn from "./styles.module.scss";
 import Image from "next/image";
 import logo from "../../public/img/logo.svg";
-import phone from "../../public/icons/phone.svg";
+import phone_big from "../../public/icons/phone.svg";
+import phone_small from "../../public/icons/phone_small.svg";
 import search from "../../public/icons/search.svg";
 import mail from "../../public/icons/mail.svg";
 import globe from "../../public/icons/globe.svg";
@@ -24,13 +25,13 @@ const Header = () => {
                     <ul>
                         <li>
                             <div className={cn.contacts_container}>
-                                <Image src={phone} alt="Phone" />
+                                <Image src={phone_small} alt="Phone" />
                                 <a href="#">+375 44 504-14-01</a>
                             </div>
                         </li>
                         <li>
                             <div className={cn.contacts_container}>
-                                <Image src={phone} alt="Phone" />
+                                <Image src={phone_small} alt="Phone" />
                                 <a href="#">+375 21 265-05-12</a>
                             </div>
                         </li>
@@ -55,7 +56,7 @@ const Header = () => {
             </div>
 
                 {/*<div onClick={() => setNav(!nav)} className={cn.mobile_menu}>*/}
-                {/*    <Image src={phone} alt="Close" />*/}
+                {/*    <Image src={phone_big} alt="Close" />*/}
                 {/*</div>*/}
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
                     {nav ? <Image src={close} alt="Close" /> : <Image src={menu} alt="Menu" />}
