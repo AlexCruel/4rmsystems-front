@@ -9,17 +9,20 @@ import globe from "../../public/icons/globe.svg";
 import menu from "../../public/icons/menu.svg";
 import close from "../../public/icons/close.svg";
 import {useState} from "react";
+import Link from "next/link";
 
 const Header = () => {
     const [nav, setNav] = useState(false);
 
     return (
         <nav className={cn.nav}>
-            <div className={cn.logo_container}>
-                <Image src={logo} alt='4RM SYSTEMS' />
-                <hr/>
-                <div className={cn.logo_container_text}>For Retail Modern Systems</div>
-            </div>
+            <Link href="/" className={cn.logo_link}>
+                <div className={cn.logo_container}>
+                    <Image src={logo} alt='4RM SYSTEMS' />
+                    <hr/>
+                    <div className={cn.logo_container_text}>For Retail Modern Systems</div>
+                </div>
+            </Link>
             <div className={nav ? [cn.container, cn.active_menu].join(' ') : [cn.container]}>
                 <div className={cn.contacts_wrapper}>
                     <ul>
@@ -40,9 +43,9 @@ const Header = () => {
                 <div className={cn.menu}>
                     <ul>
                         {/*<li><a href="#">Каталог</a></li>*/}
-                        <li><a href="#">Проекты</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><Link href="/projects">Проекты</Link></li>
+                        <li><Link href="/company">О компании</Link></li>
+                        <li><Link href="/contacts">Контакты</Link></li>
                     </ul>
                 </div>
                 <div className={cn.call}>
