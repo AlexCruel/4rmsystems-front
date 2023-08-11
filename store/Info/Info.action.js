@@ -1,6 +1,10 @@
-import {GET_INFO} from "@/store/Info/Info.constant";
+import {GET_INFO, SET_INFO} from "@/store/Info/Info.constant";
 
-export const getInfo = payload => ({
-    type: GET_INFO,
+export const getInfo = () => ({
+    type: GET_INFO
+});
+
+export const setInfo = payload => ({
+    type: SET_INFO,
     payload
 });

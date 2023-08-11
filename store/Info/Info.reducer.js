@@ -1,8 +1,12 @@
-import {GET_INFO} from "@/store/Info/Info.constant";
+import {SET_INFO} from "@/store/Info/Info.constant";
 
-const Info = (state = { info: {} }, action) => {
+const initialState = {
+    info: {}
+};
+
+const Info = (state = initialState , action) => {
     switch (action.type) {
-        case GET_INFO:
+        case SET_INFO:
             return { ...state, info: action.payload };
         default:
             return state;

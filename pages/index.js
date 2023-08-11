@@ -16,14 +16,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('http://localhost:8888/4rmsystems-server/info');
-            const data = await response.json();
-            dispatch(getInfo(data))
-            console.log(data.work_time);
-        }
-        fetchData();
-
+        dispatch(getInfo());
     }, [dispatch]);
 
     return (
