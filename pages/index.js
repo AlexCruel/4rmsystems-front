@@ -7,18 +7,8 @@ import Partner from "@/components/Partner";
 import Projects from "@/components/Projects";
 import Map from "@/components/Map";
 import Catalog from "@/components/Catalog";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {getInfo} from "@/store/Info/Info.action";
 
 const Home = () => {
-    const info = useSelector(store => store?.info?.info);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getInfo());
-    }, [dispatch]);
-
     return (
       <>
         <Banner />
