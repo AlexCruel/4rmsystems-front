@@ -8,8 +8,10 @@ import instagram from "../../public/icons/social/instagram.svg";
 import linkedin from "../../public/icons/social/linkedin.svg";
 import vk from "../../public/icons/social/vk.svg";
 import youtube from "../../public/icons/social/youtube.svg";
+import Link from "next/link";
+import parse from "html-react-parser";
 
-const Footer = () => {
+const Footer = ({info, menu, socials}) => {
     return (
         <footer className={cn.footer}>
             <div className={cn.footer_container}>
@@ -21,72 +23,55 @@ const Footer = () => {
                     <div className={cn.work_time}>
                         <h5>Режим работы</h5>
                         <ul>
-                            <li>Пн-пт: 8:30-17:30</li>
+                            <li>{info.work_time}</li>
                         </ul>
                     </div>
                     <div className={cn.contacts}>
                         <h5>Контакты</h5>
                         <ul>
-                            <li>
-                                <Image src={phone} alt="Phone" />
-                                <a href="#">+375 44 504-14-01</a>
-                            </li>
-                            <li>
-                                <Image src={phone} alt="Phone" />
-                                <a href="#">+375 21 265-05-12</a>
-                            </li>
+                            {info.phone_items?.map((item, index) => {
+                                return (
+                                    <li key={index}>
+                                        <Image src={phone} alt="Phone" />
+                                        <a href="#">{item.phone}</a>
+                                    </li>
+                                );
+                            })}
                             <li>
                                 <Image src={mail} alt="Mail" />
-                                <a href="#">info@4rm.org</a>
+                                <a href="#">{info.email}</a>
                             </li>
                         </ul>
                     </div>
                     <div className={cn.company}>
-                        ООО "ФоЭрЭм Системс"
-                        <br />
-                        УНП 811003078
+                        {parse(`${info.company_name}`)}
+
                     </div>
                     <div className={cn.rights}>
-                        2023
-                        <br />
-                        @1ak-group.com
+                        {parse(`${info.copyright}`)}
                     </div>
                     <div className={cn.social}>
-                        <a><Image src={facebook} alt="Facebook" /></a>
-                        <a><Image src={instagram} alt="Instagram" /></a>
-                        <a><Image src={linkedin} alt="LinkedIn" /></a>
-                        <a><Image src={vk} alt="VK" /></a>
-                        <a><Image src={youtube} alt="YouTube" /></a>
+                        <Link href={`${socials.facebook}`}><Image src={facebook} alt="Facebook" /></Link>
+                        <Link href={`${socials.instagram}`}><Image src={instagram} alt="Instagram" /></Link>
+                        <Link href={`${socials.linkedin}`}><Image src={linkedin} alt="LinkedIn" /></Link>
+                        <Link href={`${socials.vk}`}><Image src={vk} alt="VK" /></Link>
+                        <Link href={`${socials.youtube}`}><Image src={youtube} alt="YouTube" /></Link>
                     </div>
                 </div>
-                <div className={cn.category}>
-                    <h5>Каталог</h5>
-                    <ul>
-                        <li><a>Кассовые зоны</a></li>
-                        <li><a>Почтоматы</a></li>
-                        <li><a>Торговые стеллажи</a></li>
-                        <li><a>Складские системы</a></li>
-                        <li><a>Холодильные витрины</a></li>
-                        <li><a>Брендированное оборужование</a></li>
-                    </ul>
-                </div>
-                <div className={cn.category}>
-                    <h5>О нас</h5>
-                    <ul>
-                        <li><a>Контакты</a></li>
-                        <li><a>О компании</a></li>
-                        <li><a>Новости</a></li>
-                    </ul>
-                </div>
-                <div className={cn.category}>
-                    <h5>Клиентам</h5>
-                    <ul>
-                        <li><a>Политика конфидениальности</a></li>
-                        <li><a>Блог</a></li>
-                        <li><a>FAQ</a></li>
-                        <li><a>Проекты</a></li>
-                    </ul>
-                </div>
+                {menu.map((section, index) => {
+                    return (
+                        <div key={index} className={cn.category}>
+                            <h5>{section.title}</h5>
+                            <ul>
+                                {section.items.map((item, index) => {
+                                    return (
+                                        <li key={index}><Link href={item.url}>{item.name}</Link></li>
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                    );
+                })}
             </div>
         </footer>
     );

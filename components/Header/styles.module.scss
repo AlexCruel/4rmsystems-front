@@ -45,6 +45,10 @@
     color: $main-color;
   }
 
+  .logo_link:hover {
+    text-decoration: none;
+  }
+
   .container {
     flex-grow: 1;
     display: flex;
