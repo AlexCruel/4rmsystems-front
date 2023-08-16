@@ -8,23 +8,26 @@ import Link from "next/link";
 import link from "../../public/icons/link.svg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {getFooterMenu, getInfo, getSocials} from "@/pages/api/hello";
+import {
+    getInfoData,
+    getInformationData,
+    getPageData,
+    getPartnerData
+} from "@/utils/functions";
+import Head from "next/head";
 
-
-export const getStaticProps = async () => {
-    const content = await fetch("http://localhost:8888/4rmsystems-server/api/page");
-    const data = await content.json();
-
-    const info = await getInfo();
-    const menu = await getFooterMenu();
-    const socials = await getSocials();
+export const getServerSideProps = async () => {
+    const info = await getInfoData();
+    const information = await getInformationData("main");
+    const partner = await getPartnerData();
+    const page = await getPageData("company");
 
     return {
         props: {
-            data,
-            info,
-            menu,
-            socials
+            ...info,
+            ...information,
+            ...partner,
+            ...page
         }
     }
 };
@@ -32,26 +35,31 @@ export const getStaticProps = async () => {
 const Company = ({ ...props }) => {
     return (
         <>
+            <Head>
+                <title>{props.page.seo_title}</title>
+                <meta name="keywords" content={props.page.seo_key} />
+                <meta name="description" content={props.page.seo_description} />
+            </Head>
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>О компании</h1>
                 </div>
                 <Image
-                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${props.data.banner}`}
+                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${props.page.banner}`}
                     layout="responsive"
                     width={1000}
                     height={300}
                     alt="Banner" />
                 <div className={cn.container__text}>
-                    {parse(props.data.content)}
+                    {parse(props.page.content)}
                 </div>
-                <Information />
-                <Partner />
+                <Information info={props.information} />
+                <Partner partner={props.partner} />
                 <BlogNews />
                 <div className={cn.container__text}>
                     <ul>
-                        {props.data.links.map((item, index) => {
+                        {props.page.links.map((item, index) => {
                             return (
                                 <li key={index}>
                                     <Link href={`${item.link}`}>{item.name}

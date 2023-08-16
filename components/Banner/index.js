@@ -1,13 +1,9 @@
 import Image from "next/image";
 import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import img_1 from "../../public/img/slide_img_1.png";
-import img_2 from "../../public/img/slide_img_2.png";
-import img_3 from "../../public/img/slide_img_3.png";
-import banner_1 from "../../public/img/banner_1.png";
-import arrow from "../../public/icons/arrow.svg";
+import Link from "next/link";
 
-const Banner = () => {
+const Banner = ({ banners }) => {
     return (
         <div className={cn.banner_container}>
             <Splide options={{
@@ -25,21 +21,20 @@ const Banner = () => {
                     page: `splide__pagination__page ${cn.page}`
                 }
             }} aria-label="My Favorite Images">
-                <SplideSlide>
-                    <Image src={banner_1} alt="Image 1"/>
-                </SplideSlide>
-                <SplideSlide>
-                    <Image src={img_2} alt="Image 2"/>
-                </SplideSlide>
-                <SplideSlide>
-                    <Image src={img_3} alt="Image 3"/>
-                </SplideSlide>
-                <SplideSlide>
-                    <Image src={img_1} alt="Image 4"/>
-                </SplideSlide>
-                <SplideSlide>
-                    <Image src={img_2} alt="Image 5"/>
-                </SplideSlide>
+                {banners.map((item, index) => {
+                    return (
+                        <SplideSlide key={index}>
+                            <Link href={`${item.url}`}>
+                                <Image
+                                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${item.image}`}
+                                    layout="responsive"
+                                    width={100}
+                                    height={100}
+                                    alt="Banner" />
+                            </Link>
+                        </SplideSlide>
+                    );
+                })}
             </Splide>
         </div>
     );

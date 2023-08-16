@@ -9,35 +9,45 @@ import Map from "@/components/Map";
 import Catalog from "@/components/Catalog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {getFooterMenu, getInfo, getSocials} from "@/pages/api/hello";
+import Head from "next/head";
+import {getInfoData, getBannerData, getAboutData, getInformationData, getPartnerData} from "@/utils/functions";
 
-export const getStaticProps = async () => {
-    const info = await getInfo();
-    const menu = await getFooterMenu();
-    const socials = await getSocials();
+export const getServerSideProps = async () => {
+    const info = await getInfoData();
+    const banner = await getBannerData();
+    const about = await getAboutData();
+    const information = await getInformationData("main");
+    const partner = await getPartnerData();
 
     return {
         props: {
-            info,
-            menu,
-            socials
+            ...info,
+            ...banner,
+            ...about,
+            ...information,
+            ...partner
         }
     }
-}
+};
 
 const Home = ({ ...props }) => {
     return (
       <>
+          <Head>
+              <title></title>
+              <meta name="keywords" content="" />
+              <meta name="description" content="" />
+          </Head>
           <Header phones={props.info.phone_items} />
-        <Banner />
-        <Catalog />
-        <About />
-        <BlogNews />
-        <Information />
-        <Partner />
-        <Projects />
-        <Map />
-        <ContactForm />
+              <Banner banners={props.banner} />
+              <Catalog />
+              <About about={props.about} />
+              <BlogNews />
+              <Information info={props.information} />
+              <Partner partner={props.partner} />
+              <Projects />
+              <Map />
+              <ContactForm />
           <Footer info={props.info} menu={props.menu} socials={props.socials} />
       </>
   );

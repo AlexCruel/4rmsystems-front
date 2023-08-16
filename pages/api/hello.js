@@ -21,3 +21,33 @@ export const getSocials = async() => {
 
   return await request.json();
 }
+
+export const getBanner = async() => {
+  const request = await fetch("http://localhost:8888/4rmsystems-server/api/banner");
+
+  return await request.json();
+}
+
+export const getAbout = async() => {
+  const request = await fetch("http://localhost:8888/4rmsystems-server/api/about");
+
+  return await request.json();
+}
+
+export const getInformation = async(type) => {
+  const request = await fetch(`http://localhost:8888/4rmsystems-server/api/information/${type}`);
+
+  return await request.json();
+}
+
+export const getPartner = async() => {
+  const request = await fetch("http://localhost:8888/4rmsystems-server/api/partner");
+
+  return await request.json();
+}
+
+export const getPage = async(code) => {
+  const request = await fetch(`http://localhost:8888/4rmsystems-server/api/page/${code}`);
+
+  return await request.json();
+}
