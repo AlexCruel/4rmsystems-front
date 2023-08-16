@@ -7,19 +7,48 @@ import Partner from "@/components/Partner";
 import Projects from "@/components/Projects";
 import Map from "@/components/Map";
 import Catalog from "@/components/Catalog";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Head from "next/head";
+import {getInfoData, getBannerData, getAboutData, getInformationData, getPartnerData} from "@/utils/functions";
 
-const Home = () => {
+export const getServerSideProps = async () => {
+    const info = await getInfoData();
+    const banner = await getBannerData();
+    const about = await getAboutData();
+    const information = await getInformationData("main");
+    const partner = await getPartnerData();
+
+    return {
+        props: {
+            ...info,
+            ...banner,
+            ...about,
+            ...information,
+            ...partner
+        }
+    }
+};
+
+const Home = ({ ...props }) => {
     return (
       <>
-        <Banner />
-        <Catalog />
-        <About />
-        <BlogNews />
-        <Information />
-        <Partner />
-        <Projects />
-        <Map />
-        <ContactForm />
+          <Head>
+              <title></title>
+              <meta name="keywords" content="" />
+              <meta name="description" content="" />
+          </Head>
+          <Header phones={props.info.phone_items} />
+              <Banner banners={props.banner} />
+              <Catalog />
+              <About about={props.about} />
+              <BlogNews />
+              <Information info={props.information} />
+              <Partner partner={props.partner} />
+              <Projects />
+              <Map />
+              <ContactForm />
+          <Footer info={props.info} menu={props.menu} socials={props.socials} />
       </>
   );
 }

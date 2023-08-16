@@ -2,8 +2,10 @@ import {createStore, compose, applyMiddleware} from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "@/store/rootReducer";
 import rootSaga from "@/store/rootSaga";
+import {createWrapper} from "next-redux-wrapper";
 
 const sagaMiddleware = createSagaMiddleware();
+// const composeEnhancers = applyMiddleware(sagaMiddleware);
 
 const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -12,14 +14,25 @@ const composeEnhancers =
         })
         : compose;
 
-const configureStore = preloadedState => createStore(
+const store = createStore(
     rootReducer,
-    preloadedState,
     composeEnhancers(applyMiddleware(sagaMiddleware))
+    //composeEnhancers
 );
 
-const store = configureStore({});
+store.sagaTask = sagaMiddleware.run(rootSaga);
 
-sagaMiddleware.run(rootSaga);
+//const store = configureStore({});
+
+// sagaMiddleware.run(rootSaga);
+
+
+// const makeStore = () => store;
+
+function makeStore () {
+    return store;
+}
+
+export const wrapper = createWrapper(makeStore);
 
 export default store;

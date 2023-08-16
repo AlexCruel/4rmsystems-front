@@ -1,0 +1,100 @@
+@import "styles/main";
+
+.container {
+  @include container(100%, 160px, 100px, rgba(35, 115, 137, 0.75));
+  margin-bottom: -75px;
+
+  .contact {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+
+    .contact__consult {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 15px;
+
+      img {
+        padding-right: 30px;
+      }
+
+      .contact__consult_btn {
+        display: flex;
+        gap: 15px;
+      }
+    }
+
+    .contact__subscript {
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+
+      img {
+        padding-right: 30px;
+      }
+    }
+
+    .contact__title {
+      font-weight: bold;
+      color: $default-color;
+      margin: 0;
+    }
+
+    .contact__subtitle {
+      font-size: 12px;
+      font-weight: lighter;
+      color: $default-color;
+      margin: 0;
+    }
+
+    button {
+      width: 166px;
+      height: 30px;
+      //margin-right: 20px;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      color: $footer-color;
+      background: $default-color;
+    }
+
+    .contact__content {
+      height: 87px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact__policy {
+      display: flex;
+      align-items: center;
+      margin: -10px 0 0 0;
+
+      label {
+        font-size: 8px;
+        font-weight: normal;
+        color: $default-color;
+      }
+
+      input {
+        width: 16px;
+        height: 16px;
+        margin: 0 10px 0 0;
+      }
+    }
+
+    .contact__subscript_btn {
+      display: flex;
+      gap: 15px;
+
+      input {
+        width: 250px;
+        height: 28px;
+      }
+    }
+  }
+}

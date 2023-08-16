@@ -3,4 +3,18 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+const images = {
+  remotePatterns: [
+    {
+      protocol: 'http',
+      hostname: 'localhost',
+      port: '8888',
+      pathname: '/4rmsystems-server/storage/app/media/**',
+    }
+  ]
+}
+
+module.exports = {
+  nextConfig,
+  images
+}

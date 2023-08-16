@@ -1,4 +1,5 @@
 import {SET_FOOTER_MENU, SET_INFO, SET_SOCIALS} from "@/store/Info/Info.constant";
+import {HYDRATE} from 'next-redux-wrapper';
 
 const initialState = {
     info: {},
@@ -8,6 +9,8 @@ const initialState = {
 
 const Info = (state = initialState , action) => {
     switch (action.type) {
+        case HYDRATE:
+            return {...action.payload.Info};
         case SET_INFO:
             return { ...state, info: action.payload };
         case SET_FOOTER_MENU:
