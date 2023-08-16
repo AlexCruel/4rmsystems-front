@@ -1,15 +1,13 @@
 import cn from "./styles.module.scss";
-import Container from "react-bootstrap/Container";
-import {Button, Col, Form, Row} from "react-bootstrap";
 
 const ContactForm = () => {
     return (
         <div className={cn.container}>
-            <div className={cn.contact_container}>
-                <div className={cn.contact_info}>
+            <div className={cn.contact}>
+                <div className={cn.contact__info}>
                     <div>
-                        <p className={cn.contact_info_question}>Нужна консультация?</p>
-                        <p className={cn.contact_info_action}>Заполните форму, и мы свяжемся с вами.</p>
+                        <p className={cn.contact__info_question}>Нужна консультация?</p>
+                        <p className={cn.contact__info_action}>Заполните форму, и мы свяжемся с вами.</p>
                         <p>
                             4RM Systems предлагаем сегодня то,
                             что понадобится ритейлу завтра.
@@ -23,7 +21,7 @@ const ContactForm = () => {
                         <p><a>info@4rm.com</a></p>
                     </div>
                 </div>
-                <div className={cn.form_container}>
+                <div className={cn.contact__form}>
                     <form>
                         <p>Менеджер поддержки 4RM</p>
                         <div>
@@ -43,7 +41,7 @@ const ContactForm = () => {
                             <textarea />
                         </div>
                     </form>
-                    <div className={cn.policy}>
+                    <div className={cn.contact__form__policy}>
                         <input type="checkbox" />
                         <label>*Отправляя форму, вы соглашаетесь с условиями обработки данных.</label>
                     </div>

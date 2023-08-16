@@ -5,13 +5,13 @@
 
   @include container(1000px, 580px, 100px, rgba(35, 115, 137, 0.75));
 
-  .contact_container {
+  .contact {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
   }
 
-  .contact_info {
+  .contact__info {
     width: 420px;
     height: 550px;
 
@@ -25,7 +25,7 @@
     background-color: $default-color;
     border-radius: 5px;
 
-    .contact_info_question {
+    .contact__info_question {
       width: 60%;
       font-size: 32px;
       font-weight: bold;
@@ -33,7 +33,7 @@
       margin-bottom: 0;
     }
 
-    .contact_info_action {
+    .contact__info_action {
       width: 45%;
       font-weight: bold;
     }
@@ -49,7 +49,7 @@
     }
   }
 
-  .form_container {
+  .contact__form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +71,7 @@
       }
     }
 
-    .policy {
+    .contact__form__policy {
       display: flex;
       align-items: center;
 

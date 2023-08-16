@@ -1,39 +1,30 @@
+import {getInfoData, getInformationData, getPageData, getPartnerData} from "@/utils/functions";
+import Head from "next/head";
+import Header from "@/components/Header";
 import cn from "./styles.module.scss";
-import Information from "@/components/Information";
-import Partner from "@/components/Partner";
-import BlogNews from "@/components/Blog/BlogNews";
 import parse from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
-import link from "../../public/icons/link.svg";
-import Header from "@/components/Header";
+import link from "@/public/icons/link.svg";
 import Footer from "@/components/Footer";
-import {
-    getInfoData,
-    getInformationData,
-    getPageData,
-    getPartnerData
-} from "@/utils/functions";
-import Head from "next/head";
+import Partner from "@/components/Partner";
 import PageContactForm from "@/components/Forms/PageContactForm";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
-    const information = await getInformationData("main");
     const partner = await getPartnerData();
-    const page = await getPageData("company");
+    const page = await getPageData("production");
 
     return {
         props: {
             ...info,
-            ...information,
             ...partner,
             ...page
         }
     }
 };
 
-const Company = ({ ...props }) => {
+const Production = ({ ...props }) => {
     return (
         <>
             <Head>
@@ -58,9 +49,7 @@ const Company = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>
-                <Information info={props.information} />
                 <Partner partner={props.partner} />
-                <BlogNews />
                 <div className={cn.container__text}>
                     <ul>
                         {props.page.links.map((item, index) => {
@@ -81,4 +70,4 @@ const Company = ({ ...props }) => {
     );
 }
 
-export default Company;
+export default Production;
