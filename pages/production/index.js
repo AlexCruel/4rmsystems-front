@@ -9,17 +9,21 @@ import link from "@/public/icons/link.svg";
 import Footer from "@/components/Footer";
 import Partner from "@/components/Partner";
 import PageContactForm from "@/components/Forms/PageContactForm";
+import Information from "@/components/Information";
+import {info} from "sass";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
     const partner = await getPartnerData();
     const page = await getPageData("production");
+    const information = await getInformationData("production");
 
     return {
         props: {
             ...info,
             ...partner,
-            ...page
+            ...page,
+            ...information
         }
     }
 };
@@ -41,7 +45,7 @@ const Production = ({ ...props }) => {
                     {parse(props.page.pre_content)}
                 </div>
                 <Image
-                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${props.page.banner}`}
+                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner}`}
                     layout="responsive"
                     width={1000}
                     height={300}
@@ -49,6 +53,7 @@ const Production = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>
+                <Information info={props.information} />
                 <Partner partner={props.partner} />
                 <div className={cn.container__text}>
                     <ul>

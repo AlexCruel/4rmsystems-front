@@ -50,7 +50,7 @@ const Company = ({ ...props }) => {
                     {parse(props.page.pre_content)}
                 </div>
                 <Image
-                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${props.page.banner}`}
+                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner}`}
                     layout="responsive"
                     width={1000}
                     height={300}

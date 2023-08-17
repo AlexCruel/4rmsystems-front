@@ -26,7 +26,7 @@ const Banner = ({ banners }) => {
                         <SplideSlide key={index}>
                             <Link href={`${item.url}`}>
                                 <Image
-                                    src={`http://localhost:8888/4rmsystems-server/storage/app/media${item.image}`}
+                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
                                     layout="responsive"
                                     width={100}
                                     height={100}

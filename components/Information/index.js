@@ -10,7 +10,7 @@ const Information = ({ info }) => {
                     return (
                         <div key={index}>
                             <Image
-                                src={`http://localhost:8888/4rmsystems-server/storage/app/media${item.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.icon}`}
                                 width={90}
                                 height={90}
                                 alt="Logo" />

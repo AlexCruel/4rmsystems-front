@@ -13,7 +13,7 @@ const Partner = ({ partner }) => {
                     return (
                         <Image
                             key={index}
-                            src={`http://localhost:8888/4rmsystems-server/storage/app/media${item.logo}`}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.logo}`}
                             width={110}
                             height={110}
                             alt="Partner" />
