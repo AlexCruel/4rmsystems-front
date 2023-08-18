@@ -53,3 +53,9 @@ export const getPage = async(code) => {
 
   return await request.json();
 }
+
+export const getCatalog = async() => {
+  const request = await fetch(`${url}/catalog`);
+
+  return await request.json()
+}

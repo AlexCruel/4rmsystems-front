@@ -7,18 +7,15 @@
   .prev {
     font-size: 40px;
     background: none;
-    fill: #237389;
   }
 
   .arrows {
     color: white;
     background: white;
-    fill: #237389;
   }
 
   .arrow {
     color: white;
-    fill: #237389;
   }
 
   .page {
@@ -35,5 +32,10 @@
   .page:before {
     background: $main-color;
     border: 1px solid $default-color;
+  }
+
+  button {
+    color: red;
+    background: red;
   }
 }

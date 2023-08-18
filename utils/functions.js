@@ -1,7 +1,7 @@
 import {wrapper} from "@/store/store";
 import {
     getAbout,
-    getBanner,
+    getBanner, getCatalog,
     getFooterMenu,
     getInfo,
     getInformation,
@@ -66,5 +66,13 @@ export const getPageData = async (code) => {
 
     return {
         page
+    };
+}
+
+export const getCatalogData = async () => {
+    const catalog = await getCatalog();
+
+    return {
+        catalog
     };
 }
