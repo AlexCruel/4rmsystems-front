@@ -1,11 +1,8 @@
 import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
-import project from "../../../public/img/Catalog/catalog_new.png";
 
 const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
-    console.log("catalogModal", modalObject);
-
     return (
         <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
@@ -15,7 +12,7 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
                         type: 'slide',
                         perPage: 1,
                         perMove: 1,
-                        autoplay: true,
+                        //autoplay: true,
                         interval: 3000,
                         rewind: true,
                         pagination: true,
@@ -31,43 +28,14 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
                             return (
                                 <SplideSlide key={index}>
                                     <Image
-                                        //src={project}
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
-                                        //layout="responsive"
                                         width={650}
                                         height={425}
                                         alt="Project"/>
-                                    <p>{modalObject.description}</p>
+                                    <p>{item.description}</p>
                                 </SplideSlide>
                             );
                         })}
-                        {/*<SplideSlide>*/}
-                        {/*    <Image*/}
-                        {/*        src={project}*/}
-                        {/*        layout="responsive"*/}
-                        {/*        width={650}*/}
-                        {/*        height={425}*/}
-                        {/*        alt="Project"/>*/}
-                        {/*    <p>{modalObject.description}</p>*/}
-                        {/*</SplideSlide>*/}
-                        {/*<SplideSlide>*/}
-                        {/*    <Image*/}
-                        {/*        src={project}*/}
-                        {/*        layout="responsive"*/}
-                        {/*        width={650}*/}
-                        {/*        height={425}*/}
-                        {/*        alt="Project"/>*/}
-                        {/*    <p>{modalObject.description}</p>*/}
-                        {/*</SplideSlide>*/}
-                        {/*<SplideSlide>*/}
-                        {/*    <Image*/}
-                        {/*        src={project}*/}
-                        {/*        layout="responsive"*/}
-                        {/*        width={650}*/}
-                        {/*        height={425}*/}
-                        {/*        alt="Project"/>*/}
-                        {/*    <p>{modalObject.description}</p>*/}
-                        {/*</SplideSlide>*/}
                     </Splide>
                 </div>
                 <div className={cn.content__button}>

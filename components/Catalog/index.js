@@ -26,8 +26,6 @@ const Catalog = ({ catalog }) => {
         });
     }
 
-    console.log("catalog", modalObject);
-
     return (
         <div className={cn.container}>
             <div className={cn.header}>
