@@ -10,7 +10,14 @@ import Catalog from "@/components/Catalog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Head from "next/head";
-import {getInfoData, getBannerData, getAboutData, getInformationData, getPartnerData} from "@/utils/functions";
+import {
+    getInfoData,
+    getBannerData,
+    getAboutData,
+    getInformationData,
+    getPartnerData,
+    getCatalogData
+} from "@/utils/functions";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -18,6 +25,7 @@ export const getServerSideProps = async () => {
     const about = await getAboutData();
     const information = await getInformationData("main");
     const partner = await getPartnerData();
+    const catalog = await getCatalogData();
 
     return {
         props: {
@@ -25,7 +33,8 @@ export const getServerSideProps = async () => {
             ...banner,
             ...about,
             ...information,
-            ...partner
+            ...partner,
+            ...catalog
         }
     }
 };
@@ -40,7 +49,7 @@ const Home = ({ ...props }) => {
           </Head>
           <Header phones={props.info.phone_items} />
               <Banner banners={props.banner} />
-              <Catalog />
+              <Catalog catalog={props.catalog} />
               <About about={props.about} />
               <BlogNews />
               <Information info={props.information} />
