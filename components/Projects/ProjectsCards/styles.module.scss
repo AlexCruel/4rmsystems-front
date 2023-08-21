@@ -1,0 +1,47 @@
+@import "styles/main";
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50px;
+
+  .container__cards {
+    display: flex;
+    margin: auto;
+    gap: 20px;
+  }
+
+  .container__cards_card {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+  }
+
+  img {
+    width: 335px;
+    height: 267px;
+  }
+
+  a {
+    color: $footer-color;
+
+    &:hover {
+      text-decoration: none;
+
+      img {
+        border-bottom: 7px solid $main-color;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@
   width: 81%;
   margin: auto;
 
-  .header {
+  .container__header {
     width: 92%;
     margin: auto;
 
@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
 
-    .header_menu {
+    .container__header_menu {
       display: flex;
       align-items: baseline;
       gap: 50px;
@@ -21,6 +21,11 @@
     button {
       width: 170px;
       height: 30px;
+
+      a {
+        color: $default-color;
+        font-weight: normal;
+      }
     }
 
     h1 {
@@ -35,13 +40,11 @@
     }
   }
 
-  h5 {
+  p {
     font-size: 20px;
     font-weight: bold;
 
     text-align: center;
-
-    color: $main-color;
   }
 
   img {
@@ -49,18 +52,29 @@
     height: 267px;
   }
 
-  .test {
+  .slider__cards {
     display: flex;
     flex-direction: column;
 
-    h5 {
+    p {
       margin: 0;
-      padding-top: 14px;
     }
   }
 
   .x {
     background: none;
     padding-bottom: 50px;
+  }
+
+  a {
+    color: $footer-color;
+
+    &:hover {
+      text-decoration: none;
+
+      img {
+        border-bottom: 7px solid $main-color;
+      }
+    }
   }
 }
