@@ -57,6 +57,22 @@
     }
   }
 
+  .container__prevEllipsis_visible {
+    display: block;
+  }
+
+  .container__prevEllipsis_invisible {
+    display: none;
+  }
+
+  .container__nextEllipsis_visible {
+    display: block;
+  }
+
+  .container__nextEllipsis_invisible {
+    display: none;
+  }
+
   a:hover {
     text-decoration: none;
   }

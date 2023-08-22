@@ -4,25 +4,50 @@ import {useEffect, useState} from "react";
 import Link from "next/link";
 import next from "../../public/icons/next.svg";
 import prev from "../../public/icons/prev.svg";
+import ellipsis from "../../public/icons/ellipsis.svg";
 import Image from "next/image";
+
+const setOpacity = (currentPage, pageNumbers, setOpacityPrev, setOpacityNext) => {
+    if (currentPage > 1) {
+        setOpacityPrev(true);
+    } else {
+        setOpacityPrev(false);
+    }
+
+    if (currentPage === pageNumbers.length) {
+        setOpacityNext(false);
+    } else {
+        setOpacityNext(true);
+    }
+}
+
+const setOpacityEllipsis = (currentPage, pageNumbers, setOpacityEllipsisPrev, setOpacityEllipsisNext) => {
+    if (pageNumbers.length > 4 && currentPage <= pageNumbers.length - 2) {
+        setOpacityEllipsisNext(true);
+    } else {
+        setOpacityEllipsisNext(false);
+    }
+
+    if (currentPage >= 3) {
+        setOpacityEllipsisPrev(true);
+    } else {
+        setOpacityEllipsisPrev(false);
+    }
+}
 
 const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCurrentPage }) => {
     const pageNumbers = [];
     const [opacityPrev, setOpacityPrev] = useState(false);
     const [opacityNext, setOpacityNext] = useState(true);
+    const [opacityEllipsisPrev, setOpacityEllipsisPrev] = useState(false);
+    const [opacityEllipsisNext, setOpacityEllipsisNext] = useState(false);
 
     useEffect(() => {
-        if (currentPage > 1) {
-            setOpacityPrev(true);
-        } else {
-            setOpacityPrev(false);
-        }
 
-        if (currentPage === pageNumbers.length) {
-            setOpacityNext(false);
-        } else {
-            setOpacityNext(true);
-        }
+        setOpacity(currentPage, pageNumbers, setOpacityPrev, setOpacityNext);
+        setOpacityEllipsis(currentPage, pageNumbers, setOpacityEllipsisPrev, setOpacityEllipsisNext);
+
+
     }, [currentPage, pageNumbers]);
 
     for (let i = 1; i <= Math.ceil(blogDataLength / blogsPerPage); i++) {
@@ -49,16 +74,51 @@ const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCu
                     </li>
                 </Link>
                 {
-                    pageNumbers.map((item, index) => (
-                        <Link
-                            key={index}
-                            href={item === 1 ? `/projects` : `/projects/page/${item}`}
-                            >
-                            <li onClick={() => paginate(item)} className={item === currentPage ? cn.container__page : ""}>
-                                {item}
+                    currentPage !== 1
+                        ? <Link href={`/projects/page/1`}>
+                            <li onClick={() => paginate(1)}>
+                                1
                             </li>
                         </Link>
-                    ))
+                        : ""
+                }
+                <li className={opacityEllipsisPrev ? cn.container__prevEllipsis_visible : cn.container__prevEllipsis_invisible}>
+                    <Image src={ellipsis} alt="..." />
+                </li>
+                {
+                    currentPage - 1 > 0 && currentPage - 1 !== 1
+                        ? <Link href={`/projects/page/${currentPage - 1}`}>
+                            <li onClick={() => paginate(currentPage - 1)}>
+                                {currentPage - 1}
+                            </li>
+                        </Link>
+                        : ""
+                }
+                <Link href={currentPage === 1 ? `/projects` : `/projects/page/${currentPage}`}>
+                    <li onClick={() => paginate(currentPage)} className={cn.container__page}>
+                        {currentPage}
+                    </li>
+                </Link>
+                {
+                    currentPage + 1 < pageNumbers.length
+                        ? <Link href={`/projects/page/${currentPage + 1}`}>
+                            <li onClick={() => paginate(currentPage + 1)}>
+                                {currentPage + 1}
+                            </li>
+                        </Link>
+                        : ""
+                }
+                <li className={opacityEllipsisNext ? cn.container__nextEllipsis_visible : cn.container__nextEllipsis_invisible}>
+                    <Image src={ellipsis} alt="..." />
+                </li>
+                {
+                    currentPage !== pageNumbers.length
+                        ? <Link href={`/projects/page/${pageNumbers.length}`}>
+                            <li onClick={() => paginate(pageNumbers.length)}>
+                                {pageNumbers.length}
+                            </li>
+                        </Link>
+                        : ""
                 }
                 <Link href={currentPage + 1 < blogDataLength ? `/projects/page/${currentPage + 1}` : ""}>
                     <li onClick={nextPageHandler} className={opacityNext ? cn.container__next_visible : cn.container__next_invisible}>
