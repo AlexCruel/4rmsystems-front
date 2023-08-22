@@ -1,7 +1,12 @@
 import parse from "html-react-parser";
 import Head from "next/head";
 import cn from "./styles[id].module.scss";
-import {getInfoData, getProjectsCardsData, getProjectsComponentData} from "@/utils/functions";
+import {
+    getInfoData,
+    getProjectData,
+    getProjectsCardsData,
+    getProjectsData
+} from "@/utils/functions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/Forms/ContactForm";
@@ -10,12 +15,14 @@ import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
 
 export const getStaticPaths = async () => {
+    // const projects = await getProjectsData();
+
     const res = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
     const data = await res.json();
 
     const paths = data.map(({ slug }) => {
         return {
-            params: { id: slug.toString() }
+            params: { id: slug }
         }
     });
 
@@ -31,6 +38,7 @@ export const getStaticProps = async (context) => {
     const res = await fetch(`http://localhost:8888/4rmsystems-server/api/projects/${id}`);
     const data = await res.json();
 
+    // const project = await getProjectData(id);
     const info = await getInfoData();
     const projectsCards = await getProjectsCardsData();
 
