@@ -57,23 +57,29 @@ export const getPage = async(code) => {
 export const getCatalog = async() => {
   const request = await fetch(`${url}/catalog`);
 
-  return await request.json()
+  return await request.json();
 }
 
 export const getProjectsComponent = async() => {
   const request = await fetch(`${url}/projects-component`);
 
-  return await request.json()
+  return await request.json();
 }
 
 export const getProjectsCards = async() => {
   const request = await fetch(`${url}/projects-cards`);
 
-  return await request.json()
+  return await request.json();
 }
 
 export const getProjects = async() => {
   const request = await fetch(`${url}/projects`);
 
-  return await request.json()
+  return await request.json();
+}
+
+export const getProject = async(slug) => {
+  const request = await fetch(`${url}/projects/${slug}`);
+
+  return await request.json();
 }

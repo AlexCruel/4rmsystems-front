@@ -15,21 +15,21 @@
     line-height: 56px;
 
     font-size: 20px;
+    font-weight: 500;
 
     background: $default-color;
     color: $footer-color;
     border: 1px solid $main-color;
-    //transition: background 9999999s;
-    //transition: ;
 
     &:hover {
       cursor: pointer;
+      background-color: $main-color-light;
+      color: white;
     }
 
-    &:active {
+    &.container__page {
       background: $main-color;
       color: $default-color;
-      //transition: background 0s;
     }
   }
 
@@ -55,6 +55,10 @@
     &:hover {
       cursor: default;
     }
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 }
 

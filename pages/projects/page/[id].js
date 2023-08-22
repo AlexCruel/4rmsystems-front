@@ -1,47 +1,68 @@
-import {getInfoData, getInformationData, getPageData, getPartnerData} from "@/utils/functions";
-import Head from "next/head";
 import Header from "@/components/Header";
-import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
+import {getInfoData, getPageData} from "@/utils/functions";
+import cn from "@/pages/projects/styles.module.scss";
 import parse from "html-react-parser";
-import {getProjects} from "@/pages/api/hello";
-import Image from "next/image";
-import cn from "./styles.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 import {useState} from "react";
 import Pagination from "@/components/Pagination";
+import PageContactForm from "@/components/Forms/PageContactForm";
 
-export const getServerSideProps = async () => {
+export const getStaticPaths = async () => {
+    const pageCount = [];
+    const blogsPerPage = 6;
+
+    const res = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
+    const data = await res.json();
+
+    for (let i = 1; i <= Math.ceil(data.length / blogsPerPage); i++) {
+        pageCount.push(i);
+    }
+
+    const paths = pageCount.map((number) => {
+        return {
+            params: { id: number.toString() }
+        }
+    });
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps = async (context) => {
+    const { id } = context.params;
+
+    const res = await fetch(`http://localhost:8888/4rmsystems-server/api/projects/page/${id}`);
+    const data = await res.json();
+
+    const res1 = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
+    const data1 = await res1.json();
+
     const info = await getInfoData();
     const page = await getPageData("projects");
-    const projects = await getProjects();
-
-    const res = await fetch(`http://localhost:8888/4rmsystems-server/api/projects/page/1`);
-    const data = await res.json();
 
     return {
         props: {
-            ...info,
-            ...page,
+            id,
             projects: data,
-            blogDataLength: projects.length
+            blogDataLength: data1.length,
+            ...info,
+            ...page
         }
     }
-};
+}
 
-const Projects = ({ ...props }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+const ProjectsPage = ({ ...props }) => {
+    const [currentPage, setCurrentPage] = useState(parseInt(props.id));
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
 
     return (
         <>
-            <Head>
-                <title>{props.page.seo_title}</title>
-                <meta name="keywords" content={props.page.seo_key} />
-                <meta name="description" content={props.page.seo_description} />
-            </Head>
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
@@ -76,4 +97,4 @@ const Projects = ({ ...props }) => {
     );
 }
 
-export default Projects;
+export default ProjectsPage;

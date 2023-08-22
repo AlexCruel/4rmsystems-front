@@ -6,7 +6,7 @@ import {
     getInfo,
     getInformation,
     getPage,
-    getPartner, getProjects, getProjectsCards, getProjectsComponent,
+    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent,
     getSocials
 } from "@/pages/api/hello";
 
@@ -98,5 +98,13 @@ export const getProjectsData = async () => {
 
     return {
         projects
+    };
+}
+
+export const getProjectData = async (slug) => {
+    const project = await getProject(slug);
+
+    return {
+        project
     };
 }

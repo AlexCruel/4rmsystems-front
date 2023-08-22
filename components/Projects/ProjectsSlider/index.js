@@ -27,7 +27,7 @@ const ProjectsSlider = ({ projects }) => {
                 {projects.map((item, index) => {
                     return (
                         <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
-                            <Link href={`${item.slug}`}>
+                            <Link href={`projects/${item.slug}`}>
                                 <div className={cn.slider__cards}>
                                     <Image
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
