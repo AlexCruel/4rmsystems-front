@@ -59,6 +59,11 @@
 
   .container__prevEllipsis_visible {
     display: block;
+
+    &:hover {
+      cursor: default;
+      background: $default-color;
+    }
   }
 
   .container__prevEllipsis_invisible {
@@ -67,6 +72,11 @@
 
   .container__nextEllipsis_visible {
     display: block;
+
+    &:hover {
+      cursor: default;
+      background: $default-color;
+    }
   }
 
   .container__nextEllipsis_invisible {
