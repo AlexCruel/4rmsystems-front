@@ -83,3 +83,33 @@ export const getProject = async(slug) => {
 
   return await request.json();
 }
+
+export const getProjectsPage = async(id) => {
+  const request = await fetch(`${url}/projects/page/${id}`);
+
+  return await request.json();
+}
+
+export const getTags = async() => {
+  const request = await fetch(`${url}/tags`);
+
+  return await request.json();
+}
+
+export const getTagPage = async(tag_id, id) => {
+  const request = await fetch(`${url}/projects/tag/${tag_id}/page/${id}`);
+
+  return await request.json();
+}
+
+export const getTagProjects = async(tag_id) => {
+  const request = await fetch(`${url}/projects/tag/${tag_id}`);
+
+  return await request.json();
+}
+
+export const getTagsProjectsCount = async() => {
+  const request = await fetch(`${url}/tags-projects-count`);
+
+  return await request.json();
+}

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {getInfoData, getPageData} from "@/utils/functions";
+import {getInfoData, getPageData, getProjectsData, getProjectsPageData, getTagsData} from "@/utils/functions";
 import cn from "@/pages/projects/styles.module.scss";
 import parse from "html-react-parser";
 import Link from "next/link";
@@ -8,15 +8,15 @@ import Image from "next/image";
 import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
+import Tags from "@/components/Tags";
 
 export const getStaticPaths = async () => {
     const pageCount = [];
     const blogsPerPage = 6;
 
-    const res = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
-    const data = await res.json();
+    const projects = await getProjectsData();
 
-    for (let i = 1; i <= Math.ceil(data.length / blogsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(projects.length / blogsPerPage); i++) {
         pageCount.push(i);
     }
 
@@ -35,22 +35,20 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
     const { id } = context.params;
 
-    const res = await fetch(`http://localhost:8888/4rmsystems-server/api/projects/page/${id}`);
-    const data = await res.json();
-
-    const res1 = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
-    const data1 = await res1.json();
-
+    const projectsPage = await getProjectsPageData(id);
+    const { projects } = await getProjectsData();
     const info = await getInfoData();
     const page = await getPageData("projects");
+    const tags = await getTagsData();
 
     return {
         props: {
             id,
-            projects: data,
-            blogDataLength: data1.length,
+            ...projectsPage,
+            blogDataLength: projects.length,
             ...info,
-            ...page
+            ...page,
+            ...tags
         }
     }
 }
@@ -66,9 +64,10 @@ const ProjectsPage = ({ ...props }) => {
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
+                <Tags tags={props.tags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>
-                    {props.projects.map((item, index) => {
+                    {props.projectsPage.map((item, index) => {
                         return (
                             <div key={index} className={cn.container__cards_card}>
                                 <Link href={`/projects/${item.slug}`}>
@@ -90,6 +89,7 @@ const ProjectsPage = ({ ...props }) => {
                 paginate={paginate}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
+                typePage="projects"
             />
             <PageContactForm />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />

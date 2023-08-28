@@ -35,7 +35,7 @@ const setOpacityEllipsis = (currentPage, pageNumbers, setOpacityEllipsisPrev, se
     }
 }
 
-const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCurrentPage }) => {
+const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCurrentPage, typePage }) => {
     const pageNumbers = [];
     const [opacityPrev, setOpacityPrev] = useState(false);
     const [opacityNext, setOpacityNext] = useState(true);
@@ -68,14 +68,14 @@ const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCu
     return (
         <>
             <ul className={cn.container}>
-                <Link href={currentPage == 2 ? `/projects` : `/projects/page/${currentPage - 1}`}>
+                <Link href={currentPage == 2 ? `/${typePage}` : `/${typePage}/page/${currentPage - 1}`}>
                     <li onClick={prevPageHandler} className={opacityPrev ? cn.container__prev_visible : cn.container__prev_invisible}>
                         <Image src={prev} alt="<" />
                     </li>
                 </Link>
                 {
                     currentPage !== 1
-                        ? <Link href={`/projects/page/1`}>
+                        ? <Link href={`/${typePage}`}>
                             <li onClick={() => paginate(1)}>
                                 1
                             </li>
@@ -87,21 +87,21 @@ const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCu
                 </li>
                 {
                     currentPage - 1 > 0 && currentPage - 1 !== 1
-                        ? <Link href={`/projects/page/${currentPage - 1}`}>
+                        ? <Link href={`/${typePage}/page/${currentPage - 1}`}>
                             <li onClick={() => paginate(currentPage - 1)}>
                                 {currentPage - 1}
                             </li>
                         </Link>
                         : ""
                 }
-                <Link href={currentPage === 1 ? `/projects` : `/projects/page/${currentPage}`}>
+                <Link href={currentPage === 1 ? `/${typePage}` : `/${typePage}/page/${currentPage}`}>
                     <li onClick={() => paginate(currentPage)} className={cn.container__page}>
                         {currentPage}
                     </li>
                 </Link>
                 {
                     currentPage + 1 < pageNumbers.length
-                        ? <Link href={`/projects/page/${currentPage + 1}`}>
+                        ? <Link href={`/${typePage}/page/${currentPage + 1}`}>
                             <li onClick={() => paginate(currentPage + 1)}>
                                 {currentPage + 1}
                             </li>
@@ -113,14 +113,14 @@ const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCu
                 </li>
                 {
                     currentPage !== pageNumbers.length
-                        ? <Link href={`/projects/page/${pageNumbers.length}`}>
+                        ? <Link href={`/${typePage}/page/${pageNumbers.length}`}>
                             <li onClick={() => paginate(pageNumbers.length)}>
                                 {pageNumbers.length}
                             </li>
                         </Link>
                         : ""
                 }
-                <Link href={currentPage + 1 < blogDataLength ? `/projects/page/${currentPage + 1}` : ""}>
+                <Link href={currentPage + 1 < blogDataLength ? `/${typePage}/page/${currentPage + 1}` : ""}>
                     <li onClick={nextPageHandler} className={opacityNext ? cn.container__next_visible : cn.container__next_invisible}>
                         <Image src={next} alt=">" />
                     </li>

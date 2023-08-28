@@ -10,7 +10,7 @@ const ProjectsSlider = ({ projects }) => {
                 <div className={cn.container__header_menu}>
                     <h1>Проекты</h1>
                 </div>
-                <button><Link href="/projects">Все проекты</Link></button>
+                <Link href="/projects"><button>Все проекты</button></Link>
             </div>
             <Splide options={{
                 type: 'loop',
