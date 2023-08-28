@@ -113,3 +113,9 @@ export const getTagsProjectsCount = async() => {
 
   return await request.json();
 }
+
+export const getProjectTags = async(id) => {
+  const request = await fetch(`${url}/project-tags/${id}`);
+
+  return await request.json();
+}
