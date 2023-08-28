@@ -5,7 +5,7 @@ import {
     getInfoData,
     getProjectData,
     getProjectsCardsData,
-    getProjectsData
+    getProjectsData, getProjectTagsData
 } from "@/utils/functions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,6 +13,7 @@ import ContactForm from "@/components/Forms/ContactForm";
 import Image from "next/image";
 import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
+import Tags from "@/components/Tags";
 
 export const getStaticPaths = async () => {
     const { projects } = await getProjectsData();
@@ -32,20 +33,24 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
     const { id } = context.params;
 
-    const project = await getProjectData(id);
+    const { project } = await getProjectData(id);
     const info = await getInfoData();
     const projectsCards = await getProjectsCardsData();
+    const projectTags = await getProjectTagsData(project.id);
 
     return {
         props: {
-            ...project,
+            project,
             ...info,
-            ...projectsCards
+            ...projectsCards,
+            ...projectTags
         }
     }
 }
 
 const Project = ({ ...props }) => {
+    console.log(props.projectTags)
+
     return (
         <>
             <Head>
@@ -65,6 +70,7 @@ const Project = ({ ...props }) => {
                     height={300}
                     alt="Banner" />
                 <div className={cn.container__text}>
+                    <Tags tags={props.projectTags} />
                     {parse(props.project.content)}
                     <Socials socials={props.socials} />
                 </div>

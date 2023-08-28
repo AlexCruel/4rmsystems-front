@@ -5,7 +5,7 @@ import {
     getInfo,
     getInformation,
     getPage,
-    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent, getProjectsPage,
+    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent, getProjectsPage, getProjectTags,
     getSocials, getTagPage, getTagProjects, getTags, getTagsProjectsCount
 } from "@/pages/api/hello";
 
@@ -136,5 +136,13 @@ export const getTagsProjectsCountData = async () => {
 
     return {
         tagsProjectsCount
+    };
+}
+
+export const getProjectTagsData = async (id) => {
+    const projectTags = await getProjectTags(id);
+
+    return {
+        projectTags
     };
 }
