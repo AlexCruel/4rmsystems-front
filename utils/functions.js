@@ -1,4 +1,3 @@
-import {wrapper} from "@/store/store";
 import {
     getAbout,
     getBanner, getCatalog,
@@ -6,18 +5,9 @@ import {
     getInfo,
     getInformation,
     getPage,
-    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent,
-    getSocials
+    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent, getProjectsPage,
+    getSocials, getTagPage, getTagProjects, getTags, getTagsProjectsCount
 } from "@/pages/api/hello";
-
-// export const getServerSideProps = wrapper.getServerSideProps(store =>
-//     async () => {
-//         console.log("qwe2");
-//         store.dispatch(getInfo());
-//         store.dispatch(getFooterMenu());
-//         store.dispatch(getSocials());
-//     }
-// );
 
 export const getInfoData = async () => {
     const info = await getInfo();
@@ -106,5 +96,45 @@ export const getProjectData = async (slug) => {
 
     return {
         project
+    };
+}
+
+export const getProjectsPageData = async (id) => {
+    const projectsPage = await getProjectsPage(id);
+
+    return {
+        projectsPage
+    };
+}
+
+export const getTagsData = async () => {
+    const tags = await getTags();
+
+    return {
+        tags
+    };
+}
+
+export const getTagPageData = async (tag_id, id) => {
+    const tagPage = await getTagPage(tag_id, id);
+
+    return {
+        tagPage
+    };
+}
+
+export const getTagProjectsData = async (tag_id) => {
+    const tagProjects = await getTagProjects(tag_id);
+
+    return {
+        tagProjects
+    };
+}
+
+export const getTagsProjectsCountData = async () => {
+    const tagsProjectsCount = await getTagsProjectsCount();
+
+    return {
+        tagsProjectsCount
     };
 }

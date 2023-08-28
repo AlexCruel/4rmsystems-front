@@ -15,12 +15,9 @@ import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
 
 export const getStaticPaths = async () => {
-    // const projects = await getProjectsData();
+    const { projects } = await getProjectsData();
 
-    const res = await fetch('http://localhost:8888/4rmsystems-server/api/projects');
-    const data = await res.json();
-
-    const paths = data.map(({ slug }) => {
+    const paths = projects.map(({ slug }) => {
         return {
             params: { id: slug }
         }
@@ -35,16 +32,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
     const { id } = context.params;
 
-    const res = await fetch(`http://localhost:8888/4rmsystems-server/api/projects/${id}`);
-    const data = await res.json();
-
-    // const project = await getProjectData(id);
+    const project = await getProjectData(id);
     const info = await getInfoData();
     const projectsCards = await getProjectsCardsData();
 
     return {
         props: {
-            project: data,
+            ...project,
             ...info,
             ...projectsCards
         }

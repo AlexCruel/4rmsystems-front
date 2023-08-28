@@ -1,0 +1,27 @@
+@import "styles/main";
+
+.container {
+  margin-bottom: 25px;
+
+  .container__tags {
+
+    button {
+      width: 170px;
+      height: 30px;
+
+      border-radius: 3px;
+    }
+
+    ul {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      padding: 0;
+
+      button {
+        background-color: $main-color-light;
+      }
+    }
+  }
+}
