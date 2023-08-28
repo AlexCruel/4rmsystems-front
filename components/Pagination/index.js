@@ -67,65 +67,67 @@ const Pagination = ({ blogDataLength, blogsPerPage, paginate, currentPage, setCu
 
     return (
         <>
-            <ul className={cn.container}>
-                <Link href={currentPage == 2 ? `/${typePage}` : `/${typePage}/page/${currentPage - 1}`}>
-                    <li onClick={prevPageHandler} className={opacityPrev ? cn.container__prev_visible : cn.container__prev_invisible}>
-                        <Image src={prev} alt="<" />
+            {blogDataLength >= 7
+                ? <ul className={cn.container}>
+                    <Link href={currentPage == 2 ? `/${typePage}` : `/${typePage}/page/${currentPage - 1}`}>
+                        <li onClick={prevPageHandler} className={opacityPrev ? cn.container__prev_visible : cn.container__prev_invisible}>
+                            <Image src={prev} alt="<" />
+                        </li>
+                    </Link>
+                    {
+                        currentPage !== 1
+                            ? <Link href={`/${typePage}`}>
+                                <li onClick={() => paginate(1)}>
+                                    1
+                                </li>
+                            </Link>
+                            : ""
+                    }
+                    <li className={opacityEllipsisPrev ? cn.container__prevEllipsis_visible : cn.container__prevEllipsis_invisible}>
+                        <Image src={ellipsis} alt="..." />
                     </li>
-                </Link>
-                {
-                    currentPage !== 1
-                        ? <Link href={`/${typePage}`}>
-                            <li onClick={() => paginate(1)}>
-                                1
-                            </li>
-                        </Link>
-                        : ""
-                }
-                <li className={opacityEllipsisPrev ? cn.container__prevEllipsis_visible : cn.container__prevEllipsis_invisible}>
-                    <Image src={ellipsis} alt="..." />
-                </li>
-                {
-                    currentPage - 1 > 0 && currentPage - 1 !== 1
-                        ? <Link href={`/${typePage}/page/${currentPage - 1}`}>
-                            <li onClick={() => paginate(currentPage - 1)}>
-                                {currentPage - 1}
-                            </li>
-                        </Link>
-                        : ""
-                }
-                <Link href={currentPage === 1 ? `/${typePage}` : `/${typePage}/page/${currentPage}`}>
-                    <li onClick={() => paginate(currentPage)} className={cn.container__page}>
-                        {currentPage}
+                    {
+                        currentPage - 1 > 0 && currentPage - 1 !== 1
+                            ? <Link href={`/${typePage}/page/${currentPage - 1}`}>
+                                <li onClick={() => paginate(currentPage - 1)}>
+                                    {currentPage - 1}
+                                </li>
+                            </Link>
+                            : ""
+                    }
+                    <Link href={currentPage === 1 ? `/${typePage}` : `/${typePage}/page/${currentPage}`}>
+                        <li onClick={() => paginate(currentPage)} className={cn.container__page}>
+                            {currentPage}
+                        </li>
+                    </Link>
+                    {
+                        currentPage + 1 < pageNumbers.length
+                            ? <Link href={`/${typePage}/page/${currentPage + 1}`}>
+                                <li onClick={() => paginate(currentPage + 1)}>
+                                    {currentPage + 1}
+                                </li>
+                            </Link>
+                            : ""
+                    }
+                    <li className={opacityEllipsisNext ? cn.container__nextEllipsis_visible : cn.container__nextEllipsis_invisible}>
+                        <Image src={ellipsis} alt="..." />
                     </li>
-                </Link>
-                {
-                    currentPage + 1 < pageNumbers.length
-                        ? <Link href={`/${typePage}/page/${currentPage + 1}`}>
-                            <li onClick={() => paginate(currentPage + 1)}>
-                                {currentPage + 1}
-                            </li>
-                        </Link>
-                        : ""
-                }
-                <li className={opacityEllipsisNext ? cn.container__nextEllipsis_visible : cn.container__nextEllipsis_invisible}>
-                    <Image src={ellipsis} alt="..." />
-                </li>
-                {
-                    currentPage !== pageNumbers.length
-                        ? <Link href={`/${typePage}/page/${pageNumbers.length}`}>
-                            <li onClick={() => paginate(pageNumbers.length)}>
-                                {pageNumbers.length}
-                            </li>
-                        </Link>
-                        : ""
-                }
-                <Link href={currentPage + 1 < blogDataLength ? `/${typePage}/page/${currentPage + 1}` : ""}>
-                    <li onClick={nextPageHandler} className={opacityNext ? cn.container__next_visible : cn.container__next_invisible}>
-                        <Image src={next} alt=">" />
-                    </li>
-                </Link>
-            </ul>
+                    {
+                        currentPage !== pageNumbers.length
+                            ? <Link href={`/${typePage}/page/${pageNumbers.length}`}>
+                                <li onClick={() => paginate(pageNumbers.length)}>
+                                    {pageNumbers.length}
+                                </li>
+                            </Link>
+                            : ""
+                    }
+                    <Link href={currentPage + 1 < blogDataLength ? `/${typePage}/page/${currentPage + 1}` : ""}>
+                        <li onClick={nextPageHandler} className={opacityNext ? cn.container__next_visible : cn.container__next_invisible}>
+                            <Image src={next} alt=">" />
+                        </li>
+                    </Link>
+                </ul>
+                : ""}
         </>
     );
 }
