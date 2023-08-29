@@ -10,29 +10,50 @@ import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
 
-export const getStaticPaths = async () => {
-    const pageCount = [];
-    const blogsPerPage = 6;
+// export const getStaticPaths = async () => {
+//     const pageCount = [];
+//     const blogsPerPage = 6;
+//
+//     const projects = await getProjectsData();
+//
+//     for (let i = 1; i <= Math.ceil(projects.length / blogsPerPage); i++) {
+//         pageCount.push(i);
+//     }
+//
+//     const paths = pageCount.map((number) => {
+//         return {
+//             params: { id: number.toString() }
+//         }
+//     });
+//
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
 
-    const projects = await getProjectsData();
+// export const getStaticProps = async (context) => {
+//     const { id } = context.params;
+//
+//     const projectsPage = await getProjectsPageData(id);
+//     const { projects } = await getProjectsData();
+//     const info = await getInfoData();
+//     const page = await getPageData("projects");
+//     const tags = await getTagsData();
+//
+//     return {
+//         props: {
+//             id,
+//             ...projectsPage,
+//             blogDataLength: projects.length,
+//             ...info,
+//             ...page,
+//             ...tags
+//         }
+//     }
+// }
 
-    for (let i = 1; i <= Math.ceil(projects.length / blogsPerPage); i++) {
-        pageCount.push(i);
-    }
-
-    const paths = pageCount.map((number) => {
-        return {
-            params: { id: number.toString() }
-        }
-    });
-
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const { id } = context.params;
 
     const projectsPage = await getProjectsPageData(id);
