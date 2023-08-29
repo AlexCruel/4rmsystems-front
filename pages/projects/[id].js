@@ -15,22 +15,40 @@ import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
 import Tags from "@/components/Tags";
 
-export const getStaticPaths = async () => {
-    const { projects } = await getProjectsData();
+// export const getStaticPaths = async () => {
+//     const { projects } = await getProjectsData();
+//
+//     const paths = projects.map(({ slug }) => {
+//         return {
+//             params: { id: slug }
+//         }
+//     });
+//
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
 
-    const paths = projects.map(({ slug }) => {
-        return {
-            params: { id: slug }
-        }
-    });
+// export const getStaticProps = async (context) => {
+//     const { id } = context.params;
+//
+//     const { project } = await getProjectData(id);
+//     const info = await getInfoData();
+//     const projectsCards = await getProjectsCardsData();
+//     const projectTags = await getProjectTagsData(project.id);
+//
+//     return {
+//         props: {
+//             project,
+//             ...info,
+//             ...projectsCards,
+//             ...projectTags
+//         }
+//     }
+// }
 
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const { id } = context.params;
 
     const { project } = await getProjectData(id);

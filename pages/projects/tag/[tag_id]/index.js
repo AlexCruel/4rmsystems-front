@@ -10,22 +10,43 @@ import Pagination from "@/components/Pagination";
 import {useState} from "react";
 import Tags from "@/components/Tags";
 
-export const getStaticPaths = async () => {
-    const { tags } = await getTagsData();
+// export const getStaticPaths = async () => {
+//     const { tags } = await getTagsData();
+//
+//     const paths = tags.map(({ slug }) => {
+//         return {
+//             params: { tag_id: slug.toString() }
+//         }
+//     });
+//
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
 
-    const paths = tags.map(({ slug }) => {
-        return {
-            params: { tag_id: slug.toString() }
-        }
-    });
+// export const getStaticProps = async (context) => {
+//     const { tag_id } = context.params;
+//
+//     const { tagProjects } = await getTagProjectsData(tag_id);
+//     const tagPage = await getTagPageData(tag_id, 1);
+//     const info = await getInfoData();
+//     const page = await getPageData("projects");
+//     const tags = await getTagsData();
+//
+//     return {
+//         props: {
+//             tag_id,
+//             ...info,
+//             ...page,
+//             ...tags,
+//             blogDataLength: tagProjects.length,
+//             ...tagPage
+//         }
+//     }
+// }
 
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const { tag_id } = context.params;
 
     const { tagProjects } = await getTagProjectsData(tag_id);
