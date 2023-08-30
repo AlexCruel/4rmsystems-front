@@ -1,9 +1,9 @@
 import {
     getAbout,
-    getBanner, getCatalog,
+    getBanner, getBlogComp, getCatalog,
     getFooterMenu,
     getInfo,
-    getInformation,
+    getInformation, getNewsComp,
     getPage,
     getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent, getProjectsPage, getProjectTags,
     getSocials, getTagPage, getTagProjects, getTags, getTagsProjectsCount
@@ -144,5 +144,21 @@ export const getProjectTagsData = async (id) => {
 
     return {
         projectTags
+    };
+}
+
+export const getBlogsCompData = async () => {
+    const blogsComponent = await getBlogComp();
+
+    return {
+        blogsComponent
+    };
+}
+
+export const getNewsCompData = async () => {
+    const newsComponent = await getNewsComp();
+
+    return {
+        newsComponent
     };
 }

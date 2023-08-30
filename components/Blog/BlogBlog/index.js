@@ -1,10 +1,9 @@
-import {Splide, SplideSlide} from '@splidejs/react-splide';
 import cn from "../styles.module.scss";
-import '@splidejs/react-splide/css';
+import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogNews = ({ className, newsComponent }) => {
+const BlogBlog = ({ className, blogsComponent }) => {
     return (
         <div className={className}>
             <Splide options={{
@@ -20,14 +19,14 @@ const BlogNews = ({ className, newsComponent }) => {
                 }
             }} aria-label="My Favorite Images" >
                 {
-                    newsComponent.map((item, index) => {
+                    blogsComponent.map((item, index) => {
                         return (
                             <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
-                                <Link href={`news/${item.slug}`}>
+                                <Link href={`blog/${item.slug}`}>
                                     <div className={cn.slide}>
                                         <Image
                                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
-                                            alt="News"
+                                            alt="Blogs"
                                             width={100}
                                             height={100}
                                         />
@@ -43,4 +42,4 @@ const BlogNews = ({ className, newsComponent }) => {
     );
 }
 
-export default BlogNews;
+export default BlogBlog;

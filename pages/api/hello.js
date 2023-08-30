@@ -119,3 +119,15 @@ export const getProjectTags = async(id) => {
 
   return await request.json();
 }
+
+export const getBlogComp = async() => {
+  const request = await fetch(`${url}/blog-component/blogs`);
+
+  return await request.json();
+}
+
+export const getNewsComp = async() => {
+  const request = await fetch(`${url}/blog-component/news`);
+
+  return await request.json();
+}
