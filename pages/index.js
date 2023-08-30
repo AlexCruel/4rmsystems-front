@@ -16,8 +16,11 @@ import {
     getAboutData,
     getInformationData,
     getPartnerData,
-    getCatalogData, getProjectsComponentData
+    getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData
 } from "@/utils/functions";
+import BlogBlog from "@/components/Blog/BlogBlog";
+import {useState} from "react";
+import BlogComponent from "@/components/Blog";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -27,6 +30,8 @@ export const getServerSideProps = async () => {
     const partner = await getPartnerData();
     const catalog = await getCatalogData();
     const projectsComponent = await getProjectsComponentData();
+    const blogsComponent = await getBlogsCompData();
+    const newsComponent = await getNewsCompData();
 
     return {
         props: {
@@ -36,12 +41,20 @@ export const getServerSideProps = async () => {
             ...information,
             ...partner,
             ...catalog,
-            ...projectsComponent
+            ...projectsComponent,
+            ...blogsComponent,
+            ...newsComponent
         }
     }
 };
 
 const Home = ({ ...props }) => {
+    const [blogState, setBlogState] = useState('news');
+
+    const blogStateHandler = (type) => {
+        setBlogState(type);
+    }
+
     return (
       <>
           <Head>
@@ -53,7 +66,12 @@ const Home = ({ ...props }) => {
               <Banner banners={props.banner} />
               <Catalog catalog={props.catalog} />
               <About about={props.about} />
-              <BlogNews />
+              <BlogComponent
+                  blogState={blogState}
+                  blogStateHandler={blogStateHandler}
+                  blogsComponent={props.blogsComponent}
+                  newsComponent={props.newsComponent}
+              />
               <Information info={props.information} />
               <Partner partner={props.partner} />
               <ProjectsSlider projects={props.projectsComponent} />

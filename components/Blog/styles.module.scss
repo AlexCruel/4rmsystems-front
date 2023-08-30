@@ -1,8 +1,10 @@
+@import "styles/main";
+
 .container {
   width: 81%;
   margin: 100px auto;
 
-  .header {
+  .container__header {
     width: 92%;
     margin: auto;
 
@@ -10,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
 
-    .header_menu {
+    .container__header_menu {
       display: flex;
       align-items: baseline;
       gap: 50px;
@@ -21,37 +23,49 @@
       height: 30px;
     }
 
-    h1 {
+    .main_text {
       font-size: 48px;
       text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    h2 {
+    .regular_text {
       font-size: 36px;
-      opacity: 50%;
       text-transform: uppercase;
+      font-weight: bold;
+      opacity: 50%;
+      cursor: pointer;
     }
   }
 
   img {
     width: 198px;
     height: 190px;
-    background-color: darkseagreen;
     border-radius: 20px;
   }
 
-  .test {
+  .slide {
     display: flex;
     flex-direction: column;
 
-    h5 {
-      margin: 0;
-      padding-top: 14px;
+    div {
+      font-size: 20px;
+      font-weight: bold;
+      padding-top: 15px;
     }
   }
 
-  .x {
+  .custom__arrow {
     background: none;
     padding-bottom: 50px;
+  }
+
+  .container__slider {
+    padding-top: 25px;
+  }
+
+  a {
+    color: $footer-color;
   }
 }
