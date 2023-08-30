@@ -88,7 +88,7 @@ const Project = ({ ...props }) => {
                     height={300}
                     alt="Banner" />
                 <div className={cn.container__text}>
-                    <Tags tags={props.projectTags} />
+                    <Tags type="projects" tags={props.projectTags} />
                     {parse(props.project.content)}
                     <Socials socials={props.socials} />
                 </div>

@@ -78,7 +78,7 @@ const ProjectsTag = ({ ...props }) => {
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
-                <Tags tags={props.tags} />
+                <Tags type="projects" tags={props.tags} />
                 <div>
                     {props.tagPage.length !== 0
                         ? parse(props.page.pre_content)
