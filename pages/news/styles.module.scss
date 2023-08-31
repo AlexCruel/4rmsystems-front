@@ -1,0 +1,80 @@
+@import "styles/main";
+
+.container {
+  width: 1050px;
+  padding-top: 90px;
+  margin: auto;
+
+  h1 {
+    font-size: 48px;
+  }
+
+  button {
+    width: 170px;
+    height: 30px;
+
+    margin-top: 15px;
+  }
+
+  .container__pinned {
+    display: flex;
+    gap: 100px;
+
+    .image {
+      width: 570px;
+    }
+
+    .pinned {
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        font-size: 48px;
+        font-weight: bold;
+      }
+
+      &__text {
+        height: 120px;
+      }
+    }
+  }
+
+  .container__cards {
+    margin: 50px auto;
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    .container__cards_card {
+      width: 340px;
+
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 50px;
+
+      .cards_card_image {
+        width: 340px;
+        height: 270px;
+      }
+
+      .cards_card_title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+
+      .cards_card_date {
+        font-size: 16px;
+        font-weight: normal;
+        color: $date-color;
+      }
+    }
+
+    .container__cards_empty {
+      font-size: 36px;
+      margin: auto;
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import {
     getInfoData,
     getPageData, getProjectsData,
-    getProjectsPageData,
-    getTagsData
+    getProjectsPageData, getProjectsTagsData,
 } from "@/utils/functions";
 import Head from "next/head";
 import Header from "@/components/Header";
@@ -20,14 +19,14 @@ export const getServerSideProps = async () => {
     const info = await getInfoData();
     const page = await getPageData("projects");
     const { projects } = await getProjectsData();
-    const tags = await getTagsData();
+    const projectsTags = await getProjectsTagsData();
     const projectsPage = await getProjectsPageData(1);
 
     return {
         props: {
             ...info,
             ...page,
-            ...tags,
+            ...projectsTags,
             ...projectsPage,
             blogDataLength: projects.length
         }
@@ -50,7 +49,7 @@ const Projects = ({ ...props }) => {
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
-                <Tags tags={props.tags} />
+                <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>
                     {props.projectsPage.map((item, index) => {

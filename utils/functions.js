@@ -1,12 +1,27 @@
 import {
     getAbout,
-    getBanner, getBlogComp, getCatalog,
+    getBanner,
+    getBlogComp,
+    getCatalog,
     getFooterMenu,
     getInfo,
-    getInformation, getNewsComp,
+    getInformation,
+    getNews,
+    getNewsComp,
+    getNewsPage, getNewsTags, getNPinnedSec,
     getPage,
-    getPartner, getProject, getProjects, getProjectsCards, getProjectsComponent, getProjectsPage, getProjectTags,
-    getSocials, getTagPage, getTagProjects, getTags, getTagsProjectsCount
+    getPartner,
+    getProject,
+    getProjects,
+    getProjectsCards,
+    getProjectsComponent,
+    getProjectsPage,
+    getProjectsTags,
+    getProjectTags,
+    getSocials,
+    getTagPage,
+    getTagProjects,
+    getTagsProjectsCount
 } from "@/pages/api/hello";
 
 export const getInfoData = async () => {
@@ -107,11 +122,19 @@ export const getProjectsPageData = async (id) => {
     };
 }
 
-export const getTagsData = async () => {
-    const tags = await getTags();
+export const getProjectsTagsData = async () => {
+    const projectsTags = await getProjectsTags();
 
     return {
-        tags
+        projectsTags
+    };
+}
+
+export const getNewsTagsData = async () => {
+    const newsTags = await getNewsTags();
+
+    return {
+        newsTags
     };
 }
 
@@ -160,5 +183,29 @@ export const getNewsCompData = async () => {
 
     return {
         newsComponent
+    };
+}
+
+export const getNewsData = async () => {
+    const news = await getNews();
+
+    return {
+        news
+    };
+}
+
+export const getNewsPageData = async (id) => {
+    const newsPage = await getNewsPage(id);
+
+    return {
+        newsPage
+    };
+}
+
+export const getNPinnedSecData = async () => {
+    const nPinnedSec = await getNPinnedSec();
+
+    return {
+        nPinnedSec
     };
 }

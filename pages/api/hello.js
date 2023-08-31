@@ -90,8 +90,14 @@ export const getProjectsPage = async(id) => {
   return await request.json();
 }
 
-export const getTags = async() => {
-  const request = await fetch(`${url}/tags`);
+export const getProjectsTags = async() => {
+  const request = await fetch(`${url}/projects-tags`);
+
+  return await request.json();
+}
+
+export const getNewsTags = async() => {
+  const request = await fetch(`${url}/news-tags`);
 
   return await request.json();
 }
@@ -128,6 +134,24 @@ export const getBlogComp = async() => {
 
 export const getNewsComp = async() => {
   const request = await fetch(`${url}/blog-component/news`);
+
+  return await request.json();
+}
+
+export const getNews = async() => {
+  const request = await fetch(`${url}/news`);
+
+  return await request.json();
+}
+
+export const getNewsPage = async(id) => {
+  const request = await fetch(`${url}/news/page/${id}`);
+
+  return await request.json();
+}
+
+export const getNPinnedSec = async() => {
+  const request = await fetch(`${url}/news-pinned-secondary`);
 
   return await request.json();
 }

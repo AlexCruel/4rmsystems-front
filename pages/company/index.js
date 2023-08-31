@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
     getInfoData,
-    getInformationData,
+    getInformationData, getNewsCompData,
     getPageData,
     getPartnerData
 } from "@/utils/functions";
@@ -22,13 +22,15 @@ export const getServerSideProps = async () => {
     const information = await getInformationData("main");
     const partner = await getPartnerData();
     const page = await getPageData("company");
+    const newsComponent = await getNewsCompData();
 
     return {
         props: {
             ...info,
             ...information,
             ...partner,
-            ...page
+            ...page,
+            ...newsComponent
         }
     }
 };
@@ -60,7 +62,7 @@ const Company = ({ ...props }) => {
                 </div>
                 <Information info={props.information} />
                 <Partner partner={props.partner} />
-                <BlogNews />
+                <BlogNews newsComponent={props.newsComponent} />
                 <div className={cn.container__text}>
                     <ul>
                         {props.page.links.map((item, index) => {
