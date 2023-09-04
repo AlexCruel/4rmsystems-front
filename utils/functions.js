@@ -6,9 +6,9 @@ import {
     getFooterMenu,
     getInfo,
     getInformation,
-    getNews,
+    getNews, getNewsCards,
     getNewsComp,
-    getNewsPage, getNewsTags, getNPinnedSec,
+    getNewsPage, getNewsSingle, getNewsTags, getNPinnedSec, getNSingleTags,
     getPage,
     getPartner,
     getProject,
@@ -207,5 +207,29 @@ export const getNPinnedSecData = async () => {
 
     return {
         nPinnedSec
+    };
+}
+
+export const getNewsSingleData = async (slug) => {
+    const newsSingle = await getNewsSingle(slug);
+
+    return {
+        newsSingle
+    };
+}
+
+export const getNSingleTagsData = async (id) => {
+    const nSingleTags = await getNSingleTags(id);
+
+    return {
+        nSingleTags
+    };
+}
+
+export const getNewsCardsData = async () => {
+    const newsCards = await getNewsCards();
+
+    return {
+        newsCards
     };
 }

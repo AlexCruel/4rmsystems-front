@@ -155,3 +155,21 @@ export const getNPinnedSec = async() => {
 
   return await request.json();
 }
+
+export const getNewsSingle = async(slug) => {
+  const request = await fetch(`${url}/news/${slug}`);
+
+  return await request.json();
+}
+
+export const getNSingleTags = async(id) => {
+  const request = await fetch(`${url}/news-tags/${id}`);
+
+  return await request.json();
+}
+
+export const getNewsCards = async() => {
+  const request = await fetch(`${url}/news-cards`);
+
+  return await request.json();
+}
