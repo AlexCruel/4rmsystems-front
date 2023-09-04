@@ -100,10 +100,10 @@ const ProjectsPage = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
-                                        src={parsedItem.url}
+                                        src={item.image.url}
                                         width={340}
                                         height={270}
-                                        alt={parsedItem.alt} />
+                                        alt={item.image.alt} />
                                     <p>{item.title}</p>
                                 </Link>
                             </div>
