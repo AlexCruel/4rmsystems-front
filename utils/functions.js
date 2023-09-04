@@ -6,9 +6,9 @@ import {
     getFooterMenu,
     getInfo,
     getInformation,
-    getNews,
+    getNews, getNewsCards,
     getNewsComp,
-    getNewsPage, getNewsTags, getNPinnedSec,
+    getNewsPage, getNewsSingle, getNewsTags, getNPinnedSec, getNSingleTags,
     getPage,
     getPartner,
     getProject,
@@ -18,7 +18,7 @@ import {
     getProjectsPage,
     getProjectsTags,
     getProjectTags,
-    getSocials,
+    getSocials, getTagNews, getTagNewsPage,
     getTagPage,
     getTagProjects,
     getTagsProjectsCount
@@ -207,5 +207,45 @@ export const getNPinnedSecData = async () => {
 
     return {
         nPinnedSec
+    };
+}
+
+export const getNewsSingleData = async (slug) => {
+    const newsSingle = await getNewsSingle(slug);
+
+    return {
+        newsSingle
+    };
+}
+
+export const getNSingleTagsData = async (id) => {
+    const nSingleTags = await getNSingleTags(id);
+
+    return {
+        nSingleTags
+    };
+}
+
+export const getNewsCardsData = async () => {
+    const newsCards = await getNewsCards();
+
+    return {
+        newsCards
+    };
+}
+
+export const getTagNewsData = async (tag_id) => {
+    const tagNews = await getTagNews(tag_id);
+
+    return {
+        tagNews
+    };
+}
+
+export const getTagNewsPageData = async (tag_id, id) => {
+    const tagNewsPage = await getTagNewsPage(tag_id, id);
+
+    return {
+        tagNewsPage
     };
 }

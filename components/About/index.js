@@ -7,7 +7,13 @@ const About = ({ about }) => {
     return (
         <div className={cn.container}>
             <div className={cn.content}>
-                <div className={cn.image}><Image width="552" height="400" src={about_company} alt="Company" /></div>
+                <div className={cn.image}>
+                    <Image
+                        width="552"
+                        height="400"
+                        src={about.banner.url}
+                        alt={about.banner.alt} />
+                </div>
                 <div className={cn.text}>
                     <h1>О компании</h1>
                     {parse(about.description)}

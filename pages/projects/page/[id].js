@@ -1,6 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {getInfoData, getPageData, getProjectsData, getProjectsPageData, getTagsData} from "@/utils/functions";
+import {
+    getInfoData,
+    getPageData,
+    getProjectsData,
+    getProjectsPageData,
+    getProjectsTagsData,
+    getTagsData
+} from "@/utils/functions";
 import cn from "@/pages/projects/styles.module.scss";
 import parse from "html-react-parser";
 import Link from "next/link";
@@ -60,7 +67,7 @@ export const getServerSideProps = async (context) => {
     const { projects } = await getProjectsData();
     const info = await getInfoData();
     const page = await getPageData("projects");
-    const tags = await getTagsData();
+    const projectsTags = await getProjectsTagsData();
 
     return {
         props: {
@@ -69,7 +76,7 @@ export const getServerSideProps = async (context) => {
             blogDataLength: projects.length,
             ...info,
             ...page,
-            ...tags
+            ...projectsTags
         }
     }
 }
@@ -85,7 +92,7 @@ const ProjectsPage = ({ ...props }) => {
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
-                <Tags type="projects" tags={props.tags} />
+                <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>
                     {props.projectsPage.map((item, index) => {
@@ -93,10 +100,10 @@ const ProjectsPage = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
-                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                        src={item.image.url}
                                         width={340}
                                         height={270}
-                                        alt="Project" />
+                                        alt={item.image.alt} />
                                     <p>{item.title}</p>
                                 </Link>
                             </div>

@@ -28,10 +28,11 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
                             return (
                                 <SplideSlide key={index}>
                                     <Image
-                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                        src={item.image.url}
                                         width={650}
                                         height={425}
-                                        alt="Project"/>
+                                        alt={item.alt}
+                                    />
                                     <p>{item.description}</p>
                                 </SplideSlide>
                             );

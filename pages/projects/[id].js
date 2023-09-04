@@ -67,8 +67,6 @@ export const getServerSideProps = async (context) => {
 }
 
 const Project = ({ ...props }) => {
-    console.log(props.projectTags)
-
     return (
         <>
             <Head>
@@ -82,11 +80,11 @@ const Project = ({ ...props }) => {
                     <h1>{props.project.title}</h1>
                 </div>
                 <Image
-                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner}`}
+                    src={props.project.banner.url}
                     layout="responsive"
                     width={1000}
                     height={300}
-                    alt="Banner" />
+                    alt={props.project.banner.alt} />
                 <div className={cn.container__text}>
                     <Tags type="projects" tags={props.projectTags} />
                     {parse(props.project.content)}

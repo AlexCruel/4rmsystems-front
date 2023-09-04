@@ -6,7 +6,7 @@ const Partner = ({ partner }) => {
     return (
         <div className={cn.partner_container}>
             <div>
-                <h1>Долгосрочное партнерство</h1>
+                <h1>{partner.title}</h1>
             </div>
             <div className={cn.logo}>
                 {partner.logo_items.map((item, index) => {

@@ -37,10 +37,14 @@ const Footer = ({info, menu, socials}) => {
                                     </li>
                                 );
                             })}
-                            <li>
-                                <Image src={mail} alt="Mail" />
-                                <a href="#">{info.email}</a>
-                            </li>
+                            {info.email_items?.map((item, index) => {
+                                return (
+                                    <li key={index}>
+                                        <Image src={mail} alt="Mail" />
+                                        <a href="#">{item.email}</a>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                     <div className={cn.company}>

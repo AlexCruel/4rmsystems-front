@@ -1,46 +1,38 @@
-import {
-    getInfoData,
-    getNewsData,
-    getNewsPageData,
-    getNewsTagsData,
-    getNPinnedSecData,
-    getPageData
-} from "@/utils/functions";
-import {useState} from "react";
+import {getInfoData, getNewsTagsData, getNPinnedSecData, getTagNewsData, getTagNewsPageData} from "@/utils/functions";
 import Header from "@/components/Header";
-import PageContactForm from "@/components/Forms/PageContactForm";
-import Footer from "@/components/Footer";
 import cn from "@/pages/news/styles.module.scss";
 import Tags from "@/components/Tags";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
+import PageContactForm from "@/components/Forms/PageContactForm";
+import Footer from "@/components/Footer";
+import {useState} from "react";
 
 export const getServerSideProps = async (context) => {
-    const { id } = context.params;
+    const { tag_id, id } = context.params;
 
-    const newsPage = await getNewsPageData(id);
-    const { news } = await getNewsData();
+    const { tagNews } = await getTagNewsData(tag_id);
+    const tagNewsPage = await getTagNewsPageData(tag_id, id)
     const info = await getInfoData();
-    const page = await getPageData("news");
     const newsTags = await getNewsTagsData();
     const nPinnedSec = await getNPinnedSecData();
 
     return {
         props: {
             id,
-            ...newsPage,
-            blogDataLength: news.length,
+            tag_id,
             ...info,
-            ...page,
             ...newsTags,
+            blogDataLength: tagNews.length,
+            ...tagNewsPage,
             ...nPinnedSec
         }
     }
 }
 
-const NewsPage = ({ ...props }) => {
+const NewsPageTag = ({ ...props }) => {
     const [currentPage, setCurrentPage] = useState(parseInt(props.id));
     const blogsPerPage = 6;
 
@@ -68,19 +60,22 @@ const NewsPage = ({ ...props }) => {
                         <div className={cn.pinned__text}>
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href="#"><button>Подробнее</button></Link>
+                        <Link href={`/news/${props.nPinnedSec.slug}`}><button>Подробнее</button></Link>
                     </div>
                 </div>
                 <div className={cn.container__cards}>
-                    {props.newsPage.map((item, index) => {
+                    {props.tagNewsPage.map((item, index) => {
+
+                        const parsedItem = JSON.parse(item.image)
+
                         return (
                             <div key={index} className={cn.container__cards_card}>
                                 <div className={cn.cards_card_image}>
                                     <Image
-                                        src={item.image.url}
+                                        src={parsedItem.url}
                                         width={340}
                                         height={270}
-                                        alt={item.image.alt} />
+                                        alt={parsedItem.alt} />
                                 </div>
                                 <div className={cn.cards_card_title}>{item.title}</div>
                                 <div className={cn.cards_card_date}>{item.created_at}</div>
@@ -96,7 +91,7 @@ const NewsPage = ({ ...props }) => {
                 paginate={paginate}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                typePage="news"
+                typePage={`news/tag/${props.tag_id}`}
             />
             <PageContactForm />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
@@ -104,4 +99,4 @@ const NewsPage = ({ ...props }) => {
     );
 }
 
-export default NewsPage;
+export default NewsPageTag;

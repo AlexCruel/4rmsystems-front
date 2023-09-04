@@ -10,6 +10,14 @@ const images = {
       hostname: 'localhost',
       port: '8888',
       pathname: '/4rmsystems-server/storage/app/media/**',
+    },
+    {
+      protocol: 'https',
+      hostname: 'bipbap.ru'
+    },
+    {
+      protocol: 'https',
+      hostname: 'drive.google.com'
     }
   ]
 }

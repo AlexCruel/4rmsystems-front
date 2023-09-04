@@ -63,20 +63,20 @@ const Home = ({ ...props }) => {
               <meta name="description" content="" />
           </Head>
           <Header phones={props.info.phone_items} />
-              <Banner banners={props.banner} />
-              <Catalog catalog={props.catalog} />
-              <About about={props.about} />
-              <BlogComponent
-                  blogState={blogState}
-                  blogStateHandler={blogStateHandler}
-                  blogsComponent={props.blogsComponent}
-                  newsComponent={props.newsComponent}
-              />
-              <Information info={props.information} />
-              <Partner partner={props.partner} />
-              <ProjectsSlider projects={props.projectsComponent} />
-              <Map />
-              <ContactForm />
+          <Banner banners={props.banner} />
+          <Catalog catalog={props.catalog} />
+          <About about={props.about} />
+          <BlogComponent
+              blogState={blogState}
+              blogStateHandler={blogStateHandler}
+              blogsComponent={props.blogsComponent}
+              newsComponent={props.newsComponent}
+          />
+          <Information info={props.information} />
+          <Partner partner={props.partner} />
+          <ProjectsSlider projects={props.projectsComponent} />
+          <Map />
+          <ContactForm />
           <Footer info={props.info} menu={props.menu} socials={props.socials} />
       </>
   );

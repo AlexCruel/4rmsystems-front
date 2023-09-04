@@ -58,8 +58,8 @@ const News = ({ ...props }) => {
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>
                         <Image
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image}`}
-                            alt="Banner"
+                            src={props.nPinnedSec.image.url}
+                            alt={props.nPinnedSec.image.alt}
                             width={570}
                             height={361}
                         />
@@ -71,7 +71,7 @@ const News = ({ ...props }) => {
                         <div className={cn.pinned__text}>
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href="#"><button>Подробнее</button></Link>
+                        <Link href={`/news/${props.nPinnedSec.slug}`}><button>Подробнее</button></Link>
                     </div>
                 </div>
                 <div className={cn.container__cards}>
@@ -80,10 +80,10 @@ const News = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <div className={cn.cards_card_image}>
                                     <Image
-                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                        src={item.image.url}
                                         width={340}
                                         height={270}
-                                        alt="News" />
+                                        alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title}>{item.title}</div>
                                 <div className={cn.cards_card_date}>{item.created_at}</div>

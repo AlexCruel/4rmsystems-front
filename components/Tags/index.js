@@ -5,7 +5,6 @@ const Tags = ({ type, tags }) => {
     return (
         <div className={cn.container}>
             <div className={cn.container__tags}>
-                {/*<button>Сортировать</button>*/}
                 <ul>
                     {tags.map((item, index) => {
                         return (
