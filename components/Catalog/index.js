@@ -52,10 +52,11 @@ const Catalog = ({ catalog }) => {
                             <div className={cn.slider__slide}>
                                 <Image
                                     id={item.id}
-                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                    src={item.image.url}
                                     width={295}
                                     height={276}
-                                    alt="Project"/>
+                                    alt={item.image.alt}
+                                />
                                 <p>{item.title}</p>
                             </div>
                         </SplideSlide>

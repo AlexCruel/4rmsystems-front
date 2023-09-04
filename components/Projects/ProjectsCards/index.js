@@ -11,10 +11,10 @@ const ProjectsCards = ({ projects }) => {
                         <Link key={index} href={`${item.slug}`}>
                             <div className={cn.container__cards_card}>
                                 <Image
-                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                    src={item.image.url}
                                     width={100}
                                     height={100}
-                                    alt="Project"/>
+                                    alt={item.image.alt} />
                                 <p>{item.title}</p>
                             </div>
                         </Link>

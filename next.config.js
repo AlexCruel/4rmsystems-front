@@ -13,10 +13,12 @@ const images = {
     },
     {
       protocol: 'https',
-      hostname: 'bipbap.ru',
-      //port: '8888',
-      //pathname: '/4rmsystems-server/storage/app/media/**',
+      hostname: 'bipbap.ru'
     },
+    {
+      protocol: 'https',
+      hostname: 'drive.google.com'
+    }
   ]
 }
 

@@ -57,10 +57,10 @@ const Projects = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
-                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                        src={item.image.url}
                                         width={340}
                                         height={270}
-                                        alt="Project" />
+                                        alt={item.image.alt} />
                                     <p>{item.title}</p>
                                 </Link>
                             </div>

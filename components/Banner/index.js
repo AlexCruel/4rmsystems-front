@@ -26,11 +26,11 @@ const Banner = ({ banners }) => {
                         <SplideSlide key={index}>
                             <Link href={`${item.url}`}>
                                 <Image
-                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image}`}
+                                    src={item.image.url_image}
                                     layout="responsive"
                                     width={100}
                                     height={100}
-                                    alt="Banner" />
+                                    alt={item.image.alt} />
                             </Link>
                         </SplideSlide>
                     );

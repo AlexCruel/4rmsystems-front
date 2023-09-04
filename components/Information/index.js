@@ -10,10 +10,10 @@ const Information = ({ info }) => {
                     return (
                         <div key={index}>
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.icon.logo}`}
                                 width={90}
                                 height={90}
-                                alt="Logo" />
+                                alt={item.icon.alt} />
                             <h2>{item.name}</h2>
                             <hr />
                             <p>{item.description}</p>
