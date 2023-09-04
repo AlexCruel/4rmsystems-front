@@ -60,7 +60,6 @@ export const getServerSideProps = async (context) => {
     const tagPage = await getTagPageData(tag_id, 1);
     const info = await getInfoData();
     const page = await getPageData("projects");
-    //const tags = await getTagsData();
     const projectsTags = await getProjectsTagsData();
 
     return {

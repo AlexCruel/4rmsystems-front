@@ -173,3 +173,15 @@ export const getNewsCards = async() => {
 
   return await request.json();
 }
+
+export const getTagNews = async(tag_id) => {
+  const request = await fetch(`${url}/news/tag/${tag_id}`);
+
+  return await request.json();
+}
+
+export const getTagNewsPage = async(tag_id, id) => {
+  const request = await fetch(`${url}/news/tag/${tag_id}/page/${id}`);
+
+  return await request.json();
+}

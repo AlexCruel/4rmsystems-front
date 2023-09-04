@@ -3,13 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
     getInfoData, getNewsCardsData,
-    getNewsSingleData, getNSingleTagsData,
-    getProjectData,
-    getProjectsCardsData,
-    getProjectTagsData
+    getNewsSingleData, getNSingleTagsData
 } from "@/utils/functions";
 import PageContactForm from "@/components/Forms/PageContactForm";
-import Image from "next/image";
 import Tags from "@/components/Tags";
 import parse from "html-react-parser";
 import Socials from "@/components/Socials";
@@ -21,7 +17,6 @@ export const getServerSideProps = async (context) => {
 
     const { newsSingle } = await getNewsSingleData(id);
     const info = await getInfoData();
-    //const projectsCards = await getProjectsCardsData();
     const newsCards = await getNewsCardsData();
     const nSingleTags = await getNSingleTagsData(newsSingle.id);
 
@@ -29,7 +24,6 @@ export const getServerSideProps = async (context) => {
         props: {
             newsSingle,
             ...info,
-            //...projectsCards,
             ...newsCards,
             ...nSingleTags
         }

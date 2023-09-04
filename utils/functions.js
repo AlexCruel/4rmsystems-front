@@ -18,7 +18,7 @@ import {
     getProjectsPage,
     getProjectsTags,
     getProjectTags,
-    getSocials,
+    getSocials, getTagNews, getTagNewsPage,
     getTagPage,
     getTagProjects,
     getTagsProjectsCount
@@ -231,5 +231,21 @@ export const getNewsCardsData = async () => {
 
     return {
         newsCards
+    };
+}
+
+export const getTagNewsData = async (tag_id) => {
+    const tagNews = await getTagNews(tag_id);
+
+    return {
+        tagNews
+    };
+}
+
+export const getTagNewsPageData = async (tag_id, id) => {
+    const tagNewsPage = await getTagNewsPage(tag_id, id);
+
+    return {
+        tagNewsPage
     };
 }
