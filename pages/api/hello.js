@@ -227,3 +227,15 @@ export const getBSingleTags = async(id) => {
 
   return await request.json();
 }
+
+export const getTagBlogs = async(tag_id) => {
+  const request = await fetch(`${url}/blogs/tag/${tag_id}`);
+
+  return await request.json();
+}
+
+export const getTagBlogsPage = async(tag_id, id) => {
+  const request = await fetch(`${url}/blogs/tag/${tag_id}/page/${id}`);
+
+  return await request.json();
+}
