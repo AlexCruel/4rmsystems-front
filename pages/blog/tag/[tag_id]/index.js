@@ -95,7 +95,7 @@ const BlogTags = ({ ...props }) => {
                 paginate={paginate}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                typePage="blog"
+                typePage={`blog/tag/${props.tag_id}`}
             />
             <PageContactForm />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
