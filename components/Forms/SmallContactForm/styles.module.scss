@@ -1,0 +1,85 @@
+@import "styles/main";
+
+.container {
+  margin: auto;
+
+  @include container(485px, 680px, 0, rgba(35, 115, 137, 0.75));
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+
+      input, textarea {
+        width: 330px;
+        height: 50px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+    }
+
+    .contact__form_title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .contact__form__policy {
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 8px;
+        font-weight: normal;
+        color: $default-color;
+      }
+
+      input {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+      }
+    }
+
+    button {
+      width: 180px;
+      height: 35px;
+
+      margin-top: 20px;
+      font-weight: lighter;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .socials__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+
+    .socials__form_text {
+      font-size: 24px;
+      font-weight: bold;
+      color: $default-color;
+    }
+
+    .socials__form_socials {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
