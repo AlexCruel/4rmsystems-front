@@ -45,7 +45,7 @@ const Blog = ({ ...props }) => {
                     <h1>{props.blogSingle.title}</h1>
                 </div>
                 <div className={cn.container__text}>
-                    <Tags type="news" tags={props.bSingleTags} />
+                    <Tags type="blog" tags={props.bSingleTags} />
                     {parse(props.blogSingle.content)}
                     <div className={cn.container__text_date}>{props.blogSingle.created_at}</div>
                     <Socials socials={props.socials} />
