@@ -1,0 +1,60 @@
+@import "styles/main";
+
+.container {
+  padding-top: 90px;
+
+  .container__text {
+    width: 970px;
+    margin: auto;
+
+    ul {
+      font-size: 48px;
+      margin: auto;
+      padding: 0;
+
+      a {
+        color: $footer-color;
+      }
+
+      img {
+        padding-left: 20px;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .tab_title {
+    font-size: 24px;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  hr {
+    border: 0.5px solid black;
+  }
+
+  .container__text_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tab_visible {
+    //opacity: 1;
+    //display: block;
+  }
+
+  .tab_invisible {
+    //opacity: 0;
+    //display: none;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
