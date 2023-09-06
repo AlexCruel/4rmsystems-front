@@ -1,7 +1,7 @@
 import {
     getAbout,
-    getBanner,
-    getBlogComp,
+    getBanner, getBlog, getBlogCards,
+    getBlogComp, getBlogPage, getBlogSingle, getBlogTags, getBPinnedSec, getBSingleTags,
     getCatalog,
     getFooterMenu,
     getInfo,
@@ -18,7 +18,7 @@ import {
     getProjectsPage,
     getProjectsTags,
     getProjectTags,
-    getSocials, getTagNews, getTagNewsPage,
+    getSocials, getTagBlogs, getTagBlogsPage, getTagNews, getTagNewsPage,
     getTagPage,
     getTagProjects,
     getTagsProjectsCount
@@ -247,5 +247,77 @@ export const getTagNewsPageData = async (tag_id, id) => {
 
     return {
         tagNewsPage
+    };
+}
+
+export const getBPinnedSecData = async () => {
+    const bPinnedSec = await getBPinnedSec();
+
+    return {
+        bPinnedSec
+    };
+}
+
+export const getBlogData = async () => {
+    const blog = await getBlog();
+
+    return {
+        blog
+    };
+}
+
+export const getBlogPageData = async (id) => {
+    const blogPage = await getBlogPage(id);
+
+    return {
+        blogPage
+    };
+}
+
+export const getBlogTagsData = async () => {
+    const blogTags = await getBlogTags();
+
+    return {
+        blogTags
+    };
+}
+
+export const getBlogSingleData = async (slug) => {
+    const blogSingle = await getBlogSingle(slug);
+
+    return {
+        blogSingle
+    };
+}
+
+export const getBlogCardsData = async () => {
+    const blogCards = await getBlogCards();
+
+    return {
+        blogCards
+    };
+}
+
+export const getBSingleTagsData = async (id) => {
+    const bSingleTags = await getBSingleTags(id);
+
+    return {
+        bSingleTags
+    };
+}
+
+export const getTagBlogsData = async (tag_id) => {
+    const tagBlogs = await getTagBlogs(tag_id);
+
+    return {
+        tagBlogs
+    };
+}
+
+export const getTagBlogsPageData = async (tag_id, id) => {
+    const tagBlogsPage = await getTagBlogsPage(tag_id, id);
+
+    return {
+        tagBlogsPage
     };
 }

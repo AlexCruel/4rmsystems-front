@@ -1,36 +1,37 @@
+import {
+    getBlogCardsData,
+    getBlogSingleData, getBSingleTagsData,
+    getInfoData
+} from "@/utils/functions";
 import Head from "next/head";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import {
-    getInfoData, getNewsCardsData,
-    getNewsSingleData, getNSingleTagsData
-} from "@/utils/functions";
-import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
 import parse from "html-react-parser";
 import Socials from "@/components/Socials";
+import PageContactForm from "@/components/Forms/PageContactForm";
+import Footer from "@/components/Footer";
 import cn from "./styles[id].module.scss";
-import NewsCards from "@/components/Blog/NewsCards";
+import BlogCards from "@/components/Blog/BlogCards";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
 
-    const { newsSingle } = await getNewsSingleData(id);
+    const { blogSingle } = await getBlogSingleData(id);
     const info = await getInfoData();
-    const newsCards = await getNewsCardsData();
-    const nSingleTags = await getNSingleTagsData(newsSingle.id);
+    const blogCards = await getBlogCardsData();
+    const bSingleTags = await getBSingleTagsData(blogSingle.id)
 
     return {
         props: {
-            newsSingle,
+            blogSingle,
             ...info,
-            ...newsCards,
-            ...nSingleTags
+            ...blogCards,
+            ...bSingleTags
         }
     }
 }
 
-const News = ({ ...props }) => {
+const Blog = ({ ...props }) => {
     return (
         <>
             <Head>
@@ -41,20 +42,20 @@ const News = ({ ...props }) => {
             <Header phones={props.info.phone_items} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
-                    <h1>{props.newsSingle.title}</h1>
+                    <h1>{props.blogSingle.title}</h1>
                 </div>
                 <div className={cn.container__text}>
-                    <Tags type="news" tags={props.nSingleTags} />
-                    {parse(props.newsSingle.content)}
-                    <div className={cn.container__text_date}>{props.newsSingle.created_at}</div>
+                    <Tags type="blog" tags={props.bSingleTags} />
+                    {parse(props.blogSingle.content)}
+                    <div className={cn.container__text_date}>{props.blogSingle.created_at}</div>
                     <Socials socials={props.socials} />
                 </div>
             </div>
-            <NewsCards news={props.newsCards} />
+            <BlogCards blogs={props.blogCards} />
             <PageContactForm />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );
 }
 
-export default News;
+export default Blog;
