@@ -2,7 +2,6 @@ import Banner from "components/Banner";
 import About from "@/components/About";
 import Information from "@/components/Information";
 import ContactForm from "@/components/Forms/ContactForm";
-import BlogNews from "@/components/Blog/BlogNews";
 import Partner from "@/components/Partner";
 import ProjectsSlider from "@/components/Projects/ProjectsSlider";
 import Map from "@/components/Map";
@@ -18,7 +17,6 @@ import {
     getPartnerData,
     getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData
 } from "@/utils/functions";
-import BlogBlog from "@/components/Blog/BlogBlog";
 import {useState} from "react";
 import BlogComponent from "@/components/Blog";
 
