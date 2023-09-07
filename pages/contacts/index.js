@@ -76,9 +76,11 @@ const Contacts = ({ ...props }) => {
                             <div className={cn.house_contacts}>
                                 <button>+375 44 504-14-01</button>
                                 <button>+375 21 265-05-12</button>
+                                <button>+375 21 265-05-12</button>
                             </div>
                             <div className={cn.house_text}>
-                                210039, Республика Беларусь,
+                                210039, Республика Беларусь, г. Витебск,
+                                ул. Петруся Бровки, 50, корп. 7
                             </div>
                         </div>
                         <div>
@@ -88,7 +90,8 @@ const Contacts = ({ ...props }) => {
                                 <button>+375 21 265-05-12</button>
                             </div>
                             <div className={cn.house_text}>
-                                210039, Республика Беларусь,
+                                210039, Республика Беларусь, г. Витебск,
+                                ул. Петруся Бровки, 50, корп. 7
                             </div>
                         </div>
                         <div>
@@ -98,7 +101,8 @@ const Contacts = ({ ...props }) => {
                                 <button>+375 21 265-05-12</button>
                             </div>
                             <div className={cn.house_text}>
-                                210039, Республика Беларусь,
+                                210039, Республика Беларусь, г. Витебск,
+                                ул. Петруся Бровки, 50, корп. 7
                             </div>
                         </div>
                     </div>

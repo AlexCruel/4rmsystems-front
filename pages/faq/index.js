@@ -55,7 +55,7 @@ const FAQ = ({ ...props }) => {
                             <div className={cn.tab_title} onClick={activeTabHandler} id="1">What is Lorem Ipsum?</div>
                             <Image src={activeTab.includes("1") ? chevron_up : chevron_right} alt="Chevron" />
                         </div>
-                        <p className={activeTab.includes("1") ? cn.tab_visible : cn.tab_invisible}>
+                        <p className={activeTab.includes("1") ? "" : cn.tab_invisible}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                         </p>
                     </div>
@@ -65,7 +65,7 @@ const FAQ = ({ ...props }) => {
                             <div className={cn.tab_title} onClick={activeTabHandler} id="2">What is Lorem Ipsum?</div>
                             <Image src={activeTab.includes("2") ? chevron_up : chevron_right} alt="Chevron" />
                         </div>
-                        <p className={activeTab.includes("2") ? cn.tab_visible : cn.tab_invisible}>
+                        <p className={activeTab.includes("2") ? "" : cn.tab_invisible}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                         </p>
                     </div>
@@ -75,7 +75,7 @@ const FAQ = ({ ...props }) => {
                             <div className={cn.tab_title} onClick={activeTabHandler} id="3">What is Lorem Ipsum?</div>
                             <Image src={activeTab.includes("3") ? chevron_up : chevron_right} alt="Chevron" />
                         </div>
-                        <p className={activeTab.includes("3") ? cn.tab_visible : cn.tab_invisible}>
+                        <p className={activeTab.includes("3") ? "" : cn.tab_invisible}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                         </p>
                     </div>

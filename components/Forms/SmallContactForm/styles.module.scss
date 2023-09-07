@@ -1,8 +1,6 @@
 @import "styles/main";
 
 .container {
-  margin: auto;
-
   @include container(485px, 680px, 0, rgba(35, 115, 137, 0.75));
 
   .contact__form {
