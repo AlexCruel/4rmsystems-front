@@ -8,10 +8,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmallContactForm from "@/components/Forms/SmallContactForm";
 import cn from "./styles.module.scss";
+import mail from "@/public/icons/mail_footer.svg";
+import Image from "next/image";
+import phone from "@/public/icons/phone_footer.svg";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
-    const page = await getPageData("news");
+    const page = await getPageData("contacts");
 
     return {
         props: {
@@ -35,76 +38,79 @@ const Contacts = ({ ...props }) => {
                 <div className={cn.container__main}>
                     <SmallContactForm socials={props.socials} />
                     <div className={cn.container__main_house}>
-                        <div>
-                            <div className={cn.house_title}>Торговый дом 4RM Беларусь</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 21 265-05-12</button>
-                                <button>info@4rm.com</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                Республика Беларусь, г. Минск, ул. Домбровская 9, 2 этаж, 220140
-                            </div>
-                        </div>
-                        <div>
-                            <div className={cn.house_title}>Торговый дом 4RM Россия</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 44 504-14-01</button>
-                                <button>+375 21 265-05-12</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                125040, Российская Федерация, г. Москва, 3я улица Ямского Поля, д.2, к.26, оф.116
-                            </div>
-                        </div>
-                        <div>
-                            <div className={cn.house_title}>Производство</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 44 504-14-01</button>
-                                <button>+375 21 265-05-12</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                210039, Республика Беларусь, г. Витебск,
-                                ул. Петруся Бровки, 50, корп. 7
-                            </div>
-                        </div>
+                        {
+                            props.page.contacts_main.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div className={cn.house_title}>{item.title}</div>
+                                        <div className={cn.house_contacts}>
+                                            {
+                                                item.phone_items?.map((item, index) => {
+                                                    return (
+                                                        <div key={index} className={cn.contacts_item}>
+                                                            <Image src={phone} alt="Phone" />
+                                                            <a href="#">{item.phone}</a>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                            {
+                                                item.email_items?.map((item, index) => {
+                                                    return (
+                                                        <div key={index} className={cn.contacts_item}>
+                                                            <Image src={mail} alt="Mail" />
+                                                            <a href="#">{item.email}</a>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                        <div className={cn.house_text}>
+                                            {item.description}
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
                 </div>
                 <div className={cn.container__submain}>
                     <div className={cn.house_title}>Сервисные центры и партнеры</div>
                     <div className={cn.container__submain_items}>
-                        <div>
-                            <div className={cn.house_title}>Производство</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 44 504-14-01</button>
-                                <button>+375 21 265-05-12</button>
-                                <button>+375 21 265-05-12</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                210039, Республика Беларусь, г. Витебск,
-                                ул. Петруся Бровки, 50, корп. 7
-                            </div>
-                        </div>
-                        <div>
-                            <div className={cn.house_title}>Производство</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 44 504-14-01</button>
-                                <button>+375 21 265-05-12</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                210039, Республика Беларусь, г. Витебск,
-                                ул. Петруся Бровки, 50, корп. 7
-                            </div>
-                        </div>
-                        <div>
-                            <div className={cn.house_title}>Производство</div>
-                            <div className={cn.house_contacts}>
-                                <button>+375 44 504-14-01</button>
-                                <button>+375 21 265-05-12</button>
-                            </div>
-                            <div className={cn.house_text}>
-                                210039, Республика Беларусь, г. Витебск,
-                                ул. Петруся Бровки, 50, корп. 7
-                            </div>
-                        </div>
+                        {
+                            props.page.contacts_submain.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div className={cn.house_title}>{item.title}</div>
+                                        <div className={cn.house_contacts}>
+                                            {
+                                                item.phone_items?.map((item, index) => {
+                                                    return (
+                                                        <div key={index} className={cn.contacts_item}>
+                                                            <Image src={phone} alt="Phone" />
+                                                            <a href="#">{item.phone}</a>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                            {
+                                                item.email_items?.map((item, index) => {
+                                                    return (
+                                                        <div key={index} className={cn.contacts_item}>
+                                                            <Image src={mail} alt="Mail" />
+                                                            <a href="#">{item.email}</a>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                        <div className={cn.house_text}>
+                                            {item.description}
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
                 </div>
             </div>
