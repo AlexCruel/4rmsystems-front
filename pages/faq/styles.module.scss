@@ -29,6 +29,7 @@
   .tab_title {
     font-size: 24px;
     font-weight: bold;
+    width: 100%;
 
     &:hover {
       cursor: pointer;
@@ -39,10 +40,15 @@
     border: 0.5px solid black;
   }
 
-  .container__text_block {
+  .accordion {
+    cursor: pointer;
+  }
+
+  .accordion__text_block {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
   }
 
   .tab_invisible {

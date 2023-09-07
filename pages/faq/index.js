@@ -49,36 +49,27 @@ const FAQ = ({ ...props }) => {
                     {parse(props.page.content)}
                 </div>
                 <div className={cn.container__text}>
-                    <hr />
-                    <div>
-                        <div className={cn.container__text_block}>
-                            <div className={cn.tab_title} onClick={activeTabHandler} id="1">What is Lorem Ipsum?</div>
-                            <Image src={activeTab.includes("1") ? chevron_up : chevron_right} alt="Chevron" />
-                        </div>
-                        <p className={activeTab.includes("1") ? "" : cn.tab_invisible}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        </p>
-                    </div>
-                    <hr />
-                    <div>
-                        <div className={cn.container__text_block}>
-                            <div className={cn.tab_title} onClick={activeTabHandler} id="2">What is Lorem Ipsum?</div>
-                            <Image src={activeTab.includes("2") ? chevron_up : chevron_right} alt="Chevron" />
-                        </div>
-                        <p className={activeTab.includes("2") ? "" : cn.tab_invisible}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        </p>
-                    </div>
-                    <hr />
-                    <div>
-                        <div className={cn.container__text_block}>
-                            <div className={cn.tab_title} onClick={activeTabHandler} id="3">What is Lorem Ipsum?</div>
-                            <Image src={activeTab.includes("3") ? chevron_up : chevron_right} alt="Chevron" />
-                        </div>
-                        <p className={activeTab.includes("3") ? "" : cn.tab_invisible}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        </p>
-                    </div>
+                    {
+                        props.page.accordion.map((item, index) => {
+                            return (
+                                <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()}>
+                                    <hr />
+                                    <div className={cn.accordion__text_block} onClick={activeTabHandler} id={index.toString()}>
+                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()}>
+                                            {item.title}
+                                        </div>
+                                        <Image
+                                            src={activeTab.includes(index.toString()) ? chevron_up : chevron_right}
+                                            onClick={activeTabHandler} id={index.toString()}
+                                            alt="Chevron" />
+                                    </div>
+                                    <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible}>
+                                        {parse(item.description)}
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
                     <hr />
                 </div>
             </div>
