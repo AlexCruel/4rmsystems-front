@@ -1,6 +1,6 @@
 import Map from "@/components/Map";
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getPageData
 } from "@/utils/functions";
 import Head from "next/head";
@@ -15,11 +15,13 @@ import phone from "@/public/icons/phone_footer.svg";
 export const getServerSideProps = async () => {
     const info = await getInfoData();
     const page = await getPageData("contacts");
+    const modal = await getModalData('consult_form');
 
     return {
         props: {
             ...info,
-            ...page
+            ...page,
+            ...modal
         }
     }
 }
@@ -36,7 +38,7 @@ const Contacts = ({ ...props }) => {
             <div className={cn.container}>
                 <h1>Контакты</h1>
                 <div className={cn.container__main}>
-                    <SmallContactForm socials={props.socials} />
+                    <SmallContactForm socials={props.socials} modal={props.modal} />
                     <div className={cn.container__main_house}>
                         {
                             props.page.contacts_main.map((item, index) => {
