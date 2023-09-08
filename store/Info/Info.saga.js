@@ -1,5 +1,5 @@
 import {takeLatest, put, call, fork} from "redux-saga/effects";
-import {getFooterMenu, getInfo, getSocials} from "@/pages/api/hello";
+import {getFooterMenu, getInfo, getSocials} from "@/pages/api/content";
 import {setFooterMenu, setInfo, setSocials} from "@/store/Info/Info.action";
 import {GET_FOOTER_MENU, GET_INFO, GET_SOCIALS} from "@/store/Info/Info.constant";
 

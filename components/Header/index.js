@@ -31,7 +31,7 @@ const Header = ({phones}) => {
                                 <li key={index}>
                                     <div className={cn.contacts_container}>
                                         <Image src={phone_small} alt="Phone" />
-                                        <a href="#">{item.phone}</a>
+                                        <a href={`tel:${item.phone}`}>{item.phone}</a>
                                     </div>
                                 </li>
                             );

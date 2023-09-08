@@ -22,7 +22,7 @@ import {
     getTagPage,
     getTagProjects,
     getTagsProjectsCount
-} from "@/pages/api/hello";
+} from "@/pages/api/content";
 
 export const getInfoData = async () => {
     const info = await getInfo();

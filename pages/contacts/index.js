@@ -49,7 +49,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={phone} alt="Phone" />
-                                                            <a href="#">{item.phone}</a>
+                                                            <a href={`tel:${item.phone}`}>{item.phone}</a>
                                                         </div>
                                                     );
                                                 })
@@ -88,7 +88,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={phone} alt="Phone" />
-                                                            <a href="#">{item.phone}</a>
+                                                            <a href={`tel:${item.phone}`}>{item.phone}</a>
                                                         </div>
                                                     );
                                                 })
