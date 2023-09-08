@@ -21,7 +21,7 @@ const ContactForm = () => {
         if (response === "true") {
             setModalActive(true);
         }
-        //reset();
+        reset();
     }
 
     return (
