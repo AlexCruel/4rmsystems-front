@@ -1,10 +1,10 @@
 import cn from "./styles.module.scss";
 import {useForm} from "react-hook-form";
-import {postFeedback} from "@/pages/api/application";
+import {getModal, postFeedback} from "@/pages/api/application";
 import {useState} from "react";
 import SubmitModal from "@/components/Modals/SubmitModal";
 
-const ContactForm = () => {
+const ContactForm = ({ modal }) => {
     const {
         register,
         formState: { errors },
@@ -20,8 +20,8 @@ const ContactForm = () => {
         const response = await postFeedback(JSON.stringify(data));
         if (response === "true") {
             setModalActive(true);
+            reset();
         }
-        reset();
     }
 
     return (
@@ -57,7 +57,7 @@ const ContactForm = () => {
                             <input id="phone" className={errors?.phone ? cn.input_error : ""}
                                    pattern="[+0-9]+"
                                    title="+375112223344"
-                                   type="text" placeholder={errors?.phone ? "Введите телефон" : "+375 00 000-00-00"}
+                                   type="text" placeholder={errors?.phone ? "Введите телефон" : "+375112223344"}
                                    {...register("phone", {required: true})} />
                         </div>
                         <div>
@@ -86,7 +86,12 @@ const ContactForm = () => {
                 </div>
             </div>
             {
-                modalActive && <SubmitModal modalActive={modalActive} setModalActive={setModalActive} />
+                modalActive &&
+                <SubmitModal
+                    modalActive={modalActive}
+                    setModalActive={setModalActive}
+                    modal={modal}
+                />
             }
         </div>
     );

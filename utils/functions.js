@@ -5,7 +5,7 @@ import {
     getCatalog,
     getFooterMenu,
     getInfo,
-    getInformation,
+    getInformation, getModal,
     getNews, getNewsCards,
     getNewsComp,
     getNewsPage, getNewsSingle, getNewsTags, getNPinnedSec, getNSingleTags,
@@ -319,5 +319,13 @@ export const getTagBlogsPageData = async (tag_id, id) => {
 
     return {
         tagBlogsPage
+    };
+}
+
+export const getModalData = async (type) => {
+    const modal = await getModal(type);
+
+    return {
+        modal
     };
 }

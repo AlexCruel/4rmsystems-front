@@ -239,3 +239,9 @@ export const getTagBlogsPage = async(tag_id, id) => {
 
   return await request.json();
 }
+
+export const getModal = async(type) => {
+  const request = await fetch(`${url}/modals/${type}`);
+
+  return await request.json();
+}
