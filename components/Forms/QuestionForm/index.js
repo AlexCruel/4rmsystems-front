@@ -4,7 +4,7 @@ import {question} from "@/pages/api/application";
 import SubmitModal from "@/components/Modals/SubmitModal";
 import {useState} from "react";
 
-const QuestionForm = ({ modal }) => {
+const QuestionForm = ({ modal, setQuestionForm }) => {
     const {
         register,
         formState: { errors },
@@ -25,8 +25,8 @@ const QuestionForm = ({ modal }) => {
     }
 
     return (
-        <div className={cn.modal}>
-            <form onSubmit={handleSubmit(formHandler)}>
+        <div className={cn.modal} onClick={() => setQuestionForm(false)}>
+            <form onSubmit={handleSubmit(formHandler)} onClick={(event) => event.stopPropagation()}>
                 <div className={cn.modal__title}>Задать вопрос</div>
                 <div className={cn.modal__input}>
                     <label>Телефон*</label>

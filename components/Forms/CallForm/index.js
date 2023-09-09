@@ -4,7 +4,7 @@ import {call} from "@/pages/api/application";
 import SubmitModal from "@/components/Modals/SubmitModal";
 import {useState} from "react";
 
-const CallForm = ({ modal }) => {
+const CallForm = ({ modal, setCallForm }) => {
     const {
         register,
         formState: { errors },
@@ -25,8 +25,8 @@ const CallForm = ({ modal }) => {
     }
 
     return (
-        <div className={cn.modal}>
-            <form onSubmit={handleSubmit(formHandler)}>
+        <div className={cn.modal} onClick={() => setCallForm(false)}>
+            <form onSubmit={handleSubmit(formHandler)} onClick={(event) => event.stopPropagation()}>
                 <div className={cn.modal__title}>Заказать звонок</div>
                 <div className={cn.modal__input}>
                     <label>Телефон*</label>

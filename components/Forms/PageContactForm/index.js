@@ -77,10 +77,10 @@ const PageContactForm = ({ modalSubscription, modalCall, modalQuestion }) => {
                 />
             }
             {
-                callForm && <CallForm modal={modalCall} />
+                callForm && <CallForm modal={modalCall} setCallForm={setCallForm} />
             }
             {
-                questionForm && <QuestionForm modal={modalQuestion} />
+                questionForm && <QuestionForm modal={modalQuestion} setQuestionForm={setQuestionForm} />
             }
         </div>
     );
