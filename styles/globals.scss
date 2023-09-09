@@ -52,6 +52,11 @@ body {
     outline: none;
   }
 
+  .splide__pagination__page.is-active {
+    background: $main-color;
+    border: 1px solid $default-color;
+  }
+
   //::selection {
   //  color: $main-color;
   //}
