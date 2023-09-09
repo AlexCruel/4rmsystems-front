@@ -44,7 +44,7 @@ const News = ({ ...props }) => {
                 <meta name="keywords" content="" />
                 <meta name="description" content="" />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.newsSingle.title}</h1>

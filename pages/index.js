@@ -31,6 +31,7 @@ export const getServerSideProps = async () => {
     const blogsComponent = await getBlogsCompData();
     const newsComponent = await getNewsCompData();
     const modalContact = await getModalData('contact_form');
+    const modalCall = await getModalData('call_form');
 
     return {
         props: {
@@ -43,7 +44,8 @@ export const getServerSideProps = async () => {
             ...projectsComponent,
             ...blogsComponent,
             ...newsComponent,
-            modalContact
+            modalContact,
+            modalCall
         }
     }
 };
@@ -62,7 +64,7 @@ const Home = ({ ...props }) => {
               <meta name="keywords" content="" />
               <meta name="description" content="" />
           </Head>
-          <Header phones={props.info.phone_items} />
+          <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
           <Banner banners={props.banner} />
           <Catalog catalog={props.catalog} />
           <About about={props.about} />

@@ -53,7 +53,7 @@ const NewsPageTag = ({ ...props }) => {
 
     return (
         <>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Новости</h1>
                 <Tags type="news" tags={props.newsTags} />

@@ -16,12 +16,14 @@ export const getServerSideProps = async () => {
     const info = await getInfoData();
     const page = await getPageData("contacts");
     const modalConsult = await getModalData('consult_form');
+    const modalCall = await getModalData('call_form');
 
     return {
         props: {
             ...info,
             ...page,
-            modalConsult
+            modalConsult,
+            modalCall
         }
     }
 }
@@ -34,7 +36,7 @@ const Contacts = ({ ...props }) => {
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Контакты</h1>
                 <div className={cn.container__main}>
@@ -61,7 +63,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={mail} alt="Mail" />
-                                                            <a href="#">{item.email}</a>
+                                                            <a href={`mailto:${item.email}`}>{item.email}</a>
                                                         </div>
                                                     );
                                                 })
@@ -100,7 +102,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={mail} alt="Mail" />
-                                                            <a href="#">{item.email}</a>
+                                                            <a href={`mailto:${item.email}`}>{item.email}</a>
                                                         </div>
                                                     );
                                                 })

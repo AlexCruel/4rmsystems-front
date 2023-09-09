@@ -42,7 +42,7 @@ const Production = ({ ...props }) => {
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.page.name}</h1>

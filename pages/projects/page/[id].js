@@ -95,7 +95,7 @@ const ProjectsPage = ({ ...props }) => {
 
     return (
         <>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
                 <Tags type="projects" tags={props.projectsTags} />

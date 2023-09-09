@@ -10,9 +10,11 @@ import menu from "../../public/icons/menu.svg";
 import close from "../../public/icons/close.svg";
 import {useState} from "react";
 import Link from "next/link";
+import CallForm from "@/components/Forms/CallForm";
 
-const Header = ({phones}) => {
+const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
+    const [callForm, setCallForm] = useState(false);
 
     return (
         <nav className={cn.nav}>
@@ -47,19 +49,20 @@ const Header = ({phones}) => {
                     </ul>
                 </div>
                 <div className={cn.call}>
-                    <button>ЗАКАЗАТЬ ЗВОНОК</button>
+                    <button onClick={() => setCallForm(true)}>ЗАКАЗАТЬ ЗВОНОК</button>
                 </div>
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
-                    <a><Image src={mail} alt="Mail" /></a>
+                    <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
                     <a><Image src={globe} alt="Globe" /></a>
                 </div>
             </div>
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
                     {nav ? <Image src={close} alt="Close" /> : <Image src={menu} alt="Menu" />}
                 </div>
-
-
+            {
+                callForm && <CallForm modal={modal} setCallForm={setCallForm} />
+            }
         </nav>
     );
 }
