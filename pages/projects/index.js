@@ -1,5 +1,5 @@
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getPageData, getProjectsData,
     getProjectsPageData, getProjectsTagsData,
 } from "@/utils/functions";
@@ -14,6 +14,7 @@ import Link from "next/link";
 import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import Tags from "@/components/Tags";
+import CallForm from "components/Forms/CallForm";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -21,6 +22,9 @@ export const getServerSideProps = async () => {
     const { projects } = await getProjectsData();
     const projectsTags = await getProjectsTagsData();
     const projectsPage = await getProjectsPageData(1);
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -28,7 +32,10 @@ export const getServerSideProps = async () => {
             ...page,
             ...projectsTags,
             ...projectsPage,
-            blogDataLength: projects.length
+            blogDataLength: projects.length,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 };
@@ -76,7 +83,11 @@ const Projects = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage="projects"
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

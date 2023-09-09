@@ -15,13 +15,13 @@ import phone from "@/public/icons/phone_footer.svg";
 export const getServerSideProps = async () => {
     const info = await getInfoData();
     const page = await getPageData("contacts");
-    const modal = await getModalData('consult_form');
+    const modalConsult = await getModalData('consult_form');
 
     return {
         props: {
             ...info,
             ...page,
-            ...modal
+            modalConsult
         }
     }
 }
@@ -38,7 +38,7 @@ const Contacts = ({ ...props }) => {
             <div className={cn.container}>
                 <h1>Контакты</h1>
                 <div className={cn.container__main}>
-                    <SmallContactForm socials={props.socials} modal={props.modal} />
+                    <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />
                     <div className={cn.container__main_house}>
                         {
                             props.page.contacts_main.map((item, index) => {
