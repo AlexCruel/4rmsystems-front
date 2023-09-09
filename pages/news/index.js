@@ -1,5 +1,5 @@
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getNewsData,
     getNewsPageData,
     getNewsTagsData,
@@ -25,6 +25,9 @@ export const getServerSideProps = async () => {
     const newsPage = await getNewsPageData(1);
     const newsTags = await getNewsTagsData();
     const nPinnedSec = await getNPinnedSecData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -33,7 +36,10 @@ export const getServerSideProps = async () => {
             ...newsTags,
             ...newsPage,
             ...nPinnedSec,
-            blogDataLength: news.length
+            blogDataLength: news.length,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -101,7 +107,11 @@ const News = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage="news"
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

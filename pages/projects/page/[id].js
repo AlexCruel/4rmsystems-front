@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getPageData,
     getProjectsData,
     getProjectsPageData,
@@ -68,6 +68,9 @@ export const getServerSideProps = async (context) => {
     const info = await getInfoData();
     const page = await getPageData("projects");
     const projectsTags = await getProjectsTagsData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -76,7 +79,10 @@ export const getServerSideProps = async (context) => {
             blogDataLength: projects.length,
             ...info,
             ...page,
-            ...projectsTags
+            ...projectsTags,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -119,7 +125,11 @@ const ProjectsPage = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage="projects"
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

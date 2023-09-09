@@ -2,7 +2,7 @@ import cn from "./styles.module.scss";
 import {
     getBlogData, getBlogPageData, getBlogTagsData,
     getBPinnedSecData,
-    getInfoData,
+    getInfoData, getModalData,
     getPageData
 } from "@/utils/functions";
 import {useState} from "react";
@@ -23,6 +23,9 @@ export const getServerSideProps = async () => {
     const blogPage = await getBlogPageData(1);
     const blogTags = await getBlogTagsData();
     const bPinnedSec = await getBPinnedSecData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -31,7 +34,10 @@ export const getServerSideProps = async () => {
             ...blogTags,
             ...blogPage,
             ...bPinnedSec,
-            blogDataLength: blog.length
+            blogDataLength: blog.length,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -99,7 +105,11 @@ const Blog = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage="blog"
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

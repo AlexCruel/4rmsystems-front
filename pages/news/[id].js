@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-    getInfoData, getNewsCardsData,
+    getInfoData, getModalData, getNewsCardsData,
     getNewsSingleData, getNSingleTagsData
 } from "@/utils/functions";
 import PageContactForm from "@/components/Forms/PageContactForm";
@@ -19,13 +19,19 @@ export const getServerSideProps = async (context) => {
     const info = await getInfoData();
     const newsCards = await getNewsCardsData();
     const nSingleTags = await getNSingleTagsData(newsSingle.id);
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
             newsSingle,
             ...info,
             ...newsCards,
-            ...nSingleTags
+            ...nSingleTags,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -51,7 +57,11 @@ const News = ({ ...props }) => {
                 </div>
             </div>
             <NewsCards news={props.newsCards} />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );
