@@ -49,6 +49,12 @@ body {
     font-size: 16px;
     border: none;
     border-radius: 5px;
+    outline: none;
+  }
+
+  .splide__pagination__page.is-active {
+    background: $main-color;
+    border: 1px solid $default-color;
   }
 
   //::selection {

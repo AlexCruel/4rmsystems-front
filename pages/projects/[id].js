@@ -2,7 +2,7 @@ import parse from "html-react-parser";
 import Head from "next/head";
 import cn from "./styles[id].module.scss";
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getProjectData,
     getProjectsCardsData,
     getProjectsData, getProjectTagsData
@@ -55,13 +55,17 @@ export const getServerSideProps = async (context) => {
     const info = await getInfoData();
     const projectsCards = await getProjectsCardsData();
     const projectTags = await getProjectTagsData(project.id);
+    const modalContact = await getModalData('contact_form');
+    const modalCall = await getModalData('call_form');
 
     return {
         props: {
             project,
             ...info,
             ...projectsCards,
-            ...projectTags
+            ...projectTags,
+            modalContact,
+            modalCall
         }
     }
 }
@@ -74,7 +78,7 @@ const Project = ({ ...props }) => {
                 <meta name="keywords" content="" />
                 <meta name="description" content="" />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.project.title}</h1>
@@ -92,7 +96,7 @@ const Project = ({ ...props }) => {
                 </div>
             </div>
             <ProjectsCards projects={props.projectsCards} />
-            <ContactForm />
+            <ContactForm modal={props.modalContact.modal} />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

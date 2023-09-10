@@ -5,7 +5,7 @@ import {
     getCatalog,
     getFooterMenu,
     getInfo,
-    getInformation,
+    getInformation, getModal,
     getNews, getNewsCards,
     getNewsComp,
     getNewsPage, getNewsSingle, getNewsTags, getNPinnedSec, getNSingleTags,
@@ -22,7 +22,7 @@ import {
     getTagPage,
     getTagProjects,
     getTagsProjectsCount
-} from "@/pages/api/hello";
+} from "@/pages/api/content";
 
 export const getInfoData = async () => {
     const info = await getInfo();
@@ -319,5 +319,13 @@ export const getTagBlogsPageData = async (tag_id, id) => {
 
     return {
         tagBlogsPage
+    };
+}
+
+export const getModalData = async (type) => {
+    const modal = await getModal(type);
+
+    return {
+        modal
     };
 }

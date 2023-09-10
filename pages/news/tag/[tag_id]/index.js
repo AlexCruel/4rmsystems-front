@@ -1,5 +1,5 @@
 import {
-    getInfoData, getNewsTagsData, getNPinnedSecData,
+    getInfoData, getModalData, getNewsTagsData, getNPinnedSecData,
     getTagNewsData, getTagNewsPageData,
 } from "@/utils/functions";
 import {useState} from "react";
@@ -21,6 +21,9 @@ export const getServerSideProps = async (context) => {
     const info = await getInfoData();
     const newsTags = await getNewsTagsData();
     const nPinnedSec = await getNPinnedSecData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -29,7 +32,10 @@ export const getServerSideProps = async (context) => {
             ...newsTags,
             blogDataLength: tagNews.length,
             ...tagNewsPage,
-            ...nPinnedSec
+            ...nPinnedSec,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -42,7 +48,7 @@ const NewsTag = ({ ...props }) => {
 
     return (
         <>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Новости</h1>
                 <Tags type="news" tags={props.newsTags} />
@@ -95,7 +101,11 @@ const NewsTag = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage={`news/tag/${props.tag_id}`}
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

@@ -73,6 +73,7 @@
 
     .contact__form__policy {
       display: flex;
+      flex-direction: row;
       align-items: center;
 
       label {
@@ -86,13 +87,22 @@
         height: 16px;
         margin-right: 10px;
       }
+
+      .policy_error {
+        color: red;
+      }
+    }
+
+    .input_error {
+      margin: -2px;
+      border: 2px solid red;
     }
 
     button {
       width: 180px;
       height: 35px;
+      margin: auto;
 
-      margin-top: 20px;
       font-weight: lighter;
     }
 

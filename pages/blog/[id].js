@@ -1,7 +1,7 @@
 import {
     getBlogCardsData,
     getBlogSingleData, getBSingleTagsData,
-    getInfoData
+    getInfoData, getModalData
 } from "@/utils/functions";
 import Head from "next/head";
 import Header from "@/components/Header";
@@ -19,14 +19,20 @@ export const getServerSideProps = async (context) => {
     const { blogSingle } = await getBlogSingleData(id);
     const info = await getInfoData();
     const blogCards = await getBlogCardsData();
-    const bSingleTags = await getBSingleTagsData(blogSingle.id)
+    const bSingleTags = await getBSingleTagsData(blogSingle.id);
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
             blogSingle,
             ...info,
             ...blogCards,
-            ...bSingleTags
+            ...bSingleTags,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -39,7 +45,7 @@ const Blog = ({ ...props }) => {
                 <meta name="keywords" content="" />
                 <meta name="description" content="" />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.blogSingle.title}</h1>
@@ -52,7 +58,11 @@ const Blog = ({ ...props }) => {
                 </div>
             </div>
             <BlogCards blogs={props.blogCards} />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

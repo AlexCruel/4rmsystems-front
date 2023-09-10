@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getPageData,
     getProjectsTagsData,
     getTagPageData,
@@ -61,6 +61,9 @@ export const getServerSideProps = async (context) => {
     const info = await getInfoData();
     const page = await getPageData("projects");
     const projectsTags = await getProjectsTagsData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -69,7 +72,10 @@ export const getServerSideProps = async (context) => {
             ...page,
             ...projectsTags,
             blogDataLength: tagProjects.length,
-            ...tagPage
+            ...tagPage,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -82,7 +88,7 @@ const ProjectsTag = ({ ...props }) => {
 
     return (
         <>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
                 <Tags type="projects" tags={props.projectsTags} />
@@ -121,7 +127,11 @@ const ProjectsTag = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage={`projects/tag/${props.tag_id}`}
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

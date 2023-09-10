@@ -2,7 +2,7 @@ import {useState} from "react";
 import {
     getBlogData,
     getBlogPageData, getBlogTagsData, getBPinnedSecData,
-    getInfoData,
+    getInfoData, getModalData,
     getPageData
 } from "@/utils/functions";
 import Head from "next/head";
@@ -25,6 +25,9 @@ export const getServerSideProps = async (context) => {
     const page = await getPageData("blog");
     const blogTags = await getBlogTagsData();
     const bPinnedSec = await getBPinnedSecData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -34,7 +37,10 @@ export const getServerSideProps = async (context) => {
             ...info,
             ...page,
             ...blogTags,
-            ...bPinnedSec
+            ...bPinnedSec,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 }
@@ -52,7 +58,7 @@ const BlogPage = ({ ...props }) => {
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Статьи</h1>
                 <Tags type="blog" tags={props.blogTags} />
@@ -102,7 +108,11 @@ const BlogPage = ({ ...props }) => {
                 setCurrentPage={setCurrentPage}
                 typePage="blog"
             />
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

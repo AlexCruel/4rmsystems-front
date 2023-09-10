@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
     getInfoData,
-    getInformationData, getNewsCompData,
+    getInformationData, getModalData, getNewsCompData,
     getPageData,
     getPartnerData
 } from "@/utils/functions";
@@ -23,6 +23,9 @@ export const getServerSideProps = async () => {
     const partner = await getPartnerData();
     const page = await getPageData("company");
     const newsComponent = await getNewsCompData();
+    const modalSubscription = await getModalData('subscription_form');
+    const modalCall = await getModalData('call_form');
+    const modalQuestion = await getModalData('question_form');
 
     return {
         props: {
@@ -30,7 +33,10 @@ export const getServerSideProps = async () => {
             ...information,
             ...partner,
             ...page,
-            ...newsComponent
+            ...newsComponent,
+            modalSubscription,
+            modalCall,
+            modalQuestion
         }
     }
 };
@@ -43,7 +49,7 @@ const Company = ({ ...props }) => {
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.page.name}</h1>
@@ -77,7 +83,11 @@ const Company = ({ ...props }) => {
                     </ul>
                 </div>
             </div>
-            <PageContactForm />
+            <PageContactForm
+                modalSubscription={props.modalSubscription.modal}
+                modalCall={props.modalCall.modal}
+                modalQuestion={props.modalQuestion.modal}
+            />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
     );

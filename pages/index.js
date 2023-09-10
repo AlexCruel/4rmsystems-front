@@ -15,7 +15,7 @@ import {
     getAboutData,
     getInformationData,
     getPartnerData,
-    getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData
+    getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData, getModalData
 } from "@/utils/functions";
 import {useState} from "react";
 import BlogComponent from "@/components/Blog";
@@ -30,6 +30,8 @@ export const getServerSideProps = async () => {
     const projectsComponent = await getProjectsComponentData();
     const blogsComponent = await getBlogsCompData();
     const newsComponent = await getNewsCompData();
+    const modalContact = await getModalData('contact_form');
+    const modalCall = await getModalData('call_form');
 
     return {
         props: {
@@ -41,7 +43,9 @@ export const getServerSideProps = async () => {
             ...catalog,
             ...projectsComponent,
             ...blogsComponent,
-            ...newsComponent
+            ...newsComponent,
+            modalContact,
+            modalCall
         }
     }
 };
@@ -60,7 +64,7 @@ const Home = ({ ...props }) => {
               <meta name="keywords" content="" />
               <meta name="description" content="" />
           </Head>
-          <Header phones={props.info.phone_items} />
+          <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
           <Banner banners={props.banner} />
           <Catalog catalog={props.catalog} />
           <About about={props.about} />
@@ -74,7 +78,7 @@ const Home = ({ ...props }) => {
           <Partner partner={props.partner} />
           <ProjectsSlider projects={props.projectsComponent} />
           <Map />
-          <ContactForm />
+          <ContactForm modal={props.modalContact.modal} />
           <Footer info={props.info} menu={props.menu} socials={props.socials} />
       </>
   );

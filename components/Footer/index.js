@@ -33,7 +33,7 @@ const Footer = ({info, menu, socials}) => {
                                 return (
                                     <li key={index}>
                                         <Image src={phone} alt="Phone" />
-                                        <a href="#">{item.phone}</a>
+                                        <a href={`tel:${item.phone}`}>{item.phone}</a>
                                     </li>
                                 );
                             })}
@@ -41,7 +41,7 @@ const Footer = ({info, menu, socials}) => {
                                 return (
                                     <li key={index}>
                                         <Image src={mail} alt="Mail" />
-                                        <a href="#">{item.email}</a>
+                                        <a href={`mailto:${item.email}`}>{item.email}</a>
                                     </li>
                                 );
                             })}

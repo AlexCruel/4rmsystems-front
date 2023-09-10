@@ -1,6 +1,6 @@
 import Map from "@/components/Map";
 import {
-    getInfoData,
+    getInfoData, getModalData,
     getPageData
 } from "@/utils/functions";
 import Head from "next/head";
@@ -15,11 +15,15 @@ import phone from "@/public/icons/phone_footer.svg";
 export const getServerSideProps = async () => {
     const info = await getInfoData();
     const page = await getPageData("contacts");
+    const modalConsult = await getModalData('consult_form');
+    const modalCall = await getModalData('call_form');
 
     return {
         props: {
             ...info,
-            ...page
+            ...page,
+            modalConsult,
+            modalCall
         }
     }
 }
@@ -32,11 +36,11 @@ const Contacts = ({ ...props }) => {
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
             </Head>
-            <Header phones={props.info.phone_items} />
+            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Контакты</h1>
                 <div className={cn.container__main}>
-                    <SmallContactForm socials={props.socials} />
+                    <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />
                     <div className={cn.container__main_house}>
                         {
                             props.page.contacts_main.map((item, index) => {
@@ -49,7 +53,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={phone} alt="Phone" />
-                                                            <a href="#">{item.phone}</a>
+                                                            <a href={`tel:${item.phone}`}>{item.phone}</a>
                                                         </div>
                                                     );
                                                 })
@@ -59,7 +63,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={mail} alt="Mail" />
-                                                            <a href="#">{item.email}</a>
+                                                            <a href={`mailto:${item.email}`}>{item.email}</a>
                                                         </div>
                                                     );
                                                 })
@@ -88,7 +92,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={phone} alt="Phone" />
-                                                            <a href="#">{item.phone}</a>
+                                                            <a href={`tel:${item.phone}`}>{item.phone}</a>
                                                         </div>
                                                     );
                                                 })
@@ -98,7 +102,7 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={mail} alt="Mail" />
-                                                            <a href="#">{item.email}</a>
+                                                            <a href={`mailto:${item.email}`}>{item.email}</a>
                                                         </div>
                                                     );
                                                 })
