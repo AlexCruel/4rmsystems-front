@@ -11,6 +11,7 @@ import cn from "./styles.module.scss";
 import mail from "@/public/icons/mail_footer.svg";
 import Image from "next/image";
 import phone from "@/public/icons/phone_footer.svg";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -39,6 +40,7 @@ const Contacts = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Контакты</h1>
+                <Breadcrumbs title={props.page.name} />
                 <div className={cn.container__main}>
                     <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />
                     <div className={cn.container__main_house}>

@@ -1,7 +1,7 @@
 import {
     getBlogCardsData,
     getBlogSingleData, getBSingleTagsData,
-    getInfoData, getModalData
+    getInfoData, getModalData, getPageData
 } from "@/utils/functions";
 import Head from "next/head";
 import Header from "@/components/Header";
@@ -12,6 +12,7 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import cn from "./styles[id].module.scss";
 import BlogCards from "@/components/Blog/BlogCards";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
@@ -23,6 +24,7 @@ export const getServerSideProps = async (context) => {
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
+    const page = await getPageData("blog");
 
     return {
         props: {
@@ -30,6 +32,7 @@ export const getServerSideProps = async (context) => {
             ...info,
             ...blogCards,
             ...bSingleTags,
+            ...page,
             modalSubscription,
             modalCall,
             modalQuestion
@@ -49,6 +52,7 @@ const Blog = ({ ...props }) => {
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.blogSingle.title}</h1>
+                    <Breadcrumbs pre_title={props.page.name} title={props.blogSingle.title} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="blog" tags={props.bSingleTags} />

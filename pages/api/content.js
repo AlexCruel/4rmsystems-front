@@ -245,3 +245,15 @@ export const getModal = async(type) => {
 
   return await request.json();
 }
+
+export const getProjectsTagName = async(slug) => {
+  const request = await fetch(`${url}/projects/tag-name/${slug}`);
+
+  return await request.json();
+}
+
+export const getBlogTagName = async(slug) => {
+  const request = await fetch(`${url}/blog/tag-name/${slug}`);
+
+  return await request.json();
+}

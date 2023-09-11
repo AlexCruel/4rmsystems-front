@@ -17,6 +17,7 @@ import Image from "next/image";
 import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -60,6 +61,7 @@ const News = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Новости</h1>
+                <Breadcrumbs title={props.page.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>

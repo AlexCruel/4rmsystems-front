@@ -11,6 +11,7 @@ import Partner from "@/components/Partner";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Information from "@/components/Information";
 import {info} from "sass";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -46,6 +47,7 @@ const Production = ({ ...props }) => {
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.page.name}</h1>
+                    <Breadcrumbs title={props.page.name} />
                 </div>
                 <div className={cn.container__text}>
                     {parse(props.page.pre_content)}

@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {
+    getBlogTagNameData,
     getBlogTagsData,
     getBPinnedSecData,
-    getInfoData, getModalData,
+    getInfoData, getModalData, getPageData,
     getTagBlogsData, getTagBlogsPageData
 } from "@/utils/functions";
 import Header from "@/components/Header";
@@ -14,6 +15,7 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { tag_id, id } = context.params;
@@ -26,6 +28,8 @@ export const getServerSideProps = async (context) => {
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
+    const page = await getPageData("blog");
+    const tagName = await getBlogTagNameData(tag_id);
 
     return {
         props: {
@@ -36,6 +40,8 @@ export const getServerSideProps = async (context) => {
             ...blogTags,
             ...tagBlogsPage,
             ...bPinnedSec,
+            ...page,
+            ...tagName,
             modalSubscription,
             modalCall,
             modalQuestion
@@ -54,6 +60,7 @@ const BlogPageTag = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Статьи</h1>
+                <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>

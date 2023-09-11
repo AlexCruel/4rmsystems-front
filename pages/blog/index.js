@@ -15,6 +15,7 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -58,6 +59,7 @@ const Blog = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Статьи</h1>
+                <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>

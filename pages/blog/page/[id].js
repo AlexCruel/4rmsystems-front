@@ -15,6 +15,7 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
@@ -61,6 +62,7 @@ const BlogPage = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Статьи</h1>
+                <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>

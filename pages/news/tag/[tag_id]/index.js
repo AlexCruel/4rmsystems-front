@@ -1,5 +1,6 @@
 import {
-    getInfoData, getModalData, getNewsTagsData, getNPinnedSecData,
+    getBlogTagNameData,
+    getInfoData, getModalData, getNewsTagsData, getNPinnedSecData, getPageData,
     getTagNewsData, getTagNewsPageData,
 } from "@/utils/functions";
 import {useState} from "react";
@@ -12,6 +13,7 @@ import Tags from "@/components/Tags";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { tag_id } = context.params;
@@ -24,6 +26,8 @@ export const getServerSideProps = async (context) => {
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
+    const tagName = await getBlogTagNameData(tag_id);
+    const page = await getPageData("news");
 
     return {
         props: {
@@ -33,6 +37,8 @@ export const getServerSideProps = async (context) => {
             blogDataLength: tagNews.length,
             ...tagNewsPage,
             ...nPinnedSec,
+            ...tagName,
+            ...page,
             modalSubscription,
             modalCall,
             modalQuestion
@@ -51,6 +57,7 @@ const NewsTag = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Новости</h1>
+                <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>

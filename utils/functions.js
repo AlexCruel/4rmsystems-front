@@ -1,7 +1,7 @@
 import {
     getAbout,
     getBanner, getBlog, getBlogCards,
-    getBlogComp, getBlogPage, getBlogSingle, getBlogTags, getBPinnedSec, getBSingleTags,
+    getBlogComp, getBlogPage, getBlogSingle, getBlogTagName, getBlogTags, getBPinnedSec, getBSingleTags,
     getCatalog,
     getFooterMenu,
     getInfo,
@@ -15,7 +15,7 @@ import {
     getProjects,
     getProjectsCards,
     getProjectsComponent,
-    getProjectsPage,
+    getProjectsPage, getProjectsTagName,
     getProjectsTags,
     getProjectTags,
     getSocials, getTagBlogs, getTagBlogsPage, getTagNews, getTagNewsPage,
@@ -327,5 +327,21 @@ export const getModalData = async (type) => {
 
     return {
         modal
+    };
+}
+
+export const getProjectsTagNameData = async (slug) => {
+    const tagName = await getProjectsTagName(slug);
+
+    return {
+        tagName
+    };
+}
+
+export const getBlogTagNameData = async (slug) => {
+    const tagName = await getBlogTagName(slug);
+
+    return {
+        tagName
     };
 }
