@@ -15,6 +15,7 @@ import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import Tags from "@/components/Tags";
 import CallForm from "components/Forms/CallForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -56,6 +57,7 @@ const Projects = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
+                <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>

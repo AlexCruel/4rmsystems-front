@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 import chevron_right from "../../public/icons/chevron_right.svg";
 import chevron_up from "../../public/icons/chevron_up.svg";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async () => {
     const info = await getInfoData();
@@ -46,6 +47,7 @@ const FAQ = ({ ...props }) => {
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.page.name}</h1>
+                    <Breadcrumbs title={props.page.name} />
                 </div>
                 <div className={cn.container__text}>
                     {parse(props.page.content)}

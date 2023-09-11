@@ -16,6 +16,7 @@ import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // export const getStaticPaths = async () => {
 //     const pageCount = [];
@@ -98,6 +99,7 @@ const ProjectsPage = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
+                <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>

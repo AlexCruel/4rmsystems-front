@@ -2,7 +2,7 @@ import parse from "html-react-parser";
 import Head from "next/head";
 import cn from "./styles[id].module.scss";
 import {
-    getInfoData, getModalData,
+    getInfoData, getModalData, getPageData,
     getProjectData,
     getProjectsCardsData,
     getProjectsData, getProjectTagsData
@@ -14,6 +14,7 @@ import Image from "next/image";
 import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
 import Tags from "@/components/Tags";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // export const getStaticPaths = async () => {
 //     const { projects } = await getProjectsData();
@@ -50,6 +51,7 @@ import Tags from "@/components/Tags";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
+    console.log(context.params)
 
     const { project } = await getProjectData(id);
     const info = await getInfoData();
@@ -57,6 +59,7 @@ export const getServerSideProps = async (context) => {
     const projectTags = await getProjectTagsData(project.id);
     const modalContact = await getModalData('contact_form');
     const modalCall = await getModalData('call_form');
+    const page = await getPageData("projects");
 
     return {
         props: {
@@ -64,13 +67,15 @@ export const getServerSideProps = async (context) => {
             ...info,
             ...projectsCards,
             ...projectTags,
+            ...page,
             modalContact,
-            modalCall
+            modalCall,
         }
     }
 }
 
 const Project = ({ ...props }) => {
+    console.log(props.project)
     return (
         <>
             <Head>
@@ -82,6 +87,7 @@ const Project = ({ ...props }) => {
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.project.title}</h1>
+                    <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
                 <Image
                     src={props.project.banner.url}

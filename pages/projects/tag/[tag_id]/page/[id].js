@@ -1,6 +1,6 @@
 import {
     getInfoData, getModalData,
-    getPageData, getProjectsTagsData,
+    getPageData, getProjectsTagNameData, getProjectsTagsData,
     getTagPageData,
     getTagProjectsData,
     getTagsData,
@@ -16,6 +16,7 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import Pagination from "@/components/Pagination";
 import {useState} from "react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // export const getStaticPaths = async () => {
 //     const blogsPerPage = 6;
@@ -68,6 +69,7 @@ export const getServerSideProps = async (context) => {
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
+    const tagName = await getProjectsTagNameData(tag_id);
 
     return {
         props: {
@@ -78,6 +80,7 @@ export const getServerSideProps = async (context) => {
             ...info,
             ...page,
             ...projectsTags,
+            ...tagName,
             modalSubscription,
             modalCall,
             modalQuestion
@@ -96,6 +99,7 @@ const ProjectsPageTag = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <h1>Проекты</h1>
+                <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>

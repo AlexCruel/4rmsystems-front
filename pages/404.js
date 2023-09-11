@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import cn from "./styles.module.scss";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getStaticProps = async () => {
     const info = await getInfoData();
@@ -20,6 +21,9 @@ const PageNotFound = ({ ...props }) => {
     return (
         <>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <div className={cn.breadcrumbs}>
+                <Breadcrumbs pre_title="404" title="404" />
+            </div>
             <div className={cn.container}>
                 <div className={cn.container_title}>Страница не найдена</div>
                 <div className={cn.container_subtitle}>Неверный URL-адрес или страница не существует</div>
