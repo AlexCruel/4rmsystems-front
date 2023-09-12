@@ -111,7 +111,7 @@ const ProjectsPageTag = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
-                                        src={parsedItem.url}
+                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${parsedItem.url}`}
                                         width={340}
                                         height={270}
                                         alt={parsedItem.alt} />

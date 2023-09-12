@@ -11,7 +11,7 @@ const About = ({ about }) => {
                     <Image
                         width="552"
                         height="400"
-                        src={about.banner.url}
+                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${about.banner.url}`}
                         alt={about.banner.alt} />
                 </div>
                 <div className={cn.text}>
