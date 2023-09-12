@@ -11,9 +11,9 @@ const ProjectsCards = ({ projects }) => {
                         <Link key={index} href={`${item.slug}`}>
                             <div className={cn.container__cards_card}>
                                 <Image
-                                    src={item.image.url}
-                                    width={100}
-                                    height={100}
+                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
+                                    width={340}
+                                    height={270}
                                     alt={item.image.alt} />
                                 <p>{item.title}</p>
                             </div>

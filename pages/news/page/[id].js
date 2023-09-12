@@ -63,7 +63,7 @@ const NewsPage = ({ ...props }) => {
                 <div className={cn.container__pinned}>
                     <div className={cn.image}>
                         <Image
-                            src={props.nPinnedSec.image.url}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image.url}`}
                             alt={props.nPinnedSec.image.alt}
                             width={570}
                             height={361}
@@ -85,7 +85,7 @@ const NewsPage = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <div className={cn.cards_card_image}>
                                     <Image
-                                        src={item.image.url}
+                                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={340}
                                         height={270}
                                         alt={item.image.alt} />

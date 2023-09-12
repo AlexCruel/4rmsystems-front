@@ -26,7 +26,7 @@ const BlogNews = ({ className, newsComponent }) => {
                                 <Link href={`news/${item.slug}`}>
                                     <div className={cn.slide}>
                                         <Image
-                                            src={item.image.url}
+                                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                             alt={item.image.alt}
                                             width={100}
                                             height={100}

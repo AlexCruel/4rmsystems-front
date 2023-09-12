@@ -53,7 +53,7 @@ const Production = ({ ...props }) => {
                     {parse(props.page.pre_content)}
                 </div>
                 <Image
-                    src={props.page.banner.url}
+                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`}
                     layout="responsive"
                     width={1000}
                     height={300}

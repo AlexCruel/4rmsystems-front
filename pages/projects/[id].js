@@ -90,7 +90,7 @@ const Project = ({ ...props }) => {
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
                 <Image
-                    src={props.project.banner.url}
+                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}
                     layout="responsive"
                     width={1000}
                     height={300}
