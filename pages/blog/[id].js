@@ -16,6 +16,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
+    const resolvedUrl = context.resolvedUrl;
 
     const { blogSingle } = await getBlogSingleData(id);
     const info = await getInfoData();
@@ -35,30 +36,39 @@ export const getServerSideProps = async (context) => {
             ...page,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 }
 
 const Blog = ({ ...props }) => {
+    console.log(props.blogSingle)
+
     return (
         <>
             <Head>
-                <title></title>
-                <meta name="keywords" content="" />
-                <meta name="description" content="" />
+                <title>{props.blogSingle.seo_title}</title>
+                <meta name="keywords" content={props.blogSingle.seo_key} />
+                <meta name="description" content={props.blogSingle.seo_description} />
+                <meta property="og:title" content={props.blogSingle.seo_h1} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.blogSingle.image.url}`} />
+                <meta property="og:description" content={props.blogSingle.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
-                    <h1>{props.blogSingle.title}</h1>
+                    <h1>{props.blogSingle.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.blogSingle.title} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="blog" tags={props.bSingleTags} />
                     {parse(props.blogSingle.content)}
-                    <div className={cn.container__text_date}>{props.blogSingle.created_at}</div>
-                    <Socials socials={props.socials} />
+                    <div className={cn.container__text_date}>{props.blogSingle.created_at.split('T')[0]}</div>
+                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.blogSingle.title} />
                 </div>
             </div>
             <BlogCards blogs={props.blogCards} />

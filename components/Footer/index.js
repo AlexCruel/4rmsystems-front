@@ -21,13 +21,13 @@ const Footer = ({info, menu, socials}) => {
                         <div className={cn.logo_container_text}>Оборудование для современного ритейла</div>
                     </div>
                     <div className={cn.work_time}>
-                        <h5>Режим работы</h5>
+                        <div>Режим работы</div>
                         <ul>
                             <li>{info.work_time}</li>
                         </ul>
                     </div>
                     <div className={cn.contacts}>
-                        <h5>Контакты</h5>
+                        <div>Контакты</div>
                         <ul>
                             {info.phone_items?.map((item, index) => {
                                 return (
@@ -65,7 +65,7 @@ const Footer = ({info, menu, socials}) => {
                 {menu.map((section, index) => {
                     return (
                         <div key={index} className={cn.category}>
-                            <h5>{section.title}</h5>
+                            <div className={cn.category_title}>{section.title}</div>
                             <ul>
                                 {section.items.map((item, index) => {
                                     return (

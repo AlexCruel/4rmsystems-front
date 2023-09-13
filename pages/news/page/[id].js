@@ -17,9 +17,11 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
+    const resolvedUrl = context.resolvedUrl;
 
     const newsPage = await getNewsPageData(id);
     const { news } = await getNewsData();
@@ -42,7 +44,8 @@ export const getServerSideProps = async (context) => {
             ...nPinnedSec,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 }
@@ -55,9 +58,20 @@ const NewsPage = ({ ...props }) => {
 
     return (
         <>
+            <Head>
+                <title>{props.page.seo_title}</title>
+                <meta name="keywords" content={props.page.seo_key} />
+                <meta name="description" content={props.page.seo_description} />
+                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.image.url}`} />*/}
+                <meta property="og:description" content={props.page.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
+            </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Новости</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>
@@ -91,7 +105,7 @@ const NewsPage = ({ ...props }) => {
                                         alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title}>{item.title}</div>
-                                <div className={cn.cards_card_date}>{item.created_at}</div>
+                                <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
                                 <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
                             </div>
                         );

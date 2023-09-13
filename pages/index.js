@@ -15,12 +15,15 @@ import {
     getAboutData,
     getInformationData,
     getPartnerData,
-    getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData, getModalData
+    getCatalogData, getProjectsComponentData, getBlogsCompData, getNewsCompData, getModalData, getPageData
 } from "@/utils/functions";
 import {useState} from "react";
 import BlogComponent from "@/components/Blog";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+    const resolvedUrl = context.resolvedUrl;
+
+    const page = await getPageData("main");
     const info = await getInfoData();
     const banner = await getBannerData();
     const about = await getAboutData();
@@ -35,6 +38,7 @@ export const getServerSideProps = async () => {
 
     return {
         props: {
+            ...page,
             ...info,
             ...banner,
             ...about,
@@ -45,7 +49,8 @@ export const getServerSideProps = async () => {
             ...blogsComponent,
             ...newsComponent,
             modalContact,
-            modalCall
+            modalCall,
+            resolvedUrl
         }
     }
 };
@@ -60,9 +65,15 @@ const Home = ({ ...props }) => {
     return (
       <>
           <Head>
-              <title>Главная</title>
-              <meta name="keywords" content="" />
-              <meta name="description" content="" />
+              <title>{props.page.seo_title}</title>
+              <meta name="keywords" content={props.page.seo_key} />
+              <meta name="description" content={props.page.seo_description} />
+              <meta property="og:title" content={props.page.seo_h1} />
+              <meta property="og:type" content="website" />
+              <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+              {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />*/}
+              <meta property="og:description" content={props.page.seo_description} />
+              <meta property="og:site_name" content="4RM Systems" />
           </Head>
           <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
           <Banner banners={props.banner} />

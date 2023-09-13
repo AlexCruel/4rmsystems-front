@@ -17,7 +17,9 @@ import Tags from "@/components/Tags";
 import CallForm from "components/Forms/CallForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+    const resolvedUrl = context.resolvedUrl;
+
     const info = await getInfoData();
     const page = await getPageData("projects");
     const { projects } = await getProjectsData();
@@ -36,7 +38,8 @@ export const getServerSideProps = async () => {
             blogDataLength: projects.length,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 };
@@ -53,10 +56,16 @@ const Projects = ({ ...props }) => {
                 <title>{props.page.seo_title}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
+                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.image.url}`} />*/}
+                <meta property="og:description" content={props.page.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Проекты</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
