@@ -6,7 +6,9 @@ import cn from "./styles.module.scss";
 import parse from "html-react-parser";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+    const resolvedUrl = context.resolvedUrl;
+
     const info = await getInfoData();
     const page = await getPageData("privacy-policy");
     const modalCall = await getModalData('call_form');
@@ -15,7 +17,8 @@ export const getServerSideProps = async () => {
         props: {
             ...info,
             ...page,
-            modalCall
+            modalCall,
+            resolvedUrl
         }
     }
 };
@@ -27,6 +30,12 @@ const PrivacyPolicy = ({ ...props }) => {
                 <title>{props.page.seo_title}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
+                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />*/}
+                <meta property="og:description" content={props.page.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>

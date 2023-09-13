@@ -13,7 +13,9 @@ import Information from "@/components/Information";
 import {info} from "sass";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+    const resolvedUrl = context.resolvedUrl;
+
     const info = await getInfoData();
     const partner = await getPartnerData();
     const page = await getPageData("production");
@@ -30,7 +32,8 @@ export const getServerSideProps = async () => {
             ...information,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 };
@@ -42,6 +45,12 @@ const Production = ({ ...props }) => {
                 <title>{props.page.seo_title}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
+                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
+                <meta property="og:description" content={props.page.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>

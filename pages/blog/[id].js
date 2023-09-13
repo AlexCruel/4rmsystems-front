@@ -43,18 +43,20 @@ export const getServerSideProps = async (context) => {
 }
 
 const Blog = ({ ...props }) => {
+    console.log(props.blogSingle)
+
     return (
         <>
             <Head>
                 <title>{props.blogSingle.seo_title}</title>
                 <meta name="keywords" content={props.blogSingle.seo_key} />
                 <meta name="description" content={props.blogSingle.seo_description} />
-                <meta property="og:title" content={props.blogSingle.title} />
+                <meta property="og:title" content={props.blogSingle.seo_h1} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
-                <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
-                <meta property="og:description" content="https://ia.media-imdb.com/images/rock.jpg" />
-                <meta property="og:site_name" content="https://ia.media-imdb.com/images/rock.jpg" />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.blogSingle.image.url}`} />
+                <meta property="og:description" content={props.blogSingle.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>

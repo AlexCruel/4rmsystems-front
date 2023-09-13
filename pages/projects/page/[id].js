@@ -64,6 +64,7 @@ import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
+    const resolvedUrl = context.resolvedUrl;
 
     const projectsPage = await getProjectsPageData(id);
     const { projects } = await getProjectsData();
@@ -84,7 +85,8 @@ export const getServerSideProps = async (context) => {
             ...projectsTags,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 }
@@ -101,6 +103,12 @@ const ProjectsPage = ({ ...props }) => {
                 <title>{props.page.seo_title}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
+                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.image.url}`} />*/}
+                <meta property="og:description" content={props.page.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>

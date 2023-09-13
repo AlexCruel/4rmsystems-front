@@ -20,6 +20,7 @@ import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { tag_id, id } = context.params;
+    const resolvedUrl = context.resolvedUrl;
 
     const { tagBlogs } = await getTagBlogsData(tag_id);
     const tagBlogsPage = await getTagBlogsPageData(tag_id, id);
@@ -45,7 +46,8 @@ export const getServerSideProps = async (context) => {
             ...tagName,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 }
@@ -62,6 +64,12 @@ const BlogPageTag = ({ ...props }) => {
                 <title>{props.tagName.seo_title_blog}</title>
                 <meta name="keywords" content={props.tagName.seo_key_blog} />
                 <meta name="description" content={props.tagName.seo_description_blog} />
+                <meta property="og:title" content={props.tagName.seo_h1} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
+                {/*<meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.image.url}`} />*/}
+                <meta property="og:description" content={props.tagName.seo_description} />
+                <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
