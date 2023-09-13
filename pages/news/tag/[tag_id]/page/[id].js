@@ -18,6 +18,7 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import {useState} from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { tag_id, id } = context.params;
@@ -59,9 +60,14 @@ const NewsPageTag = ({ ...props }) => {
 
     return (
         <>
+            <Head>
+                <title>{props.tagName.seo_title_news}</title>
+                <meta name="keywords" content={props.tagName.seo_key_news} />
+                <meta name="description" content={props.tagName.seo_description_news} />
+            </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Новости</h1>
+                <h1>{props.tagName.seo_h1_news}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>

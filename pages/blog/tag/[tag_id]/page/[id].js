@@ -16,6 +16,7 @@ import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { tag_id, id } = context.params;
@@ -57,9 +58,14 @@ const BlogPageTag = ({ ...props }) => {
 
     return (
         <>
+            <Head>
+                <title>{props.tagName.seo_title_blog}</title>
+                <meta name="keywords" content={props.tagName.seo_key_blog} />
+                <meta name="description" content={props.tagName.seo_description_blog} />
+            </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Статьи</h1>
+                <h1>{props.tagName.seo_h1_blog}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned}>
