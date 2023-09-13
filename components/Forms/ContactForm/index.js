@@ -30,7 +30,7 @@ const ContactForm = ({ modal }) => {
                 <div className={cn.contact__info}>
                     <div>
                         <p className={cn.contact__info_question}>Нужна консультация?</p>
-                        <p className={cn.contact__info_action}>Заполните форму, и мы свяжемся с вами.</p>
+                        <p className={cn.contact__info_action}>Заполните форму и мы свяжемся с вами.</p>
                         <p>
                             4RM Systems предлагаем сегодня то,
                             что понадобится ритейлу завтра.
@@ -40,8 +40,8 @@ const ContactForm = ({ modal }) => {
                         </p>
                     </div>
                     <div>
-                        <p><a>+375 (44) 504-14-01</a></p>
-                        <p><a>info@4rm.com</a></p>
+                        <p><a href='tel:+375445041401'>+375 (44) 504-14-01</a></p>
+                        <p><a href='mailto:info@4rm.org'>info@4rm.com</a></p>
                     </div>
                 </div>
                 <div className={cn.contact__form}>

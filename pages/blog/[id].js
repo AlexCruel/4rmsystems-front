@@ -57,7 +57,7 @@ const Blog = ({ ...props }) => {
                 <div className={cn.container__text}>
                     <Tags type="blog" tags={props.bSingleTags} />
                     {parse(props.blogSingle.content)}
-                    <div className={cn.container__text_date}>{props.blogSingle.created_at}</div>
+                    <div className={cn.container__text_date}>{props.blogSingle.created_at.split('T')[0]}</div>
                     <Socials socials={props.socials} />
                 </div>
             </div>

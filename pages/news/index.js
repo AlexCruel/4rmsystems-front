@@ -94,7 +94,7 @@ const News = ({ ...props }) => {
                                         alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title}>{item.title}</div>
-                                <div className={cn.cards_card_date}>{item.created_at}</div>
+                                <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
                                 <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
                             </div>
                         );
