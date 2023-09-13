@@ -3,6 +3,9 @@ import {useForm} from "react-hook-form";
 import {getModal, postFeedback} from "@/pages/api/application";
 import {useState} from "react";
 import SubmitModal from "@/components/Modals/SubmitModal";
+import Image from "next/image";
+import phone_black from "@/public/icons/phone_black.svg";
+import mail_black from "@/public/icons/mail_black.svg";
 
 const ContactForm = ({ modal }) => {
     const {
@@ -39,9 +42,9 @@ const ContactForm = ({ modal }) => {
                             Команда поддержки на связи!
                         </p>
                     </div>
-                    <div>
-                        <p><a href='tel:+375445041401'>+375 (44) 504-14-01</a></p>
-                        <p><a href='mailto:info@4rm.org'>info@4rm.com</a></p>
+                    <div className={cn.contact__info__contacts}>
+                        <p><Image src={phone_black} alt="Phone" /><a href='tel:+375445041401'>+375 (44) 504-14-01</a></p>
+                        <p><Image src={mail_black} alt="Mail" /><a href='mailto:info@4rm.org'>info@4rm.com</a></p>
                     </div>
                 </div>
                 <div className={cn.contact__form}>

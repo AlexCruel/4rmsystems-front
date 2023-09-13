@@ -61,7 +61,7 @@ const BlogPage = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Статьи</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned}>

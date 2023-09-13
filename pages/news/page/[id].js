@@ -17,6 +17,7 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
@@ -55,9 +56,14 @@ const NewsPage = ({ ...props }) => {
 
     return (
         <>
+            <Head>
+                <title>{props.page.seo_title}</title>
+                <meta name="keywords" content={props.page.seo_key} />
+                <meta name="description" content={props.page.seo_description} />
+            </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Новости</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>

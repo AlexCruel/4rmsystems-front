@@ -39,7 +39,7 @@ const Contacts = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Контакты</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <div className={cn.container__main}>
                     <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />

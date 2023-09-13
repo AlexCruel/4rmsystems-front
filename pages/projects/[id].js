@@ -51,7 +51,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
-    console.log(context.params)
+    const resolvedUrl = context.resolvedUrl;
 
     const { project } = await getProjectData(id);
     const info = await getInfoData();
@@ -70,23 +70,23 @@ export const getServerSideProps = async (context) => {
             ...page,
             modalContact,
             modalCall,
+            resolvedUrl
         }
     }
 }
 
 const Project = ({ ...props }) => {
-    console.log(props.project)
     return (
         <>
             <Head>
-                <title></title>
-                <meta name="keywords" content="" />
-                <meta name="description" content="" />
+                <title>{props.project.seo_title}</title>
+                <meta name="keywords" content={props.project.seo_key} />
+                <meta name="description" content={props.project.seo_description} />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
-                    <h1>{props.project.title}</h1>
+                    <h1>{props.project.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
                 <Image
@@ -98,7 +98,7 @@ const Project = ({ ...props }) => {
                 <div className={cn.container__text}>
                     <Tags type="projects" tags={props.projectTags} />
                     {parse(props.project.content)}
-                    <Socials socials={props.socials} />
+                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.project.title} />
                 </div>
             </div>
             <ProjectsCards projects={props.projectsCards} />

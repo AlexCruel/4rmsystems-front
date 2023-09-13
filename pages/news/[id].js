@@ -15,6 +15,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getServerSideProps = async (context) => {
     const { id } = context.params;
+    const resolvedUrl = context.resolvedUrl;
 
     const { newsSingle } = await getNewsSingleData(id);
     const info = await getInfoData();
@@ -34,7 +35,8 @@ export const getServerSideProps = async (context) => {
             ...page,
             modalSubscription,
             modalCall,
-            modalQuestion
+            modalQuestion,
+            resolvedUrl
         }
     }
 }
@@ -43,21 +45,21 @@ const News = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title></title>
-                <meta name="keywords" content="" />
-                <meta name="description" content="" />
+                <title>{props.newsSingle.seo_title}</title>
+                <meta name="keywords" content={props.newsSingle.seo_key} />
+                <meta name="description" content={props.newsSingle.seo_description} />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
-                    <h1>{props.newsSingle.title}</h1>
+                    <h1>{props.newsSingle.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.newsSingle.title} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="news" tags={props.nSingleTags} />
                     {parse(props.newsSingle.content)}
                     <div className={cn.container__text_date}>{props.newsSingle.created_at.split('T')[0]}</div>
-                    <Socials socials={props.socials} />
+                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.newsSingle.title} />
                 </div>
             </div>
             <NewsCards news={props.newsCards} />

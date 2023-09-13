@@ -60,7 +60,7 @@ const News = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Новости</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="news" tags={props.newsTags} />
                 <div className={cn.container__pinned}>

@@ -56,7 +56,7 @@ const Projects = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Проекты</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>

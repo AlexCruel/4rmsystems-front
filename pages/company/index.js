@@ -53,7 +53,7 @@ const Company = ({ ...props }) => {
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
-                    <h1>{props.page.name}</h1>
+                    <h1>{props.page.seo_h1}</h1>
                     <Breadcrumbs title={props.page.name} />
                 </div>
                 <div className={cn.container__text}>

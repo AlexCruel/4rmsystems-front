@@ -17,6 +17,7 @@ import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
 
 // export const getStaticPaths = async () => {
 //     const pageCount = [];
@@ -96,9 +97,14 @@ const ProjectsPage = ({ ...props }) => {
 
     return (
         <>
+            <Head>
+                <title>{props.page.seo_title}</title>
+                <meta name="keywords" content={props.page.seo_key} />
+                <meta name="description" content={props.page.seo_description} />
+            </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container}>
-                <h1>Проекты</h1>
+                <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
                 <div>{parse(props.page.pre_content)}</div>
