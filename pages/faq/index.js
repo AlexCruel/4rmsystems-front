@@ -61,14 +61,14 @@ const FAQ = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>
-                <div className={cn.container__text}>
+                <div className={cn.container__text} itemscope itemtype="https://schema.org/FAQPage">
                     {
                         props.page.accordion.map((item, index) => {
                             return (
-                                <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()}>
+                                <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
                                     <hr />
                                     <div className={cn.accordion__text_block} onClick={activeTabHandler} id={index.toString()}>
-                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()}>
+                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()} itemProp="name">
                                             {item.title}
                                         </div>
                                         <Image
@@ -76,8 +76,8 @@ const FAQ = ({ ...props }) => {
                                             onClick={activeTabHandler} id={index.toString()}
                                             alt="Chevron" />
                                     </div>
-                                    <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible}>
-                                        {parse(item.description)}
+                                    <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible} itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">
+                                        <span itemProp="text">{parse(item.description)}</span>
                                     </div>
                                 </div>
                             );
