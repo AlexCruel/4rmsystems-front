@@ -17,7 +17,7 @@ const Header = ({phones, modal}) => {
     const [callForm, setCallForm] = useState(false);
 
     return (
-        <nav className={cn.nav}>
+        <nav className={cn.nav} itemScope itemType="http://schema.org/SiteNavigationElement">
             <Link href="/" className={cn.logo_link}>
                 <div className={cn.logo_container}>
                     <Image src={logo} alt='4RM SYSTEMS' />
@@ -43,9 +43,9 @@ const Header = ({phones, modal}) => {
                 <div className={cn.menu}>
                     <ul>
                         {/*<li><a href="#">Каталог</a></li>*/}
-                        <li><Link href="/projects">Проекты</Link></li>
-                        <li><Link href="/company">О компании</Link></li>
-                        <li><Link href="/contacts">Контакты</Link></li>
+                        <li><Link href="/projects" itemProp="url"><span itemProp="name">Проекты</span></Link></li>
+                        <li><Link href="/company" itemProp="url"><span itemProp="name">О компании</span></Link></li>
+                        <li><Link href="/contacts" itemProp="url"><span itemProp="name">Контакты</span></Link></li>
                     </ul>
                 </div>
                 <div className={cn.call}>

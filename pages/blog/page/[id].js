@@ -68,13 +68,14 @@ const BlogPage = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
-                <h1>{props.page.seo_h1}</h1>
+            <div className={cn.container} itemScope itemType="https://schema.org/BlogPosting">
+                <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
-                <div className={cn.container__pinned}>
+                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.image}>
                         <Image
+                            itemProp="contentUrl"
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
                             alt={props.bPinnedSec.image.alt}
                             width={570}
@@ -82,10 +83,10 @@ const BlogPage = ({ ...props }) => {
                         />
                     </div>
                     <div className={cn.pinned}>
-                        <div className={cn.pinned__title}>
+                        <div className={cn.pinned__title} itemProp="headline">
                             {props.bPinnedSec.title}
                         </div>
-                        <div className={cn.pinned__text}>
+                        <div className={cn.pinned__text} itemProp="text">
                             {parse(props.bPinnedSec.pre_content)}
                         </div>
                         <Link href={`/blog/${props.bPinnedSec.slug}`}><button>Подробнее</button></Link>
@@ -94,16 +95,17 @@ const BlogPage = ({ ...props }) => {
                 <div className={cn.container__cards}>
                     {props.blogPage.map((item, index) => {
                         return (
-                            <div key={index} className={cn.container__cards_card}>
+                            <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <div className={cn.cards_card_image}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={340}
                                         height={270}
                                         alt={item.image.alt} />
                                 </div>
-                                <div className={cn.cards_card_title}>{item.title}</div>
-                                <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
+                                <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
+                                <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
                                 <Link href={`/blog/${item.slug}`}><button>Подробнее</button></Link>
                             </div>
                         );

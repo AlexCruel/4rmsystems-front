@@ -6,7 +6,7 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
     return (
         <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
-                <div className={cn.modal__container_content}>
+                <div className={cn.modal__container_content} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.content__title}>Кассовые зоны</div>
                     <Splide options={{
                         type: 'slide',
@@ -28,12 +28,13 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
                             return (
                                 <SplideSlide key={index}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={650}
                                         height={425}
                                         alt={item.alt}
                                     />
-                                    <p>{item.description}</p>
+                                    <p itemProp="text">{item.description}</p>
                                 </SplideSlide>
                             );
                         })}

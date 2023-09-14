@@ -106,11 +106,11 @@ const ProjectsTag = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
-                <h1>{props.tagName.seo_h1}</h1>
+            <div className={cn.container} itemScope itemType="https://schema.org/Article">
+                <h1 itemProp="headline">{props.tagName.seo_h1}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="projects" tags={props.projectsTags} />
-                <div>
+                <div itemProp="articleBody">
                     {props.tagPage.length !== 0
                         ? parse(props.page.pre_content)
                         : ""}
@@ -122,14 +122,15 @@ const ProjectsTag = ({ ...props }) => {
                             const parsedItem = JSON.parse(item.image)
 
                             return (
-                            <div key={index} className={cn.container__cards_card}>
+                            <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${parsedItem.url}`}
                                         width={340}
                                         height={270}
                                         alt={parsedItem.alt} />
-                                    <p>{item.title}</p>
+                                    <p itemProp="headline">{item.title}</p>
                                 </Link>
                             </div>
                         );

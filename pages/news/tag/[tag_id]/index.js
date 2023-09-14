@@ -69,13 +69,14 @@ const NewsTag = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
-                <h1>{props.tagName.seo_h1_news}</h1>
+            <div className={cn.container} itemScope itemType="https://schema.org/NewsArticle">
+                <h1 itemProp="headline">{props.tagName.seo_h1_news}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="news" tags={props.newsTags} />
-                <div className={cn.container__pinned}>
+                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.image}>
                         <Image
+                            itemProp="contentUrl"
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image.url}`}
                             alt={props.nPinnedSec.image.alt}
                             width={570}
@@ -83,16 +84,16 @@ const NewsTag = ({ ...props }) => {
                         />
                     </div>
                     <div className={cn.pinned}>
-                        <div className={cn.pinned__title}>
+                        <div className={cn.pinned__title} itemProp="headline">
                             {props.nPinnedSec.title}
                         </div>
-                        <div className={cn.pinned__text}>
+                        <div className={cn.pinned__text} itemProp="text">
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
                         <Link href={`/news/${props.nPinnedSec.slug}`}><button>Подробнее</button></Link>
                     </div>
                 </div>
-                <div className={cn.container__cards}>
+                <div className={cn.container__cards} itemScope itemType="https://schema.org/ImageObject">
                     {props.tagNewsPage.map((item, index) => {
 
                         const parsedItem = JSON.parse(item.image)
@@ -101,13 +102,14 @@ const NewsTag = ({ ...props }) => {
                             <div key={index} className={cn.container__cards_card}>
                                 <div className={cn.cards_card_image}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${parsedItem.url}`}
                                         width={340}
                                         height={270}
                                         alt={parsedItem.alt} />
                                 </div>
-                                <div className={cn.cards_card_title}>{item.title}</div>
-                                <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
+                                <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
+                                <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
                                 <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
                             </div>
                         );

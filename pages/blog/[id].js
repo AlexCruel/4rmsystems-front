@@ -59,15 +59,15 @@ const Blog = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/BlogPosting">
                 <div className={cn.container__text}>
-                    <h1>{props.blogSingle.seo_h1}</h1>
+                    <h1 itemProp="headline">{props.blogSingle.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.blogSingle.title} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="blog" tags={props.bSingleTags} />
-                    {parse(props.blogSingle.content)}
-                    <div className={cn.container__text_date}>{props.blogSingle.created_at.split('T')[0]}</div>
+                    <span itemProp="articleBody">{parse(props.blogSingle.content)}</span>
+                    <div className={cn.container__text_date} itemProp="datePublished">{props.blogSingle.created_at.split('T')[0]}</div>
                     <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.blogSingle.title} />
                 </div>
             </div>

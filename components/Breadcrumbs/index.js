@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import Link from "next/link";
+import cn from "./styles.module.scss";
 
 const Breadcrumbs = ({ pre_title, title }) => {
     const router = useRouter();
@@ -42,29 +43,37 @@ const Breadcrumbs = ({ pre_title, title }) => {
     const breadcrumbs = generateBreadcrumbs();
 
     return (
-        <>
+        <ol className={cn.container} itemScope itemType="https://schema.org/BreadcrumbList">
             {breadcrumbs.map((crumb, idx) => (
                 <Crumb {...crumb} key={idx} first={idx === 0} last={idx === breadcrumbs.length - 1} />
             ))}
-        </>
+        </ol>
     );
 }
 
 function Crumb({ title, pre_title, href, first = false, last= false }) {
     if (last) {
-        return <span>&nbsp;/&nbsp;{title}</span>
+        return (
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                &nbsp;/&nbsp;
+                <span itemProp="name">{title}</span>
+            </li>
+        );
     }
 
     if (first) {
         return (
-            <Link href={href}>{title}</Link>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link href={href} itemProp="item"><span itemProp="name">{title}</span></Link>
+            </li>
         );
     }
 
     return (
-        <>
-            &nbsp;/&nbsp;<Link href={href}>{pre_title}</Link>
-        </>
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            &nbsp;/&nbsp;
+            <Link href={href} itemProp="item"><span itemProp="name">{pre_title}</span></Link>
+        </li>
     );
 }
 

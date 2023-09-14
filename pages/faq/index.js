@@ -53,7 +53,7 @@ const FAQ = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/FAQPage">
                 <div className={cn.container__text}>
                     <h1>{props.page.seo_h1}</h1>
                     <Breadcrumbs title={props.page.name} />
@@ -65,10 +65,10 @@ const FAQ = ({ ...props }) => {
                     {
                         props.page.accordion.map((item, index) => {
                             return (
-                                <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()}>
+                                <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
                                     <hr />
                                     <div className={cn.accordion__text_block} onClick={activeTabHandler} id={index.toString()}>
-                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()}>
+                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()} itemProp="name">
                                             {item.title}
                                         </div>
                                         <Image
@@ -76,8 +76,8 @@ const FAQ = ({ ...props }) => {
                                             onClick={activeTabHandler} id={index.toString()}
                                             alt="Chevron" />
                                     </div>
-                                    <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible}>
-                                        {parse(item.description)}
+                                    <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible} itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">
+                                        <span itemProp="text">{parse(item.description)}</span>
                                     </div>
                                 </div>
                             );

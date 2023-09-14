@@ -47,7 +47,7 @@ const Contacts = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/Organization">
                 <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <div className={cn.container__main}>
@@ -57,14 +57,14 @@ const Contacts = ({ ...props }) => {
                             props.page.contacts_main.map((item, index) => {
                                 return (
                                     <div key={index}>
-                                        <div className={cn.house_title}>{item.title}</div>
+                                        <div className={cn.house_title} itemProp="name">{item.title}</div>
                                         <div className={cn.house_contacts}>
                                             {
                                                 item.phone_items?.map((item, index) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={phone} alt="Phone" />
-                                                            <a href={`tel:${item.phone}`}>{item.phone}</a>
+                                                            <a href={`tel:${item.phone}`} itemProp="telephone">{item.phone}</a>
                                                         </div>
                                                     );
                                                 })
@@ -74,13 +74,13 @@ const Contacts = ({ ...props }) => {
                                                     return (
                                                         <div key={index} className={cn.contacts_item}>
                                                             <Image src={mail} alt="Mail" />
-                                                            <a href={`mailto:${item.email}`}>{item.email}</a>
+                                                            <a href={`mailto:${item.email}`} itemProp="email">{item.email}</a>
                                                         </div>
                                                     );
                                                 })
                                             }
                                         </div>
-                                        <div className={cn.house_text}>
+                                        <div className={cn.house_text} itemProp="address">
                                             {item.description}
                                         </div>
                                     </div>

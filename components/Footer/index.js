@@ -13,9 +13,9 @@ import parse from "html-react-parser";
 
 const Footer = ({info, menu, socials}) => {
     return (
-        <footer className={cn.footer}>
+        <footer className={cn.footer} itemScope itemType="http://schema.org/SiteNavigationElement">
             <div className={cn.footer_container}>
-                <div className={cn.info}>
+                <div className={cn.info} itemScope itemType="https://schema.org/Organization">
                     <div className={cn.logo_container}>
                         <div><Image src={logo} alt="Logo" /></div>
                         <div className={cn.logo_container_text}>Оборудование для современного ритейла</div>
@@ -31,7 +31,7 @@ const Footer = ({info, menu, socials}) => {
                         <ul>
                             {info.phone_items?.map((item, index) => {
                                 return (
-                                    <li key={index}>
+                                    <li key={index} itemProp="telephone">
                                         <Image src={phone} alt="Phone" />
                                         <a href={`tel:${item.phone}`}>{item.phone}</a>
                                     </li>
@@ -39,7 +39,7 @@ const Footer = ({info, menu, socials}) => {
                             })}
                             {info.email_items?.map((item, index) => {
                                 return (
-                                    <li key={index}>
+                                    <li key={index} itemProp="email">
                                         <Image src={mail} alt="Mail" />
                                         <a href={`mailto:${item.email}`}>{item.email}</a>
                                     </li>
@@ -48,8 +48,7 @@ const Footer = ({info, menu, socials}) => {
                         </ul>
                     </div>
                     <div className={cn.company}>
-                        {parse(`${info.company_name}`)}
-
+                        <span itemProp="name">{parse(`${info.company_name}`)}</span>
                     </div>
                     <div className={cn.rights}>
                         {parse(`${info.copyright}`)}
@@ -69,7 +68,7 @@ const Footer = ({info, menu, socials}) => {
                             <ul>
                                 {section.items.map((item, index) => {
                                     return (
-                                        <li key={index}><Link href={item.url}>{item.name}</Link></li>
+                                        <li key={index}><Link href={item.url} itemProp="url"><span itemProp="name">{item.name}</span></Link></li>
                                     );
                                 })}
                             </ul>

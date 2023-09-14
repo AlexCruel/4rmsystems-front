@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Banner = ({ banners }) => {
     return (
-        <div className={cn.banner_container}>
+        <div className={cn.banner_container} itemScope itemType="https://schema.org/ImageObject">
             <Splide options={{
                 type: 'slide',
                 perPage: 1,
@@ -26,6 +26,7 @@ const Banner = ({ banners }) => {
                         <SplideSlide key={index}>
                             <Link href={`${item.url}`}>
                                 <Image
+                                    itemProp="contentUrl"
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                     layout="responsive"
                                     width={100}
