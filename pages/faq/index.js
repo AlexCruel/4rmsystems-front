@@ -53,7 +53,7 @@ const FAQ = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/FAQPage">
                 <div className={cn.container__text}>
                     <h1>{props.page.seo_h1}</h1>
                     <Breadcrumbs title={props.page.name} />
@@ -61,7 +61,7 @@ const FAQ = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>
-                <div className={cn.container__text} itemscope itemtype="https://schema.org/FAQPage">
+                <div className={cn.container__text}>
                     {
                         props.page.accordion.map((item, index) => {
                             return (

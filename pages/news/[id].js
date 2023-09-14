@@ -56,15 +56,15 @@ const News = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/NewsArticle">
                 <div className={cn.container__text}>
-                    <h1>{props.newsSingle.seo_h1}</h1>
+                    <h1 itemProp="headline">{props.newsSingle.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.newsSingle.title} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="news" tags={props.nSingleTags} />
-                    {parse(props.newsSingle.content)}
-                    <div className={cn.container__text_date}>{props.newsSingle.created_at.split('T')[0]}</div>
+                    <span itemProp="articleBody">{parse(props.newsSingle.content)}</span>
+                    <div className={cn.container__text_date} itemProp="datePublished" content={props.newsSingle.created_at.split('T')[0]}>{props.newsSingle.created_at.split('T')[0]}</div>
                     <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.newsSingle.title} />
                 </div>
             </div>
