@@ -90,20 +90,23 @@ const Project = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
+            <div className={cn.container} itemScope itemType="https://schema.org/Article">
                 <div className={cn.container__text}>
-                    <h1>{props.project.seo_h1}</h1>
+                    <h1 itemProp="headline">{props.project.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
-                <Image
-                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}
-                    layout="responsive"
-                    width={1000}
-                    height={300}
-                    alt={props.project.banner.alt} />
+                <div itemScope itemType="https://schema.org/ImageObject">
+                    <Image
+                        itemProp="contentUrl"
+                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}
+                        layout="responsive"
+                        width={1000}
+                        height={300}
+                        alt={props.project.banner.alt} />
+                </div>
                 <div className={cn.container__text}>
                     <Tags type="projects" tags={props.projectTags} />
-                    {parse(props.project.content)}
+                    <span itemProp="articleBody">{parse(props.project.content)}</span>
                     <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.project.title} />
                 </div>
             </div>

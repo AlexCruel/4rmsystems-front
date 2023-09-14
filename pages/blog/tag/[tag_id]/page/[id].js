@@ -72,13 +72,14 @@ const BlogPageTag = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
-                <h1>{props.tagName.seo_h1_blog}</h1>
+            <div className={cn.container} itemScope itemType="https://schema.org/BlogPosting">
+                <h1 itemProp="headline">{props.tagName.seo_h1_blog}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="blog" tags={props.blogTags} />
-                <div className={cn.container__pinned}>
+                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.image}>
                         <Image
+                            itemProp="contentUrl"
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
                             alt={props.bPinnedSec.image.alt}
                             width={570}
@@ -86,10 +87,10 @@ const BlogPageTag = ({ ...props }) => {
                         />
                     </div>
                     <div className={cn.pinned}>
-                        <div className={cn.pinned__title}>
+                        <div className={cn.pinned__title} itemProp="headline">
                             {props.bPinnedSec.title}
                         </div>
-                        <div className={cn.pinned__text}>
+                        <div className={cn.pinned__text} itemProp="text">
                             {parse(props.bPinnedSec.pre_content)}
                         </div>
                         <Link href={`/blog/${props.bPinnedSec.slug}`}><button>Подробнее</button></Link>
@@ -101,16 +102,17 @@ const BlogPageTag = ({ ...props }) => {
                         const parsedItem = JSON.parse(item.image)
 
                         return (
-                            <div key={index} className={cn.container__cards_card}>
+                            <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <div className={cn.cards_card_image}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${parsedItem.url}`}
                                         width={340}
                                         height={270}
                                         alt={parsedItem.alt} />
                                 </div>
-                                <div className={cn.cards_card_title}>{item.title}</div>
-                                <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
+                                <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
+                                <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
                                 <Link href={`/blog/${item.slug}`}><button>Подробнее</button></Link>
                             </div>
                         );

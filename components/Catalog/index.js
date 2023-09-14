@@ -49,15 +49,16 @@ const Catalog = ({ catalog }) => {
                 {catalog.map((item, index) => {
                     return (
                         <SplideSlide onClick={clickCatalogHandler} key={index} style={{display: "flex", justifyContent: "center"}}>
-                            <div className={cn.slider__slide}>
+                            <div className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
                                 <Image
+                                    itemProp="contentUrl"
                                     id={item.id}
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                     width={295}
                                     height={276}
                                     alt={item.image.alt}
                                 />
-                                <p>{item.title}</p>
+                                <p itemProp="name">{item.title}</p>
                             </div>
                         </SplideSlide>
                     );

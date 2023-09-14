@@ -8,10 +8,11 @@ const Partner = ({ partner }) => {
             <div>
                 <h1>{partner.title}</h1>
             </div>
-            <div className={cn.logo}>
+            <div className={cn.logo} itemScope itemType="https://schema.org/ImageObject">
                 {partner.logo_items.map((item, index) => {
                     return (
                         <Image
+                            itemProp="contentUrl"
                             key={index}
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.logo}`}
                             width={110}

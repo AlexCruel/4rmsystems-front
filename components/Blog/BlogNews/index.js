@@ -24,14 +24,15 @@ const BlogNews = ({ className, newsComponent }) => {
                         return (
                             <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
                                 <Link href={`news/${item.slug}`}>
-                                    <div className={cn.slide}>
+                                    <div className={cn.slide} itemScope itemType="https://schema.org/ImageObject">
                                         <Image
+                                            itemProp="contentUrl"
                                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                             alt={item.image.alt}
                                             width={100}
                                             height={100}
                                         />
-                                        <div>{item.title}</div>
+                                        <div itemProp="headline">{item.title}</div>
                                     </div>
                                 </Link>
                             </SplideSlide>

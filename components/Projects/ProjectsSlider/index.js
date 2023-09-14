@@ -28,13 +28,14 @@ const ProjectsSlider = ({ projects }) => {
                     return (
                         <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
                             <Link href={`projects/${item.slug}`}>
-                                <div className={cn.slider__cards}>
+                                <div className={cn.slider__cards} itemScope itemType="https://schema.org/ImageObject">
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={340}
                                         height={270}
                                         alt={item.image.alt} />
-                                    <p>{item.title}</p>
+                                    <p itemProp="headline">{item.title}</p>
                                 </div>
                             </Link>
                         </SplideSlide>

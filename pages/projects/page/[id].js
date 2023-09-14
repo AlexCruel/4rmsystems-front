@@ -111,22 +111,23 @@ const ProjectsPage = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
-            <div className={cn.container}>
-                <h1>{props.page.seo_h1}</h1>
+            <div className={cn.container} itemScope itemType="https://schema.org/Article">
+                <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="projects" tags={props.projectsTags} />
-                <div>{parse(props.page.pre_content)}</div>
+                <div itemProp="articleBody">{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards}>
                     {props.projectsPage.map((item, index) => {
                         return (
-                            <div key={index} className={cn.container__cards_card}>
+                            <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <Link href={`/projects/${item.slug}`}>
                                     <Image
+                                        itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={340}
                                         height={270}
                                         alt={item.image.alt} />
-                                    <p>{item.title}</p>
+                                    <p itemProp="headline">{item.title}</p>
                                 </Link>
                             </div>
                         );
