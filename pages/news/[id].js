@@ -12,19 +12,20 @@ import Socials from "@/components/Socials";
 import cn from "./styles[id].module.scss";
 import NewsCards from "@/components/Blog/NewsCards";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { newsSingle } = await getNewsSingleData(id);
-    const info = await getInfoData();
-    const newsCards = await getNewsCardsData();
-    const nSingleTags = await getNSingleTagsData(newsSingle.id);
+    const { newsSingle } = await getNewsSingleData(id, lang);
+    const info = await getInfoData(lang);
+    const newsCards = await getNewsCardsData(lang);
+    const nSingleTags = await getNSingleTagsData(newsSingle.id, lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
-    const page = await getPageData("news");
+    const page = await getPageData("news", lang);
 
     return {
         props: {

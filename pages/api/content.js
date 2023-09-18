@@ -96,8 +96,8 @@ export const getProjectsTags = async(lang) => {
   return await request.json();
 }
 
-export const getNewsTags = async() => {
-  const request = await fetch(`${url}/news-tags`);
+export const getNewsTags = async(lang) => {
+  const request = await fetch(`${url}/news-tags/${lang}`);
 
   return await request.json();
 }
@@ -138,50 +138,50 @@ export const getNewsComp = async() => {
   return await request.json();
 }
 
-export const getNews = async() => {
-  const request = await fetch(`${url}/news`);
+export const getNews = async(lang) => {
+  const request = await fetch(`${url}/news/news/${lang}`);
 
   return await request.json();
 }
 
-export const getNewsPage = async(id) => {
-  const request = await fetch(`${url}/news/page/${id}`);
+export const getNewsPage = async(id, lang) => {
+  const request = await fetch(`${url}/news/page/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getNPinnedSec = async() => {
-  const request = await fetch(`${url}/news-pinned-secondary`);
+export const getNPinnedSec = async(lang) => {
+  const request = await fetch(`${url}/news-pinned-secondary/${lang}`);
 
   return await request.json();
 }
 
-export const getNewsSingle = async(slug) => {
-  const request = await fetch(`${url}/news/${slug}`);
+export const getNewsSingle = async(slug, lang) => {
+  const request = await fetch(`${url}/news/${slug}/${lang}`);
 
   return await request.json();
 }
 
-export const getNSingleTags = async(id) => {
-  const request = await fetch(`${url}/news-tags/${id}`);
+export const getNSingleTags = async(id, lang) => {
+  const request = await fetch(`${url}/news-tags/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getNewsCards = async() => {
-  const request = await fetch(`${url}/news-cards`);
+export const getNewsCards = async(lang) => {
+  const request = await fetch(`${url}/news-cards/${lang}`);
 
   return await request.json();
 }
 
-export const getTagNews = async(tag_id) => {
-  const request = await fetch(`${url}/news/tag/${tag_id}`);
+export const getTagNews = async(tag_id, lang) => {
+  const request = await fetch(`${url}/news/tag/${tag_id}/${lang}`);
 
   return await request.json();
 }
 
-export const getTagNewsPage = async(tag_id, id) => {
-  const request = await fetch(`${url}/news/tag/${tag_id}/page/${id}`);
+export const getTagNewsPage = async(tag_id, id, lang) => {
+  const request = await fetch(`${url}/news/tag/${tag_id}/page/${id}/${lang}`);
 
   return await request.json();
 }

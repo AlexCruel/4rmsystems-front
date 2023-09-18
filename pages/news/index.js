@@ -18,16 +18,17 @@ import {useState} from "react";
 import Pagination from "@/components/Pagination";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("news");
-    const { news } = await getNewsData();
-    const newsPage = await getNewsPageData(1);
-    const newsTags = await getNewsTagsData();
-    const nPinnedSec = await getNPinnedSecData();
+    const info = await getInfoData(lang);
+    const page = await getPageData("news", lang);
+    const { news } = await getNewsData(lang);
+    const newsPage = await getNewsPageData(1, lang);
+    const newsTags = await getNewsTagsData(lang);
+    const nPinnedSec = await getNPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');

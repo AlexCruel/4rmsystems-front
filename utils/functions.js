@@ -130,8 +130,8 @@ export const getProjectsTagsData = async (lang) => {
     };
 }
 
-export const getNewsTagsData = async () => {
-    const newsTags = await getNewsTags();
+export const getNewsTagsData = async (lang) => {
+    const newsTags = await getNewsTags(lang);
 
     return {
         newsTags
@@ -186,64 +186,64 @@ export const getNewsCompData = async () => {
     };
 }
 
-export const getNewsData = async () => {
-    const news = await getNews();
+export const getNewsData = async (lang) => {
+    const news = await getNews(lang);
 
     return {
         news
     };
 }
 
-export const getNewsPageData = async (id) => {
-    const newsPage = await getNewsPage(id);
+export const getNewsPageData = async (id, lang) => {
+    const newsPage = await getNewsPage(id, lang);
 
     return {
         newsPage
     };
 }
 
-export const getNPinnedSecData = async () => {
-    const nPinnedSec = await getNPinnedSec();
+export const getNPinnedSecData = async (lang) => {
+    const nPinnedSec = await getNPinnedSec(lang);
 
     return {
         nPinnedSec
     };
 }
 
-export const getNewsSingleData = async (slug) => {
-    const newsSingle = await getNewsSingle(slug);
+export const getNewsSingleData = async (slug, lang) => {
+    const newsSingle = await getNewsSingle(slug, lang);
 
     return {
         newsSingle
     };
 }
 
-export const getNSingleTagsData = async (id) => {
-    const nSingleTags = await getNSingleTags(id);
+export const getNSingleTagsData = async (id, lang) => {
+    const nSingleTags = await getNSingleTags(id, lang);
 
     return {
         nSingleTags
     };
 }
 
-export const getNewsCardsData = async () => {
-    const newsCards = await getNewsCards();
+export const getNewsCardsData = async (lang) => {
+    const newsCards = await getNewsCards(lang);
 
     return {
         newsCards
     };
 }
 
-export const getTagNewsData = async (tag_id) => {
-    const tagNews = await getTagNews(tag_id);
+export const getTagNewsData = async (tag_id, lang) => {
+    const tagNews = await getTagNews(tag_id, lang);
 
     return {
         tagNews
     };
 }
 
-export const getTagNewsPageData = async (tag_id, id) => {
-    const tagNewsPage = await getTagNewsPage(tag_id, id);
+export const getTagNewsPageData = async (tag_id, id, lang) => {
+    const tagNewsPage = await getTagNewsPage(tag_id, id, lang);
 
     return {
         tagNewsPage

@@ -18,17 +18,18 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const newsPage = await getNewsPageData(id);
-    const { news } = await getNewsData();
-    const info = await getInfoData();
-    const page = await getPageData("news");
-    const newsTags = await getNewsTagsData();
-    const nPinnedSec = await getNPinnedSecData();
+    const newsPage = await getNewsPageData(id, lang);
+    const { news } = await getNewsData(lang);
+    const info = await getInfoData(lang);
+    const page = await getPageData("news", lang);
+    const newsTags = await getNewsTagsData(lang);
+    const nPinnedSec = await getNPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
