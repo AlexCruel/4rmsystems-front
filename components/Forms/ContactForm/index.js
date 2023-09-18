@@ -6,6 +6,7 @@ import SubmitModal from "@/components/Modals/SubmitModal";
 import Image from "next/image";
 import phone_black from "@/public/icons/phone_black.svg";
 import mail_black from "@/public/icons/mail_black.svg";
+import {getCookie} from "cookies-next";
 
 const ContactForm = ({ modal }) => {
     const {
@@ -18,6 +19,7 @@ const ContactForm = ({ modal }) => {
     });
 
     const [modalActive, setModalActive] = useState(false);
+    const lang = getCookie('lang');
 
     const formHandler = async (data) => {
         const response = await postFeedback(JSON.stringify(data));
@@ -32,14 +34,17 @@ const ContactForm = ({ modal }) => {
             <div className={cn.contact}>
                 <div className={cn.contact__info}>
                     <div>
-                        <p className={cn.contact__info_question}>Нужна консультация?</p>
-                        <p className={cn.contact__info_action}>Заполните форму и мы свяжемся с вами.</p>
-                        <p>
-                            4RM Systems предлагаем сегодня то,
-                            что понадобится ритейлу завтра.
+                        <p className={cn.contact__info_question} suppressHydrationWarning>
+                            {lang === "ENG" ? "Need some advice?" : "Нужна консультация?"}
                         </p>
-                        <p>
-                            Команда поддержки на связи!
+                        <p className={cn.contact__info_action} suppressHydrationWarning>
+                            {lang === "ENG" ? "Fill out the form and we will contact you." : "Заполните форму и мы свяжемся с вами."}
+                        </p>
+                        <p suppressHydrationWarning>
+                            {lang === "ENG" ? "4RM Systems offer today what retail will need tomorrow." : "4RM Systems предлагаем сегодня то, что понадобится ритейлу завтра."}
+                        </p>
+                        <p suppressHydrationWarning>
+                            {lang === "ENG" ? "The support team is in touch!" : "Команда поддержки на связи!"}
                         </p>
                     </div>
                     <div className={cn.contact__info__contacts}>
@@ -49,14 +54,29 @@ const ContactForm = ({ modal }) => {
                 </div>
                 <div className={cn.contact__form}>
                     <form onSubmit={handleSubmit(formHandler)}>
-                        <p>Менеджер поддержки 4RM</p>
+                        <p suppressHydrationWarning>
+                            {lang === "ENG" ? "4RM Support Manager" : "Менеджер поддержки 4RM"}
+                        </p>
                         <div>
-                            <label>ФИО*</label>
-                            <input id="name" className={errors?.name ? cn.input_error : ""} type="text" placeholder={errors?.name ? "Введите ФИО" : "Иванов Иван Иванович"}
-                                   {...register("name", {required: true})} />
+                            <label suppressHydrationWarning>
+                                {lang === "ENG" ? "Full name*" : "ФИО*"}
+                            </label>
+                            <input id="name"
+                                   className={errors?.name ? cn.input_error : ""}
+                                   type="text"
+                                   placeholder={errors?.name
+                                       ?
+                                       lang === "ENG" ?
+                                           "Enter your full name" : "Введите ФИО"
+                                       : lang === "ENG" ?
+                                           "Steve Stevens" : "Иванов Иван Иванович"}
+                                   {...register("name", {required: true})}
+                                   suppressHydrationWarning />
                         </div>
                         <div>
-                            <label>Телефон*</label>
+                            <label suppressHydrationWarning>
+                                {lang === "ENG" ? "Phone*" : "Телефон*"}
+                            </label>
                             <input id="phone" className={errors?.phone ? cn.input_error : ""}
                                    pattern="[+0-9]+"
                                    title="+375112223344"
@@ -69,21 +89,36 @@ const ContactForm = ({ modal }) => {
                                    {...register("email", {required: true})} />
                         </div>
                         <div>
-                            <label>Сообщение*</label>
-                            <textarea id="message" className={errors?.message ? cn.input_error : ""} placeholder={errors?.message ? "Введите сообщение" : "Ваше сообщение..."}
-                                   {...register("message", {required: true})} />
+                            <label suppressHydrationWarning>
+                                {lang === "ENG" ? "Message*" : "Сообщение*"}
+                            </label>
+                            <textarea id="message"
+                                      className={errors?.message ? cn.input_error : ""}
+                                      placeholder={errors?.message ?
+                                          lang === "ENG" ?
+                                          "Enter your message" : "Введите сообщение"
+                                          : lang === "ENG" ?
+                                              "Your message..." : "Ваше сообщение..."}
+                                   {...register("message", {required: true})}
+                                      suppressHydrationWarning />
                         </div>
                         <div className={cn.contact__form__policy}>
                             <input id="policy" type="checkbox"
                                    {...register("policy", {required: true})} />
-                            <label className={errors?.policy ? cn.policy_error : ""}>
+                            <label className={errors?.policy ? cn.policy_error : ""} suppressHydrationWarning>
                                 {
-                                    errors?.policy ? "Подтвердите, что вы соглашаетесь с условиями обработки данных." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
+                                    errors?.policy ?
+                                        lang === "ENG" ?
+                                        "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
+                                        : lang === "ENG" ?
+                                            "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
                                 }
                             </label>
                         </div>
                         <div>
-                            <button>Отправить</button>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "Send" : "Отправить"}
+                            </button>
                         </div>
                     </form>
                 </div>

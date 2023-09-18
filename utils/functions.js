@@ -34,32 +34,32 @@ export const getInfoData = async (lang) => {
     };
 }
 
-export const getBannerData = async () => {
-    const banner = await getBanner();
+export const getBannerData = async (lang) => {
+    const banner = await getBanner(lang);
 
     return {
         banner
     };
 }
 
-export const getAboutData = async () => {
-    const about = await getAbout();
+export const getAboutData = async (lang) => {
+    const about = await getAbout(lang);
 
     return {
         about
     };
 }
 
-export const getInformationData = async (type) => {
-    const information = await getInformation(type);
+export const getInformationData = async (type, lang) => {
+    const information = await getInformation(type, lang);
 
     return {
         information
     };
 }
 
-export const getPartnerData = async () => {
-    const partner = await getPartner();
+export const getPartnerData = async (lang) => {
+    const partner = await getPartner(lang);
 
     return {
         partner
@@ -74,16 +74,16 @@ export const getPageData = async (code, lang) => {
     };
 }
 
-export const getCatalogData = async () => {
-    const catalog = await getCatalog();
+export const getCatalogData = async (lang) => {
+    const catalog = await getCatalog(lang);
 
     return {
         catalog
     };
 }
 
-export const getProjectsComponentData = async () => {
-    const projectsComponent = await getProjectsComponent();
+export const getProjectsComponentData = async (lang) => {
+    const projectsComponent = await getProjectsComponent(lang);
 
     return {
         projectsComponent
@@ -170,16 +170,16 @@ export const getProjectTagsData = async (id, lang) => {
     };
 }
 
-export const getBlogsCompData = async () => {
-    const blogsComponent = await getBlogComp();
+export const getBlogsCompData = async (lang) => {
+    const blogsComponent = await getBlogComp(lang);
 
     return {
         blogsComponent
     };
 }
 
-export const getNewsCompData = async () => {
-    const newsComponent = await getNewsComp();
+export const getNewsCompData = async (lang) => {
+    const newsComponent = await getNewsComp(lang);
 
     return {
         newsComponent

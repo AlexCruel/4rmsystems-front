@@ -24,26 +24,26 @@ export const getSocials = async() => {
   return await request.json();
 }
 
-export const getBanner = async() => {
-  const request = await fetch(`${url}/banner`);
+export const getBanner = async(lang) => {
+  const request = await fetch(`${url}/banner/${lang}`);
 
   return await request.json();
 }
 
-export const getAbout = async() => {
-  const request = await fetch(`${url}/about`);
+export const getAbout = async(lang) => {
+  const request = await fetch(`${url}/about/${lang}`);
 
   return await request.json();
 }
 
-export const getInformation = async(type) => {
-  const request = await fetch(`${url}/information/${type}`);
+export const getInformation = async(type, lang) => {
+  const request = await fetch(`${url}/information/${type}/${lang}`);
 
   return await request.json();
 }
 
-export const getPartner = async() => {
-  const request = await fetch(`${url}/partner`);
+export const getPartner = async(lang) => {
+  const request = await fetch(`${url}/partner/${lang}`);
 
   return await request.json();
 }
@@ -54,14 +54,14 @@ export const getPage = async(code, lang) => {
   return await request.json();
 }
 
-export const getCatalog = async() => {
-  const request = await fetch(`${url}/catalog`);
+export const getCatalog = async(lang) => {
+  const request = await fetch(`${url}/catalog/${lang}`);
 
   return await request.json();
 }
 
-export const getProjectsComponent = async() => {
-  const request = await fetch(`${url}/projects-component`);
+export const getProjectsComponent = async(lang) => {
+  const request = await fetch(`${url}/projects-component/${lang}`);
 
   return await request.json();
 }
@@ -126,14 +126,14 @@ export const getProjectTags = async(id, lang) => {
   return await request.json();
 }
 
-export const getBlogComp = async() => {
-  const request = await fetch(`${url}/blog-component/blogs`);
+export const getBlogComp = async(lang) => {
+  const request = await fetch(`${url}/blog-component/blogs/${lang}`);
 
   return await request.json();
 }
 
-export const getNewsComp = async() => {
-  const request = await fetch(`${url}/blog-component/news`);
+export const getNewsComp = async(lang) => {
+  const request = await fetch(`${url}/blog-component/news/${lang}`);
 
   return await request.json();
 }

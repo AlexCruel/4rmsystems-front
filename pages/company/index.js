@@ -23,10 +23,10 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     const lang = getCookie('lang', {req, res});
 
     const info = await getInfoData(lang);
-    const information = await getInformationData("main");
-    const partner = await getPartnerData();
+    const information = await getInformationData("main", lang);
+    const partner = await getPartnerData(lang);
     const page = await getPageData("company", lang);
-    const newsComponent = await getNewsCompData();
+    const newsComponent = await getNewsCompData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
