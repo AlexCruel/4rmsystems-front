@@ -57,7 +57,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
     const { project } = await getProjectData(id, lang);
     const info = await getInfoData(lang);
     const projectsCards = await getProjectsCardsData(lang);
-    const projectTags = await getProjectTagsData(project.id);
+    const projectTags = await getProjectTagsData(project.id, lang);
     const modalContact = await getModalData('contact_form');
     const modalCall = await getModalData('call_form');
     const page = await getPageData("projects", lang);

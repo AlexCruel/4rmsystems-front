@@ -120,8 +120,8 @@ export const getTagsProjectsCount = async() => {
   return await request.json();
 }
 
-export const getProjectTags = async(id) => {
-  const request = await fetch(`${url}/project-tags/${id}`);
+export const getProjectTags = async(id, lang) => {
+  const request = await fetch(`${url}/project-tags/${id}/${lang}`);
 
   return await request.json();
 }
@@ -186,56 +186,56 @@ export const getTagNewsPage = async(tag_id, id) => {
   return await request.json();
 }
 
-export const getBPinnedSec = async() => {
-  const request = await fetch(`${url}/blog-pinned-secondary`);
+export const getBPinnedSec = async(lang) => {
+  const request = await fetch(`${url}/blog-pinned-secondary/${lang}`);
 
   return await request.json();
 }
 
-export const getBlog= async() => {
-  const request = await fetch(`${url}/blog`);
+export const getBlog= async(lang) => {
+  const request = await fetch(`${url}/blogs/${lang}`);
 
   return await request.json();
 }
 
-export const getBlogPage = async(id) => {
-  const request = await fetch(`${url}/blog/page/${id}`);
+export const getBlogPage = async(id, lang) => {
+  const request = await fetch(`${url}/blog/page/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getBlogTags = async() => {
-  const request = await fetch(`${url}/blog-tags`);
+export const getBlogTags = async(lang) => {
+  const request = await fetch(`${url}/blog-tags/${lang}`);
 
   return await request.json();
 }
 
-export const getBlogSingle = async(slug) => {
-  const request = await fetch(`${url}/blog/${slug}`);
+export const getBlogSingle = async(slug, lang) => {
+  const request = await fetch(`${url}/blog/${slug}/${lang}`);
 
   return await request.json();
 }
 
-export const getBlogCards = async() => {
-  const request = await fetch(`${url}/blog-cards`);
+export const getBlogCards = async(lang) => {
+  const request = await fetch(`${url}/blog-cards/${lang}`);
 
   return await request.json();
 }
 
-export const getBSingleTags = async(id) => {
-  const request = await fetch(`${url}/blog-tags/${id}`);
+export const getBSingleTags = async(id, lang) => {
+  const request = await fetch(`${url}/blog-tags/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getTagBlogs = async(tag_id) => {
-  const request = await fetch(`${url}/blogs/tag/${tag_id}`);
+export const getTagBlogs = async(tag_id, lang) => {
+  const request = await fetch(`${url}/blogs/tag/${tag_id}/${lang}`);
 
   return await request.json();
 }
 
-export const getTagBlogsPage = async(tag_id, id) => {
-  const request = await fetch(`${url}/blogs/tag/${tag_id}/page/${id}`);
+export const getTagBlogsPage = async(tag_id, id, lang) => {
+  const request = await fetch(`${url}/blogs/tag/${tag_id}/page/${id}/${lang}`);
 
   return await request.json();
 }
@@ -252,8 +252,8 @@ export const getProjectsTagName = async(slug, lang) => {
   return await request.json();
 }
 
-export const getBlogTagName = async(slug) => {
-  const request = await fetch(`${url}/blog/tag-name/${slug}`);
+export const getBlogTagName = async(slug, lang) => {
+  const request = await fetch(`${url}/blog/tag-name/${slug}/${lang}`);
 
   return await request.json();
 }

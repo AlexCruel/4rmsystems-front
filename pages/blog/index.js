@@ -16,16 +16,17 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("blog");
-    const { blog } = await getBlogData();
-    const blogPage = await getBlogPageData(1);
-    const blogTags = await getBlogTagsData();
-    const bPinnedSec = await getBPinnedSecData();
+    const info = await getInfoData(lang);
+    const page = await getPageData("blog", lang);
+    const { blog } = await getBlogData(lang);
+    const blogPage = await getBlogPageData(1, lang);
+    const blogTags = await getBlogTagsData(lang);
+    const bPinnedSec = await getBPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');

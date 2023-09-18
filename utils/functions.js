@@ -162,8 +162,8 @@ export const getTagsProjectsCountData = async () => {
     };
 }
 
-export const getProjectTagsData = async (id) => {
-    const projectTags = await getProjectTags(id);
+export const getProjectTagsData = async (id, lang) => {
+    const projectTags = await getProjectTags(id, lang);
 
     return {
         projectTags
@@ -250,72 +250,72 @@ export const getTagNewsPageData = async (tag_id, id) => {
     };
 }
 
-export const getBPinnedSecData = async () => {
-    const bPinnedSec = await getBPinnedSec();
+export const getBPinnedSecData = async (lang) => {
+    const bPinnedSec = await getBPinnedSec(lang);
 
     return {
         bPinnedSec
     };
 }
 
-export const getBlogData = async () => {
-    const blog = await getBlog();
+export const getBlogData = async (lang) => {
+    const blog = await getBlog(lang);
 
     return {
         blog
     };
 }
 
-export const getBlogPageData = async (id) => {
-    const blogPage = await getBlogPage(id);
+export const getBlogPageData = async (id, lang) => {
+    const blogPage = await getBlogPage(id, lang);
 
     return {
         blogPage
     };
 }
 
-export const getBlogTagsData = async () => {
-    const blogTags = await getBlogTags();
+export const getBlogTagsData = async (lang) => {
+    const blogTags = await getBlogTags(lang);
 
     return {
         blogTags
     };
 }
 
-export const getBlogSingleData = async (slug) => {
-    const blogSingle = await getBlogSingle(slug);
+export const getBlogSingleData = async (slug, lang) => {
+    const blogSingle = await getBlogSingle(slug, lang);
 
     return {
         blogSingle
     };
 }
 
-export const getBlogCardsData = async () => {
-    const blogCards = await getBlogCards();
+export const getBlogCardsData = async (lang) => {
+    const blogCards = await getBlogCards(lang);
 
     return {
         blogCards
     };
 }
 
-export const getBSingleTagsData = async (id) => {
-    const bSingleTags = await getBSingleTags(id);
+export const getBSingleTagsData = async (id, lang) => {
+    const bSingleTags = await getBSingleTags(id, lang);
 
     return {
         bSingleTags
     };
 }
 
-export const getTagBlogsData = async (tag_id) => {
-    const tagBlogs = await getTagBlogs(tag_id);
+export const getTagBlogsData = async (tag_id, lang) => {
+    const tagBlogs = await getTagBlogs(tag_id, lang);
 
     return {
         tagBlogs
     };
 }
 
-export const getTagBlogsPageData = async (tag_id, id) => {
-    const tagBlogsPage = await getTagBlogsPage(tag_id, id);
+export const getTagBlogsPageData = async (tag_id, id, lang) => {
+    const tagBlogsPage = await getTagBlogsPage(tag_id, id, lang);
 
     return {
         tagBlogsPage
@@ -338,8 +338,8 @@ export const getProjectsTagNameData = async (slug, lang) => {
     };
 }
 
-export const getBlogTagNameData = async (slug) => {
-    const tagName = await getBlogTagName(slug);
+export const getBlogTagNameData = async (slug, lang) => {
+    const tagName = await getBlogTagName(slug, lang);
 
     return {
         tagName

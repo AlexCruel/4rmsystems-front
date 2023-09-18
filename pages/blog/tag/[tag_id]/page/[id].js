@@ -17,21 +17,22 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { tag_id, id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { tag_id, id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { tagBlogs } = await getTagBlogsData(tag_id);
-    const tagBlogsPage = await getTagBlogsPageData(tag_id, id);
-    const info = await getInfoData();
-    const blogTags = await getBlogTagsData();
-    const bPinnedSec = await getBPinnedSecData();
+    const { tagBlogs } = await getTagBlogsData(tag_id, lang);
+    const tagBlogsPage = await getTagBlogsPageData(tag_id, id, lang);
+    const info = await getInfoData(lang);
+    const blogTags = await getBlogTagsData(lang);
+    const bPinnedSec = await getBPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
-    const page = await getPageData("blog");
-    const tagName = await getBlogTagNameData(tag_id);
+    const page = await getPageData("blog", lang);
+    const tagName = await getBlogTagNameData(tag_id, lang);
 
     return {
         props: {
