@@ -24,9 +24,9 @@ import {
     getTagsProjectsCount
 } from "@/pages/api/content";
 
-export const getInfoData = async () => {
-    const info = await getInfo();
-    const menu = await getFooterMenu();
+export const getInfoData = async (lang) => {
+    const info = await getInfo(lang);
+    const menu = await getFooterMenu(lang);
     const socials = await getSocials();
 
     return {
@@ -66,8 +66,8 @@ export const getPartnerData = async () => {
     };
 }
 
-export const getPageData = async (code) => {
-    const page = await getPage(code);
+export const getPageData = async (code, lang) => {
+    const page = await getPage(code, lang);
 
     return {
         page
@@ -90,40 +90,40 @@ export const getProjectsComponentData = async () => {
     };
 }
 
-export const getProjectsCardsData = async () => {
-    const projectsCards = await getProjectsCards();
+export const getProjectsCardsData = async (lang) => {
+    const projectsCards = await getProjectsCards(lang);
 
     return {
         projectsCards
     };
 }
 
-export const getProjectsData = async () => {
-    const projects = await getProjects();
+export const getProjectsData = async (lang) => {
+    const projects = await getProjects(lang);
 
     return {
         projects
     };
 }
 
-export const getProjectData = async (slug) => {
-    const project = await getProject(slug);
+export const getProjectData = async (slug, lang) => {
+    const project = await getProject(slug, lang);
 
     return {
         project
     };
 }
 
-export const getProjectsPageData = async (id) => {
-    const projectsPage = await getProjectsPage(id);
+export const getProjectsPageData = async (id, lang) => {
+    const projectsPage = await getProjectsPage(id, lang);
 
     return {
         projectsPage
     };
 }
 
-export const getProjectsTagsData = async () => {
-    const projectsTags = await getProjectsTags();
+export const getProjectsTagsData = async (lang) => {
+    const projectsTags = await getProjectsTags(lang);
 
     return {
         projectsTags
@@ -138,16 +138,16 @@ export const getNewsTagsData = async () => {
     };
 }
 
-export const getTagPageData = async (tag_id, id) => {
-    const tagPage = await getTagPage(tag_id, id);
+export const getTagPageData = async (tag_id, id, lang) => {
+    const tagPage = await getTagPage(tag_id, id, lang);
 
     return {
         tagPage
     };
 }
 
-export const getTagProjectsData = async (tag_id) => {
-    const tagProjects = await getTagProjects(tag_id);
+export const getTagProjectsData = async (tag_id, lang) => {
+    const tagProjects = await getTagProjects(tag_id, lang);
 
     return {
         tagProjects
@@ -330,8 +330,8 @@ export const getModalData = async (type) => {
     };
 }
 
-export const getProjectsTagNameData = async (slug) => {
-    const tagName = await getProjectsTagName(slug);
+export const getProjectsTagNameData = async (slug, lang) => {
+    const tagName = await getProjectsTagName(slug, lang);
 
     return {
         tagName

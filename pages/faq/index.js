@@ -9,12 +9,13 @@ import chevron_right from "../../public/icons/chevron_right.svg";
 import chevron_up from "../../public/icons/chevron_up.svg";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("faq");
+    const info = await getInfoData(lang);
+    const page = await getPageData("faq", lang);
     const modalCall = await getModalData('call_form');
 
     return {
@@ -63,7 +64,7 @@ const FAQ = ({ ...props }) => {
                 </div>
                 <div className={cn.container__text}>
                     {
-                        props.page.accordion.map((item, index) => {
+                        props.page.accordion?.map((item, index) => {
                             return (
                                 <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
                                     <hr />

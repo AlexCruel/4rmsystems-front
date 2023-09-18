@@ -12,13 +12,14 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Information from "@/components/Information";
 import {info} from "sass";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
+    const info = await getInfoData(lang);
     const partner = await getPartnerData();
-    const page = await getPageData("production");
+    const page = await getPageData("production", lang);
     const information = await getInformationData("production");
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
@@ -74,7 +75,7 @@ const Production = ({ ...props }) => {
                 <Partner partner={props.partner} />
                 <div className={cn.container__text}>
                     <ul>
-                        {props.page.links.map((item, index) => {
+                        {props.page.links?.map((item, index) => {
                             return (
                                 <li key={index}>
                                     <Link href={`${item.link}`}>{item.name}

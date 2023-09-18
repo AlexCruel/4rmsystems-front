@@ -11,10 +11,25 @@ import close from "../../public/icons/close.svg";
 import {useState} from "react";
 import Link from "next/link";
 import CallForm from "@/components/Forms/CallForm";
+import { setCookie, getCookie } from 'cookies-next';
+import { useRouter } from 'next/router';
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
     const [callForm, setCallForm] = useState(false);
+
+    const router = useRouter();
+    const lang = getCookie('lang');
+
+    const localizationHandler = () => {
+        if (lang === "ENG") {
+            setCookie("lang", "RU");
+            router.push('/');
+        } else {
+            setCookie("lang", "ENG");
+            router.push('/');
+        }
+    }
 
     return (
         <nav className={cn.nav} itemScope itemType="http://schema.org/SiteNavigationElement">
@@ -43,18 +58,18 @@ const Header = ({phones, modal}) => {
                 <div className={cn.menu}>
                     <ul>
                         {/*<li><a href="#">Каталог</a></li>*/}
-                        <li><Link href="/projects" itemProp="url"><span itemProp="name">Проекты</span></Link></li>
-                        <li><Link href="/company" itemProp="url"><span itemProp="name">О компании</span></Link></li>
-                        <li><Link href="/contacts" itemProp="url"><span itemProp="name">Контакты</span></Link></li>
+                        <li><Link href="/projects" itemProp="url"><span itemProp="name" suppressHydrationWarning>{lang === "ENG" ? "Projects" : "Проекты"}</span></Link></li>
+                        <li><Link href="/company" itemProp="url"><span itemProp="name" suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</span></Link></li>
+                        <li><Link href="/contacts" itemProp="url"><span itemProp="name" suppressHydrationWarning>{lang === "ENG" ? "Contacts" : "Контакты"}</span></Link></li>
                     </ul>
                 </div>
                 <div className={cn.call}>
-                    <button onClick={() => setCallForm(true)}>ЗАКАЗАТЬ ЗВОНОК</button>
+                    <button onClick={() => setCallForm(true)} suppressHydrationWarning>{lang === "ENG" ? "REQUEST A CALL" : "ЗАКАЗАТЬ ЗВОНОК"}</button>
                 </div>
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <a><Image src={globe} alt="Globe" /></a>
+                    <a onClick={localizationHandler}><Image src={globe} alt="Globe" /></a>
                 </div>
             </div>
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>

@@ -17,14 +17,15 @@ import {
 import Head from "next/head";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
+    const info = await getInfoData(lang);
     const information = await getInformationData("main");
     const partner = await getPartnerData();
-    const page = await getPageData("company");
+    const page = await getPageData("company", lang);
     const newsComponent = await getNewsCompData();
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
@@ -82,7 +83,7 @@ const Company = ({ ...props }) => {
                 <BlogNews newsComponent={props.newsComponent} />
                 <div className={cn.container__text}>
                     <ul>
-                        {props.page.links.map((item, index) => {
+                        {props.page.links?.map((item, index) => {
                             return (
                                 <li key={index}>
                                     <Link href={`${item.link}`}>{item.name}

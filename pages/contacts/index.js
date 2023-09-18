@@ -12,12 +12,13 @@ import mail from "@/public/icons/mail_footer.svg";
 import Image from "next/image";
 import phone from "@/public/icons/phone_footer.svg";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res})
 
-    const info = await getInfoData();
-    const page = await getPageData("contacts");
+    const info = await getInfoData(lang);
+    const page = await getPageData("contacts", lang);
     const modalConsult = await getModalData('consult_form');
     const modalCall = await getModalData('call_form');
 
@@ -54,7 +55,7 @@ const Contacts = ({ ...props }) => {
                     <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />
                     <div className={cn.container__main_house}>
                         {
-                            props.page.contacts_main.map((item, index) => {
+                            props.page.contacts_main?.map((item, index) => {
                                 return (
                                     <div key={index}>
                                         <div className={cn.house_title} itemProp="name">{item.title}</div>
@@ -93,7 +94,7 @@ const Contacts = ({ ...props }) => {
                     <div className={cn.house_title}>Сервисные центры и партнеры</div>
                     <div className={cn.container__submain_items}>
                         {
-                            props.page.contacts_submain.map((item, index) => {
+                            props.page.contacts_submain?.map((item, index) => {
                                 return (
                                     <div key={index}>
                                         <div className={cn.house_title}>{item.title}</div>

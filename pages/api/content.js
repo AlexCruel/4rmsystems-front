@@ -6,14 +6,14 @@ export default function handler(req, res) {
   res.status(200).json({ name: 'John Doe' })
 }
 
-export const getInfo = async() => {
-  const request = await fetch(`${url}/info`);
+export const getInfo = async(lang) => {
+  const request = await fetch(`${url}/info/${lang}`);
 
   return await request.json();
 }
 
-export const getFooterMenu = async() => {
-  const request = await fetch(`${url}/footer-menu`);
+export const getFooterMenu = async(lang) => {
+  const request = await fetch(`${url}/footer-menu/${lang}`);
 
   return await request.json();
 }
@@ -48,8 +48,8 @@ export const getPartner = async() => {
   return await request.json();
 }
 
-export const getPage = async(code) => {
-  const request = await fetch(`${url}/page/${code}`);
+export const getPage = async(code, lang) => {
+  const request = await fetch(`${url}/page/${code}/${lang}`);
 
   return await request.json();
 }
@@ -66,32 +66,32 @@ export const getProjectsComponent = async() => {
   return await request.json();
 }
 
-export const getProjectsCards = async() => {
-  const request = await fetch(`${url}/projects-cards`);
+export const getProjectsCards = async(lang) => {
+  const request = await fetch(`${url}/projects-cards/${lang}`);
 
   return await request.json();
 }
 
-export const getProjects = async() => {
-  const request = await fetch(`${url}/projects`);
+export const getProjects = async(lang) => {
+  const request = await fetch(`${url}/projects/${lang}`);
 
   return await request.json();
 }
 
-export const getProject = async(slug) => {
-  const request = await fetch(`${url}/projects/${slug}`);
+export const getProject = async(slug, lang) => {
+  const request = await fetch(`${url}/projects/project/${slug}/${lang}`);
 
   return await request.json();
 }
 
-export const getProjectsPage = async(id) => {
-  const request = await fetch(`${url}/projects/page/${id}`);
+export const getProjectsPage = async(id, lang) => {
+  const request = await fetch(`${url}/projects/page/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getProjectsTags = async() => {
-  const request = await fetch(`${url}/projects-tags`);
+export const getProjectsTags = async(lang) => {
+  const request = await fetch(`${url}/projects-tags/${lang}`);
 
   return await request.json();
 }
@@ -102,14 +102,14 @@ export const getNewsTags = async() => {
   return await request.json();
 }
 
-export const getTagPage = async(tag_id, id) => {
-  const request = await fetch(`${url}/projects/tag/${tag_id}/page/${id}`);
+export const getTagPage = async(tag_id, id, lang) => {
+  const request = await fetch(`${url}/projects/tag/${tag_id}/page/${id}/${lang}`);
 
   return await request.json();
 }
 
-export const getTagProjects = async(tag_id) => {
-  const request = await fetch(`${url}/projects/tag/${tag_id}`);
+export const getTagProjects = async(tag_id, lang) => {
+  const request = await fetch(`${url}/projects/tag/${tag_id}/${lang}`);
 
   return await request.json();
 }
@@ -246,8 +246,8 @@ export const getModal = async(type) => {
   return await request.json();
 }
 
-export const getProjectsTagName = async(slug) => {
-  const request = await fetch(`${url}/projects/tag-name/${slug}`);
+export const getProjectsTagName = async(slug, lang) => {
+  const request = await fetch(`${url}/projects/tag-name/${slug}/${lang}`);
 
   return await request.json();
 }

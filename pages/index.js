@@ -19,12 +19,13 @@ import {
 } from "@/utils/functions";
 import {useState} from "react";
 import BlogComponent from "@/components/Blog";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
     const page = await getPageData("main");
-    const info = await getInfoData();
+    const info = await getInfoData(lang);
     const banner = await getBannerData();
     const about = await getAboutData();
     const information = await getInformationData("main");
