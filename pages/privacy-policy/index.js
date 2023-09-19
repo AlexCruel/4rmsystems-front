@@ -14,7 +14,7 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
 
     const info = await getInfoData(lang);
     const page = await getPageData("privacy-policy", lang);
-    const modalCall = await getModalData('call_form');
+    const modalCall = await getModalData('call_form', lang);
 
     return {
         props: {

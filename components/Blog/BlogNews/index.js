@@ -4,9 +4,9 @@ import '@splidejs/react-splide/css';
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogNews = ({ className, newsComponent }) => {
+const BlogNews = ({ newsComponent }) => {
     return (
-        <div className={className}>
+        <div>
             <Splide options={{
                 type: 'loop',
                 perPage: 4,

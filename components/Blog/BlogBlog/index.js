@@ -3,9 +3,9 @@ import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogBlog = ({ className, blogsComponent }) => {
+const BlogBlog = ({ blogsComponent }) => {
     return (
-        <div className={className}>
+        <div>
             <Splide options={{
                 type: 'loop',
                 perPage: 4,

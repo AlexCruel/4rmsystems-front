@@ -322,8 +322,8 @@ export const getTagBlogsPageData = async (tag_id, id, lang) => {
     };
 }
 
-export const getModalData = async (type) => {
-    const modal = await getModal(type);
+export const getModalData = async (type, lang) => {
+    const modal = await getModal(type, lang);
 
     return {
         modal
