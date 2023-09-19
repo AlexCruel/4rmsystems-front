@@ -18,6 +18,7 @@ import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 // export const getStaticPaths = async () => {
 //     const { tags } = await getTagsData();
@@ -56,6 +57,7 @@ import {getCookie} from "cookies-next";
 // }
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const { tag_id } = params;
     const lang = getCookie('lang', {req, res});
 
@@ -91,7 +93,6 @@ const ProjectsTag = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
-    console.log("tagName", props.tagName)
 
     return (
         <>

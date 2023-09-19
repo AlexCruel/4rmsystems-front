@@ -17,8 +17,10 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const lang = getCookie('lang', {req, res});
 
     const info = await getInfoData(lang);

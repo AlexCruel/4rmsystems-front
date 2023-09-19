@@ -18,8 +18,10 @@ import Head from "next/head";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const lang = getCookie('lang', {req, res});
 
     const info = await getInfoData(lang);

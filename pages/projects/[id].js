@@ -16,6 +16,7 @@ import ProjectsCards from "@/components/Projects/ProjectsCards";
 import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 // export const getStaticPaths = async () => {
 //     const { projects } = await getProjectsData();
@@ -51,6 +52,7 @@ import {getCookie} from "cookies-next";
 // }
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const { id } = params;
     const lang = getCookie('lang', {req, res});
 

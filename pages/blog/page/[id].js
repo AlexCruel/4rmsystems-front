@@ -17,8 +17,10 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const { id } = params;
     const lang = getCookie('lang', {req, res});
 

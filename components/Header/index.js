@@ -69,7 +69,7 @@ const Header = ({phones, modal}) => {
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <a onClick={localizationHandler}>
+                    <a onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
                     </a>
                 </div>

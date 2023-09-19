@@ -17,8 +17,10 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const { tag_id } = params;
     const lang = getCookie('lang', {req, res});
 

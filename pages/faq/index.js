@@ -10,8 +10,10 @@ import chevron_up from "../../public/icons/chevron_up.svg";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const lang = getCookie('lang', {req, res});
 
     const info = await getInfoData(lang);

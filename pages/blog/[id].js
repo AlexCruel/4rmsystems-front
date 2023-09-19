@@ -14,8 +14,10 @@ import cn from "./styles[id].module.scss";
 import BlogCards from "@/components/Blog/BlogCards";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const { id } = params;
     const lang = getCookie('lang', {req, res});
 
@@ -44,8 +46,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
 }
 
 const Blog = ({ ...props }) => {
-    console.log(props.blogSingle)
-
     return (
         <>
             <Head>

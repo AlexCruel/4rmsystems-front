@@ -20,8 +20,10 @@ import {
 import {useState} from "react";
 import BlogComponent from "@/components/Blog";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const lang = getCookie('lang', {req, res});
 
     const page = await getPageData("main");

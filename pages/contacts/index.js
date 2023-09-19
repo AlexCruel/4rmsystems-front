@@ -13,8 +13,10 @@ import Image from "next/image";
 import phone from "@/public/icons/phone_footer.svg";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    setLocalizationCookie(req, res);
     const lang = getCookie('lang', {req, res})
 
     const info = await getInfoData(lang);
@@ -28,7 +30,8 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
             ...page,
             modalConsult,
             modalCall,
-            resolvedUrl
+            resolvedUrl,
+            lang
         }
     }
 }
@@ -91,7 +94,9 @@ const Contacts = ({ ...props }) => {
                     </div>
                 </div>
                 <div className={cn.container__submain}>
-                    <div className={cn.house_title}>Сервисные центры и партнеры</div>
+                    <div className={cn.house_title} suppressHydrationWarning>
+                        {props.lang === "ENG" ? "Service centers and partners" : "Сервисные центры и партнеры"}
+                    </div>
                     <div className={cn.container__submain_items}>
                         {
                             props.page.contacts_submain?.map((item, index) => {

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const getStaticProps = async () => {
-    const info = await getInfoData();
+    const info = await getInfoData("RU");
     const modalCall = await getModalData('call_form');
 
     return {
