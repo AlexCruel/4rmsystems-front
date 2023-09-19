@@ -3,6 +3,7 @@ import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 import CatalogModal from "@/components/Modals/CatalogModal";
 import {useState} from "react";
+import {getCookie} from "cookies-next";
 
 const Catalog = ({ catalog }) => {
     const [activeModal, setActiveModal] = useState(false);
@@ -12,6 +13,7 @@ const Catalog = ({ catalog }) => {
             description: ""
         }
     );
+    const lang = getCookie('lang');
 
     const clickCatalogHandler = (event) => {
         const item = catalog.find(x => x.id == event.target.id);
@@ -30,7 +32,7 @@ const Catalog = ({ catalog }) => {
         <div className={cn.container}>
             <div className={cn.header}>
                 <div className={cn.header__menu}>
-                    <h1>Каталог</h1>
+                    <h1 suppressHydrationWarning>{lang === "ENG" ? "Catalog" : "Каталог"}</h1>
                 </div>
             </div>
             <Splide options={{

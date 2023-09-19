@@ -16,15 +16,16 @@ import Pagination from "@/components/Pagination";
 import Tags from "@/components/Tags";
 import CallForm from "components/Forms/CallForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("projects");
-    const { projects } = await getProjectsData();
-    const projectsTags = await getProjectsTagsData();
-    const projectsPage = await getProjectsPageData(1);
+    const info = await getInfoData(lang);
+    const page = await getPageData("projects", lang);
+    const { projects } = await getProjectsData(lang);
+    const projectsTags = await getProjectsTagsData(lang);
+    const projectsPage = await getProjectsPageData(1, lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');

@@ -16,16 +16,17 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("blog");
-    const { blog } = await getBlogData();
-    const blogPage = await getBlogPageData(1);
-    const blogTags = await getBlogTagsData();
-    const bPinnedSec = await getBPinnedSecData();
+    const info = await getInfoData(lang);
+    const page = await getPageData("blog", lang);
+    const { blog } = await getBlogData(lang);
+    const blogPage = await getBlogPageData(1, lang);
+    const blogTags = await getBlogTagsData(lang);
+    const bPinnedSec = await getBPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
@@ -51,6 +52,7 @@ const Blog = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
+    const lang = getCookie('lang');
 
     return (
         <>
@@ -87,7 +89,11 @@ const Blog = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.bPinnedSec.pre_content)}
                         </div>
-                        <Link href={`/blog/${props.bPinnedSec.slug}`}><button>Подробнее</button></Link>
+                        <Link href={`/blog/${props.bPinnedSec.slug}`}>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "More details" : "Подробнее"}
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={cn.container__cards}>
@@ -104,7 +110,11 @@ const Blog = ({ ...props }) => {
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
-                                <Link href={`/blog/${item.slug}`}><button>Подробнее</button></Link>
+                                <Link href={`/blog/${item.slug}`}>
+                                    <button suppressHydrationWarning>
+                                        {lang === "ENG" ? "More details" : "Подробнее"}
+                                    </button>
+                                </Link>
                             </div>
                         );
                     })}

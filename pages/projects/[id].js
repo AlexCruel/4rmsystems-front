@@ -15,6 +15,7 @@ import Socials from "@/components/Socials";
 import ProjectsCards from "@/components/Projects/ProjectsCards";
 import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
 // export const getStaticPaths = async () => {
 //     const { projects } = await getProjectsData();
@@ -49,17 +50,17 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 //     }
 // }
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { project } = await getProjectData(id);
-    const info = await getInfoData();
-    const projectsCards = await getProjectsCardsData();
-    const projectTags = await getProjectTagsData(project.id);
+    const { project } = await getProjectData(id, lang);
+    const info = await getInfoData(lang);
+    const projectsCards = await getProjectsCardsData(lang);
+    const projectTags = await getProjectTagsData(project.id, lang);
     const modalContact = await getModalData('contact_form');
     const modalCall = await getModalData('call_form');
-    const page = await getPageData("projects");
+    const page = await getPageData("projects", lang);
 
     return {
         props: {

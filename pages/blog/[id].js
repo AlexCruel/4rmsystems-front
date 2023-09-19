@@ -13,19 +13,20 @@ import Footer from "@/components/Footer";
 import cn from "./styles[id].module.scss";
 import BlogCards from "@/components/Blog/BlogCards";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { blogSingle } = await getBlogSingleData(id);
-    const info = await getInfoData();
-    const blogCards = await getBlogCardsData();
-    const bSingleTags = await getBSingleTagsData(blogSingle.id);
+    const { blogSingle } = await getBlogSingleData(id, lang);
+    const info = await getInfoData(lang);
+    const blogCards = await getBlogCardsData(lang);
+    const bSingleTags = await getBSingleTagsData(blogSingle.id, lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
-    const page = await getPageData("blog");
+    const page = await getPageData("blog", lang);
 
     return {
         props: {

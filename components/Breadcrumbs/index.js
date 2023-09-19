@@ -1,15 +1,18 @@
 import {useRouter} from "next/router";
 import Link from "next/link";
 import cn from "./styles.module.scss";
+import {getCookie} from "cookies-next";
 
 const Breadcrumbs = ({ pre_title, title }) => {
     const router = useRouter();
+    const lang = getCookie('lang');
+    let titleCrumb = lang === "ENG" ? "Main" : "Главная"
 
     function generateBreadcrumbs() {
 
         if (title === "404") {
             // Add in a default "Home" crumb for the top-level
-            return [{ href: "/", title: "Главная" }, {href: "/", title}];
+            return [{ href: "/", title: titleCrumb }, {href: "/", title}];
         } else {
             // Remove any query parameters, as those aren't included in breadcrumbs
             const asPathWithoutQuery = router.asPath.split("?")[0];
@@ -35,7 +38,7 @@ const Breadcrumbs = ({ pre_title, title }) => {
             })
 
             // Add in a default "Home" crumb for the top-level
-            return [{ href: "/", title: "Главная" }, ...crumblist];
+            return [{ href: "/", title: titleCrumb }, ...crumblist];
         }
     }
 
@@ -56,7 +59,7 @@ function Crumb({ title, pre_title, href, first = false, last= false }) {
         return (
             <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                 &nbsp;/&nbsp;
-                <span itemProp="name">{title}</span>
+                <span itemProp="name" suppressHydrationWarning>{title}</span>
             </li>
         );
     }
@@ -64,7 +67,7 @@ function Crumb({ title, pre_title, href, first = false, last= false }) {
     if (first) {
         return (
             <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link href={href} itemProp="item"><span itemProp="name">{title}</span></Link>
+                <Link href={href} itemProp="item"><span itemProp="name" suppressHydrationWarning>{title}</span></Link>
             </li>
         );
     }

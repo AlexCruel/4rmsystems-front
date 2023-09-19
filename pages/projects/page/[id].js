@@ -18,6 +18,7 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
 // export const getStaticPaths = async () => {
 //     const pageCount = [];
@@ -62,15 +63,15 @@ import Head from "next/head";
 //     }
 // }
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const projectsPage = await getProjectsPageData(id);
-    const { projects } = await getProjectsData();
-    const info = await getInfoData();
-    const page = await getPageData("projects");
-    const projectsTags = await getProjectsTagsData();
+    const projectsPage = await getProjectsPageData(id, lang);
+    const { projects } = await getProjectsData(lang);
+    const info = await getInfoData(lang);
+    const page = await getPageData("projects", lang);
+    const projectsTags = await getProjectsTagsData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');

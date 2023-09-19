@@ -5,12 +5,13 @@ import Footer from "@/components/Footer";
 import cn from "./styles.module.scss";
 import parse from "html-react-parser";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({resolvedUrl, req, res}) => {
+    const lang = getCookie('lang', {req, res});
 
-    const info = await getInfoData();
-    const page = await getPageData("privacy-policy");
+    const info = await getInfoData(lang);
+    const page = await getPageData("privacy-policy", lang);
     const modalCall = await getModalData('call_form');
 
     return {

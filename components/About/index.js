@@ -2,8 +2,11 @@ import cn from "./styles.module.scss";
 import Image from "next/image";
 import about_company from "../../public/img/about_company.png";
 import parse from "html-react-parser";
+import {getCookie} from "cookies-next";
 
 const About = ({ about }) => {
+    const lang = getCookie('lang');
+
     return (
         <div className={cn.container}>
             <div className={cn.content}>
@@ -15,7 +18,7 @@ const About = ({ about }) => {
                         alt={about.banner.alt} />
                 </div>
                 <div className={cn.text}>
-                    <h1>О компании</h1>
+                    <h1 suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</h1>
                     {parse(about.description)}
                 </div>
 

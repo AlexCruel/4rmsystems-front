@@ -18,17 +18,18 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const newsPage = await getNewsPageData(id);
-    const { news } = await getNewsData();
-    const info = await getInfoData();
-    const page = await getPageData("news");
-    const newsTags = await getNewsTagsData();
-    const nPinnedSec = await getNPinnedSecData();
+    const newsPage = await getNewsPageData(id, lang);
+    const { news } = await getNewsData(lang);
+    const info = await getInfoData(lang);
+    const page = await getPageData("news", lang);
+    const newsTags = await getNewsTagsData(lang);
+    const nPinnedSec = await getNPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
@@ -55,6 +56,7 @@ const NewsPage = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
+    const lang = getCookie('lang');
 
     return (
         <>
@@ -91,7 +93,11 @@ const NewsPage = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href="#"><button>Подробнее</button></Link>
+                        <Link href={`/news/${props.nPinnedSec.slug}`}>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "More details" : "Подробнее"}
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={cn.container__cards} itemScope itemType="https://schema.org/ImageObject">
@@ -108,7 +114,11 @@ const NewsPage = ({ ...props }) => {
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
-                                <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
+                                <Link href={`/news/${item.slug}`}>
+                                    <button suppressHydrationWarning>
+                                        {lang === "ENG" ? "More details" : "Подробнее"}
+                                    </button>
+                                </Link>
                             </div>
                         );
                     })}

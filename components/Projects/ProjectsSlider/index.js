@@ -2,15 +2,18 @@ import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 import Link from "next/link";
+import {getCookie} from "cookies-next";
 
 const ProjectsSlider = ({ projects }) => {
+    const lang = getCookie('lang');
+
     return (
         <div className={cn.container}>
             <div className={cn.container__header}>
                 <div className={cn.container__header_menu}>
-                    <h1>Проекты</h1>
+                    <h1 suppressHydrationWarning>{lang === "ENG" ? "Projects" : "Проекты"}</h1>
                 </div>
-                <Link href="/projects"><button>Все проекты</button></Link>
+                <Link href="/projects"><button suppressHydrationWarning>{lang === "ENG" ? "All projects" : "Все проекты"}</button></Link>
             </div>
             <Splide options={{
                 type: 'loop',

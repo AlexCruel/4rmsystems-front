@@ -18,6 +18,7 @@ import Pagination from "@/components/Pagination";
 import {useState} from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
 // export const getStaticPaths = async () => {
 //     const blogsPerPage = 6;
@@ -59,19 +60,19 @@ import Head from "next/head";
 //     }
 // }
 
-export const getServerSideProps = async (context) => {
-    const { tag_id, id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { tag_id, id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { tagProjects } = await getTagProjectsData(tag_id);
-    const { tagPage } = await getTagPageData(tag_id, id);
-    const info = await getInfoData();
-    const page = await getPageData("projects");
-    const projectsTags = await getProjectsTagsData();
+    const { tagProjects } = await getTagProjectsData(tag_id, lang);
+    const { tagPage } = await getTagPageData(tag_id, id, lang);
+    const info = await getInfoData(lang);
+    const page = await getPageData("projects", lang);
+    const projectsTags = await getProjectsTagsData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
-    const tagName = await getProjectsTagNameData(tag_id);
+    const tagName = await getProjectsTagNameData(tag_id, lang);
 
     return {
         props: {

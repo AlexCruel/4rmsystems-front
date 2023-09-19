@@ -10,24 +10,33 @@ import vk from "../../public/icons/social/vk.svg";
 import youtube from "../../public/icons/social/youtube.svg";
 import Link from "next/link";
 import parse from "html-react-parser";
+import {getCookie} from "cookies-next";
 
 const Footer = ({info, menu, socials}) => {
+    const lang = getCookie('lang');
+
     return (
         <footer className={cn.footer} itemScope itemType="http://schema.org/SiteNavigationElement">
             <div className={cn.footer_container}>
                 <div className={cn.info} itemScope itemType="https://schema.org/Organization">
                     <div className={cn.logo_container}>
                         <div><Image src={logo} alt="Logo" /></div>
-                        <div className={cn.logo_container_text}>Оборудование для современного ритейла</div>
+                        <div className={cn.logo_container_text} suppressHydrationWarning>
+                            {lang === "ENG" ? "Equipment for modern retail" : "Оборудование для современного ритейла"}
+                        </div>
                     </div>
                     <div className={cn.work_time}>
-                        <div>Режим работы</div>
+                        <div suppressHydrationWarning>
+                            {lang === "ENG" ? "Work time" : "Режим работы"}
+                        </div>
                         <ul>
                             <li>{info.work_time}</li>
                         </ul>
                     </div>
                     <div className={cn.contacts}>
-                        <div>Контакты</div>
+                        <div suppressHydrationWarning>
+                            {lang === "ENG" ? "Contacts" : "Контакты"}
+                        </div>
                         <ul>
                             {info.phone_items?.map((item, index) => {
                                 return (

@@ -19,21 +19,22 @@ import Footer from "@/components/Footer";
 import {useState} from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
+import {getCookie} from "cookies-next";
 
-export const getServerSideProps = async (context) => {
-    const { tag_id, id } = context.params;
-    const resolvedUrl = context.resolvedUrl;
+export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
+    const { tag_id, id } = params;
+    const lang = getCookie('lang', {req, res});
 
-    const { tagNews } = await getTagNewsData(tag_id);
-    const tagNewsPage = await getTagNewsPageData(tag_id, id)
-    const info = await getInfoData();
-    const newsTags = await getNewsTagsData();
-    const nPinnedSec = await getNPinnedSecData();
+    const { tagNews } = await getTagNewsData(tag_id, lang);
+    const tagNewsPage = await getTagNewsPageData(tag_id, id, lang)
+    const info = await getInfoData(lang);
+    const newsTags = await getNewsTagsData(lang);
+    const nPinnedSec = await getNPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
-    const page = await getPageData("news");
-    const tagName = await getBlogTagNameData(tag_id);
+    const page = await getPageData("news", lang);
+    const tagName = await getBlogTagNameData(tag_id, lang);
 
     return {
         props: {
@@ -59,6 +60,7 @@ const NewsPageTag = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
+    const lang = getCookie('lang');
 
     return (
         <>
@@ -95,7 +97,11 @@ const NewsPageTag = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href={`/news/${props.nPinnedSec.slug}`}><button>Подробнее</button></Link>
+                        <Link href={`/news/${props.nPinnedSec.slug}`}>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "More details" : "Подробнее"}
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={cn.container__cards} itemScope itemType="https://schema.org/ImageObject">
@@ -115,7 +121,11 @@ const NewsPageTag = ({ ...props }) => {
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
-                                <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
+                                <Link href={`/news/${item.slug}`}>
+                                    <button suppressHydrationWarning>
+                                        {lang === "ENG" ? "More details" : "Подробнее"}
+                                    </button>
+                                </Link>
                             </div>
                         );
                     })}
