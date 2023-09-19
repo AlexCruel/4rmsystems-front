@@ -69,7 +69,9 @@ const Header = ({phones, modal}) => {
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <a onClick={localizationHandler}><Image src={globe} alt="Globe" /></a>
+                    <a onClick={localizationHandler}>
+                        {lang === "ENG" ? "ENG" : "RU"}
+                    </a>
                 </div>
             </div>
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
