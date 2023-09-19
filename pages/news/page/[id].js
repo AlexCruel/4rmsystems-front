@@ -93,7 +93,7 @@ const NewsPage = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href="#">
+                        <Link href={`/news/${props.nPinnedSec.slug}`}>
                             <button suppressHydrationWarning>
                                 {lang === "ENG" ? "More details" : "Подробнее"}
                             </button>
