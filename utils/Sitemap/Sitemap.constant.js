@@ -28,7 +28,7 @@ export const EXTERNAL_DATA_URL_PRODUCTION_PAGE_API = `${process.env.NEXT_PUBLIC_
 /* api for dynamic pages */
 export const EXTERNAL_DATA_URL_PROJECTS_API = `${process.env.NEXT_PUBLIC_API_URL}/projects`;
 export const EXTERNAL_DATA_URL_NEWS_API = `${process.env.NEXT_PUBLIC_API_URL}/news`;
-export const EXTERNAL_DATA_URL_BLOG_API = `${process.env.NEXT_PUBLIC_API_URL}/blog`;
+export const EXTERNAL_DATA_URL_BLOG_API = `${process.env.NEXT_PUBLIC_API_URL}/blogs`;
 
 /* api for tags on pages */
 export const EXTERNAL_DATA_URL_PROJECTS_TAGS_API = `${process.env.NEXT_PUBLIC_API_URL}/projects-tags`;

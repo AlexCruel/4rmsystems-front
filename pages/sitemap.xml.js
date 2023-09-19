@@ -16,6 +16,8 @@ import {
     EXTERNAL_DATA_URL_POLICY_PAGE, EXTERNAL_DATA_URL_PRODUCTION_PAGE,
     EXTERNAL_DATA_URL_PROJECTS_PAGE, EXTERNAL_DATA_URL_PROJECTS_PAGES
 } from "@/utils/Sitemap/Sitemap.constant";
+import {getCookie} from "cookies-next";
+import {setLocalizationCookie} from "@/utils/localization";
 
 function generateSiteMapProjects(projects) {
     return `
@@ -192,30 +194,32 @@ function SiteMap() {
     // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ req, res }) {
+    setLocalizationCookie(req, res);
+    const lang = getCookie('lang', {req, res});
+
     // We make an API call to gather the URLs for our site
 
     /* data for main pages */
-    //const requestMainPage = await fetch(EXTERNAL_DATA_URL_MAIN_PAGE_API);
-    const mainPage = await requestMainPage.clone().json();
-    const projectsPage = await requestProjectsPage.clone().json();
-    const blogPage = await requestBlogPage.clone().json();
-    const newsPage = await requestNewsPage.clone().json();
-    const faqPage = await requestFAQPage.clone().json();
-    const policyPage = await requestPolicyPage.clone().json();
-    const contactsPage = await requestContactsPage.clone().json();
-    const companyPage = await requestCompanyPage.clone().json();
-    const productionPage = await requestProductionPage.clone().json();
+    const mainPage = await (await requestMainPage(lang)).json();
+    const projectsPage = await (await requestProjectsPage(lang)).json();
+    const blogPage = await (await requestBlogPage(lang)).json();
+    const newsPage = await (await requestNewsPage(lang)).json();
+    const faqPage = await (await requestFAQPage(lang)).json();
+    const policyPage = await (await requestPolicyPage(lang)).json();
+    const contactsPage = await (await requestContactsPage(lang)).json();
+    const companyPage = await (await requestCompanyPage(lang)).json();
+    const productionPage = await (await requestProductionPage(lang)).json();
 
     /* data for dynamic pages */
-    const projects = await requestProjects.clone().json();
-    const blog = await requestBlog.clone().json();
-    const news = await requestNews.clone().json();
+    const projects = await (await requestProjects(lang)).json();
+    const blog = await (await requestBlog(lang)).json();
+    const news = await (await requestNews(lang)).json();
 
     /* data for tags on pages */
-    const projectsTags = await requestProjectsTags.clone().json();
-    const newsTags = await requestNewsTags.clone().json();
-    const blogTags = await requestBlogTags.clone().json();
+    const projectsTags = await (await requestProjectsTags(lang)).json();
+    const newsTags = await  (await requestNewsTags(lang)).json();
+    const blogTags = await  (await requestBlogTags(lang)).json();
 
     // We generate the XML Sitemap with the posts data
     const sitemapPage = generateSiteMapPage(
