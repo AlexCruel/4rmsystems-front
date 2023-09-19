@@ -76,7 +76,7 @@ const Production = ({ ...props }) => {
                 <Information info={props.information} />
                 <Partner partner={props.partner} />
                 <div className={cn.container__text}>
-                    <ul>
+                    <ul className={cn.container__text_links}>
                         {props.page.links?.map((item, index) => {
                             return (
                                 <li key={index}>

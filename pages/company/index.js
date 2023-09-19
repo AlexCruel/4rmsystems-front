@@ -9,6 +9,7 @@ import link from "../../public/icons/link.svg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
+    getBlogsCompData,
     getInfoData,
     getInformationData, getModalData, getNewsCompData,
     getPageData,
@@ -19,6 +20,8 @@ import PageContactForm from "@/components/Forms/PageContactForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 import {setLocalizationCookie} from "@/utils/localization";
+import BlogComponent from "@/components/Blog";
+import {useState} from "react";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     setLocalizationCookie(req, res);
@@ -29,6 +32,7 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     const partner = await getPartnerData(lang);
     const page = await getPageData("company", lang);
     const newsComponent = await getNewsCompData(lang);
+    const blogsComponent = await getBlogsCompData(lang);
     const modalSubscription = await getModalData('subscription_form');
     const modalCall = await getModalData('call_form');
     const modalQuestion = await getModalData('question_form');
@@ -40,6 +44,7 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
             ...partner,
             ...page,
             ...newsComponent,
+            ...blogsComponent,
             modalSubscription,
             modalCall,
             modalQuestion,
@@ -49,6 +54,12 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
 };
 
 const Company = ({ ...props }) => {
+    const [blogState, setBlogState] = useState('news');
+
+    const blogStateHandler = (type) => {
+        setBlogState(type);
+    }
+
     return (
         <>
             <Head>
@@ -82,9 +93,14 @@ const Company = ({ ...props }) => {
                 </div>
                 <Information info={props.information} />
                 <Partner partner={props.partner} />
-                <BlogNews newsComponent={props.newsComponent} />
+                <BlogComponent
+                    blogState={blogState}
+                    blogStateHandler={blogStateHandler}
+                    blogsComponent={props.blogsComponent}
+                    newsComponent={props.newsComponent}
+                />
                 <div className={cn.container__text}>
-                    <ul>
+                    <ul className={cn.container__text_links}>
                         {props.page.links?.map((item, index) => {
                             return (
                                 <li key={index}>

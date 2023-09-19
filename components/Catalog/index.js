@@ -66,7 +66,7 @@ const Catalog = ({ catalog }) => {
                     );
                 })}
             </Splide>
-            <CatalogModal activeModal={activeModal} setActiveModal={setActiveModal} modalObject={modalObject} />
+            <CatalogModal activeModal={activeModal} setActiveModal={setActiveModal} modalObject={modalObject} lang={lang} />
         </div>
     );
 }

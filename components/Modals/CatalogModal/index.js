@@ -2,7 +2,7 @@ import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 
-const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
+const CatalogModal = ({ activeModal, setActiveModal, modalObject, lang }) => {
     return (
         <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
@@ -41,7 +41,9 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject }) => {
                     </Splide>
                 </div>
                 <div className={cn.content__button}>
-                    <button>Отправить заявку</button>
+                    <button suppressHydrationWarning>
+                        {lang === "ENG" ? "Send a request" : "Отправить заявку"}
+                    </button>
                 </div>
             </div>
         </div>
