@@ -60,6 +60,7 @@ const NewsPageTag = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
+    const lang = getCookie('lang');
 
     return (
         <>
@@ -96,7 +97,11 @@ const NewsPageTag = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.nPinnedSec.pre_content)}
                         </div>
-                        <Link href={`/news/${props.nPinnedSec.slug}`}><button>Подробнее</button></Link>
+                        <Link href={`/news/${props.nPinnedSec.slug}`}>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "More details" : "Подробнее"}
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={cn.container__cards} itemScope itemType="https://schema.org/ImageObject">
@@ -116,7 +121,11 @@ const NewsPageTag = ({ ...props }) => {
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
-                                <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
+                                <Link href={`/news/${item.slug}`}>
+                                    <button suppressHydrationWarning>
+                                        {lang === "ENG" ? "More details" : "Подробнее"}
+                                    </button>
+                                </Link>
                             </div>
                         );
                     })}

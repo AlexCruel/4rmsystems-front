@@ -52,6 +52,7 @@ const Blog = ({ ...props }) => {
     const blogsPerPage = 6;
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
+    const lang = getCookie('lang');
 
     return (
         <>
@@ -88,7 +89,11 @@ const Blog = ({ ...props }) => {
                         <div className={cn.pinned__text} itemProp="text">
                             {parse(props.bPinnedSec.pre_content)}
                         </div>
-                        <Link href={`/blog/${props.bPinnedSec.slug}`}><button>Подробнее</button></Link>
+                        <Link href={`/blog/${props.bPinnedSec.slug}`}>
+                            <button suppressHydrationWarning>
+                                {lang === "ENG" ? "More details" : "Подробнее"}
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={cn.container__cards}>
@@ -105,7 +110,11 @@ const Blog = ({ ...props }) => {
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
-                                <Link href={`/blog/${item.slug}`}><button>Подробнее</button></Link>
+                                <Link href={`/blog/${item.slug}`}>
+                                    <button suppressHydrationWarning>
+                                        {lang === "ENG" ? "More details" : "Подробнее"}
+                                    </button>
+                                </Link>
                             </div>
                         );
                     })}

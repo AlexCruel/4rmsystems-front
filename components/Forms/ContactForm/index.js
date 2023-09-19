@@ -80,12 +80,21 @@ const ContactForm = ({ modal }) => {
                             <input id="phone" className={errors?.phone ? cn.input_error : ""}
                                    pattern="[+0-9]+"
                                    title="+375112223344"
-                                   type="text" placeholder={errors?.phone ? "Введите телефон" : "+375112223344"}
+                                   type="text" placeholder={errors?.phone ?
+                                        lang === "ENG" ?
+                                            "Enter phone number" : "Введите телефон"
+                                        : "+375112223344"}
                                    {...register("phone", {required: true})} />
                         </div>
                         <div>
                             <label>Email*</label>
-                            <input id="email" className={errors?.email ? cn.input_error : ""} type="email" placeholder={errors?.email ? "Введите Email" : "example@mail.com"}
+                            <input id="email"
+                                   className={errors?.email ? cn.input_error : ""}
+                                   type="email"
+                                   placeholder={errors?.email ?
+                                       lang === "ENG" ?
+                                           "Enter Email" : "Введите Email"
+                                       : "example@mail.com"}
                                    {...register("email", {required: true})} />
                         </div>
                         <div>

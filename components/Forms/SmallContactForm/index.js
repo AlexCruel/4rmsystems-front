@@ -10,6 +10,7 @@ import {useForm} from "react-hook-form";
 import {useState} from "react";
 import {postFeedback} from "@/pages/api/application";
 import SubmitModal from "@/components/Modals/SubmitModal";
+import {getCookie} from "cookies-next";
 
 const SmallContactForm = ({ socials, modal }) => {
     const {
@@ -22,6 +23,7 @@ const SmallContactForm = ({ socials, modal }) => {
     });
 
     const [modalActive, setModalActive] = useState(false);
+    const lang = getCookie('lang');
 
     const formHandler = async (data) => {
         const response = await postFeedback(JSON.stringify(data));
@@ -35,48 +37,85 @@ const SmallContactForm = ({ socials, modal }) => {
         <div className={cn.container}>
             <div className={cn.contact__form}>
                 <form onSubmit={handleSubmit(formHandler)}>
-                    <div className={cn.contact__form_title}>Нужна консультация?</div>
+                    <div className={cn.contact__form_title} suppressHydrationWarning>
+                        {lang === "ENG" ? "Need some advice?" : "Нужна консультация?"}
+                    </div>
                     <div>
-                        <label>ФИО*</label>
-                        <input type="text" className={errors?.name ? cn.input_error : ""} placeholder={errors?.name ? "Введите ФИО" : "Иванов Иван Иванович"}
+                        <label suppressHydrationWarning>
+                            {lang === "ENG" ? "Full name*" : "ФИО*"}
+                        </label>
+                        <input type="text"
+                               className={errors?.name ? cn.input_error : ""}
+                               placeholder={errors?.name
+                                   ?
+                                   lang === "ENG" ?
+                                   "Enter your full name" : "Введите ФИО"
+                                   : lang === "ENG" ?
+                                       "Steve Stevens" : "Иванов Иван Иванович"}
                                {...register("name", {required: true})} />
                     </div>
                     <div>
-                        <label>Телефон*</label>
+                        <label suppressHydrationWarning>
+                            {lang === "ENG" ? "Phone*" : "Телефон*"}
+                        </label>
                         <input
                             type="text"
                             pattern="[+0-9]+"
                             title="+375112223344"
                             className={errors?.phone ? cn.input_error : ""}
-                            placeholder={errors?.phone ? "Введите телефон" : "+375112223344"}
+                            placeholder={errors?.phone ?
+                                    lang === "ENG" ?
+                                        "Enter phone number" : "Введите телефон"
+                                    : "+375112223344"}
                             {...register("phone", {required: true})}
                         />
                     </div>
                     <div>
                         <label>Email*</label>
-                        <input type="email" className={errors?.email ? cn.input_error : ""} placeholder={errors?.email ? "Введите Email" : "example@mail.com"}
+                        <input type="email"
+                               className={errors?.email ? cn.input_error : ""}
+                               placeholder={errors?.email ?
+                                   lang === "ENG" ?
+                                       "Enter Email" : "Введите Email"
+                                   : "example@mail.com"}
                                {...register("email", {required: true})} />
                     </div>
                     <div>
-                        <label>Сообщение*</label>
-                        <textarea id="message" className={errors?.message ? cn.input_error : ""} placeholder={errors?.message ? "Введите сообщение" : "Ваше сообщение..."}
+                        <label suppressHydrationWarning>
+                            {lang === "ENG" ? "Message*" : "Сообщение*"}
+                        </label>
+                        <textarea id="message"
+                                  className={errors?.message ? cn.input_error : ""}
+                                  placeholder={errors?.message ?
+                                      lang === "ENG" ?
+                                          "Enter your message" : "Введите сообщение"
+                                      : lang === "ENG" ?
+                                          "Your message..." : "Ваше сообщение..."}
                                   {...register("message", {required: true})} />
                     </div>
                     <div className={cn.contact__form__policy}>
                         <input type="checkbox" {...register("policy", {required: true})} />
-                        <label className={errors?.policy ? cn.policy_error : ""}>
+                        <label className={errors?.policy ? cn.policy_error : ""} suppressHydrationWarning>
                             {
-                                errors?.policy ? "Подтвердите, что вы соглашаетесь с условиями обработки данных." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
+                                errors?.policy ?
+                                    lang === "ENG" ?
+                                        "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
+                                    : lang === "ENG" ?
+                                        "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
                             }
                         </label>
                     </div>
                     <div>
-                        <button>Отправить</button>
+                        <button suppressHydrationWarning>
+                            {lang === "ENG" ? "Send" : "Отправить"}
+                        </button>
                     </div>
                 </form>
             </div>
             <div className={cn.socials__form}>
-                <div className={cn.socials__form_text}>Мы в социальных сетях</div>
+                <div className={cn.socials__form_text} suppressHydrationWarning>
+                    {lang === "ENG" ? "We are in social networks" : "Мы в социальных сетях"}
+                </div>
                 <div className={cn.socials__form_socials}>
                     <Link href={`${socials.facebook}`}><Image src={facebook} alt="Facebook" /></Link>
                     <Link href={`${socials.instagram}`}><Image src={instagram} alt="Instagram" /></Link>
