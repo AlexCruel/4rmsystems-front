@@ -13,6 +13,20 @@ const BlogBlog = ({ blogsComponent }) => {
                 pagination: false,
                 autoplay: true,
                 interval: 3000,
+                breakpoints: {
+                    1150: {
+                        perPage: 3,
+                        perMove: 3
+                    },
+                    850: {
+                        perPage: 2,
+                        perMove: 2
+                    },
+                    650: {
+                        perPage: 1,
+                        perMove: 1
+                    }
+                },
                 classes: {
                     prev  : `splide__arrow--prev + ' ' + ${ cn.custom__arrow}`,
                     next  : `splide__arrow--next + ' ' + ${ cn.custom__arrow}`

@@ -1,15 +1,18 @@
 @import "styles/main";
 
 .info_container {
-  @include container(100%, 450px, 100px, $main-color);
+  @include container(100%, 100%, 0, $main-color);
 
   .info_content {
-    width: 1160px;
+    max-width: 1160px;
     margin: auto;
+    padding: 0 25px;
 
     display: flex;
     justify-content: space-between;
     text-align: center;
+    flex-wrap: wrap;
+    gap: 25px;
   }
 
   .info_content div {
@@ -28,5 +31,37 @@
 
   h2, p {
     color: $default-color;
+  }
+}
+
+@media (max-width: 1204px) {
+  .info_container {
+    .info_content {
+      max-width: 900px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .info_container {
+    h1 {
+      @include header(0, $default-color);
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 910px) {
+  .info_container {
+    .info_content {
+      max-width: 600px;
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .info_content {
+    flex-direction: column;
+    align-items: center;
   }
 }

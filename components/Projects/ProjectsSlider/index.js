@@ -13,7 +13,11 @@ const ProjectsSlider = ({ projects }) => {
                 <div className={cn.container__header_menu}>
                     <h1 suppressHydrationWarning>{lang === "ENG" ? "Projects" : "Проекты"}</h1>
                 </div>
-                <Link href="/projects"><button suppressHydrationWarning>{lang === "ENG" ? "All projects" : "Все проекты"}</button></Link>
+                <Link href="/projects" className={cn.container__btn_up}>
+                    <button suppressHydrationWarning>
+                        {lang === "ENG" ? "All projects" : "Все проекты"}
+                    </button>
+                </Link>
             </div>
             <Splide options={{
                 type: 'loop',
@@ -22,6 +26,16 @@ const ProjectsSlider = ({ projects }) => {
                 pagination: false,
                 autoplay: true,
                 interval: 3000,
+                breakpoints: {
+                    1300: {
+                        perPage: 2,
+                        perMove: 2
+                    },
+                    900: {
+                        perPage: 1,
+                        perMove: 1
+                    }
+                },
                 classes: {
                     prev  : `splide__arrow--prev + ' ' + ${ cn.x}`,
                     next  : `splide__arrow--next + ' ' + ${ cn.x}`
@@ -45,6 +59,11 @@ const ProjectsSlider = ({ projects }) => {
                     );
                 })}
             </Splide>
+            <Link href="/projects" className={cn.container__btn_down}>
+                <button suppressHydrationWarning>
+                    {lang === "ENG" ? "All projects" : "Все проекты"}
+                </button>
+            </Link>
         </div>
     );
 }

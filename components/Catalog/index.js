@@ -43,6 +43,16 @@ const Catalog = ({ catalog }) => {
                 autoplay: true,
                 interval: 3000,
                 rewind: true,
+                breakpoints: {
+                    1300: {
+                        perPage: 2,
+                        perMove: 2
+                    },
+                    900: {
+                        perPage: 1,
+                        perMove: 1
+                    }
+                },
                 classes: {
                     prev  : `splide__arrow--prev`,
                     next  : `splide__arrow--next`

@@ -10,8 +10,6 @@ const Map = () => {
             <iframe
                 className={cn.map}
                 src="https://www.google.com/maps/d/u/0/embed?mid=1QI9riQnV0tlQ2EZeh-o9HvCOUnuQENk&ehbc=2E312F"
-                width="600"
-                height="450"
                 allowFullScreen="" loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade">
             </iframe>

@@ -2,7 +2,7 @@
 
 .container {
   width: 81%;
-  margin: 100px auto;
+  margin: 50px auto;
 
   .container__header {
     width: 92%;
@@ -16,11 +16,6 @@
       display: flex;
       align-items: baseline;
       gap: 50px;
-    }
-
-    button {
-      width: 170px;
-      height: 30px;
     }
 
     .main_text {
@@ -43,6 +38,11 @@
     width: 198px;
     height: 190px;
     border-radius: 20px;
+  }
+
+  button {
+    width: 170px;
+    height: 30px;
   }
 
   .slide {
@@ -69,7 +69,29 @@
     padding-top: 25px;
   }
 
+  .container__btn_down {
+    display: none;
+  }
+
   a {
     color: $footer-color;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    .container__header_menu {
+      margin: auto;
+    }
+
+    .container__btn_up {
+      display: none;
+    }
+
+    .container__btn_down {
+      display: block;
+      margin-top: 25px;
+      text-align: center;
+    }
   }
 }
