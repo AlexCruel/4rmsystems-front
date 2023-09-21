@@ -42,6 +42,10 @@
       background: $background-color;
       border-top: 2px solid $main-color;
     }
+
+    h1 {
+      text-align: center;
+    }
   }
 }
 
@@ -51,7 +55,6 @@
     .content {
 
       h1 {
-        font-size: 36px;
         text-align: center;
       }
     }

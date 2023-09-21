@@ -1,7 +1,7 @@
 import {getInfoData, getModalData} from "@/utils/functions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import cn from "./styles.module.scss";
+import cn from "./styles.404.module.scss";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 

@@ -22,15 +22,24 @@ const BlogComponent = ({ blogState, blogStateHandler, blogsComponent, newsCompon
                         {lang === "ENG" ? "Articles" : "Блог"}
                     </div>
                 </div>
-                {
-                    blogState === 'news'
-                        ? <Link href="/news" ><button suppressHydrationWarning>{lang === "ENG" ? "All news" : "Все новости"}</button></Link>
-                        : <Link href="/blog" ><button suppressHydrationWarning>{lang === "ENG" ? "All articles" : "Все статьи"}</button></Link>
-                }
+                <div className={cn.container__btn_up}>
+                    {
+                        blogState === 'news'
+                            ? <Link href="/news" ><button suppressHydrationWarning>{lang === "ENG" ? "All news" : "Все новости"}</button></Link>
+                            : <Link href="/blog" ><button suppressHydrationWarning>{lang === "ENG" ? "All articles" : "Все статьи"}</button></Link>
+                    }
+                </div>
             </div>
             <div className={cn.container__slider}>
                 {
                     blogState === 'news' ? <BlogNews newsComponent={newsComponent} /> : <BlogBlog blogsComponent={blogsComponent} />
+                }
+            </div>
+            <div className={cn.container__btn_down}>
+                {
+                    blogState === 'news'
+                        ? <Link href="/news" ><button suppressHydrationWarning>{lang === "ENG" ? "All news" : "Все новости"}</button></Link>
+                        : <Link href="/blog" ><button suppressHydrationWarning>{lang === "ENG" ? "All articles" : "Все статьи"}</button></Link>
                 }
             </div>
         </div>

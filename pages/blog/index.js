@@ -29,9 +29,9 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     const blogPage = await getBlogPageData(1, lang);
     const blogTags = await getBlogTagsData(lang);
     const bPinnedSec = await getBPinnedSecData(lang);
-    const modalSubscription = await getModalData('subscription_form');
-    const modalCall = await getModalData('call_form');
-    const modalQuestion = await getModalData('question_form');
+    const modalSubscription = await getModalData('subscription_form', lang);
+    const modalCall = await getModalData('call_form', lang);
+    const modalQuestion = await getModalData('question_form', lang);
 
     return {
         props: {

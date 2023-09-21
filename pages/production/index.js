@@ -23,9 +23,9 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     const partner = await getPartnerData(lang);
     const page = await getPageData("production", lang);
     const information = await getInformationData("production", lang);
-    const modalSubscription = await getModalData('subscription_form');
-    const modalCall = await getModalData('call_form');
-    const modalQuestion = await getModalData('question_form');
+    const modalSubscription = await getModalData('subscription_form', lang);
+    const modalCall = await getModalData('call_form', lang);
+    const modalQuestion = await getModalData('question_form', lang);
 
     return {
         props: {
@@ -76,7 +76,7 @@ const Production = ({ ...props }) => {
                 <Information info={props.information} />
                 <Partner partner={props.partner} />
                 <div className={cn.container__text}>
-                    <ul>
+                    <ul className={cn.container__text_links}>
                         {props.page.links?.map((item, index) => {
                             return (
                                 <li key={index}>

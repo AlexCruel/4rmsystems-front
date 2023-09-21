@@ -29,8 +29,8 @@ const Banner = ({ banners }) => {
                                     itemProp="contentUrl"
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                     layout="responsive"
-                                    width={100}
-                                    height={100}
+                                    width={1440}
+                                    height={500}
                                     alt={item.image.alt} />
                             </Link>
                         </SplideSlide>

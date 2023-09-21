@@ -3,12 +3,15 @@
 .container {
   margin: auto;
 
-  @include container(1000px, 580px, 100px, rgba(35, 115, 137, 0.75));
+  @include container(1000px, 580px, 50px, rgba(35, 115, 137, 0.75));
 
   .contact {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
+    //display: grid;
+    //grid-template-columns: repeat(2, 1fr);
+    //grid-template-rows: 1fr;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .contact__info {
@@ -60,6 +63,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-right: 50px;
 
     form {
       div {
@@ -116,6 +120,34 @@
     p {
       font-size: 16px;
       font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .container {
+    max-width: 850px;
+
+    .contact__form {
+      padding-right: 25px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 390px;
+
+    .contact {
+      justify-content: center;
+    }
+
+    .contact__form {
+      padding-right: 0;
+    }
+
+    .contact__info {
+      display: none;
     }
   }
 }

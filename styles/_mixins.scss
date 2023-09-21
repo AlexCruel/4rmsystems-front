@@ -1,5 +1,5 @@
 @mixin container($width, $height, $margin: 100px, $color, $radius: 0) {
-  width: $width;
+  max-width: $width;
   height: $height;
 
   margin-top: $margin;
