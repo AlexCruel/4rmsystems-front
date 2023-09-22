@@ -17,6 +17,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
+import useResize from "@/hooks/useResize";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
     setLocalizationCookie(req, res);
@@ -58,6 +59,7 @@ const NewsTag = ({ ...props }) => {
 
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
     const lang = getCookie('lang');
+    const size = useResize();
 
     return (
         <>
@@ -85,6 +87,7 @@ const NewsTag = ({ ...props }) => {
                             alt={props.nPinnedSec.image.alt}
                             width={570}
                             height={361}
+                            layout={size[0] <= 1200 ? "responsive" : ""}
                         />
                     </div>
                     <div className={cn.pinned}>
@@ -114,6 +117,7 @@ const NewsTag = ({ ...props }) => {
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${parsedItem.url}`}
                                         width={340}
                                         height={270}
+                                        layout="responsive"
                                         alt={parsedItem.alt} />
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>

@@ -14,6 +14,7 @@ const NewsCards = ({ news }) => {
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                     width={340}
                                     height={270}
+                                    layout="responsive"
                                     alt={item.image.alt} />
                             </div>
                             <div className={cn.cards_card_title}>{item.title}</div>

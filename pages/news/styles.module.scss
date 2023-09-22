@@ -1,7 +1,7 @@
 @import "styles/main";
 
 .container {
-  width: 1050px;
+  width: 73%;
   padding-top: 90px;
   margin: auto;
 
@@ -18,11 +18,8 @@
 
   .container__pinned {
     display: flex;
+    justify-content: center;
     gap: 100px;
-
-    .image {
-      width: 570px;
-    }
 
     .pinned {
       display: flex;
@@ -31,10 +28,6 @@
       &__title {
         font-size: 48px;
         font-weight: bold;
-      }
-
-      &__text {
-        height: 120px;
       }
     }
   }
@@ -45,6 +38,7 @@
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
 
     .container__cards_card {
       width: 340px;
@@ -53,11 +47,6 @@
       flex-direction: column;
 
       margin-bottom: 50px;
-
-      .cards_card_image {
-        width: 340px;
-        height: 270px;
-      }
 
       .cards_card_title {
         font-size: 20px;
@@ -76,5 +65,26 @@
       font-size: 36px;
       margin: auto;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 80%;
+
+    .container__pinned {
+      flex-direction: column;
+      gap: 0;
+
+      .image {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 90%;
   }
 }
