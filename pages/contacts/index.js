@@ -14,6 +14,7 @@ import phone from "@/public/icons/phone_footer.svg";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
+import useResize from "@/hooks/useResize";
 
 export const getServerSideProps = async ({resolvedUrl, req, res}) => {
     setLocalizationCookie(req, res);
@@ -37,6 +38,8 @@ export const getServerSideProps = async ({resolvedUrl, req, res}) => {
 }
 
 const Contacts = ({ ...props }) => {
+    const size = useResize();
+
     return (
         <>
             <Head>
@@ -55,7 +58,9 @@ const Contacts = ({ ...props }) => {
                 <h1>{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <div className={cn.container__main}>
-                    <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} />
+                    {
+                        size[0] >= 1200 ? <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} /> : ""
+                    }
                     <div className={cn.container__main_house}>
                         {
                             props.page.contacts_main?.map((item, index) => {
@@ -134,6 +139,9 @@ const Contacts = ({ ...props }) => {
                         }
                     </div>
                 </div>
+                {
+                    size[0] <= 1200 ? <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} /> : ""
+                }
             </div>
             <Map />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />

@@ -4,7 +4,7 @@
   padding-top: 90px;
 
   .container__text {
-    width: 970px;
+    width: 67%;
     margin: auto;
 
     ul {
@@ -24,5 +24,21 @@
 
   h1 {
     font-size: 48px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    .container__text {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    .container__text {
+      width: 90%;
+    }
   }
 }
