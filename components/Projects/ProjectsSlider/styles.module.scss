@@ -59,6 +59,10 @@
   a {
     color: $footer-color;
 
+    img {
+      border-bottom: 7px solid $default-color;
+    }
+
     &:hover {
       text-decoration: none;
 

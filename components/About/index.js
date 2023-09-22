@@ -9,19 +9,16 @@ const About = ({ about }) => {
 
     return (
         <div className={cn.container}>
-            <div className={cn.content}>
-                <div className={cn.image}>
-                    <Image
-                        width="552"
-                        height="400"
-                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${about.banner.url}`}
-                        alt={about.banner.alt} />
-                </div>
-                <div className={cn.text}>
-                    <h1 suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</h1>
-                    {parse(about.description)}
-                </div>
 
+            <div className={cn.content}>
+                <h1 suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</h1>
+                <Image
+                    width="552"
+                    height="400"
+                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${about.banner.url}`}
+                    alt={about.banner.alt} />
+                {/*<h1 suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</h1>*/}
+                {parse(about.description)}
             </div>
         </div>
     );

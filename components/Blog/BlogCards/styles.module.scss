@@ -13,9 +13,11 @@
   }
 
   .container__cards {
+    width: 90%;
     margin: 50px auto 0 auto;
 
     display: flex;
+    justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
 
@@ -26,11 +28,6 @@
       flex-direction: column;
 
       margin-bottom: 50px;
-
-      .cards_card_image {
-        width: 340px;
-        height: 270px;
-      }
 
       .cards_card_title {
         font-size: 20px;

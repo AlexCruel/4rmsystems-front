@@ -21,10 +21,13 @@
 }
 
 .modal__content {
+  width: 350px;
+  min-height: 90px;
+
   padding: 20px;
   border-radius: 12px;
-  background-color: white;
-  line-height: 2;
+  background-color: $main-color;
+  color: $default-color;
 }
 
 .modal__content.active {

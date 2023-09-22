@@ -82,6 +82,7 @@ const Projects = ({ ...props }) => {
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={340}
                                         height={270}
+                                        layout="responsive"
                                         alt={item.image.alt} />
                                     <p itemProp="headline">{item.title}</p>
                                 </Link>

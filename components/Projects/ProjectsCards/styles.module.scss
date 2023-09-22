@@ -8,6 +8,8 @@
 
   .container__cards {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: auto;
     gap: 20px;
   }
@@ -36,12 +38,25 @@
   a {
     color: $footer-color;
 
+    img {
+      border-bottom: 7px solid $default-color;
+    }
+
     &:hover {
       text-decoration: none;
 
       img {
         border-bottom: 7px solid $main-color;
       }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    .container__cards {
+      padding-right: 25px;
+      padding-left: 25px;
     }
   }
 }

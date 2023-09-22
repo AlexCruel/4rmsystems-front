@@ -43,8 +43,8 @@ const BlogNews = ({ newsComponent }) => {
                                             itemProp="contentUrl"
                                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                             alt={item.image.alt}
-                                            width={100}
-                                            height={100}
+                                            width={201}
+                                            height={190}
                                         />
                                         <div itemProp="headline">{item.title}</div>
                                     </div>

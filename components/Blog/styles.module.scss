@@ -95,3 +95,17 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .container {
+    .container__header_menu {
+      .main_text {
+        font-size: 36px;
+      }
+
+      .regular_text {
+        font-size: 24px;
+      }
+    }
+  }
+}

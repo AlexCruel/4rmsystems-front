@@ -2,14 +2,12 @@
 
 .container {
   @include container(100%, 160px, 50px, $main-color-light);
-  margin-bottom: -75px;
 
   .contact {
     height: 100%;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
+    display: flex;
+    justify-content: center;
 
     .contact__consult {
       display: flex;
@@ -102,6 +100,104 @@
       input {
         width: 250px;
         height: 28px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .container {
+
+    .contact {
+      padding-right: 25px;
+      padding-left: 25px;
+
+      .contact__consult {
+        padding: 0;
+      }
+
+      .contact__subscript {
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 1084px) {
+  .container {
+    height: 300px;
+
+    .contact {
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+
+      .contact__consult {
+        justify-content: center;
+      }
+
+      .contact__subscript {
+        justify-content: center;
+      }
+
+      .contact__subscript_btn {
+        input {
+          width: 163px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    height: 330px;
+
+    .contact {
+      height: 80%;
+      text-align: center;
+
+      .contact__consult {
+
+        .contact__consult_btn {
+          padding-top: 5px;
+        }
+
+        img {
+          display: none;
+        }
+      }
+
+      .contact__subscript {
+        .contact__subscript_btn {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+          padding-top: 10px;
+
+          input {
+            width: 325px;
+          }
+        }
+
+        img {
+          display: none;
+        }
+      }
+
+      .contact__policy {
+        padding-top: 10px;
+      }
+
+      button {
+        width: 153px;
+        height: 68px;
+
+        font-size: 16px;
+        font-weight: bold;
+
+        color: $footer-color;
+        background: $default-color;
       }
     }
   }

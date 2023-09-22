@@ -90,10 +90,11 @@
   }
 
   .social {
-    width: 1160px;
+    max-width: 1160px;
     margin: auto;
     display: flex;
     gap: 30px;
+    padding-bottom: 40px;
   }
 }
 

@@ -88,7 +88,7 @@ const Footer = ({info, menu, socials}) => {
                                 {section.items.map((item, index) => {
                                     return (
                                         <li key={index}>
-                                            <Link href={item.url} itemProp="url">
+                                            <Link href={`/${item.url}`} itemProp="url">
                                                 <span itemProp="name">{item.name}</span>
                                             </Link>
                                         </li>
@@ -100,11 +100,11 @@ const Footer = ({info, menu, socials}) => {
                 })}
             </div>
             <div className={cn.social}>
-                <Link href={`${socials.facebook}`}><Image src={facebook} alt="Facebook" /></Link>
-                <Link href={`${socials.instagram}`}><Image src={instagram} alt="Instagram" /></Link>
-                <Link href={`${socials.linkedin}`}><Image src={linkedin} alt="LinkedIn" /></Link>
-                <Link href={`${socials.vk}`}><Image src={vk} alt="VK" /></Link>
-                <Link href={`${socials.youtube}`}><Image src={youtube} alt="YouTube" /></Link>
+                <Link href={`${socials.facebook}`} target="_blank"><Image src={facebook} alt="Facebook" /></Link>
+                <Link href={`${socials.instagram}`} target="_blank"><Image src={instagram} alt="Instagram" /></Link>
+                <Link href={`${socials.linkedin}`} target="_blank"><Image src={linkedin} alt="LinkedIn" /></Link>
+                <Link href={`${socials.vk}`} target="_blank"><Image src={vk} alt="VK" /></Link>
+                <Link href={`${socials.youtube}`} target="_blank"><Image src={youtube} alt="YouTube" /></Link>
             </div>
         </footer>
     );
