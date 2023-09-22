@@ -1,8 +1,11 @@
 import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
+import useResize from "@/hooks/useResize";
 
 const CatalogModal = ({ activeModal, setActiveModal, modalObject, lang }) => {
+    const size = useResize();
+
     return (
         <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
@@ -32,6 +35,8 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject, lang }) => {
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                         width={650}
                                         height={425}
+                                        //layout={size[0] <= 950 ? "responsive" : ""}
+                                        layout="responsive"
                                         alt={item.alt}
                                     />
                                     <p itemProp="text">{item.description}</p>

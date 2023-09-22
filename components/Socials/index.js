@@ -11,16 +11,16 @@ const Socials = ({ socials, resolvedUrl, text }) => {
         <div className={cn.container}>
             <div className={cn.container__title}>Поделиться в социальных сетях</div>
             <div className={cn.container__social}>
-                <Link href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}`}>
+                <Link href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}`} target="_blank">
                     <Image src={facebook_1} alt="Facebook" />
                 </Link>
-                <Link href={`https://twitter.com/intent/tweet?text=${text}&url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}`}>
+                <Link href={`https://twitter.com/intent/tweet?text=${text}&url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}`} target="_blank">
                     <Image src={twitter_1} alt="Twitter" />
                 </Link>
-                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}&title=${text}`}>
+                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}&title=${text}`} target="_blank">
                     <Image src={linkedin_1} alt="LinkedIn" />
                 </Link>
-                <Link href={`https://vk.com/share.php?url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}&title=${text}`}>
+                <Link href={`https://vk.com/share.php?url=${process.env.NEXT_PUBLIC_SITE_DOMAIN}${resolvedUrl}&title=${text}`} target="_blank">
                     <Image src={vk_1} alt="VK" />
                 </Link>
             </div>

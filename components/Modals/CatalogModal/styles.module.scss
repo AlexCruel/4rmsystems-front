@@ -14,14 +14,17 @@
   z-index: 2;
 
   .modal__container {
-    width: 900px;
-    height: 650px;
+    //width: 900px;
+    width: 63%;
+    //height: 650px;
+    height: 80%;
     background-color: $catalog-color;
     border-top: 5px solid $main-color;
   }
 
   .modal__container_content {
-    width: 650px;
+    //width: 650px;
+    width: 72%;
     height: 90%;
 
     display: flex;
