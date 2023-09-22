@@ -15,6 +15,16 @@
     flex-wrap: wrap;
     padding: 0 25px;
   }
+
+  img:hover {
+    cursor: pointer;
+    fill: red;
+  }
+
+  .chevron {
+    margin-top: 25px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 1200px) {
