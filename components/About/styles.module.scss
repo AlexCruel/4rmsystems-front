@@ -28,6 +28,14 @@
     }
   }
 
+  .chevron {
+    margin-top: 25px;
+    text-align: center;
+
+    img:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 @media (max-width: 1200px) {
@@ -38,14 +46,14 @@
 
       background: $background-color;
       border-top: 2px solid $main-color;
+
+      img {
+        display: none;
+      }
     }
 
     .container_title {
       text-align: center;
-    }
-
-    img {
-      display: none;
     }
   }
 }

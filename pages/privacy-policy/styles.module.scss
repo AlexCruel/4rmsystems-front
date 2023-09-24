@@ -6,24 +6,11 @@
   .container__text {
     width: 67%;
     margin: auto;
-
-    ul {
-      font-size: 48px;
-      margin: auto;
-      padding: 0;
-
-      a {
-        color: $footer-color;
-      }
-
-      img {
-        padding-left: 20px;
-      }
-    }
   }
 
   h1 {
     font-size: 48px;
+    @include sizeTitle();
   }
 }
 
