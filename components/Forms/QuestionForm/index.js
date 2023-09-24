@@ -30,7 +30,8 @@ const QuestionForm = ({ modal, setQuestionForm }) => {
         <div className={cn.modal} onClick={() => setQuestionForm(false)}>
             <form onSubmit={handleSubmit(formHandler)} onClick={(event) => event.stopPropagation()}>
                 <div className={cn.modal__title} suppressHydrationWarning>
-                    {lang === "ENG" ? "Ask a Question" : "Задать вопрос"}
+                    <div>{lang === "ENG" ? "Ask a Question" : "Задать вопрос"}</div>
+                    <div onClick={() => setQuestionForm(false)} className={cn.modal__title_close}>X</div>
                 </div>
                 <div className={cn.modal__input}>
                     <label suppressHydrationWarning>
@@ -45,6 +46,12 @@ const QuestionForm = ({ modal, setQuestionForm }) => {
                                    "Enter phone number" : "Введите телефон"
                                : "+375112223344"}
                            {...register("phone", {required: true})} />
+                    <br />
+                    <label>Email</label>
+                    <input id="email"
+                           type="email"
+                           placeholder={ lang === "ENG" ? "Enter Email" : "Введите Email"}
+                           {...register("email")} />
                     <br />
                     <label suppressHydrationWarning>
                         {lang === "ENG" ? "Question*" : "Вопрос*"}

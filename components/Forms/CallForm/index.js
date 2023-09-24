@@ -30,7 +30,8 @@ const CallForm = ({ modal, setCallForm }) => {
         <div className={cn.modal} onClick={() => setCallForm(false)}>
             <form onSubmit={handleSubmit(formHandler)} onClick={(event) => event.stopPropagation()}>
                 <div className={cn.modal__title} suppressHydrationWarning>
-                    {lang === "ENG" ? "Request a call" : "Заказать звонок"}
+                    <div>{lang === "ENG" ? "Request a call" : "Заказать звонок"}</div>
+                    <div onClick={() => setCallForm(false)} className={cn.modal__title_close}>X</div>
                 </div>
                 <div className={cn.modal__input}>
                     <label suppressHydrationWarning>

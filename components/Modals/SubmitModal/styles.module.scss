@@ -28,6 +28,23 @@
   border-radius: 12px;
   background-color: $main-color;
   color: $default-color;
+
+  position: relative;
+  text-align: center;
+
+  .modal__content_close {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+
+    &:hover {
+      color: red;
+    }
+  }
 }
 
 .modal__content.active {
