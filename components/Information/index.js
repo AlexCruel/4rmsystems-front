@@ -4,7 +4,7 @@ import Image from "next/image";
 const Information = ({ info }) => {
     return (
         <div className={cn.info_container}>
-            <h1>{info.title}</h1>
+            <div className={cn.info_container_title}>{info.title}</div>
             <div className={cn.info_content} itemScope itemType="https://schema.org/ImageObject">
                 {info.section_items.map((item, index) => {
                     return (

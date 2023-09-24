@@ -1,7 +1,6 @@
 import cn from "./styles.module.scss";
 import Image from "next/image";
-import partner_1 from "../../public/icons/partners/partner_1.png";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import useResize from "@/hooks/useResize";
 import chevron_main_down from "../../public/icons/chevron_main_down.svg";
 import chevron_main_up from "../../public/icons/chevron_main_up.svg";
@@ -41,7 +40,7 @@ const Partner = ({ partner }) => {
     return (
         <div className={cn.partner_container}>
             <div>
-                <h1>{partner.title}</h1>
+                <div>{partner.title}</div>
             </div>
             <div className={cn.logo} itemScope itemType="https://schema.org/ImageObject">
                 {slicedItems.map((item, index) => {

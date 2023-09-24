@@ -24,3 +24,39 @@
 
   text-align: center;
 }
+
+@mixin sizeTitle() {
+  @media (max-width: 900px) {
+    font-size: 43px;
+  }
+
+  @media (max-width: 700px) {
+      font-size: 40px;
+  }
+
+  @media (max-width: 600px) {
+      font-size: 38px;
+    }
+
+  @media (max-width: 400px) {
+    font-size: 36px;
+  }
+}
+
+@mixin regularSizeTitle() {
+  @media (max-width: 900px) {
+    font-size: 38px;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 24px;
+  }
+}

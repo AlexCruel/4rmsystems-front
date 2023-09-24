@@ -11,7 +11,7 @@ const ProjectsSlider = ({ projects }) => {
         <div className={cn.container}>
             <div className={cn.container__header}>
                 <div className={cn.container__header_menu}>
-                    <h1 suppressHydrationWarning>{lang === "ENG" ? "Projects" : "Проекты"}</h1>
+                    <div className={cn.header__menu_title} suppressHydrationWarning>{lang === "ENG" ? "Projects" : "Проекты"}</div>
                 </div>
                 <Link href="/projects" className={cn.container__btn_up}>
                     <button suppressHydrationWarning>

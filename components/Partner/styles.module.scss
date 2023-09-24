@@ -4,8 +4,9 @@
   max-width: 1000px;
   margin: 50px auto;
 
-  h1 {
+  div {
     @include header(0, $footer-color);
+    @include sizeTitle();
   }
 
   .logo {
@@ -16,20 +17,19 @@
     padding: 0 25px;
   }
 
-  img:hover {
-    cursor: pointer;
-    fill: red;
-  }
-
   .chevron {
     margin-top: 25px;
     text-align: center;
+
+    img:hover {
+      cursor: pointer;
+    }
   }
 }
 
 @media (max-width: 1200px) {
   .partner_container {
-    h1 {
+    div {
       text-align: center;
     }
   }

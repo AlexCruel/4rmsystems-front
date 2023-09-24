@@ -8,10 +8,10 @@
     width: 1160px;
     min-height: 400px;
 
-    h1 {
-      //margin: auto;
+    .container_title {
       text-align: center;
       @include header(0, $footer-color);
+      @include sizeTitle();
     }
 
     p, ul {
@@ -40,7 +40,7 @@
       border-top: 2px solid $main-color;
     }
 
-    h1 {
+    .container_title {
       text-align: center;
     }
 
@@ -55,7 +55,7 @@
 
     .content {
 
-      h1 {
+      .container_title {
         text-align: center;
       }
     }

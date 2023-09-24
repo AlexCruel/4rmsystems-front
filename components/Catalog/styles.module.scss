@@ -23,8 +23,10 @@
       height: 30px;
     }
 
-    h1 {
+    .header__menu_title {
+      @include sizeTitle();
       font-size: 48px;
+      font-weight: bold;
       text-transform: uppercase;
     }
 

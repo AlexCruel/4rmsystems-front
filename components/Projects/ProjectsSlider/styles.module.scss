@@ -18,8 +18,10 @@
       gap: 50px;
     }
 
-    h1 {
+    .header__menu_title {
       font-size: 48px;
+      @include sizeTitle();
+      font-weight: bold;
       text-transform: uppercase;
     }
 
