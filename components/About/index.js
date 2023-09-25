@@ -34,7 +34,7 @@ const About = ({ about }) => {
         <div className={cn.container}>
 
             <div className={cn.content}>
-                <div className={cn.container_title} suppressHydrationWarning>{lang === "ENG" ? "About company" : "О компании"}</div>
+                <h1 className={cn.container_title} suppressHydrationWarning>{lang === "ENG" ? "About company 4RM Systems" : "О компании 4RM Systems"}</h1>
                 <Image
                     width="552"
                     height="400"

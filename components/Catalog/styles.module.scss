@@ -40,6 +40,11 @@
   img {
     width: 335px;
     height: 267px;
+    border-bottom: 7px solid $default-color;
+
+    &:hover {
+      border-bottom: 7px solid $main-color;
+    }
   }
 
   .slider__slide {

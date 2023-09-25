@@ -4,7 +4,7 @@
   max-width: 1000px;
   margin: 50px auto;
 
-  div {
+  h2 {
     @include header(0, $footer-color);
     @include sizeTitle();
   }
@@ -29,7 +29,7 @@
 
 @media (max-width: 1200px) {
   .partner_container {
-    div {
+    h2 {
       text-align: center;
     }
   }

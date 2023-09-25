@@ -39,9 +39,7 @@ const Partner = ({ partner }) => {
 
     return (
         <div className={cn.partner_container}>
-            <div>
-                <div>{partner.title}</div>
-            </div>
+            <h2>{partner.title}</h2>
             <div className={cn.logo} itemScope itemType="https://schema.org/ImageObject">
                 {slicedItems.map((item, index) => {
                     return (

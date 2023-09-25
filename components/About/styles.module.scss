@@ -9,7 +9,7 @@
     min-height: 400px;
 
     .container_title {
-      text-align: center;
+      //text-align: center;
       @include header(0, $footer-color);
       @include sizeTitle();
     }
