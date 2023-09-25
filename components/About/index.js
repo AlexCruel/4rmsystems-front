@@ -10,10 +10,14 @@ const About = ({ about }) => {
     const lang = getCookie('lang');
     const [slicedDescription, setSlicedDescription] = useState([]);
     const [chevronState, setChevronState] = useState(false);
+    const [showChevron, setShowChevron] = useState(true);
 
     useEffect(() => {
         if (about.description.length > 1500) {
             setSlicedDescription(prevState => about.description.slice(0, 1500));
+        } else {
+            setSlicedDescription(about.description);
+            setShowChevron(false);
         }
     }, [about]);
 
@@ -36,17 +40,19 @@ const About = ({ about }) => {
                     height="400"
                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${about.banner.url}`}
                     alt={about.banner.alt} />
-                {
+                { showChevron ?
                     chevronState
                         ? parse(slicedDescription.toString())
                         : parse(`${slicedDescription}...`)
+                    : parse(slicedDescription.toString())
                 }
             </div>
             <div className={cn.chevron}>
-                {
+                { showChevron ?
                     chevronState
                         ? <Image onClick={clickSliceHandler} src={chevron_main_up} alt="Chevron" />
                         : <Image onClick={clickSliceHandler} src={chevron_main_down} alt="Chevron" />
+                    : ""
                 }
             </div>
         </div>
