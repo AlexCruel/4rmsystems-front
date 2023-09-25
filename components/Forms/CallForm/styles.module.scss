@@ -44,6 +44,22 @@
     font-weight: bold;
     font-size: 24px;
     color: $default-color;
+
+    width: 100%;
+    position: relative;
+    text-align: center;
+
+    .modal__title_close {
+      position: absolute;
+      top: 0;
+      right: 20px;
+
+      cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .modal__input {

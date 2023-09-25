@@ -1,15 +1,47 @@
 import cn from "./styles.module.scss";
 import Image from "next/image";
-import partner_1 from "../../public/icons/partners/partner_1.png";
+import {useEffect, useState} from "react";
+import useResize from "@/hooks/useResize";
+import chevron_main_down from "../../public/icons/chevron_main_down.svg";
+import chevron_main_up from "../../public/icons/chevron_main_up.svg";
+
+function renderLogoItems(size, setSlicedItems, partner) {
+    if (size[0] <= 999 && size[0] > 789) {
+        setSlicedItems((prevState) => partner.logo_items.slice(0, 12));
+    } else if (size[0] <= 789 && size[0] > 579) {
+        setSlicedItems((prevState) => partner.logo_items.slice(0, 9));
+    } else if (size[0] <= 579 && size[0] > 369) {
+        setSlicedItems((prevState) => partner.logo_items.slice(0, 6));
+    }  else if (size[0] <= 369) {
+        setSlicedItems((prevState) => partner.logo_items.slice(0, 3));
+    } else {
+        setSlicedItems((prevState) => partner.logo_items.slice(0, 15));
+    }
+}
 
 const Partner = ({ partner }) => {
+    const [slicedItems, setSlicedItems] = useState([]);
+    const [chevronState, setChevronState] = useState(false);
+    const size = useResize();
+
+    useEffect(() => {
+        renderLogoItems(size, setSlicedItems, partner);
+    }, [partner, size]);
+
+    const clickSliceHandler = () => {
+        if (chevronState) {
+            renderLogoItems(size, setSlicedItems, partner);
+        } else {
+            setSlicedItems(prevState => partner.logo_items);
+        }
+        setChevronState(!chevronState);
+    }
+
     return (
         <div className={cn.partner_container}>
-            <div>
-                <h1>{partner.title}</h1>
-            </div>
+            <h2>{partner.title}</h2>
             <div className={cn.logo} itemScope itemType="https://schema.org/ImageObject">
-                {partner.logo_items.map((item, index) => {
+                {slicedItems.map((item, index) => {
                     return (
                         <Image
                             itemProp="contentUrl"
@@ -20,6 +52,13 @@ const Partner = ({ partner }) => {
                             alt="Partner" />
                     );
                 })}
+            </div>
+            <div className={cn.chevron}>
+                {
+                    chevronState
+                        ? <Image onClick={clickSliceHandler} src={chevron_main_up} alt="Chevron" />
+                        : <Image onClick={clickSliceHandler} src={chevron_main_down} alt="Chevron" />
+                }
             </div>
         </div>
     );

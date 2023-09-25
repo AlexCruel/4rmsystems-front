@@ -23,6 +23,7 @@
       text-transform: uppercase;
       font-weight: bold;
       cursor: pointer;
+      @include sizeTitle();
     }
 
     .regular_text {
@@ -31,6 +32,7 @@
       font-weight: bold;
       opacity: 50%;
       cursor: pointer;
+      @include regularSizeTitle();
     }
   }
 
@@ -98,13 +100,19 @@
 
 @media (max-width: 500px) {
   .container {
-    .container__header_menu {
-      .main_text {
-        font-size: 36px;
+    .container__header {
+      .container__header_menu {
+        gap: 30px;
       }
+    }
+  }
+}
 
-      .regular_text {
-        font-size: 24px;
+@media (max-width: 350px) {
+  .container {
+    .container__header {
+      .container__header_menu {
+        gap: 10px;
       }
     }
   }

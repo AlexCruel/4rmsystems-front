@@ -18,7 +18,7 @@
     justify-content: space-evenly;
 
     width: 350px;
-    height: 330px;
+    height: 380px;
 
     background: $main-color;
     border-radius: 12px;
@@ -48,6 +48,22 @@
     font-weight: bold;
     font-size: 24px;
     color: $default-color;
+
+    width: 100%;
+    position: relative;
+    text-align: center;
+
+    .modal__title_close {
+      position: absolute;
+      top: 0;
+      right: 20px;
+
+      cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .modal__input {

@@ -37,6 +37,12 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
     const page = await getPageData("blog", lang);
     const tagName = await getBlogTagNameData(tag_id, lang);
 
+    if (tagBlogsPage.tagBlogsPage.length === 0 || id <= 0) {
+        return {
+            notFound: true
+        }
+    }
+
     return {
         props: {
             id,
@@ -70,12 +76,13 @@ const BlogPageTag = ({ ...props }) => {
                 <title>{props.tagName.seo_title_blog}</title>
                 <meta name="keywords" content={props.tagName.seo_key_blog} />
                 <meta name="description" content={props.tagName.seo_description_blog} />
-                <meta property="og:title" content={props.tagName.seo_h1} />
+                <meta property="og:title" content={`${props.tagName.seo_h1_blog} - Страница ${props.id}`} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
                 <meta property="og:description" content={props.tagName.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
+                <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}/blog/tag`} />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/BlogPosting">

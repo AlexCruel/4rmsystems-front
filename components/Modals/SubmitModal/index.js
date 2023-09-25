@@ -6,6 +6,7 @@ const SubmitModal = ({ modalActive, setModalActive, modal }) => {
             <div className={modalActive ? cn.modal__content + ' ' + cn.active : cn.modal__content}>
                 <h2>{modal.title}</h2>
                 <p>{modal.text}</p>
+                <div onClick={() => setModalActive(false)} className={cn.modal__content_close}>X</div>
             </div>
         </div>
     );

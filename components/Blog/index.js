@@ -11,16 +11,16 @@ const BlogComponent = ({ blogState, blogStateHandler, blogsComponent, newsCompon
         <div className={cn.container}>
             <div className={cn.container__header}>
                 <div className={cn.container__header_menu}>
-                    <div className={blogState === 'news' ? cn.main_text : cn.regular_text}
+                    <h2 className={blogState === 'news' ? cn.main_text : cn.regular_text}
                          onClick={() => blogStateHandler('news')}
                          suppressHydrationWarning>
                         {lang === "ENG" ? "News" : "Новости"}
-                    </div>
-                    <div className={blogState !== 'news' ? cn.main_text : cn.regular_text}
+                    </h2>
+                    <h2 className={blogState !== 'news' ? cn.main_text : cn.regular_text}
                          onClick={() => blogStateHandler('blog')}
                          suppressHydrationWarning>
                         {lang === "ENG" ? "Articles" : "Блог"}
-                    </div>
+                    </h2>
                 </div>
                 <div className={cn.container__btn_up}>
                     {

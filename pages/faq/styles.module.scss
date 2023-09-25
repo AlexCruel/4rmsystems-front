@@ -24,6 +24,7 @@
 
   h1 {
     font-size: 48px;
+    @include sizeTitle();
   }
 
   .tab_title {

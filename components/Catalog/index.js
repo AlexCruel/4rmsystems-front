@@ -32,7 +32,7 @@ const Catalog = ({ catalog }) => {
         <div className={cn.container}>
             <div className={cn.header}>
                 <div className={cn.header__menu}>
-                    <h1 suppressHydrationWarning>{lang === "ENG" ? "Catalog" : "Каталог"}</h1>
+                    <div className={cn.header__menu_title} suppressHydrationWarning>{lang === "ENG" ? "Catalog" : "Каталог"}</div>
                 </div>
             </div>
             <Splide options={{

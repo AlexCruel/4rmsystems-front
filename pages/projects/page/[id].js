@@ -78,6 +78,12 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
     const modalCall = await getModalData('call_form', lang);
     const modalQuestion = await getModalData('question_form', lang);
 
+    if (projectsPage.projectsPage.length === 0 || id <= 0) {
+        return {
+            notFound: true
+        }
+    }
+
     return {
         props: {
             id,
@@ -106,12 +112,13 @@ const ProjectsPage = ({ ...props }) => {
                 <title>{props.page.seo_title}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
-                <meta property="og:title" content={props.page.seo_h1} />
+                <meta property="og:title" content={`${props.page.seo_h1} - Страница ${props.id}`} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
                 <meta property="og:description" content={props.page.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
+                <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}/projects`} />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/Article">

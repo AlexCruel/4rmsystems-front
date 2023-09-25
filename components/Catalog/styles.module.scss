@@ -2,7 +2,7 @@
 
 .container {
   width: 81%;
-  margin: 100px auto 50px auto;
+  margin: 150px auto 50px auto;
 
   .header {
     width: 92%;
@@ -23,8 +23,10 @@
       height: 30px;
     }
 
-    h1 {
+    .header__menu_title {
+      @include sizeTitle();
       font-size: 48px;
+      font-weight: bold;
       text-transform: uppercase;
     }
 
@@ -38,6 +40,11 @@
   img {
     width: 335px;
     height: 267px;
+    border-bottom: 7px solid $default-color;
+
+    &:hover {
+      border-bottom: 7px solid $main-color;
+    }
   }
 
   .slider__slide {
@@ -64,7 +71,7 @@
 
 @media (max-width: 1200px) {
   .container {
-    margin-top: 0;
+    margin-top: 50px;
 
     .header__menu {
       margin: auto;
@@ -86,24 +93,36 @@
 
 @media (max-width: 800px) {
   .container {
-    margin-top: -125px;
+    margin-top: -100px;
   }
 }
 
 @media (max-width: 700px) {
   .container {
-    margin-top: -150px;
+    margin-top: -125px;
   }
 }
 
 @media (max-width: 600px) {
   .container {
-    margin-top: -200px;
+    margin-top: -150px;
   }
 }
 
 @media (max-width: 500px) {
   .container {
-    margin-top: -250px;
+    margin-top: -200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    margin-top: -240px;
+  }
+}
+
+@media (max-width: 300px) {
+  .container {
+    margin-top: -275px;
   }
 }

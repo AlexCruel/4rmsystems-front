@@ -18,14 +18,10 @@
       gap: 50px;
     }
 
-    h1 {
+    .header__menu_title {
       font-size: 48px;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: 36px;
-      opacity: 50%;
+      @include sizeTitle();
+      font-weight: bold;
       text-transform: uppercase;
     }
   }

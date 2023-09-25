@@ -80,8 +80,8 @@ const Blog = ({ ...props }) => {
                     <div className={cn.image}>
                         <Image
                             itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
-                            alt={props.bPinnedSec.image.alt}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image?.url_pinned}`}
+                            alt={props.bPinnedSec.image?.alt_pinned}
                             width={570}
                             height={361}
                             layout={size[0] <= 1200 ? "responsive" : ""}
