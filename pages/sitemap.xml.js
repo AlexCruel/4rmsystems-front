@@ -194,8 +194,8 @@ function SiteMap() {
     // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ req, res }) {
-    setLocalizationCookie(req, res);
+export async function getServerSideProps({ req, res, locale }) {
+    setLocalizationCookie(req, res, locale);
     const lang = getCookie('lang', {req, res});
 
     // We make an API call to gather the URLs for our site
