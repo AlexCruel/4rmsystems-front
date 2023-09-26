@@ -7,14 +7,7 @@ import {
     requestProjectsPage, requestProjectsTags
 } from "@/utils/Sitemap/Sitemap.action";
 import {
-    EXTERNAL_DATA_URL_BLOG_PAGE, EXTERNAL_DATA_URL_BLOG_PAGES,
-    EXTERNAL_DATA_URL_COMPANY_PAGE,
-    EXTERNAL_DATA_URL_CONTACTS_PAGE,
-    EXTERNAL_DATA_URL_FAQ_PAGE,
-    EXTERNAL_DATA_URL_MAIN_PAGE, EXTERNAL_DATA_URL_MAIN_PAGE_API,
-    EXTERNAL_DATA_URL_NEWS_PAGE, EXTERNAL_DATA_URL_NEWS_PAGES,
-    EXTERNAL_DATA_URL_POLICY_PAGE, EXTERNAL_DATA_URL_PRODUCTION_PAGE,
-    EXTERNAL_DATA_URL_PROJECTS_PAGE, EXTERNAL_DATA_URL_PROJECTS_PAGES
+    EXTERNAL_DATA_URL_MAIN_PAGE
 } from "@/utils/Sitemap/Sitemap.constant";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
