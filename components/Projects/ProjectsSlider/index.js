@@ -44,8 +44,8 @@ const ProjectsSlider = ({ projects }) => {
                 {projects.map((item, index) => {
                     return (
                         <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
-                            <Link href={`projects/${item.slug}`} className={cn.test}>
-                                <div className={cn.slider__cards} itemScope itemType="https://schema.org/ImageObject">
+                            <Link href={`projects/${item.slug}`} className={cn.slider__cards}>
+                                <div itemScope itemType="https://schema.org/ImageObject">
                                     <Image
                                         itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
