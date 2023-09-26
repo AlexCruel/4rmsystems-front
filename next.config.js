@@ -30,5 +30,9 @@ const images = {
 
 module.exports = {
   nextConfig,
-  images
+  images,
+  i18n: {
+    locales: ['ru', 'en'],
+    defaultLocale: 'ru',
+  }
 }

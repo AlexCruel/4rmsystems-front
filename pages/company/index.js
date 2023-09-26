@@ -23,8 +23,8 @@ import {setLocalizationCookie} from "@/utils/localization";
 import BlogComponent from "@/components/Blog";
 import {useState} from "react";
 
-export const getServerSideProps = async ({resolvedUrl, req, res}) => {
-    setLocalizationCookie(req, res);
+export const getServerSideProps = async ({resolvedUrl, req, res, locale}) => {
+    setLocalizationCookie(req, res, locale);
     const lang = getCookie('lang', {req, res});
 
     const info = await getInfoData(lang);

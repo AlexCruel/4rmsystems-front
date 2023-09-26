@@ -24,10 +24,10 @@ const Header = ({phones, modal}) => {
     const localizationHandler = () => {
         if (lang === "ENG") {
             setCookie("lang", "RU");
-            router.push('/');
+            //router.push('/');
         } else {
             setCookie("lang", "ENG");
-            router.push('/');
+            //router.push('/');
         }
     }
 
@@ -69,9 +69,9 @@ const Header = ({phones, modal}) => {
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <a onClick={localizationHandler} suppressHydrationWarning>
+                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
-                    </a>
+                    </Link>
                 </div>
             </div>
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>

@@ -23,8 +23,8 @@ import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import useResize from "@/hooks/useResize";
 
-export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
-    setLocalizationCookie(req, res);
+export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
+    setLocalizationCookie(req, res, locale);
     const { tag_id, id } = params;
     const lang = getCookie('lang', {req, res});
 
