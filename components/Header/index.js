@@ -10,13 +10,11 @@ import {useState} from "react";
 import Link from "next/link";
 import CallForm from "@/components/Forms/CallForm";
 import { setCookie, getCookie } from 'cookies-next';
-import { useRouter } from 'next/router';
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
     const [callForm, setCallForm] = useState(false);
 
-    const router = useRouter();
     const lang = getCookie('lang');
 
     const localizationHandler = () => {

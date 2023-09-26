@@ -8,6 +8,8 @@
     height: 30px;
 
     margin-top: 15px;
+
+    @include buttonBehavior($button-hover, $button-active);
   }
 
   .container__cards {

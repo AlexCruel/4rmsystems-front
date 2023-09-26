@@ -80,6 +80,8 @@
       color: $default-color;
       font-weight: normal;
     }
+
+    @include buttonBehavior($button-hover, $button-active);
   }
 }
 
