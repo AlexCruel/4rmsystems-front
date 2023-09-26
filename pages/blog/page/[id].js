@@ -30,7 +30,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     const info = await getInfoData(lang);
     const page = await getPageData("blog", lang);
     const blogTags = await getBlogTagsData(lang);
-    const bPinnedSec = await getBPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form', lang);
     const modalCall = await getModalData('call_form', lang);
     const modalQuestion = await getModalData('question_form', lang);
@@ -49,7 +48,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
             ...info,
             ...page,
             ...blogTags,
-            ...bPinnedSec,
             modalSubscription,
             modalCall,
             modalQuestion,
@@ -85,31 +83,6 @@ const BlogPage = ({ ...props }) => {
                 <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
-                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
-                    <div className={cn.image}>
-                        <Image
-                            itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
-                            alt={props.bPinnedSec.image.alt}
-                            width={570}
-                            height={361}
-                            layout={size[0] <= 1200 ? "responsive" : ""}
-                        />
-                    </div>
-                    <div className={cn.pinned}>
-                        <div className={cn.pinned__title} itemProp="headline">
-                            {props.bPinnedSec.title}
-                        </div>
-                        <div className={cn.pinned__text} itemProp="text">
-                            {parse(props.bPinnedSec.pre_content)}
-                        </div>
-                        <Link href={`/blog/${props.bPinnedSec.slug}`}>
-                            <button suppressHydrationWarning>
-                                {lang === "ENG" ? "More details" : "Подробнее"}
-                            </button>
-                        </Link>
-                    </div>
-                </div>
                 <div className={cn.container__cards}>
                     {props.blogPage.map((item, index) => {
                         return (

@@ -44,6 +44,7 @@ const BlogBlog = ({ blogsComponent }) => {
                                             alt={item.image.alt}
                                             width={201}
                                             height={190}
+                                            layout="responsive"
                                         />
                                         <div itemProp="headline">{item.title}</div>
                                     </div>

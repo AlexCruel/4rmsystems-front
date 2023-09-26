@@ -32,7 +32,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     const info = await getInfoData(lang);
     const page = await getPageData("news", lang);
     const newsTags = await getNewsTagsData(lang);
-    const nPinnedSec = await getNPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form', lang);
     const modalCall = await getModalData('call_form', lang);
     const modalQuestion = await getModalData('question_form', lang);
@@ -51,7 +50,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
             ...info,
             ...page,
             ...newsTags,
-            ...nPinnedSec,
             modalSubscription,
             modalCall,
             modalQuestion,
@@ -87,31 +85,6 @@ const NewsPage = ({ ...props }) => {
                 <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="news" tags={props.newsTags} />
-                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
-                    <div className={cn.image}>
-                        <Image
-                            itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image.url}`}
-                            alt={props.nPinnedSec.image.alt}
-                            width={570}
-                            height={361}
-                            layout={size[0] <= 1200 ? "responsive" : ""}
-                        />
-                    </div>
-                    <div className={cn.pinned}>
-                        <div className={cn.pinned__title} itemProp="headline">
-                            {props.nPinnedSec.title}
-                        </div>
-                        <div className={cn.pinned__text} itemProp="text">
-                            {parse(props.nPinnedSec.pre_content)}
-                        </div>
-                        <Link href={`/news/${props.nPinnedSec.slug}`}>
-                            <button suppressHydrationWarning>
-                                {lang === "ENG" ? "More details" : "Подробнее"}
-                            </button>
-                        </Link>
-                    </div>
-                </div>
                 <div className={cn.container__cards} itemScope itemType="https://schema.org/ImageObject">
                     {props.newsPage.map((item, index) => {
                         return (

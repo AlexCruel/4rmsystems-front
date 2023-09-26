@@ -125,7 +125,6 @@ const ProjectsPageTag = ({ ...props }) => {
                 <h1 itemProp="headline">{props.tagName.seo_h1}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />
                 <Tags type="projects" tags={props.projectsTags} />
-                <div>{parse(props.page.pre_content)}</div>
                 <div className={cn.container__cards} itemProp="articleBody">
                     {props.projectsPage.map((item, index) => {
 
