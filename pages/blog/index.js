@@ -78,13 +78,13 @@ const Blog = ({ ...props }) => {
                 <Tags type="blog" tags={props.blogTags} />
                 <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.image}>
-                        <Image
+                        <img
                             itemProp="contentUrl"
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image?.url_pinned}`}
                             alt={props.bPinnedSec.image?.alt_pinned}
-                            width={570}
-                            height={361}
-                            layout={size[0] <= 1200 ? "responsive" : ""}
+                            //width={570}
+                            //height={361}
+                            //layout={size[0] <= 1200 ? "responsive" : ""}
                         />
                     </div>
                     <div className={cn.pinned}>
@@ -106,12 +106,12 @@ const Blog = ({ ...props }) => {
                         return (
                             <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <div className={cn.cards_card_image}>
-                                    <Image
+                                    <img
                                         itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                        width={340}
-                                        height={270}
-                                        layout="responsive"
+                                        //width={340}
+                                        //height={270}
+                                        //layout="responsive"
                                         alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>

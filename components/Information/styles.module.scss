@@ -2,6 +2,12 @@
 
 .info_container {
   @include container(100%, 100%, 0, $main-color);
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 0;
+  }
 
   .info_content {
     max-width: 1160px;
@@ -17,6 +23,11 @@
 
   .info_content div {
     width: 270px;
+
+    img {
+      width: 90px;
+      height: 90px;
+    }
   }
 
   .info_container_title {

@@ -25,12 +25,12 @@ const Banner = ({ banners }) => {
                     return (
                         <SplideSlide key={index}>
                             <Link href={`${item.url}`}>
-                                <Image
+                                <img
                                     itemProp="contentUrl"
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                    layout="responsive"
-                                    width={1440}
-                                    height={500}
+                                    //layout="responsive"
+                                    //width={1440}
+                                    //height={500}
                                     alt={item.image.alt} />
                             </Link>
                         </SplideSlide>

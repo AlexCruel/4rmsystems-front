@@ -90,12 +90,12 @@ const NewsPage = ({ ...props }) => {
                         return (
                             <div key={index} className={cn.container__cards_card}>
                                 <div className={cn.cards_card_image}>
-                                    <Image
+                                    <img
                                         itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                        width={340}
-                                        height={270}
-                                        layout="responsive"
+                                        //width={340}
+                                        //height={270}
+                                        //layout="responsive"
                                         alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">{item.title}</div>

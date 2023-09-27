@@ -35,9 +35,9 @@ const About = ({ about }) => {
 
             <div className={cn.content}>
                 <h1 className={cn.container_title} suppressHydrationWarning>{lang === "ENG" ? "About company 4RM Systems" : "О компании 4RM Systems"}</h1>
-                <Image
-                    width="552"
-                    height="400"
+                <img
+                    //width="552"
+                    //height="400"
                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${about.banner.url}`}
                     alt={about.banner.alt} />
                 { showChevron ?

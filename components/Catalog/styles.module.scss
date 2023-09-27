@@ -37,17 +37,10 @@
     }
   }
 
-  img {
-    border-bottom: 7px solid $default-color;
-
-    &:hover {
-      border-bottom: 7px solid $main-color;
-    }
-  }
-
   .slider__slide {
     display: flex;
     flex-direction: column;
+    width: 250px;
 
     p {
       font-size: 20px;
@@ -58,6 +51,15 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      border-bottom: 7px solid $default-color;
+
+      &:hover {
+        border-bottom: 7px solid $main-color;
+      }
     }
   }
 

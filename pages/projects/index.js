@@ -77,12 +77,12 @@ const Projects = ({ ...props }) => {
                         return (
                             <div key={index} className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
                                 <Link href={`/projects/${item.slug}`}>
-                                    <Image
+                                    <img
                                         itemProp="contentUrl"
                                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                        width={340}
-                                        height={270}
-                                        layout="responsive"
+                                        //width={340}
+                                        //height={270}
+                                        //layout="responsive"
                                         alt={item.image.alt} />
                                     <p itemProp="headline">{item.title}</p>
                                 </Link>

@@ -26,6 +26,13 @@
     }
   }
 
+  .container__image {
+    img {
+      width: 340px;
+      height: 270px;
+    }
+  }
+
   p {
     font-size: 20px;
     font-weight: bold;
@@ -33,10 +40,7 @@
     text-align: center;
   }
 
-  img {
-    width: 335px;
-    height: 267px;
-  }
+
 
   .slider__cards {
     width: 340px;

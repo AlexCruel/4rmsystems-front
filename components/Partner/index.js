@@ -43,12 +43,12 @@ const Partner = ({ partner }) => {
             <div className={cn.logo} itemScope itemType="https://schema.org/ImageObject">
                 {slicedItems.map((item, index) => {
                     return (
-                        <Image
+                        <img
                             itemProp="contentUrl"
                             key={index}
                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.logo}`}
-                            width={110}
-                            height={110}
+                            //width={110}
+                            //height={110}
                             alt="Partner" />
                     );
                 })}

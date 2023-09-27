@@ -1,4 +1,5 @@
-const url = process.env.NEXT_PUBLIC_API_URL;
+//const url = process.env.NEXT_PUBLIC_API_URL;
+const url = "https://api.4rm.org/api";
 
 export const postFeedback = async (data) => {
     const response = await fetch(`${url}/feedback`, {

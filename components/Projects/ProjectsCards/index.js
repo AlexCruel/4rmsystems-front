@@ -8,13 +8,13 @@ const ProjectsCards = ({ projects }) => {
             <div className={cn.container__cards}>
                 {projects.map((item, index) => {
                     return (
-                        <Link key={index} href={`${item.slug}`}>
-                            <div className={cn.container__cards_card} itemScope itemType="https://schema.org/ImageObject">
-                                <Image
+                        <Link key={index} href={`${item.slug}`} className={cn.container__cards_card}>
+                            <div  itemScope itemType="https://schema.org/ImageObject">
+                                <img
                                     itemProp="contentUrl"
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                    width={340}
-                                    height={270}
+                                    //width={340}
+                                    //height={270}
                                     alt={item.image.alt} />
                                 <p itemProp="headline">{item.title}</p>
                             </div>
