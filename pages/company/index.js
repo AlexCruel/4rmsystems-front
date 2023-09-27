@@ -82,12 +82,15 @@ const Company = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.pre_content)}
                 </div>
-                <Image
-                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`}
-                    layout="responsive"
-                    width={1000}
-                    height={300}
-                    alt={props.page.banner.alt} />
+                <div className={cn.test}>
+                    <Image
+                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`}
+                        //src="https://api.4rm.org/storage/app/media/Контент/Проекты/Helios/2-torgovye-stellazhi.jpg"
+                        layout="responsive"
+                        width={1000}
+                        height={300}
+                        alt={props.page.banner.alt} />
+                </div>
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>

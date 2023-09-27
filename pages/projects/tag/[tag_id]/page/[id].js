@@ -109,10 +109,10 @@ const ProjectsPageTag = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title>{props.tagName.seo_title}</title>
+                <title>{props.tagName.seo_title} - Страница {props.id}</title>
                 <meta name="keywords" content={props.tagName.seo_key} />
                 <meta name="description" content={props.tagName.seo_description} />
-                <meta property="og:title" content={`${props.tagName.seo_h1} - Страница ${props.id}`} />
+                <meta property="og:title" content={`${props.tagName.seo_h1}`} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
