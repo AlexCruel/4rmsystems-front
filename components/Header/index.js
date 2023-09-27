@@ -1,33 +1,27 @@
 import cn from "./styles.module.scss";
 import Image from "next/image";
 import logo from "../../public/img/logo.svg";
-import phone_big from "../../public/icons/phone.svg";
 import phone_small from "../../public/icons/phone_small.svg";
 import search from "../../public/icons/search.svg";
 import mail from "../../public/icons/mail.svg";
-import globe from "../../public/icons/globe.svg";
 import menu from "../../public/icons/menu.svg";
 import close from "../../public/icons/close.svg";
 import {useState} from "react";
 import Link from "next/link";
 import CallForm from "@/components/Forms/CallForm";
 import { setCookie, getCookie } from 'cookies-next';
-import { useRouter } from 'next/router';
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
     const [callForm, setCallForm] = useState(false);
 
-    const router = useRouter();
     const lang = getCookie('lang');
 
     const localizationHandler = () => {
         if (lang === "ENG") {
             setCookie("lang", "RU");
-            router.push('/');
         } else {
             setCookie("lang", "ENG");
-            router.push('/');
         }
     }
 
@@ -69,9 +63,9 @@ const Header = ({phones, modal}) => {
                 <div className={cn.icons}>
                     <a><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <a onClick={localizationHandler} suppressHydrationWarning>
+                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
-                    </a>
+                    </Link>
                 </div>
             </div>
                 <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>

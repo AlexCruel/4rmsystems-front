@@ -56,8 +56,8 @@ import {setLocalizationCookie} from "@/utils/localization";
 //     }
 // }
 
-export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
-    setLocalizationCookie(req, res);
+export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
+    setLocalizationCookie(req, res, locale);
     const { tag_id } = params;
     const lang = getCookie('lang', {req, res});
 

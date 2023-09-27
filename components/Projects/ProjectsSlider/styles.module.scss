@@ -39,6 +39,8 @@
   }
 
   .slider__cards {
+    width: 340px;
+    height: 340px;
     display: flex;
     flex-direction: column;
 
@@ -80,6 +82,8 @@
       color: $default-color;
       font-weight: normal;
     }
+
+    @include buttonBehavior($button-hover, $button-active);
   }
 }
 

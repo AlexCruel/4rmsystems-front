@@ -20,8 +20,8 @@ import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import useResize from "@/hooks/useResize";
 
-export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
-    setLocalizationCookie(req, res);
+export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
+    setLocalizationCookie(req, res, locale);
     const { id } = params;
     const lang = getCookie('lang', {req, res});
 
@@ -30,7 +30,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
     const info = await getInfoData(lang);
     const page = await getPageData("blog", lang);
     const blogTags = await getBlogTagsData(lang);
-    const bPinnedSec = await getBPinnedSecData(lang);
     const modalSubscription = await getModalData('subscription_form', lang);
     const modalCall = await getModalData('call_form', lang);
     const modalQuestion = await getModalData('question_form', lang);
@@ -49,7 +48,6 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res}) => {
             ...info,
             ...page,
             ...blogTags,
-            ...bPinnedSec,
             modalSubscription,
             modalCall,
             modalQuestion,
@@ -69,10 +67,10 @@ const BlogPage = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title>{props.page.seo_title}</title>
+                <title>{props.page.seo_title} - Страница {props.id}</title>
                 <meta name="keywords" content={props.page.seo_key} />
                 <meta name="description" content={props.page.seo_description} />
-                <meta property="og:title" content={`${props.page.seo_h1} - Страница ${props.id}`} />
+                <meta property="og:title" content={`${props.page.seo_h1}`} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
@@ -85,31 +83,6 @@ const BlogPage = ({ ...props }) => {
                 <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />
                 <Tags type="blog" tags={props.blogTags} />
-                <div className={cn.container__pinned} itemScope itemType="https://schema.org/ImageObject">
-                    <div className={cn.image}>
-                        <Image
-                            itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
-                            alt={props.bPinnedSec.image.alt}
-                            width={570}
-                            height={361}
-                            layout={size[0] <= 1200 ? "responsive" : ""}
-                        />
-                    </div>
-                    <div className={cn.pinned}>
-                        <div className={cn.pinned__title} itemProp="headline">
-                            {props.bPinnedSec.title}
-                        </div>
-                        <div className={cn.pinned__text} itemProp="text">
-                            {parse(props.bPinnedSec.pre_content)}
-                        </div>
-                        <Link href={`/blog/${props.bPinnedSec.slug}`}>
-                            <button suppressHydrationWarning>
-                                {lang === "ENG" ? "More details" : "Подробнее"}
-                            </button>
-                        </Link>
-                    </div>
-                </div>
                 <div className={cn.container__cards}>
                     {props.blogPage.map((item, index) => {
                         return (

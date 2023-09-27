@@ -36,14 +36,15 @@ const BlogBlog = ({ blogsComponent }) => {
                     blogsComponent.map((item, index) => {
                         return (
                             <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
-                                <Link href={`blog/${item.slug}`}>
-                                    <div className={cn.slide} itemScope itemType="https://schema.org/ImageObject">
+                                <Link className={cn.slide} href={`blog/${item.slug}`}>
+                                    <div itemScope itemType="https://schema.org/ImageObject">
                                         <Image
                                             itemProp="contentUrl"
                                             src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
                                             alt={item.image.alt}
                                             width={201}
                                             height={190}
+                                            layout="responsive"
                                         />
                                         <div itemProp="headline">{item.title}</div>
                                     </div>

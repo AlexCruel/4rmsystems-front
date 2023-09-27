@@ -115,6 +115,8 @@
       margin: auto;
 
       font-weight: lighter;
+
+      @include buttonBehavior($button-hover, $button-active);
     }
 
     p {

@@ -66,8 +66,9 @@ const Catalog = ({ catalog }) => {
                                     itemProp="contentUrl"
                                     id={item.id}
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                    width={295}
-                                    height={276}
+                                    width={495}
+                                    height={476}
+                                    layout="responsive"
                                     alt={item.image.alt}
                                 />
                                 <p itemProp="name">{item.title}</p>

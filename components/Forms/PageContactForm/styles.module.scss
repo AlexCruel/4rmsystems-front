@@ -57,6 +57,8 @@
 
       color: $footer-color;
       background: $default-color;
+
+      @include buttonBehaviorWhite($button-active);
     }
 
     .contact__content {

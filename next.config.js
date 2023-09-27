@@ -12,7 +12,7 @@ const images = {
       pathname: '/4rmsystems-server/storage/app/media/**',
     },
     {
-      protocol: 'http',
+      protocol: 'https',
       hostname: 'api.4rm.org',
       //port: '8888',
       pathname: '/storage/app/media/**',
@@ -30,5 +30,9 @@ const images = {
 
 module.exports = {
   nextConfig,
-  images
+  images,
+  i18n: {
+    locales: ['ru', 'en'],
+    defaultLocale: 'ru',
+  }
 }
