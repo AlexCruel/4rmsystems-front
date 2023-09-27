@@ -62,13 +62,13 @@ const Catalog = ({ catalog }) => {
                     return (
                         <SplideSlide onClick={clickCatalogHandler} key={index} style={{display: "flex", justifyContent: "center"}}>
                             <div className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
-                                <Image
+                                <img
                                     itemProp="contentUrl"
                                     id={item.id}
                                     src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                    width={495}
-                                    height={476}
-                                    layout="responsive"
+                                    //width={495}
+                                    //height={476}
+                                    //layout="responsive"
                                     alt={item.image.alt}
                                 />
                                 <p itemProp="name">{item.title}</p>

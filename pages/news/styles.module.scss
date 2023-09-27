@@ -24,6 +24,14 @@
     justify-content: center;
     gap: 100px;
 
+    .image {
+      width: 570px;
+
+      img {
+        width: 100%;
+      }
+    }
+
     .pinned {
       display: flex;
       flex-direction: column;
@@ -61,6 +69,10 @@
         font-size: 16px;
         font-weight: normal;
         color: $date-color;
+      }
+
+      img {
+        width: 100%;
       }
     }
 

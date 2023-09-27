@@ -33,6 +33,13 @@
         font-weight: bold;
       }
     }
+
+    .image {
+
+      img {
+        width: 100%;
+      }
+    }
   }
 
   .container__cards {
@@ -61,6 +68,11 @@
         font-size: 16px;
         font-weight: normal;
         color: $date-color;
+      }
+
+
+      img {
+        width: 100%;
       }
     }
 

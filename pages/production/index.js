@@ -64,12 +64,11 @@ const Production = ({ ...props }) => {
                 <div className={cn.container__text}>
                     {parse(props.page.pre_content)}
                 </div>
-                <Image
-                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`}
-                    layout="responsive"
-                    width={1000}
-                    height={300}
-                    alt={props.page.banner.alt} />
+                <div className={cn.container__image}>
+                    <img
+                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`}
+                        alt={props.page.banner.alt} />
+                </div>
                 <div className={cn.container__text}>
                     {parse(props.page.content)}
                 </div>

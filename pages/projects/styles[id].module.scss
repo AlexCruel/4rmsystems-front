@@ -12,6 +12,10 @@
     font-size: 48px;
     @include sizeTitle();
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
