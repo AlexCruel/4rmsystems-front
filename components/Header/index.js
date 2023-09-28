@@ -68,9 +68,14 @@ const Header = ({phones, modal}) => {
                     </Link>
                 </div>
             </div>
-                <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
-                    {nav ? <Image src={close} alt="Close" /> : <Image src={menu} alt="Menu" />}
-                </div>
+            <div className={cn.mobile__menu}>
+                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
+                        {lang === "ENG" ? "ENG" : "RU"}
+                    </Link>
+                    {nav ?
+                        <Image onClick={() => setNav(!nav)} src={close} alt="Close" className={cn.mobile__menu_close} />
+                        : <Image onClick={() => setNav(!nav)} src={menu}  alt="Menu" />}
+            </div>
             {
                 callForm && <CallForm modal={modal} setCallForm={setCallForm} />
             }
