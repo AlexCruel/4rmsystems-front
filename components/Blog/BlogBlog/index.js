@@ -28,8 +28,9 @@ const BlogBlog = ({ blogsComponent }) => {
                     }
                 },
                 classes: {
-                    prev  : `splide__arrow--prev + ' ' + ${ cn.custom__arrow}`,
-                    next  : `splide__arrow--next + ' ' + ${ cn.custom__arrow}`
+                    arrow: `splide__arrow your-class-arrow ${cn.arrow}`,
+                    prev: `splide__arrow--prev ${cn.prev}`,
+                    next: `splide__arrow--next ${cn.prev}`
                 }
             }} aria-label="My Favorite Images" >
                 {

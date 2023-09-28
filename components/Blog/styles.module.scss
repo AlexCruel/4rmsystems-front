@@ -64,9 +64,19 @@
     }
   }
 
-  .custom__arrow {
+  .prev {
+    font-size: 35px;
     background: none;
-    padding-bottom: 50px;
+    margin-top: -45px;
+  }
+
+  .arrow {
+    margin-right: -150px;
+    margin-left: -150px;
+
+    svg {
+      fill: $main-color;
+    }
   }
 
   .container__btn_down {
@@ -93,6 +103,27 @@
       margin-top: 25px;
       text-align: center;
     }
+
+    .prev {
+      font-size: 25px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    .arrow {
+      margin-right: -55px;
+      margin-left: -55px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    .prev {
+      font-size: 20px;
+    }
   }
 }
 
@@ -103,6 +134,15 @@
         gap: 30px;
       }
     }
+
+    .arrow {
+      margin-right: -75px;
+      margin-left: -75px;
+    }
+
+    .prev {
+      font-size: 10px;
+    }
   }
 }
 
@@ -112,6 +152,11 @@
       .container__header_menu {
         gap: 10px;
       }
+    }
+
+    .arrow {
+      margin-right: -95px;
+      margin-left: -95px;
     }
   }
 }

@@ -14,13 +14,24 @@ const Banner = ({ banners }) => {
                 interval: 3000,
                 rewind: true,
                 classes: {
-                    arrows: `splide__arrows your-class-arrows ${cn.arrows}`,
+                    arrows: `splide__arrows your-class-arrows`,
                     arrow: `splide__arrow your-class-arrow ${cn.arrow}`,
                     prev: `splide__arrow--prev ${cn.prev}`,
                     next: `splide__arrow--next ${cn.prev}`,
                     page: `splide__pagination__page ${cn.page}`
                 }
-            }} aria-label="My Favorite Images">
+            }} aria-label="My Favorite Images"
+                    renderControls={() => (
+                        <div className="splide__arrows">
+                            <div className=" splide__arrow--prev" role="button">
+                                NEXT
+                            </div>
+                            <div className="splide__arrow--next" role="button">
+                                PREV
+                            </div>
+                        </div>
+                    )}
+            >
                 {banners.map((item, index) => {
                     return (
                         <SplideSlide key={index}>

@@ -37,8 +37,9 @@ const ProjectsSlider = ({ projects }) => {
                     }
                 },
                 classes: {
-                    prev  : `splide__arrow--prev + ' ' + ${ cn.x}`,
-                    next  : `splide__arrow--next + ' ' + ${ cn.x}`
+                    arrow: `splide__arrow your-class-arrow ${cn.arrow}`,
+                    prev: `splide__arrow--prev ${cn.prev}`,
+                    next: `splide__arrow--next ${cn.prev}`
                 }
             }} aria-label="My Favorite Images">
                 {projects.map((item, index) => {
