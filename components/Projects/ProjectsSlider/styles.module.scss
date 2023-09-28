@@ -40,8 +40,6 @@
     text-align: center;
   }
 
-
-
   .slider__cards {
     width: 340px;
     height: 340px;
@@ -120,6 +118,20 @@
     .prev {
       font-size: 25px;
     }
+
+    .arrow {
+      margin-right: -120px;
+      margin-left: -120px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    .arrow {
+      margin-right: -110px;
+      margin-left: -110px;
+    }
   }
 }
 
@@ -153,8 +165,8 @@
 @media (max-width: 650px) {
   .container {
     .arrow {
-      margin-right: -100px;
-      margin-left: -100px;
+      margin-right: -70px;
+      margin-left: -70px;
     }
   }
 }
@@ -167,19 +179,22 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .container {
     .prev {
       font-size: 10px;
     }
+
+    .arrow {
+      display: none;
+    }
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .container {
-    .arrow {
-      margin-right: -120px;
-      margin-left: -120px;
+    .prev {
+      font-size: 10px;
     }
   }
 }
