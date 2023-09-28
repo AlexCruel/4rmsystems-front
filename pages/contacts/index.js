@@ -139,10 +139,10 @@ const Contacts = ({ ...props }) => {
                         }
                     </div>
                 </div>
-                {
-                    size[0] <= 1200 ? <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} /> : ""
-                }
             </div>
+            {
+                size[0] <= 1200 ? <SmallContactForm socials={props.socials} modal={props.modalConsult.modal} /> : ""
+            }
             <Map />
             <Footer info={props.info} menu={props.menu} socials={props.socials} />
         </>
