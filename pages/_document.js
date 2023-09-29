@@ -4,7 +4,7 @@ export default function Document({ ...props }) {
   return (
     <Html prefix="og:https://ogp.me/ns#">
         <Head>
-            <meta name="robots" content="index, follow"/>
+            <meta name="robots" content="noindex, nofollow"/>
         </Head>
       <body>
         <Main />
