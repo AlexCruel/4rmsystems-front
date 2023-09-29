@@ -5,7 +5,7 @@
   padding-top: 90px;
 
   .prev {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .arrow {
@@ -40,7 +40,15 @@
 @media (max-width: 1200px) {
   .banner_container {
     .prev {
-      font-size: 25px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .banner_container {
+    .prev {
+      font-size: 15px;
     }
   }
 }
@@ -62,7 +70,7 @@
     }
 
     .prev {
-      font-size: 20px;
+      font-size: 10px;
     }
   }
 }
@@ -70,7 +78,7 @@
 @media (max-width: 500px) {
   .banner_container {
     .prev {
-      font-size: 10px;
+      font-size: 5px;
     }
   }
 }

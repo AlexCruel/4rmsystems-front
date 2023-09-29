@@ -49,7 +49,7 @@ const ContactForm = ({ modal }) => {
                     </div>
                     <div className={cn.contact__info__contacts}>
                         <p><Image src={phone_black} alt="Phone" /><a href='tel:+375445041401'>+375 (44) 504-14-01</a></p>
-                        <p><Image src={mail_black} alt="Mail" /><a href='mailto:info@4rm.org'>info@4rm.com</a></p>
+                        <p><Image src={mail_black} alt="Mail" /><a href='mailto:info@4rm.org'>info@4rm.org</a></p>
                     </div>
                 </div>
                 <div className={cn.contact__form}>
