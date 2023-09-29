@@ -5,7 +5,7 @@ import CatalogModal from "@/components/Modals/CatalogModal";
 import {useState} from "react";
 import {getCookie} from "cookies-next";
 
-const Catalog = ({ catalog }) => {
+const Catalog = ({ catalog, modalContact, modalQuestion }) => {
     const [activeModal, setActiveModal] = useState(false);
     const [modalObject, setModalObject] = useState(
         {
@@ -23,6 +23,7 @@ const Catalog = ({ catalog }) => {
             return {
                 ...prev,
                 image_items: item.image_items,
+                subtitle: item.subtitle,
                 description: item.description
             }
         });
@@ -60,8 +61,9 @@ const Catalog = ({ catalog }) => {
                 },
             }} aria-label="My Favorite Images">
                 {catalog.map((item, index) => {
+                    // onClick={clickCatalogHandler}
                     return (
-                        <SplideSlide onClick={clickCatalogHandler} key={index} style={{display: "flex", justifyContent: "center"}}>
+                        <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
                             <div className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
                                 <img
                                     itemProp="contentUrl"
@@ -78,7 +80,13 @@ const Catalog = ({ catalog }) => {
                     );
                 })}
             </Splide>
-            <CatalogModal activeModal={activeModal} setActiveModal={setActiveModal} modalObject={modalObject} lang={lang} />
+            <CatalogModal
+                activeModal={activeModal}
+                setActiveModal={setActiveModal}
+                modalObject={modalObject}
+                lang={lang}
+                modalContact={modalContact}
+                modalQuestion={modalQuestion} />
         </div>
     );
 }

@@ -38,6 +38,7 @@ export const getServerSideProps = async ({resolvedUrl, req, res, locale}) => {
     const newsComponent = await getNewsCompData(lang);
     const modalContact = await getModalData('contact_form', lang);
     const modalCall = await getModalData('call_form', lang);
+    const modalQuestion = await getModalData('question_form', lang);
 
     return {
         props: {
@@ -53,6 +54,7 @@ export const getServerSideProps = async ({resolvedUrl, req, res, locale}) => {
             ...newsComponent,
             modalContact,
             modalCall,
+            modalQuestion,
             resolvedUrl
         }
     }
@@ -80,7 +82,7 @@ const Home = ({ ...props }) => {
           </Head>
           <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
           <Banner banners={props.banner} />
-          <Catalog catalog={props.catalog} />
+          <Catalog catalog={props.catalog} modalContact={props.modalContact.modal} modalQuestion={props.modalContact.modal} />
           <About about={props.about} />
           <BlogComponent
               blogState={blogState}

@@ -20,18 +20,7 @@ const Banner = ({ banners }) => {
                     next: `splide__arrow--next ${cn.prev}`,
                     page: `splide__pagination__page ${cn.page}`
                 }
-            }} aria-label="My Favorite Images"
-                    renderControls={() => (
-                        <div className="splide__arrows">
-                            <div className=" splide__arrow--prev" role="button">
-                                NEXT
-                            </div>
-                            <div className="splide__arrow--next" role="button">
-                                PREV
-                            </div>
-                        </div>
-                    )}
-            >
+            }} aria-label="My Favorite Images" >
                 {banners.map((item, index) => {
                     return (
                         <SplideSlide key={index}>
