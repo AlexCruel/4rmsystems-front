@@ -59,7 +59,6 @@ const News = ({ ...props }) => {
     const paginate = pageNumbers => setCurrentPage(pageNumbers);
     const lang = getCookie('lang');
     const size = useResize();
-    console.log(props.nPinnedSec)
 
     return (
         <>
