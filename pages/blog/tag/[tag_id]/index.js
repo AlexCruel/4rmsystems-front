@@ -85,7 +85,7 @@ const BlogTags = ({ ...props }) => {
                     <div className={cn.image}>
                         <img
                             itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url}`}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.bPinnedSec.image.url_pinned}`}
                             alt={props.bPinnedSec.image.alt}
                             //width={570}
                             //height={361}

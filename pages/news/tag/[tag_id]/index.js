@@ -83,7 +83,7 @@ const NewsTag = ({ ...props }) => {
                     <div className={cn.image}>
                         <img
                             itemProp="contentUrl"
-                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image.url}`}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.nPinnedSec.image.url_pinned}`}
                             alt={props.nPinnedSec.image.alt}
                             //width={570}
                             //height={361}

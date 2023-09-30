@@ -31,13 +31,11 @@
       &__title {
         font-size: 48px;
         font-weight: bold;
+        line-height: 1.2;
       }
-    }
 
-    .image {
-
-      img {
-        width: 100%;
+      a {
+        text-align: center;
       }
     }
   }
@@ -52,9 +50,11 @@
 
     .container__cards_card {
       width: 340px;
+      height: 430px;
 
       display: flex;
       flex-direction: column;
+      position: relative;
 
       margin-bottom: 50px;
 
@@ -70,6 +70,10 @@
         color: $date-color;
       }
 
+      button {
+        position: absolute;
+        bottom: 0;
+      }
 
       img {
         width: 100%;
@@ -92,7 +96,11 @@
       gap: 0;
 
       .image {
-        width: 100%;
+        max-width: 570px;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }
