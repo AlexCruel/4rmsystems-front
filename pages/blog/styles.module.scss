@@ -32,6 +32,7 @@
         font-size: 48px;
         font-weight: bold;
         line-height: 1.2;
+        @include sizeTitle();
       }
 
       a {
@@ -94,9 +95,11 @@
     .container__pinned {
       flex-direction: column;
       gap: 0;
+      text-align: center;
 
       .image {
         max-width: 570px;
+        margin: auto;
 
         img {
           width: 100%;
