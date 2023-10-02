@@ -100,7 +100,14 @@ const Project = ({ ...props }) => {
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
                 <div itemScope itemType="https://schema.org/ImageObject">
-                    <BannerProject banners={props.project.slider} />
+                    {/*<BannerProject banners={props.project.slider} />*/}
+                    <img
+                        itemProp="contentUrl"
+                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}
+                        //layout="responsive"
+                        //width={1000}
+                        //height={300}
+                        alt={props.project.banner.alt} />
                 </div>
                 <div className={cn.container__text}>
                     <Tags type="projects" tags={props.projectTags} />
