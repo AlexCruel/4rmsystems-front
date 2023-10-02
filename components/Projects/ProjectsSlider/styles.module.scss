@@ -55,6 +55,10 @@
     font-size: 35px;
     background: none;
     margin-top: -35px;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 
   .arrow {

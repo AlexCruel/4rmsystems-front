@@ -68,7 +68,13 @@
     font-size: 35px;
     background: none;
     margin-top: -45px;
+
+    &:active {
+      box-shadow: none;
+    }
   }
+
+  button {background: none;}
 
   .arrow {
     margin-right: -150px;
