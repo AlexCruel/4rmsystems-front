@@ -64,7 +64,7 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
                     // onClick={clickCatalogHandler}
                     return (
                         <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
-                            <div className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
+                            <div onClick={clickCatalogHandler} className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
                                 <img
                                     itemProp="contentUrl"
                                     id={item.id}
@@ -80,13 +80,18 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
                     );
                 })}
             </Splide>
-            <CatalogModal
-                activeModal={activeModal}
-                setActiveModal={setActiveModal}
-                modalObject={modalObject}
-                lang={lang}
-                modalContact={modalContact}
-                modalQuestion={modalQuestion} />
+            {
+                activeModal ?
+                <CatalogModal
+                    activeModal={activeModal}
+                    setActiveModal={setActiveModal}
+                    modalObject={modalObject}
+                    lang={lang}
+                    modalContact={modalContact}
+                    modalQuestion={modalQuestion} />
+                : ""
+            }
+
         </div>
     );
 }
