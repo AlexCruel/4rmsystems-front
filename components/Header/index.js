@@ -61,16 +61,21 @@ const Header = ({phones, modal}) => {
                     <button onClick={() => setCallForm(true)} suppressHydrationWarning>{lang === "ENG" ? "REQUEST A CALL" : "ЗАКАЗАТЬ ЗВОНОК"}</button>
                 </div>
                 <div className={cn.icons}>
-                    <a><Image src={search} alt="Search" /></a>
+                    {/*<a><Image src={search} alt="Search" /></a>*/}
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
                     <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
                     </Link>
                 </div>
             </div>
-                <div onClick={() => setNav(!nav)} className={cn.mobile_menu}>
-                    {nav ? <Image src={close} alt="Close" /> : <Image src={menu} alt="Menu" />}
-                </div>
+            <div className={cn.mobile__menu}>
+                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
+                        {lang === "ENG" ? "ENG" : "RU"}
+                    </Link>
+                    {nav ?
+                        <Image onClick={() => setNav(!nav)} src={close} alt="Close" className={cn.mobile__menu_close} />
+                        : <Image onClick={() => setNav(!nav)} src={menu}  alt="Menu" />}
+            </div>
             {
                 callForm && <CallForm modal={modal} setCallForm={setCallForm} />
             }

@@ -1,9 +1,7 @@
-import Image from "next/image";
 import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import Link from "next/link";
 
-const Banner = ({ banners }) => {
+const BannerProject = ({ banners }) => {
     return (
         <div className={cn.banner_container} itemScope itemType="https://schema.org/ImageObject">
             <Splide options={{
@@ -21,18 +19,16 @@ const Banner = ({ banners }) => {
                     page: `splide__pagination__page ${cn.page}`
                 }
             }} aria-label="My Favorite Images" >
-                {banners.map((item, index) => {
+                {banners?.map((item, index) => {
                     return (
                         <SplideSlide key={index}>
-                            <Link href={`${item.url}`}>
-                                <img
-                                    itemProp="contentUrl"
-                                    src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image.url}`}
-                                    //layout="responsive"
-                                    //width={1440}
-                                    //height={500}
-                                    alt={item.image.alt} />
-                            </Link>
+                            <img
+                                itemProp="contentUrl"
+                                src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${item.image[0]}`}
+                                //layout="responsive"
+                                //width={1440}
+                                //height={500}
+                                alt={item.alt} />
                         </SplideSlide>
                     );
                 })}
@@ -41,4 +37,4 @@ const Banner = ({ banners }) => {
     );
 }
 
-export default Banner;
+export default BannerProject;

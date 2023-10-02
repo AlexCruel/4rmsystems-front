@@ -79,7 +79,7 @@
       font-family: "Roboto", sans-serif;
       font-size: 16px;
 
-      width: 180px;
+      min-width: 180px;
       height: 35px;
 
       margin-right: 50px;
@@ -95,7 +95,7 @@
     }
   }
 
-  .mobile_menu {
+  .mobile__menu {
     display: none;
   }
 }
@@ -103,15 +103,23 @@
 @media (max-width: 1200px) {
   .nav{
 
-    .mobile_menu {
-      display: block;
-      position: absolute;
-      top: 30px;
-      right: 10px;
+    .mobile__menu {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 25px;
+      gap: 25px;
       cursor: pointer;
+
+      .mobile__menu_close {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 10px;
+      }
     }
-
-
 
     .container {
       width: 100%;
@@ -145,14 +153,12 @@
       }
 
       .call {
-        //display: block;
-        //position: absolute;
-        //bottom: 20%;
-        margin: auto;
-        order: 2;
+        display: block;
 
-        .call button {
-          //bottom: 20%;
+        button {
+          position: absolute;
+          top: 30%;
+          left: 40px;
         }
       }
     }

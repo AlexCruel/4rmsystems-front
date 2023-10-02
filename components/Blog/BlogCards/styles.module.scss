@@ -31,6 +31,16 @@
 
       margin-bottom: 50px;
 
+      .cards_card_image {
+        width: 340px;
+        height: 270px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
       .cards_card_title {
         font-size: 20px;
         font-weight: bold;

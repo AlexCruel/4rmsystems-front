@@ -17,6 +17,7 @@ import Tags from "@/components/Tags";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
+import BannerProject from "@/components/BannerProject";
 
 // export const getStaticPaths = async () => {
 //     const { projects } = await getProjectsData();
@@ -99,6 +100,7 @@ const Project = ({ ...props }) => {
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                 </div>
                 <div itemScope itemType="https://schema.org/ImageObject">
+                    {/*<BannerProject banners={props.project.slider} />*/}
                     <img
                         itemProp="contentUrl"
                         src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}

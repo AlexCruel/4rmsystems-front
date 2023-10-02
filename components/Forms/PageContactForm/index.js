@@ -50,7 +50,6 @@ const PageContactForm = ({ modalSubscription, modalCall, modalQuestion }) => {
                         <div className={cn.contact__consult_btn}>
                             <button onClick={() => setCallForm(true)} suppressHydrationWarning>
                                 {lang === "ENG" ? "Request a call" : "Заказать звонок"}
-
                             </button>
                             <button onClick={() => setQuestionForm(true)} suppressHydrationWarning>
                                 {lang === "ENG" ? "Ask a Question" : "Задать вопрос"}

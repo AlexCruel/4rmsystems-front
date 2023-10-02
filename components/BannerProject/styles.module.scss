@@ -1,11 +1,11 @@
 @import "styles/main";
+@import "styles/autoResize";
 
 .banner_container {
-  height: 400px;
-  padding-top: 90px;
+  max-height: 500px;
 
   .prev {
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .arrow {
@@ -37,18 +37,28 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1500px) {
   .banner_container {
-    .prev {
-      font-size: 20px;
-    }
+    margin-bottom: 80px;
   }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 1700px) {
+  .banner_container {
+    margin-bottom: 160px;
+  }
+}
+
+@media (min-width: 2100px) {
+  .banner_container {
+    margin-bottom: 280px;
+  }
+}
+
+@media (max-width: 1200px) {
   .banner_container {
     .prev {
-      font-size: 15px;
+      font-size: 25px;
     }
   }
 }
@@ -70,7 +80,7 @@
     }
 
     .prev {
-      font-size: 10px;
+      font-size: 20px;
     }
   }
 }
@@ -78,7 +88,7 @@
 @media (max-width: 500px) {
   .banner_container {
     .prev {
-      font-size: 5px;
+      font-size: 10px;
     }
   }
 }

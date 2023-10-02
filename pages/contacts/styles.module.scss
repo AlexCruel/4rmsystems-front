@@ -46,7 +46,7 @@
 
 
       a {
-        font-size: 15px;
+        font-size: 12px;
         font-weight: normal;
 
         color: $default-color;
@@ -85,10 +85,37 @@
       align-items: center;
     }
 
-    .container__submain {
+    .house_title {
+      text-align: center;
+    }
+
+    .container__submain_items {
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: red;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+
+    .house_title {
+      max-width: 350px;
+    }
+
+    .house_text {
+      margin-top: 15px;
+      width: 300px;
+    }
+
+    .house_contacts {
+      max-width: 330px;
+      .contacts_item {
+        max-width: 150px;
+        a {
+          font-size: 12px;
+        }
+      }
     }
   }
 }
