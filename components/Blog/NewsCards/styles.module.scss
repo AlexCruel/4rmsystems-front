@@ -23,11 +23,18 @@
 
     .container__cards_card {
       width: 340px;
+      height: 430px;
 
       display: flex;
       flex-direction: column;
+      position: relative;
 
       margin-bottom: 50px;
+
+      button {
+        position: absolute;
+        bottom: 0;
+      }
 
       .cards_card_image {
         width: 340px;
