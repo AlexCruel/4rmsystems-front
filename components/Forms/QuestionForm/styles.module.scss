@@ -19,7 +19,7 @@
     justify-content: space-evenly;
 
     width: 350px;
-    height: 380px;
+    min-height: 380px;
 
     background: $main-color;
     border-radius: 12px;
@@ -29,6 +29,7 @@
     width: 166px;
     height: 30px;
     margin-top: 10px;
+    margin-bottom: 10px;
 
     font-size: 16px;
     font-weight: bold;

@@ -14,6 +14,7 @@ import {getCookie} from "cookies-next";
 import arrow_down from "../../public/icons/arrow_down.svg";
 import {useEffect, useState} from "react";
 import useResize from "@/hooks/useResize";
+import logo125x35_w from "../../public/img/logo125x35_w.svg";
 
 const Footer = ({info, menu, socials}) => {
     const lang = getCookie('lang');
@@ -34,7 +35,7 @@ const Footer = ({info, menu, socials}) => {
             <div className={cn.footer_container}>
                 <div className={cn.info} itemScope itemType="https://schema.org/Organization">
                     <div className={cn.logo_container}>
-                        <div><Image src={logo} alt="Logo" /></div>
+                        <div><Image src={logo125x35_w} alt="Logo" /></div>
                         <div className={cn.logo_container_text} suppressHydrationWarning>
                             {lang === "ENG" ? "Equipment for modern retail" : "Оборудование для современного ритейла"}
                         </div>

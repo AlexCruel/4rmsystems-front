@@ -5,14 +5,14 @@ import useResize from "@/hooks/useResize";
 import chevron_main_down from "../../public/icons/chevron_main_down.svg";
 import chevron_main_up from "../../public/icons/chevron_main_up.svg";
 
-function renderLogoItems(size, setSlicedItems, partner) {
-    if (size[0] <= 999 && size[0] > 789) {
+function renderLogoItems(size, setSlicedItems, partner, chevronState = false) {
+    if (size[0] <= 999 && size[0] > 789 && chevronState !== true) {
         setSlicedItems((prevState) => partner.logo_items.slice(0, 12));
-    } else if (size[0] <= 789 && size[0] > 579) {
+    } else if (size[0] <= 789 && size[0] > 579 && chevronState !== true) {
         setSlicedItems((prevState) => partner.logo_items.slice(0, 9));
-    } else if (size[0] <= 579 && size[0] > 369) {
+    } else if (size[0] <= 579 && size[0] > 369 && chevronState !== true) {
         setSlicedItems((prevState) => partner.logo_items.slice(0, 6));
-    }  else if (size[0] <= 369) {
+    }  else if (size[0] <= 369 && chevronState !== true) {
         setSlicedItems((prevState) => partner.logo_items.slice(0, 3));
     } else {
         setSlicedItems((prevState) => partner.logo_items.slice(0, 15));
@@ -25,7 +25,7 @@ const Partner = ({ partner }) => {
     const size = useResize();
 
     useEffect(() => {
-        renderLogoItems(size, setSlicedItems, partner);
+        renderLogoItems(size, setSlicedItems, partner, chevronState);
     }, [partner, size]);
 
     const clickSliceHandler = () => {
