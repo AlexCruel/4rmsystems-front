@@ -10,6 +10,7 @@ import {useState} from "react";
 import Link from "next/link";
 import CallForm from "@/components/Forms/CallForm";
 import { setCookie, getCookie } from 'cookies-next';
+import logo125x35 from "../../public/img/logo125x35.svg";
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
@@ -29,7 +30,7 @@ const Header = ({phones, modal}) => {
         <nav className={cn.nav} itemScope itemType="http://schema.org/SiteNavigationElement">
             <Link href="/" className={cn.logo_link}>
                 <div className={cn.logo_container}>
-                    <Image src={logo} alt='4RM SYSTEMS' />
+                    <Image src={logo125x35} alt='4RM SYSTEMS' />
                     <hr/>
                     <div className={cn.logo_container_text}>For Retail Modern Systems</div>
                 </div>
