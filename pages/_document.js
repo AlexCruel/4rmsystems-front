@@ -9,7 +9,7 @@ export default function Document({ ...props }) {
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-TNK7DJKQ');`}}></script>
-            <meta name="robots" content="noindex, nofollow"/>
+            <meta name="robots" content="index, follow"/>
             <meta name="yandex-verification" content="37a94647988229ec" />
         </Head>
       <body>
