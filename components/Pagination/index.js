@@ -22,13 +22,13 @@ const setOpacity = (currentPage, pageNumbers, setOpacityPrev, setOpacityNext) =>
 }
 
 const setOpacityEllipsis = (currentPage, pageNumbers, setOpacityEllipsisPrev, setOpacityEllipsisNext) => {
-    if (pageNumbers.length > 4 && currentPage <= pageNumbers.length - 2) {
+    if (pageNumbers.length > 4 && currentPage < pageNumbers.length - 2) {
         setOpacityEllipsisNext(true);
     } else {
         setOpacityEllipsisNext(false);
     }
 
-    if (currentPage >= 3) {
+    if (currentPage > 3) {
         setOpacityEllipsisPrev(true);
     } else {
         setOpacityEllipsisPrev(false);
