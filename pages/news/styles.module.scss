@@ -38,6 +38,7 @@
 
       a {
         text-align: center;
+        color: $footer-color;
       }
     }
   }
@@ -64,6 +65,10 @@
         font-size: 20px;
         font-weight: bold;
         margin-top: 15px;
+
+        a {
+          color: $footer-color;
+        }
       }
 
       .cards_card_date {

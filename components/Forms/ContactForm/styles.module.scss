@@ -88,6 +88,11 @@
         font-size: 9px;
         font-weight: normal;
         color: $default-color;
+
+        a {
+          font-weight: normal;
+          color: $default-color;
+        }
       }
 
       input {
@@ -111,7 +116,7 @@
       height: 35px;
       margin: auto;
 
-      font-weight: lighter;
+      font-weight: bold;
 
       @include buttonBehavior($button-hover, $button-active);
     }

@@ -22,6 +22,7 @@ const Footer = ({info, menu, socials}) => {
     const size = useResize();
 
     const activeTabHandler = (event) => {
+        console.log(event)
         if (!activeTab.includes(event.target.id)) {
             setActiveTab([...activeTab, event.target.id]);
         } else {
@@ -81,9 +82,9 @@ const Footer = ({info, menu, socials}) => {
                 {menu.map((section, index) => {
                     return (
                         <div key={index} className={cn.category} onClick={activeTabHandler}>
-                            <div className={cn.category_title} id={index.toString()}>
+                            <div onClick={activeTabHandler} className={cn.category_title} id={index.toString()}>
                                 {section.title}
-                                <Image src={arrow_down} alt="Arrow" className={size[0] <= "750" ? "" : cn.tab_invisible} />
+                                <Image id={index} src={arrow_down} alt="Arrow" className={size[0] <= "750" ? "" : cn.tab_invisible} />
                             </div>
                             <ul className={activeTab.includes(index.toString()) || size[0] >= "750" ? "" : cn.tab_invisible}>
                                 {section.items.map((item, index) => {

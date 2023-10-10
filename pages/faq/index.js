@@ -70,13 +70,13 @@ const FAQ = ({ ...props }) => {
                             return (
                                 <div key={index} className={cn.accordion} onClick={activeTabHandler} id={index.toString()} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
                                     <hr />
-                                    <div className={cn.accordion__text_block} onClick={activeTabHandler} id={index.toString()}>
-                                        <div className={cn.tab_title} onClick={activeTabHandler} id={index.toString()} itemProp="name">
+                                    <div className={cn.accordion__text_block} id={index.toString()}>
+                                        <div className={cn.tab_title} id={index.toString()} itemProp="name">
                                             {item.title}
                                         </div>
                                         <Image
                                             src={activeTab.includes(index.toString()) ? chevron_up : chevron_right}
-                                            onClick={activeTabHandler} id={index.toString()}
+                                            id={index.toString()}
                                             alt="Chevron" />
                                     </div>
                                     <div className={activeTab.includes(index.toString()) ? "" : cn.tab_invisible} itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">

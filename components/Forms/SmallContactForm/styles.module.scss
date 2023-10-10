@@ -71,7 +71,7 @@
       height: 35px;
       margin: auto;
 
-      font-weight: lighter;
+      font-weight: bold;
 
       @include buttonBehavior($button-hover, $button-active);
     }
