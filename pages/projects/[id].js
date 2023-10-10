@@ -19,39 +19,6 @@ import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import BannerProject from "@/components/BannerProject";
 
-// export const getStaticPaths = async () => {
-//     const { projects } = await getProjectsData();
-//
-//     const paths = projects.map(({ slug }) => {
-//         return {
-//             params: { id: slug }
-//         }
-//     });
-//
-//     return {
-//         paths,
-//         fallback: false
-//     }
-// }
-
-// export const getStaticProps = async (context) => {
-//     const { id } = context.params;
-//
-//     const { project } = await getProjectData(id);
-//     const info = await getInfoData();
-//     const projectsCards = await getProjectsCardsData();
-//     const projectTags = await getProjectTagsData(project.id);
-//
-//     return {
-//         props: {
-//             project,
-//             ...info,
-//             ...projectsCards,
-//             ...projectTags
-//         }
-//     }
-// }
-
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
     const { id } = params;

@@ -25,6 +25,8 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
                 image_items: item.image_items
             }
         });
+
+        document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
         setActiveModal(!activeModal);
     }
     return (

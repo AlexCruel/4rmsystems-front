@@ -9,8 +9,13 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject, lang, modalCon
     const [modalActive, setModalActive] = useState(false);
     const [questionForm, setQuestionForm] = useState(false);
 
+    const clickModalHandler = () => {
+        setActiveModal(!activeModal);
+        document.getElementsByTagName('body')[0].style = 'overflow: visible;';
+    }
+
     return (
-        <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
+        <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={clickModalHandler}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
                 <div className={cn.modal__container_content} itemScope itemType="https://schema.org/ImageObject">
                     <div className={cn.content__title}>{modalObject.subtitle}</div>
