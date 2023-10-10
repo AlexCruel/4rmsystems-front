@@ -9,8 +9,8 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
     const [activeModal, setActiveModal] = useState(false);
     const [modalObject, setModalObject] = useState(
         {
+            subtitle: "",
             image_items: [],
-            description: ""
         }
     );
     const lang = getCookie('lang');
@@ -18,17 +18,15 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
     const clickCatalogHandler = (event) => {
         const item = catalog.find(x => x.id == event.target.id);
 
-        setActiveModal(!activeModal);
         setModalObject(prev => {
             return {
                 ...prev,
-                image_items: item.image_items,
-                subtitle: item.subtitle,
-                description: item.description
+                subtitle: item.title,
+                image_items: item.image_items
             }
         });
+        setActiveModal(!activeModal);
     }
-
     return (
         <div className={cn.container}>
             <div className={cn.header}>
@@ -61,7 +59,6 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
                 },
             }} aria-label="My Favorite Images">
                 {catalog.map((item, index) => {
-                    // onClick={clickCatalogHandler}
                     return (
                         <SplideSlide key={index} style={{display: "flex", justifyContent: "center"}}>
                             <div onClick={clickCatalogHandler} className={cn.slider__slide} itemScope itemType="https://schema.org/ImageObject">
@@ -74,7 +71,7 @@ const Catalog = ({ catalog, modalContact, modalQuestion }) => {
                                     //layout="responsive"
                                     alt={item.image.alt}
                                 />
-                                <p itemProp="name">{item.title}</p>
+                                <p onClick={clickCatalogHandler} id={index + 1} itemProp="name">{item.title}</p>
                             </div>
                         </SplideSlide>
                     );

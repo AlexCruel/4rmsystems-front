@@ -13,7 +13,7 @@ const CatalogModal = ({ activeModal, setActiveModal, modalObject, lang, modalCon
         <div className={activeModal ? `${cn.modal} ${cn.active}` : cn.modal} onClick={() => setActiveModal(!activeModal)}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
                 <div className={cn.modal__container_content} itemScope itemType="https://schema.org/ImageObject">
-                    <div className={cn.content__title}>Кассовые зоны</div>
+                    <div className={cn.content__title}>{modalObject.subtitle}</div>
                     <Splide options={{
                         type: 'slide',
                         perPage: 1,
