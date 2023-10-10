@@ -40,7 +40,8 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
             modalSubscription,
             modalCall,
             modalQuestion,
-            resolvedUrl
+            resolvedUrl,
+            lang
         }
     }
 }
@@ -72,7 +73,7 @@ const Blog = ({ ...props }) => {
                     <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.blogSingle.title} />
                 </div>
             </div>
-            <BlogCards blogs={props.blogCards} />
+            <BlogCards blogs={props.blogCards} lang={props.lang} />
             <PageContactForm
                 modalSubscription={props.modalSubscription.modal}
                 modalCall={props.modalCall.modal}

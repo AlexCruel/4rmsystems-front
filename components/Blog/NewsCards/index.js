@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import cn from "./styles.module.scss";
 
-const NewsCards = ({ news }) => {
+const NewsCards = ({ news, lang }) => {
     return (
         <div className={cn.container}>
             <div className={cn.container__cards}>
@@ -19,7 +19,11 @@ const NewsCards = ({ news }) => {
                             </div>
                             <div className={cn.cards_card_title}>{item.title}</div>
                             <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
-                            <Link href={`/news/${item.slug}`}><button>Подробнее</button></Link>
+                            <Link href={`/news/${item.slug}`}>
+                                <button>
+                                    {lang === "ENG" ? "More details" : "Подробнее"}
+                                </button>
+                            </Link>
                         </div>
                     );
                 })}
