@@ -7,6 +7,7 @@ import Image from "next/image";
 import phone_black from "@/public/icons/phone_black.svg";
 import mail_black from "@/public/icons/mail_black.svg";
 import {getCookie} from "cookies-next";
+import Link from "next/link";
 
 const ContactForm = ({ modal }) => {
     const {
@@ -115,13 +116,15 @@ const ContactForm = ({ modal }) => {
                             <input id="policy" type="checkbox"
                                    {...register("policy", {required: true})} />
                             <label className={errors?.policy ? cn.policy_error : ""} suppressHydrationWarning>
-                                {
-                                    errors?.policy ?
-                                        lang === "ENG" ?
-                                        "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
-                                        : lang === "ENG" ?
-                                            "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
-                                }
+                                <Link href="/privacy-policy">
+                                    {
+                                        errors?.policy ?
+                                            lang === "ENG" ?
+                                                "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
+                                            : lang === "ENG" ?
+                                                "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
+                                    }
+                                </Link>
                             </label>
                         </div>
                         <div>

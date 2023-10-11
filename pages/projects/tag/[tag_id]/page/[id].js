@@ -21,46 +21,6 @@ import Head from "next/head";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 
-// export const getStaticPaths = async () => {
-//     const blogsPerPage = 6;
-//     const paths = [];
-//
-//     const { tagsProjectsCount } = await getTagsProjectsCountData();
-//
-//     const convertPaths = tagsProjectsCount.map(({ slug, count }) => {
-//         for (let i = 1; i <= Math.ceil(count / blogsPerPage); i++) {
-//             paths.push({ params: { tag_id: slug.toString(), id: i.toString() } });
-//         }
-//     });
-//
-//     return {
-//         paths,
-//         fallback: false
-//     }
-// }
-
-// export const getStaticProps = async (context) => {
-//     const { tag_id, id } = context.params;
-//
-//     const { tagProjects } = await getTagProjectsData(tag_id);
-//     const { tagPage } = await getTagPageData(tag_id, id);
-//     const info = await getInfoData();
-//     const page = await getPageData("projects");
-//     const tags = await getTagsData();
-//
-//     return {
-//         props: {
-//             id,
-//             tag_id,
-//             projectsPage: tagPage,
-//             blogDataLength: tagProjects.length,
-//             ...info,
-//             ...page,
-//             ...tags
-//         }
-//     }
-// }
-
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
     const { tag_id, id } = params;

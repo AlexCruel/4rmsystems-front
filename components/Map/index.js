@@ -7,11 +7,8 @@ const Map = () => {
     return (
         <div className={cn.container}>
             <h2 suppressHydrationWarning>{lang === "ENG" ? "Offices of 4RM Systems" : "Офисы компании 4RM Systems"}</h2>
-            <iframe
-                className={cn.map}
-                src="https://www.google.com/maps/d/u/0/embed?mid=1QI9riQnV0tlQ2EZeh-o9HvCOUnuQENk&ehbc=2E312F"
-                allowFullScreen="" loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A145fe02b90df0bae5fec925e36f56fba40a906d075bd430d081cd4fe68268805&amp;source=constructor"
+                    className={cn.map}>
             </iframe>
         </div>
     );
