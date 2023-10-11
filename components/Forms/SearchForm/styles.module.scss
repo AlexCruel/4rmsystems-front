@@ -7,6 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  overflow: auto;
 
   .modal__container {
     width: 70%;
@@ -14,13 +15,103 @@
     margin: 25px auto;
     text-align: center;
 
-    border: 2px solid $footer-color;
-    border-radius: 10px;
+    .container__input {
+      position: relative;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    background: wheat;
+      background: $search-header;
 
-    input {
-      width: 95%;
+      .input_searchBtn {
+        width: 40px;
+        height: 37px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 8.4%;
+
+        background: $default-color;
+
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-right: 1px solid $date-color;
+      }
+
+      .input_clearBtn {
+        width: 40px;
+        height: 37px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 8.3%;
+
+        color: $button-close;
+        background: $default-color;
+
+        font-size: 20px;
+        font-weight: bold;
+
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-left: 1px solid $date-color;
+
+        &:hover {
+          cursor: pointer;
+          color: red;
+        }
+      }
+
+      input {
+        width: 75%;
+        height: 35px;
+        border-radius: 0;
+        text-align: center;
+      }
+    }
+
+    .container__result {
+      background: $search-footer;
+      text-align: start;
+
+      .result__item {
+        width: 75%;
+        margin: auto;
+
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 30px;
+
+        .item_image {
+          width: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .item__box {
+          border-bottom: 1px solid $date-color;
+        }
+
+        .item_title {
+          font-size: 30px;
+          font-weight: bold;
+          line-height: normal;
+        }
+
+        .item_text {
+          font-size: 14px;
+          font-weight: normal;
+          padding: 0;
+        }
+      }
     }
   }
 }
