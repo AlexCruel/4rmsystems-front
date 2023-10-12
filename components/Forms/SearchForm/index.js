@@ -22,17 +22,28 @@ const SearchForm = ({ setSearchForm }) => {
 
     const clearBtnHandler = () => {
         inputRef.current.value = "";
+        inputRef.current.placeholder = "Введите ключевое слово...";
         setSearchResult(prev => null);
     }
 
+    const clickInputHandler = () => {
+        inputRef.current.placeholder = "";
+    }
+
+    const clickModalHandler = () => {
+        setSearchForm(false);
+        document.getElementsByTagName('body')[0].style = 'overflow: visible;';
+
+    }
+
     return (
-        <div className={cn.modal} onClick={() => setSearchForm(false)}>
+        <div className={cn.modal} onClick={clickModalHandler}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
                 <div className={cn.container__input}>
                     <span className={cn.input_searchBtn}>
                         <Image src={search} alt="Seacrh" />
                     </span>
-                    <input type="text" ref={inputRef} onChange={inputHandler} />
+                    <input onClick={clickInputHandler} type="text" ref={inputRef} onChange={inputHandler} placeholder="Введите ключевое слово..." />
                     <span onClick={clearBtnHandler} className={cn.input_clearBtn}>X</span>
                 </div>
                 <div className={cn.container__result}>

@@ -28,6 +28,11 @@ const Header = ({phones, modal}) => {
         }
     }
 
+    const searchFormHandler = () => {
+        setSearchForm(true);
+        document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
+    }
+
     return (
         <nav className={cn.nav} itemScope itemType="http://schema.org/SiteNavigationElement">
             <Link href="/" className={cn.logo_link}>
@@ -64,7 +69,7 @@ const Header = ({phones, modal}) => {
                     <button onClick={() => setCallForm(true)} suppressHydrationWarning>{lang === "ENG" ? "REQUEST A CALL" : "ЗАКАЗАТЬ ЗВОНОК"}</button>
                 </div>
                 <div className={cn.icons}>
-                    <a onClick={() => setSearchForm(true)}><Image src={search} alt="Search" /></a>
+                    <a onClick={searchFormHandler}><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
                     <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
