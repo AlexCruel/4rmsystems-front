@@ -4,6 +4,7 @@ import {getSearchInfo} from "@/pages/api/search";
 import search from "../../../public/icons/search.svg";
 import Image from "next/image";
 import parse from "html-react-parser";
+import Link from "next/link";
 
 const SearchForm = ({ setSearchForm, lang }) => {
     const [searchResult, setSearchResult] = useState(null);
@@ -44,6 +45,11 @@ const SearchForm = ({ setSearchForm, lang }) => {
         document.getElementsByTagName('body')[0].style = 'overflow: visible;';
     }
 
+    const clickTitleHandler = () => {
+        document.getElementsByTagName('body')[0].style = 'overflow: visible;';
+        setSearchForm(false);
+    }
+
     return (
         <div className={cn.modal} onClick={clickModalHandler}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
@@ -70,15 +76,23 @@ const SearchForm = ({ setSearchForm, lang }) => {
                                             alt={item.image.alt} />
                                     </div>
                                     <div className={cn.item__box}>
-                                        <p className={cn.item_title}>{item.title}</p>
+                                        <Link href={item.type !== undefined ? `/${item.type}/${item.slug}` : `/projects/${item.slug}`}>
+                                            <p onClick={clickTitleHandler} className={cn.item_title}>{item.title}</p>
+                                        </Link>
                                         <p className={cn.item_text}>{parse(`${item.content.slice(0, 300)}...`)}</p>
                                         <div className={cn.item_type}>
                                             {
-                                                item.type === "news"
-                                                    ? "Новости"
-                                                    : item.type === "blog"
-                                                        ? "Блог"
-                                                        : "Проекты"
+                                                lang === "RU"
+                                                    ? item.type === "news"
+                                                        ? "Новости"
+                                                        : item.type === "blog"
+                                                            ? "Блог"
+                                                            : "Проекты"
+                                                    : item.type === "news"
+                                                        ? "News"
+                                                        : item.type === "blog"
+                                                            ? "Blog"
+                                                            : "Projects"
                                             }
                                         </div>
                                     </div>
