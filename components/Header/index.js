@@ -88,7 +88,7 @@ const Header = ({phones, modal}) => {
                 callForm && <CallForm modal={modal} setCallForm={setCallForm} />
             }
             {
-                searchForm && <SearchForm setSearchForm={setSearchForm} />
+                searchForm && <SearchForm setSearchForm={setSearchForm} lang={lang} />
             }
         </nav>
     );

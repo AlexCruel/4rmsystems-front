@@ -1,20 +1,28 @@
 import cn from "./styles.module.scss";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getSearchInfo} from "@/pages/api/search";
 import search from "../../../public/icons/search.svg";
 import Image from "next/image";
 import parse from "html-react-parser";
 
-const SearchForm = ({ setSearchForm }) => {
+const SearchForm = ({ setSearchForm, lang }) => {
     const [searchResult, setSearchResult] = useState(null);
     const inputRef = useRef();
+    const inputPlaceholder = lang === "RU" ? "Введите ключевое слово..." : "Enter keyword...";
+    const notFoundText = lang === "RU" ? "По Вашему запросу ничего не найдено" : "Nothing was found for your request";
+    const [notFound, setNotFound] = useState(false);
 
     const inputHandler = async (event) => {
         if (event.target.value.length > 0) {
-            const res = await getSearchInfo(event.target.value);
+            const res = await getSearchInfo(event.target.value, lang);
             setSearchResult(prev => res);
-            console.log(res);
-            console.log("searchResult", searchResult);
+
+            if (res.length < 1) {
+                setNotFound(true);
+            } else {
+                setNotFound(false);
+            }
+
         } else {
             setSearchResult(prev => null);
         }
@@ -22,8 +30,9 @@ const SearchForm = ({ setSearchForm }) => {
 
     const clearBtnHandler = () => {
         inputRef.current.value = "";
-        inputRef.current.placeholder = "Введите ключевое слово...";
+        inputRef.current.placeholder = inputPlaceholder;
         setSearchResult(prev => null);
+        setNotFound(false);
     }
 
     const clickInputHandler = () => {
@@ -33,7 +42,6 @@ const SearchForm = ({ setSearchForm }) => {
     const clickModalHandler = () => {
         setSearchForm(false);
         document.getElementsByTagName('body')[0].style = 'overflow: visible;';
-
     }
 
     return (
@@ -43,7 +51,12 @@ const SearchForm = ({ setSearchForm }) => {
                     <span className={cn.input_searchBtn}>
                         <Image src={search} alt="Seacrh" />
                     </span>
-                    <input onClick={clickInputHandler} type="text" ref={inputRef} onChange={inputHandler} placeholder="Введите ключевое слово..." />
+                    <input
+                        onClick={clickInputHandler}
+                        type="text"
+                        ref={inputRef}
+                        onChange={inputHandler}
+                        placeholder={inputPlaceholder} />
                     <span onClick={clearBtnHandler} className={cn.input_clearBtn}>X</span>
                 </div>
                 <div className={cn.container__result}>
@@ -59,10 +72,22 @@ const SearchForm = ({ setSearchForm }) => {
                                     <div className={cn.item__box}>
                                         <p className={cn.item_title}>{item.title}</p>
                                         <p className={cn.item_text}>{parse(`${item.content.slice(0, 300)}...`)}</p>
+                                        <div className={cn.item_type}>
+                                            {
+                                                item.type === "news"
+                                                    ? "Новости"
+                                                    : item.type === "blog"
+                                                        ? "Блог"
+                                                        : "Проекты"
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             );
                         })
+                    }
+                    {
+                        notFound && <div className={cn.notFound_text}>{notFoundText}</div>
                     }
                 </div>
 

@@ -97,7 +97,10 @@
         }
 
         .item__box {
+          position: relative;
           border-bottom: 1px solid $date-color;
+          padding-bottom: 20px;
+          margin-bottom: 5px;
         }
 
         .item_title {
@@ -111,6 +114,26 @@
           font-weight: normal;
           padding: 0;
         }
+
+        .item_type {
+          width: 120px;
+          height: 30px;
+
+          position: absolute;
+          right: 0;
+          bottom: 5px;
+
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+          line-height: 30px;
+
+          background: rgba(35, 115, 137, 0.45);
+        }
+      }
+
+      .notFound_text {
+        text-align: center;
       }
     }
   }
