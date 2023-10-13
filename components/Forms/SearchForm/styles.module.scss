@@ -82,6 +82,7 @@
       .result__item {
         width: 75%;
         margin: auto;
+        padding-bottom: 5px;
 
         display: flex;
         align-items: center;
@@ -89,10 +90,12 @@
         gap: 30px;
 
         .item_image {
-          width: 100%;
+          width: 300px;
+          height: 250px;
 
           img {
-            width: 100%;
+            width: 300px;
+            height: 250px;
           }
         }
 
@@ -116,7 +119,7 @@
         .item_text {
           font-size: 14px;
           font-weight: normal;
-          padding: 0;
+          padding-bottom: 5px;
         }
 
         .item_type {
@@ -164,6 +167,16 @@
             font-size: 12px;
           }
 
+          .item_image {
+            width: 200px;
+            height: 150px;
+
+            img {
+              width: 200px;
+              height: 150px;
+            }
+          }
+
           .item_type {
             width: 80px;
             height: 20px;
@@ -187,13 +200,22 @@
           .item_text {
             display: none;
           }
+
           .item_image {
             width: 150px;
+            height: 115px;
+
+            img {
+              width: 150px;
+              height: 115px;
+            }
           }
 
           .item_type {
             width: 80px;
             height: 20px;
+
+            right: auto;
 
             font-size: 12px;
             line-height: 20px;
@@ -217,6 +239,16 @@
         .result__item {
           .item_title {
             font-size: 15px;
+          }
+
+          .item_image {
+            width: 100px;
+            height: 75px;
+
+            img {
+              width: 100px;
+              height: 75px;
+            }
           }
 
           .item_type {
