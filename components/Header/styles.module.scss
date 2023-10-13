@@ -170,5 +170,21 @@
   }
 }
 
+@media (max-width: 400px) {
+  .nav {
+    .mobile__menu {
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .nav {
+    .mobile__menu {
+      gap: 10px;
+    }
+  }
+}
+
 
 
