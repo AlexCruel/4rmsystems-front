@@ -9,7 +9,7 @@ import Link from "next/link";
 const SearchForm = ({ setSearchForm, lang }) => {
     const [searchResult, setSearchResult] = useState(null);
     const inputRef = useRef();
-    const inputPlaceholder = lang === "RU" ? "Введите ключевое слово..." : "Enter keyword...";
+    const inputPlaceholder = lang === "RU" ? "Найти..." : "Find...";
     const notFoundText = lang === "RU" ? "По Вашему запросу ничего не найдено" : "Nothing was found for your request";
     const [notFound, setNotFound] = useState(false);
 
