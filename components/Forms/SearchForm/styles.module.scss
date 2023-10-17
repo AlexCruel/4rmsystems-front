@@ -16,11 +16,11 @@
     text-align: center;
 
     .container__input {
-      position: relative;
       height: 75px;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0 15px;
 
       background: $search-header;
 
@@ -31,8 +31,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        left: 8.4%;
 
         background: $default-color;
 
@@ -48,8 +46,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        right: 8.4%;
 
         color: $button-close;
         background: $default-color;
@@ -70,8 +66,7 @@
       input {
         width: 75%;
         height: 35px;
-        border-radius: 3px;
-        text-align: center;
+        border-radius: 0;
       }
     }
 
@@ -236,15 +231,15 @@
   .modal {
     .modal__container {
       .container__input {
-        .input_searchBtn {
-          left: 2%;
-          height: 43px;
-        }
-
-        .input_clearBtn {
-          right: 2%;
-          height: 43px;
-        }
+        //.input_searchBtn {
+        //  left: 2%;
+        //  height: 43px;
+        //}
+        //
+        //.input_clearBtn {
+        //  right: 2%;
+        //  height: 43px;
+        //}
       }
       .container__result {
         .result__item {

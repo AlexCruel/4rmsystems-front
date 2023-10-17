@@ -62,7 +62,8 @@ const SearchForm = ({ setSearchForm, lang }) => {
                         type="text"
                         ref={inputRef}
                         onChange={inputHandler}
-                        placeholder={inputPlaceholder} />
+                        placeholder={inputPlaceholder}
+                        autoFocus />
                     <span onClick={clearBtnHandler} className={cn.input_clearBtn}>X</span>
                 </div>
                 <div className={cn.container__result}>
