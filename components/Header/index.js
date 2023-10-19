@@ -12,11 +12,13 @@ import CallForm from "@/components/Forms/CallForm";
 import { setCookie, getCookie } from 'cookies-next';
 import logo125x35 from "../../public/img/logo125x35.svg";
 import SearchForm from "@/components/Forms/SearchForm";
+import {useRouter} from "next/router";
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
     const [callForm, setCallForm] = useState(false);
     const [searchForm, setSearchForm] = useState(false);
+    const router = useRouter();
 
     const lang = getCookie('lang');
 
@@ -71,7 +73,7 @@ const Header = ({phones, modal}) => {
                 <div className={cn.icons}>
                     <a onClick={searchFormHandler}><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
-                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
+                    <Link href={router.asPath} locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
                     </Link>
                 </div>
