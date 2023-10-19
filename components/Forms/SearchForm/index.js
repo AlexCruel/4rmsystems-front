@@ -5,6 +5,7 @@ import search from "../../../public/icons/search.svg";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const SearchForm = ({ setSearchForm, lang }) => {
     const [searchResult, setSearchResult] = useState(null);
@@ -12,6 +13,7 @@ const SearchForm = ({ setSearchForm, lang }) => {
     const inputPlaceholder = lang === "RU" ? "Найти..." : "Find...";
     const notFoundText = lang === "RU" ? "По Вашему запросу ничего не найдено" : "Nothing was found for your request";
     const [notFound, setNotFound] = useState(false);
+    const router = useRouter();
 
     const inputHandler = async (event) => {
         if (event.target.value.length > 0) {
@@ -50,6 +52,14 @@ const SearchForm = ({ setSearchForm, lang }) => {
         setSearchForm(false);
     }
 
+    const enterInputHandler = (event) => {
+        if (event.key === 'Enter') {
+            document.getElementsByTagName('body')[0].style = 'overflow: visible;';
+            setSearchForm(false);
+            router.push(`/search/${event.target.value}`);
+        }
+    }
+
     return (
         <div className={cn.modal} onClick={clickModalHandler}>
             <div className={cn.modal__container} onClick={e => e.stopPropagation()}>
@@ -58,6 +68,7 @@ const SearchForm = ({ setSearchForm, lang }) => {
                         <Image src={search} alt="Seacrh" />
                     </span>
                     <input
+                        onKeyDown={enterInputHandler}
                         onClick={clickInputHandler}
                         type="text"
                         ref={inputRef}
