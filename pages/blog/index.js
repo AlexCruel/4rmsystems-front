@@ -121,7 +121,6 @@ const Blog = ({ ...props }) => {
                                         {item.title}
                                     </Link>
                                 </div>
-                                {/*<div className={cn.cards_card_title} itemProp="headline">{item.title}</div>*/}
                                 <div className={cn.cards_card_date} itemProp="dateCreated">{item.created_at.split('T')[0]}</div>
                                 <Link href={`/blog/${item.slug}`}>
                                     <button suppressHydrationWarning>

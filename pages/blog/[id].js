@@ -77,7 +77,7 @@ const Blog = ({ ...props }) => {
                     <Tags type="blog" tags={props.bSingleTags} />
                     <span itemProp="articleBody">{parse(props.blogSingle.content)}</span>
                     <div className={cn.container__text_date} itemProp="datePublished">{props.blogSingle.created_at.split('T')[0]}</div>
-                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.blogSingle.title} />
+                    <Socials lang={props.lang} socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.blogSingle.title} />
                 </div>
             </div>
             <BlogCards blogs={props.blogCards} lang={props.lang} />

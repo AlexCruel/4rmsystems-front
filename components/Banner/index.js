@@ -13,6 +13,11 @@ const Banner = ({ banners }) => {
                 autoplay: true,
                 interval: 3000,
                 rewind: true,
+                breakpoints: {
+                    500: {
+                        arrows: false
+                    }
+                },
                 classes: {
                     arrows: `splide__arrows your-class-arrows`,
                     arrow: `splide__arrow your-class-arrow ${cn.arrow}`,

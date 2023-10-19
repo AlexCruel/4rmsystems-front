@@ -99,7 +99,7 @@ const NewsPage = ({ ...props }) => {
                                         alt={item.image.alt} />
                                 </div>
                                 <div className={cn.cards_card_title} itemProp="headline">
-                                    <Link href={`/blog/${item.slug}`}>
+                                    <Link href={`/news/${item.slug}`}>
                                         {item.title}
                                     </Link>
                                 </div>

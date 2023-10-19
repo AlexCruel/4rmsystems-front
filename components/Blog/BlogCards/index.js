@@ -17,7 +17,11 @@ const BlogCards = ({ blogs, lang }) => {
                                     //layout="responsive"
                                     alt={item.image.alt} />
                             </div>
-                            <div className={cn.cards_card_title}>{item.title}</div>
+                            <div className={cn.cards_card_title}>
+                                <Link href={`/blog/${item.slug}`}>
+                                    {item.title}
+                                </Link>
+                            </div>
                             <div className={cn.cards_card_date}>{item.created_at.split('T')[0]}</div>
                             <Link href={`/blog/${item.slug}`}>
                                 <button>

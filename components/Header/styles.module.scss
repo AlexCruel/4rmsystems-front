@@ -61,11 +61,16 @@
       gap: 5px;
     }
 
-    .contacts_container a {
-      font-weight: normal;
-      font-size: 15px;
+    .contacts_container {
+      display: flex;
+      align-items: center;
 
-      padding-left: 5px;
+      a {
+        font-weight: normal;
+        font-size: 15px;
+
+        padding-left: 5px;
+      }
     }
 
     .menu ul {
