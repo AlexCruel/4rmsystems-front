@@ -76,7 +76,7 @@ const News = ({ ...props }) => {
                     <Tags type="news" tags={props.nSingleTags} />
                     <span itemProp="articleBody">{parse(props.newsSingle.content)}</span>
                     <div className={cn.container__text_date} itemProp="datePublished" content={props.newsSingle.created_at.split('T')[0]}>{props.newsSingle.created_at.split('T')[0]}</div>
-                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.newsSingle.title} />
+                    <Socials lang={props.lang} socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.newsSingle.title} />
                 </div>
             </div>
             <NewsCards news={props.newsCards} lang={props.lang} />
