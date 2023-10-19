@@ -7,6 +7,7 @@ function App({ Component, pageProps }) {
     return (
         <>
             <Head>
+                <meta name="robots" content="index, follow" key='robots' />
                 <link rel="shortcut icon" href="/favicon.ico" />
             </Head>
             <Provider store={store}>

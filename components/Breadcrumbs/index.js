@@ -6,13 +6,15 @@ import {getCookie} from "cookies-next";
 const Breadcrumbs = ({ pre_title, title }) => {
     const router = useRouter();
     const lang = getCookie('lang');
-    let titleCrumb = lang === "ENG" ? "Main" : "Главная"
+    let titleCrumb = lang === "ENG" ? "Main" : "Главная";
 
     function generateBreadcrumbs() {
 
         if (title === "404") {
             // Add in a default "Home" crumb for the top-level
             return [{ href: "/", title: titleCrumb }, {href: "/", title}];
+        } else if (pre_title === "") {
+            return [{ href: "/", title: '' }, {href: "/", title}];
         } else {
             // Remove any query parameters, as those aren't included in breadcrumbs
             const asPathWithoutQuery = router.asPath.split("?")[0];

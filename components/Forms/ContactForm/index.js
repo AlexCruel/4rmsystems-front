@@ -115,8 +115,8 @@ const ContactForm = ({ modal }) => {
                         <div className={cn.contact__form__policy}>
                             <input id="policy" type="checkbox"
                                    {...register("policy", {required: true})} />
-                            <label className={errors?.policy ? cn.policy_error : ""} suppressHydrationWarning>
-                                <Link href="/privacy-policy">
+                            <label className={errors?.policy ? cn.policy_error : ""}>
+                                <Link href="/privacy-policy" suppressHydrationWarning>
                                     {
                                         errors?.policy ?
                                             lang === "ENG" ?

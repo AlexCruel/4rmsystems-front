@@ -21,6 +21,13 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     const lang = getCookie('lang', {req, res});
 
     const { newsSingle } = await getNewsSingleData(id, lang);
+
+    if (!newsSingle) {
+        return {
+            notFound: true
+        }
+    }
+
     const info = await getInfoData(lang);
     const newsCards = await getNewsCardsData(lang);
     const nSingleTags = await getNSingleTagsData(newsSingle.id, lang);

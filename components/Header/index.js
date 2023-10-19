@@ -11,10 +11,12 @@ import Link from "next/link";
 import CallForm from "@/components/Forms/CallForm";
 import { setCookie, getCookie } from 'cookies-next';
 import logo125x35 from "../../public/img/logo125x35.svg";
+import SearchForm from "@/components/Forms/SearchForm";
 
 const Header = ({phones, modal}) => {
     const [nav, setNav] = useState(false);
     const [callForm, setCallForm] = useState(false);
+    const [searchForm, setSearchForm] = useState(false);
 
     const lang = getCookie('lang');
 
@@ -24,6 +26,11 @@ const Header = ({phones, modal}) => {
         } else {
             setCookie("lang", "ENG");
         }
+    }
+
+    const searchFormHandler = () => {
+        setSearchForm(true);
+        document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
     }
 
     return (
@@ -62,7 +69,7 @@ const Header = ({phones, modal}) => {
                     <button onClick={() => setCallForm(true)} suppressHydrationWarning>{lang === "ENG" ? "REQUEST A CALL" : "ЗАКАЗАТЬ ЗВОНОК"}</button>
                 </div>
                 <div className={cn.icons}>
-                    {/*<a><Image src={search} alt="Search" /></a>*/}
+                    <a onClick={searchFormHandler}><Image src={search} alt="Search" /></a>
                     <a href="mailto:info@4rm.org"><Image src={mail} alt="Mail" /></a>
                     <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
@@ -70,6 +77,7 @@ const Header = ({phones, modal}) => {
                 </div>
             </div>
             <div className={cn.mobile__menu}>
+                    <Image onClick={searchFormHandler} src={search} alt="Search" />
                     <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
                     </Link>
@@ -79,6 +87,9 @@ const Header = ({phones, modal}) => {
             </div>
             {
                 callForm && <CallForm modal={modal} setCallForm={setCallForm} />
+            }
+            {
+                searchForm && <SearchForm setSearchForm={setSearchForm} lang={lang} />
             }
         </nav>
     );

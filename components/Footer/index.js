@@ -22,7 +22,6 @@ const Footer = ({info, menu, socials}) => {
     const size = useResize();
 
     const activeTabHandler = (event) => {
-        console.log(event)
         if (!activeTab.includes(event.target.id)) {
             setActiveTab([...activeTab, event.target.id]);
         } else {
