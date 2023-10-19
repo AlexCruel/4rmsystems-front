@@ -66,7 +66,7 @@ const Search = ({ ...props }) => {
                                         <Link href={item.type !== undefined ? `/${item.type}/${item.slug}` : `/projects/${item.slug}`}>
                                             <p className={cn.item_title}>{item.title}</p>
                                         </Link>
-                                        {parse(`${item.content.slice(0, 300)}...`)}
+                                        <p className={cn.item_text}>{parse(`${item.content.slice(0, 300)}...`)}</p>
                                         <div className={cn.item_type}>
                                             {
                                                 props.lang === "RU"
