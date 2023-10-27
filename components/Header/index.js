@@ -80,7 +80,7 @@ const Header = ({phones, modal}) => {
             </div>
             <div className={cn.mobile__menu}>
                     <Image onClick={searchFormHandler} src={search} alt="Search" />
-                    <Link href="/" locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
+                    <Link href={router.asPath} locale={lang === "ENG" ? 'ru' : 'en'} onClick={localizationHandler} suppressHydrationWarning>
                         {lang === "ENG" ? "ENG" : "RU"}
                     </Link>
                     {nav ?
