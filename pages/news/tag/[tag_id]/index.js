@@ -67,11 +67,11 @@ const NewsTag = ({ ...props }) => {
                 <title>{props.tagName.seo_title_news}</title>
                 <meta name="keywords" content={props.tagName.seo_key_news} />
                 <meta name="description" content={props.tagName.seo_description_news} />
-                <meta property="og:title" content={props.tagName.seo_h1} />
+                <meta property="og:title" content={props.tagName.seo_h1_news} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
-                <meta property="og:description" content={props.tagName.seo_description} />
+                <meta property="og:description" content={props.tagName.seo_description_news} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
