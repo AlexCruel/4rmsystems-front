@@ -25,6 +25,13 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     const lang = getCookie('lang', {req, res});
 
     const { project } = await getProjectData(id, lang);
+
+    if (!project) {
+        return {
+            notFound: true
+        }
+    }
+
     const info = await getInfoData(lang);
     const projectsCards = await getProjectsCardsData(lang);
     const projectTags = await getProjectTagsData(project.id, lang);
@@ -41,7 +48,8 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
             ...page,
             modalContact,
             modalCall,
-            resolvedUrl
+            resolvedUrl,
+            lang
         }
     }
 }
@@ -79,7 +87,7 @@ const Project = ({ ...props }) => {
                 <div className={cn.container__text}>
                     <Tags type="projects" tags={props.projectTags} />
                     <span itemProp="articleBody">{parse(props.project.content)}</span>
-                    <Socials socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.project.title} />
+                    <Socials lang={props.lang} socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.project.title} />
                 </div>
             </div>
             <ProjectsCards projects={props.projectsCards} />

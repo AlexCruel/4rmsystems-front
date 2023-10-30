@@ -80,7 +80,7 @@ const NewsPageTag = ({ ...props }) => {
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
-                <meta property="og:description" content={props.tagName.seo_description} />
+                <meta property="og:description" content={props.tagName.seo_description_news} />
                 <meta property="og:site_name" content="4RM Systems" />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}/news/tag`} />
             </Head>
