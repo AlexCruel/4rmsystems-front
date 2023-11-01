@@ -257,3 +257,9 @@ export const getBlogTagName = async(slug, lang) => {
 
   return await request.json();
 }
+
+export const getSeoTemplate = async(lang) => {
+  const request = await fetch(`${url}/seo/template/${lang}`);
+
+  return await request.json();
+}

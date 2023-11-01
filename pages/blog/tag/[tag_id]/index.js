@@ -19,6 +19,7 @@ import Head from "next/head";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import useResize from "@/hooks/useResize";
+import {createTagSeoTemplate} from "@/utils/seoTemplate";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -34,11 +35,13 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     const modalCall = await getModalData('call_form', lang);
     const modalQuestion = await getModalData('question_form', lang);
     const page = await getPageData("blog", lang);
-    const tagName = await getBlogTagNameData(tag_id, lang);
+    const { tagName } = await getBlogTagNameData(tag_id, lang);
+    const seo = await createTagSeoTemplate(tagName, 'tags_blog', lang);
 
     return {
         props: {
             tag_id,
+            seo,
             ...info,
             ...blogTags,
             ...bPinnedSec,
@@ -46,7 +49,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
             ...tagBlogsPage,
             ...bPinnedSec,
             ...page,
-            ...tagName,
+            tagName,
             modalSubscription,
             modalCall,
             modalQuestion,
@@ -66,14 +69,18 @@ const BlogTags = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title>{props.tagName.seo_title_blog}</title>
-                <meta name="keywords" content={props.tagName.seo_key_blog} />
-                <meta name="description" content={props.tagName.seo_description_blog} />
-                <meta property="og:title" content={props.tagName.seo_h1_blog} />
+                {/*<title>{props.tagName.seo_title_blog}</title>*/}
+                <title>{props.seo.seo_title}</title>
+                {/*<meta name="keywords" content={props.tagName.seo_key_blog} />*/}
+                {/*<meta property="og:title" content={props.tagName.seo_h1_blog} />*/}
+                <meta name="keywords" content={props.seo.seo_key} />
+                <meta name="description" content={props.seo.seo_description} />
+                <meta property="og:title" content={props.seo.seo_h1} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.page.banner.url}`} />
-                <meta property="og:description" content={props.tagName.seo_description_blog} />
+                {/*<meta property="og:description" content={props.tagName.seo_description_blog} />*/}
+                <meta property="og:description" content={props.seo.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
