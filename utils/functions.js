@@ -17,7 +17,7 @@ import {
     getProjectsComponent,
     getProjectsPage, getProjectsTagName,
     getProjectsTags,
-    getProjectTags,
+    getProjectTags, getSeoTemplate,
     getSocials, getTagBlogs, getTagBlogsPage, getTagNews, getTagNewsPage,
     getTagPage,
     getTagProjects,
@@ -343,5 +343,13 @@ export const getBlogTagNameData = async (slug, lang) => {
 
     return {
         tagName
+    };
+}
+
+export const getSeoTemplateData = async (lang) => {
+    const seoTemplate = await getSeoTemplate(lang);
+
+    return {
+        seoTemplate
     };
 }

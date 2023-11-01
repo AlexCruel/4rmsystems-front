@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
     getInfoData, getModalData, getNewsCardsData,
-    getNewsSingleData, getNSingleTagsData, getPageData
+    getNewsSingleData, getNSingleTagsData, getPageData, getSeoTemplateData
 } from "@/utils/functions";
 import PageContactForm from "@/components/Forms/PageContactForm";
 import Tags from "@/components/Tags";
@@ -14,6 +14,7 @@ import NewsCards from "@/components/Blog/NewsCards";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
+import {createSeoTemplate} from "@/utils/seoTemplate";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -28,6 +29,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
         }
     }
 
+    const seo = await createSeoTemplate(newsSingle, 'news', lang);
     const info = await getInfoData(lang);
     const newsCards = await getNewsCardsData(lang);
     const nSingleTags = await getNSingleTagsData(newsSingle.id, lang);
@@ -39,6 +41,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     return {
         props: {
             newsSingle,
+            seo,
             ...info,
             ...newsCards,
             ...nSingleTags,
@@ -56,14 +59,14 @@ const News = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title>{props.newsSingle.seo_title}</title>
-                <meta name="keywords" content={props.newsSingle.seo_key} />
-                <meta name="description" content={props.newsSingle.seo_description} />
-                <meta property="og:title" content={props.newsSingle.seo_h1} />
+                <title>{props.seo.seo_title}</title>
+                <meta name="keywords" content={props.seo.seo_key} />
+                <meta name="description" content={props.seo.seo_description} />
+                <meta property="og:title" content={props.seo.seo_h1} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.newsSingle.image.url}`} />
-                <meta property="og:description" content={props.newsSingle.seo_description} />
+                <meta property="og:description" content={props.seo.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />

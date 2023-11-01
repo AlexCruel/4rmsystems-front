@@ -18,6 +18,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import BannerProject from "@/components/BannerProject";
+import {createSeoTemplate} from "@/utils/seoTemplate";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -32,6 +33,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
         }
     }
 
+    const seo = await createSeoTemplate(project, 'projects', lang);
     const info = await getInfoData(lang);
     const projectsCards = await getProjectsCardsData(lang);
     const projectTags = await getProjectTagsData(project.id, lang);
@@ -42,6 +44,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
     return {
         props: {
             project,
+            seo,
             ...info,
             ...projectsCards,
             ...projectTags,
@@ -58,14 +61,14 @@ const Project = ({ ...props }) => {
     return (
         <>
             <Head>
-                <title>{props.project.seo_title}</title>
-                <meta name="keywords" content={props.project.seo_key} />
-                <meta name="description" content={props.project.seo_description} />
-                <meta property="og:title" content={props.project.seo_h1} />
+                <title>{props.seo.seo_title}</title>
+                <meta name="keywords" content={props.seo.seo_key} />
+                <meta name="description" content={props.seo.seo_description} />
+                <meta property="og:title" content={props.seo.seo_h1} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}${props.resolvedUrl}`} />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.image.url}`} />
-                <meta property="og:description" content={props.project.seo_description} />
+                <meta property="og:description" content={props.seo.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
