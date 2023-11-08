@@ -51,11 +51,13 @@ body {
     outline: none;
   }
 
+  // Splide.js
   .splide__pagination__page.is-active {
     background: $main-color;
     border: 1px solid $default-color;
   }
 
+  // Video
   .container__video {
     position: relative;
     padding-bottom: 56.25%;
@@ -67,8 +69,40 @@ body {
     height: 100%;
   }
 
-  //::selection {
-  //  color: $main-color;
-  //}
+  // Light Galery
+  .lg-svg {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  .lg-dropdown-text {
+    margin-top: 3px !important;
+  }
+
+  .lg-outer .lg-pager {
+    background-color: $main-color;
+  }
+
+  .lg-progress-bar .lg-progress {
+    background-color: $main-color;
+  }
+
+  .lightgallery {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    img {
+      height: 100%;
+      border-bottom: 7px solid $default-color;
+
+      &:hover {
+        border-bottom: 7px solid $main-color;
+      }
+    }
+  }
 }
 

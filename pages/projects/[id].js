@@ -4,8 +4,7 @@ import cn from "./styles[id].module.scss";
 import {
     getInfoData, getModalData, getPageData,
     getProjectData,
-    getProjectsCardsData,
-    getProjectsData, getProjectTagsData
+    getProjectsCardsData, getProjectTagsData
 } from "@/utils/functions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,6 +18,8 @@ import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import BannerProject from "@/components/BannerProject";
 import {createSeoTemplate} from "@/utils/seoTemplate";
+import {useEffect} from "react";
+import {createLightGallery} from "@/utils/lightGallery";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -58,6 +59,10 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
 }
 
 const Project = ({ ...props }) => {
+    useEffect(() => {
+        createLightGallery();
+    }, []);
+
     return (
         <>
             <Head>
