@@ -5,6 +5,10 @@
 
   .container__tags {
 
+    .tags_disable {
+      @include buttonTagDisable($button-tag-active);
+    }
+
     button {
       min-width: 170px;
       height: 30px;

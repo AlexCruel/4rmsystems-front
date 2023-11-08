@@ -16,6 +16,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {getCookie} from "cookies-next";
 import {setLocalizationCookie} from "@/utils/localization";
 import {createSeoTemplate} from "@/utils/seoTemplate";
+import {useEffect} from "react";
+import {createLightGallery} from "@/utils/lightGallery";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -57,6 +59,10 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
 }
 
 const Blog = ({ ...props }) => {
+    useEffect(() => {
+        createLightGallery();
+    }, []);
+
     return (
         <>
             <Head>

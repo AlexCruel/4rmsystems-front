@@ -73,6 +73,10 @@
   }
 }
 
+@mixin buttonTagDisable($button-tag-active) {
+  background: $button-tag-active;
+}
+
 @mixin buttonBehaviorWhite($button-active) {
   &:hover {
     text-decoration: underline;
