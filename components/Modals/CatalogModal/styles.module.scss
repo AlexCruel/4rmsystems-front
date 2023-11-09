@@ -10,12 +10,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
-  margin-top: 65px;
+  z-index: 2;
+  overflow-x: scroll;
 
   .modal__container {
     width: 70vw;
-    margin-bottom: 5vh;
+    margin-top: 65px;
     background-color: $default-color;
     border-top: 5px solid $main-color;
   }
