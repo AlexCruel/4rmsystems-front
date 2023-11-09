@@ -36,7 +36,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
 
     const seo = await createSeoTemplate(project, 'projects', lang);
     const info = await getInfoData(lang);
-    const projectsCards = await getProjectsCardsData(lang);
+    const projectsCards = await getProjectsCardsData(id, lang);
     const projectTags = await getProjectTagsData(project.id, lang);
     const modalContact = await getModalData('contact_form', lang);
     const modalCall = await getModalData('call_form', lang);

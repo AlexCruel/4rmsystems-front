@@ -33,7 +33,7 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
 
     const seo = await createSeoTemplate(newsSingle, 'news', lang);
     const info = await getInfoData(lang);
-    const newsCards = await getNewsCardsData(lang);
+    const newsCards = await getNewsCardsData(id, lang);
     const nSingleTags = await getNSingleTagsData(newsSingle.id, lang);
     const modalSubscription = await getModalData('subscription_form', lang);
     const modalCall = await getModalData('call_form', lang);

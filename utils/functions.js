@@ -90,8 +90,8 @@ export const getProjectsComponentData = async (lang) => {
     };
 }
 
-export const getProjectsCardsData = async (lang) => {
-    const projectsCards = await getProjectsCards(lang);
+export const getProjectsCardsData = async (id, lang) => {
+    const projectsCards = await getProjectsCards(id, lang);
 
     return {
         projectsCards
@@ -226,8 +226,8 @@ export const getNSingleTagsData = async (id, lang) => {
     };
 }
 
-export const getNewsCardsData = async (lang) => {
-    const newsCards = await getNewsCards(lang);
+export const getNewsCardsData = async (id, lang) => {
+    const newsCards = await getNewsCards(id, lang);
 
     return {
         newsCards
@@ -290,8 +290,8 @@ export const getBlogSingleData = async (slug, lang) => {
     };
 }
 
-export const getBlogCardsData = async (lang) => {
-    const blogCards = await getBlogCards(lang);
+export const getBlogCardsData = async (id, lang) => {
+    const blogCards = await getBlogCards(id, lang);
 
     return {
         blogCards
