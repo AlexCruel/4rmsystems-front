@@ -66,8 +66,8 @@ export const getProjectsComponent = async(lang) => {
   return await request.json();
 }
 
-export const getProjectsCards = async(lang) => {
-  const request = await fetch(`${url}/projects-cards/${lang}`);
+export const getProjectsCards = async(id, lang) => {
+  const request = await fetch(`${url}/projects-cards/${id}/${lang}`);
 
   return await request.json();
 }
@@ -168,8 +168,8 @@ export const getNSingleTags = async(id, lang) => {
   return await request.json();
 }
 
-export const getNewsCards = async(lang) => {
-  const request = await fetch(`${url}/news-cards/${lang}`);
+export const getNewsCards = async(id, lang) => {
+  const request = await fetch(`${url}/news-cards/${id}/${lang}`);
 
   return await request.json();
 }
@@ -216,8 +216,8 @@ export const getBlogSingle = async(slug, lang) => {
   return await request.json();
 }
 
-export const getBlogCards = async(lang) => {
-  const request = await fetch(`${url}/blog-cards/${lang}`);
+export const getBlogCards = async(id, lang) => {
+  const request = await fetch(`${url}/blog-cards/${id}/${lang}`);
 
   return await request.json();
 }
