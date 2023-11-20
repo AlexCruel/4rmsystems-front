@@ -91,7 +91,7 @@ const NewsPageTag = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}/news/tag`} />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/NewsArticle">
                 <h1 itemProp="headline">{props.tagName.seo_h1_news}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />

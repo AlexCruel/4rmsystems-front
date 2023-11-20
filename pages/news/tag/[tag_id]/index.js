@@ -81,7 +81,7 @@ const NewsTag = ({ ...props }) => {
                 <meta property="og:description" content={props.seo.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/NewsArticle">
                 <h1 itemProp="headline">{props.tagName.seo_h1_news}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />

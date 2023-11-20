@@ -26,7 +26,7 @@ const PageNotFound = ({ ...props }) => {
 
     return (
         <>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <Breadcrumbs pre_title="404" title="404" />

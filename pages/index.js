@@ -80,7 +80,7 @@ const Home = ({ ...props }) => {
               <meta property="og:description" content={props.page.seo_description} />
               <meta property="og:site_name" content="4RM Systems" />
           </Head>
-          <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+          <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
           <Banner banners={props.banner} />
           <Catalog catalog={props.catalog} modalContact={props.modalContact.modal} modalQuestion={props.modalContact.modal} />
           <About about={props.about} />

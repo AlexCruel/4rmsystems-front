@@ -73,7 +73,7 @@ const Company = ({ ...props }) => {
                 <meta property="og:description" content={props.page.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1>{props.page.seo_h1}</h1>

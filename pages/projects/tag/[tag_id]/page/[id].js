@@ -80,7 +80,7 @@ const ProjectsPageTag = ({ ...props }) => {
                 <meta property="og:site_name" content="4RM Systems" />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_DOMAIN}/projects/tag`} />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/Article">
                 <h1 itemProp="headline">{props.tagName.seo_h1}</h1>
                 <Breadcrumbs pre_title={props.page.name} title={props.tagName.name} />

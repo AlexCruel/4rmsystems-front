@@ -53,7 +53,7 @@ const Footer = ({info, menu, socials}) => {
                             {lang === "ENG" ? "Contacts" : "Контакты"}
                         </div>
                         <ul>
-                            {info.phone_items?.map((item, index) => {
+                            {info.phone_items_footer?.map((item, index) => {
                                 return (
                                     <li key={index} itemProp="telephone">
                                         <Image src={phone} alt="Phone" />
