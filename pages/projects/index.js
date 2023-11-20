@@ -66,7 +66,7 @@ const Projects = ({ ...props }) => {
                 <meta property="og:description" content={props.page.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/Article">
                 <h1 itemProp="headline">{props.page.seo_h1}</h1>
                 <Breadcrumbs title={props.page.name} />

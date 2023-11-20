@@ -38,7 +38,7 @@ const Search = ({ ...props }) => {
             <Head>
                 <meta name="robots" content="noindex, nofollow" key='robots' />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container}>
                 <div className={cn.container__text}>
                     <h1 itemProp="headline" suppressHydrationWarning>{

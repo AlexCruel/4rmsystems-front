@@ -76,7 +76,7 @@ const Blog = ({ ...props }) => {
                 <meta property="og:description" content={props.seo.seo_description} />
                 <meta property="og:site_name" content="4RM Systems" />
             </Head>
-            <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
+            <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/BlogPosting">
                 <div className={cn.container__text}>
                     <h1 itemProp="headline">{props.blogSingle.seo_h1}</h1>
