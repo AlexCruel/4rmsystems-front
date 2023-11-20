@@ -20,6 +20,11 @@ import BannerProject from "@/components/BannerProject";
 import {createSeoTemplate} from "@/utils/seoTemplate";
 import {useEffect} from "react";
 import {createLightGallery} from "@/utils/lightGallery";
+import lightGallery from "lightgallery";
+import lgPager from "lightgallery/plugins/pager";
+import lgComment from "lightgallery/plugins/comment";
+import lgAutoplay from "lightgallery/plugins/autoplay";
+import lgShare from "lightgallery/plugins/share";
 
 export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}) => {
     setLocalizationCookie(req, res, locale);
@@ -59,8 +64,13 @@ export const getServerSideProps = async ({params, resolvedUrl, req, res, locale}
 }
 
 const Project = ({ ...props }) => {
+    if (typeof window !== "undefined") {
+        window.addEventListener("DOMContentLoaded", () => createLightGallery());
+    }
+
     useEffect(() => {
-        createLightGallery();
+       //window.addEventListener("DOMContentLoaded", () => createLightGallery());
+       //createLightGallery();
     }, []);
 
     return (
@@ -78,10 +88,6 @@ const Project = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/Article">
-                <div className={cn.container__text}>
-                    <h1 itemProp="headline">{props.project.seo_h1}</h1>
-                    <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
-                </div>
                 <div itemScope itemType="https://schema.org/ImageObject">
                     {/*<BannerProject banners={props.project.slider} />*/}
                     <img
@@ -93,6 +99,8 @@ const Project = ({ ...props }) => {
                         alt={props.project.banner.alt} />
                 </div>
                 <div className={cn.container__text}>
+                    <h1 itemProp="headline">{props.project.seo_h1}</h1>
+                    <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
                     <Tags type="projects" tags={props.projectTags} />
                     <span itemProp="articleBody">{parse(props.project.content)}</span>
                     <Socials lang={props.lang} socials={props.socials} resolvedUrl={props.resolvedUrl} text={props.project.title} />
