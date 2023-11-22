@@ -9,6 +9,7 @@ import SubmitModal from "@/components/Modals/SubmitModal";
 import CallForm from "@/components/Forms/CallForm";
 import QuestionForm from "@/components/Forms/QuestionForm";
 import {getCookie} from "cookies-next";
+import {getGeoData} from "@/utils/geo";
 
 const PageContactForm = ({ modalSubscription, modalCall, modalQuestion }) => {
     const {
@@ -26,7 +27,8 @@ const PageContactForm = ({ modalSubscription, modalCall, modalQuestion }) => {
     const lang = getCookie('lang');
 
     const formHandler = async (data) => {
-        const response = await postSubscription(JSON.stringify(data));
+        const fullData = await getGeoData(data);
+        const response = await postSubscription(JSON.stringify(fullData));
         if (response === "true") {
             setModalActive(true);
             reset();

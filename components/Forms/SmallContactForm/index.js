@@ -11,6 +11,7 @@ import {useState} from "react";
 import {postFeedback} from "@/pages/api/application";
 import SubmitModal from "@/components/Modals/SubmitModal";
 import {getCookie} from "cookies-next";
+import {getGeoData} from "@/utils/geo";
 
 const SmallContactForm = ({ socials, modal }) => {
     const {
@@ -26,7 +27,8 @@ const SmallContactForm = ({ socials, modal }) => {
     const lang = getCookie('lang');
 
     const formHandler = async (data) => {
-        const response = await postFeedback(JSON.stringify(data));
+        const fullData = await getGeoData(data);
+        const response = await postFeedback(JSON.stringify(fullData));
         if (response === "true") {
             setModalActive(true);
             reset();

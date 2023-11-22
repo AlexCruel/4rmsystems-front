@@ -4,6 +4,7 @@ import {question} from "@/pages/api/application";
 import SubmitModal from "@/components/Modals/SubmitModal";
 import {useState} from "react";
 import {getCookie} from "cookies-next";
+import {getGeoData} from "@/utils/geo";
 
 const QuestionForm = ({ modal, setQuestionForm }) => {
     const {
@@ -19,7 +20,8 @@ const QuestionForm = ({ modal, setQuestionForm }) => {
     const lang = getCookie('lang');
 
     const formHandler = async (data) => {
-        const response = await question(JSON.stringify(data));
+        const fullData = await getGeoData(data);
+        const response = await question(JSON.stringify(fullData));
         if (response === "true") {
             setModalActive(true);
             reset();
