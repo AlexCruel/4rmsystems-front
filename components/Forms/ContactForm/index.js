@@ -8,6 +8,7 @@ import phone_black from "@/public/icons/phone_black.svg";
 import mail_black from "@/public/icons/mail_black.svg";
 import {getCookie} from "cookies-next";
 import Link from "next/link";
+import {getGeoData} from "@/utils/geo";
 
 const ContactForm = ({ modal }) => {
     const {
@@ -23,7 +24,8 @@ const ContactForm = ({ modal }) => {
     const lang = getCookie('lang');
 
     const formHandler = async (data) => {
-        const response = await postFeedback(JSON.stringify(data));
+        const fullData = await getGeoData(data);
+        const response = await postFeedback(JSON.stringify(fullData));
         if (response === "true") {
             setModalActive(true);
             reset();
