@@ -48,6 +48,11 @@
         font-size: 9px;
         font-weight: normal;
         color: $default-color;
+
+        a {
+          font-weight: normal;
+          color: $default-color;
+        }
       }
 
       input {
