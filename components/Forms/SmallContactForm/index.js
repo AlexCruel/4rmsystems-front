@@ -97,14 +97,16 @@ const SmallContactForm = ({ socials, modal }) => {
                     </div>
                     <div className={cn.contact__form__policy}>
                         <input type="checkbox" {...register("policy", {required: true})} />
-                        <label className={errors?.policy ? cn.policy_error : ""} suppressHydrationWarning>
-                            {
-                                errors?.policy ?
-                                    lang === "ENG" ?
-                                        "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
-                                    : lang === "ENG" ?
-                                        "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
-                            }
+                        <label>
+                            <Link className={errors?.policy ? cn.policy_error : ""} href="/privacy-policy" suppressHydrationWarning>
+                                {
+                                    errors?.policy ?
+                                        lang === "ENG" ?
+                                            "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
+                                        : lang === "ENG" ?
+                                            "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
+                                }
+                            </Link>
                         </label>
                     </div>
                     <div>

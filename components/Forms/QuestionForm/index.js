@@ -5,6 +5,7 @@ import SubmitModal from "@/components/Modals/SubmitModal";
 import {useState} from "react";
 import {getCookie} from "cookies-next";
 import {getGeoData} from "@/utils/geo";
+import Link from "next/link";
 
 const QuestionForm = ({ modal, setQuestionForm }) => {
     const {
@@ -48,13 +49,11 @@ const QuestionForm = ({ modal, setQuestionForm }) => {
                                    "Enter phone number" : "Введите телефон"
                                : "+375112223344"}
                            {...register("phone", {required: true})} />
-                    <br />
                     <label>Email</label>
                     <input id="email"
                            type="email"
                            placeholder={ lang === "ENG" ? "Enter Email" : "Введите Email"}
                            {...register("email")} />
-                    <br />
                     <label suppressHydrationWarning>
                         {lang === "ENG" ? "Question*" : "Вопрос*"}
                     </label>
@@ -67,6 +66,21 @@ const QuestionForm = ({ modal, setQuestionForm }) => {
                                : lang === "ENG" ?
                                "Your message..." : "Ваше сообщение..."}
                            {...register("message", {required: true})} />
+                    <div className={cn.contact__form__policy}>
+                        <input id="policy" type="checkbox"
+                               {...register("policy", {required: true})} />
+                        <label>
+                            <Link className={errors?.policy ? cn.policy_error : ""} href="/privacy-policy" suppressHydrationWarning>
+                                {
+                                    errors?.policy ?
+                                        lang === "ENG" ?
+                                            "Confirm that you agree to the terms of data processing." : "Подтвердите, что вы соглашаетесь с условиями обработки данных."
+                                        : lang === "ENG" ?
+                                            "*By submitting the form, you agree to the terms of data processing." : "*Отправляя форму, вы соглашаетесь с условиями обработки данных."
+                                }
+                            </Link>
+                        </label>
+                    </div>
                 </div>
                 <div>
                     <button suppressHydrationWarning>

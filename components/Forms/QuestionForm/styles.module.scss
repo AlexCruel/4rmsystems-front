@@ -20,6 +20,8 @@
 
     width: 350px;
     min-height: 380px;
+    margin: 10px;
+    padding: 10px;
 
     background: $main-color;
     border-radius: 12px;
@@ -71,9 +73,43 @@
   }
 
   .modal__input {
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: 5px;
+
+    .contact__form__policy {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-top: 5px;
+
+      label {
+        font-size: 9px;
+        font-weight: normal;
+        color: $default-color;
+        padding: 0;
+
+        a {
+          font-weight: normal;
+          color: $default-color;
+        }
+      }
+
+      input {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+      }
+
+      .policy_error {
+        color: red;
+      }
+    }
+
+    label {
+      padding-top: 10px;
+    }
   }
 
   .input_error {
