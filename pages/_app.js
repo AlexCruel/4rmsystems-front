@@ -4,6 +4,7 @@ import store, {wrapper} from "@/store/store";
 import Head from "next/head";
 import {useEffect} from "react";
 import {createLightGallery} from "@/utils/lightGallery";
+import ScrollButton from "@/components/ScrollButton";
 
 function App({ Component, pageProps }) {
     useEffect(() => {
@@ -19,6 +20,7 @@ function App({ Component, pageProps }) {
             <Provider store={store}>
                 <Component {...pageProps} />
             </Provider>
+            <ScrollButton />
         </>
   );
 }
