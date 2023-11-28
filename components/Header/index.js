@@ -40,8 +40,6 @@ const Header = ({phones, modal}) => {
             <Link href="/" className={cn.logo_link}>
                 <div className={cn.logo_container}>
                     <Image src={logo125x35} alt='4RM SYSTEMS' />
-                    <hr/>
-                    <div className={cn.logo_container_text}>For Retail Modern Systems</div>
                 </div>
             </Link>
             <div className={nav ? [cn.container, cn.active_menu].join(' ') : [cn.container]}>
