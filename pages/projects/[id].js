@@ -88,16 +88,7 @@ const Project = ({ ...props }) => {
             </Head>
             <Header phones={props.info.phone_items_header} modal={props.modalCall.modal} />
             <div className={cn.container} itemScope itemType="https://schema.org/Article">
-                <div itemScope itemType="https://schema.org/ImageObject">
-                    {/*<BannerProject banners={props.project.slider} />*/}
-                    <img
-                        itemProp="contentUrl"
-                        src={`${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/storage/app/media${props.project.banner.url}`}
-                        //layout="responsive"
-                        //width={1000}
-                        //height={300}
-                        alt={props.project.banner.alt} />
-                </div>
+                <BannerProject banners={props.project.slider} />
                 <div className={cn.container__text}>
                     <h1 itemProp="headline">{props.project.seo_h1}</h1>
                     <Breadcrumbs pre_title={props.page.name} title={props.project.title} />
