@@ -44,7 +44,7 @@ const ContactForm = ({ modal }) => {
                             {lang === "ENG" ? "Fill out the form and we will contact you." : "Заполните форму и мы свяжемся с вами."}
                         </p>
                         <p suppressHydrationWarning>
-                            {lang === "ENG" ? "4RM Systems offer today what retail will need tomorrow." : "4RM Systems предлагаем сегодня то, что понадобится ритейлу завтра."}
+                            {lang === "ENG" ? "4RM Systems offer today what retail will need tomorrow." : "4RM Systems предлагает сегодня то, что понадобится ретейлу завтра."}
                         </p>
                         <p suppressHydrationWarning>
                             {lang === "ENG" ? "The support team is in touch!" : "Команда поддержки на связи!"}
