@@ -1,5 +1,6 @@
 import cn from "./styles.module.scss";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
+import '@splidejs/react-splide/css';
 
 const BannerProject = ({ banners }) => {
     return (
@@ -11,6 +12,11 @@ const BannerProject = ({ banners }) => {
                 autoplay: true,
                 interval: 3000,
                 rewind: true,
+                breakpoints: {
+                    500: {
+                        arrows: false
+                    }
+                },
                 classes: {
                     arrows: `splide__arrows your-class-arrows`,
                     arrow: `splide__arrow your-class-arrow ${cn.arrow}`,
